@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('assets/backend/img/') ?>favicon-96x96.png">
+
 
   <title>Anter#Anter | <?= $title ?></title>
 
@@ -17,7 +19,7 @@
 
   <!-- Custom styles for this template-->
   <link href="<?= base_url('assets/backend/') ?>css/sb-admin-2.min.css" rel="stylesheet">
-
+  <link href="<?= base_url('assets/backend/') ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">

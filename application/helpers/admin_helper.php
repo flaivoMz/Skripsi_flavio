@@ -20,3 +20,21 @@ if (!function_exists('tanggal_indo')) {
     return $result;
   }
 }
+
+function adminView($page = null, $data = null)
+{
+    $ci = get_instance();
+
+    $ci->load->view('templates/backend/layout/header', $data);
+    $ci->load->view('templates/backend/layout/menu', $data);
+    $ci->load->view('templates/backend/layout/navbar', $data);
+    $ci->load->view($page, $data);
+    $ci->load->view('templates/backend/layout/footer', $data);
+}
+function format_rupiah($number)
+{
+
+    if ($number == '') $number = 0;
+    return number_format($number, 0, '.', ',');
+}
+    
