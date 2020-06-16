@@ -1,327 +1,448 @@
-<!-- Banner Area Start -->
-<section class="jobguru-banner-area">
-    <div class="banner-slider owl-carousel">
-    <div class="banner-single-slider slider-item-1">
-        <div class="slider-offset"></div>
-    </div>
-    <div class="banner-single-slider slider-item-2">
-        <div class="slider-offset"></div>
-    </div>
-    </div>
-    <div class="banner-text">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="banner-search">
-                <h2>Hire expert freelancers.</h2>
-                <h4>We have 1542 job offers for you! </h4>
-                <form>
-                    <div class="banner-form-box">
-                        <div class="banner-form-input">
-                            <input type="text" placeholder="Job Title, Keywords, or Phrase">
-                        </div>
-                        <div class="banner-form-input">
-                            <input type="text" placeholder="City, State or ZIP">
-                        </div>
-                        <div class="banner-form-input">
-                            <select class="banner-select">
-                            <option selected="">Select Sector</option>
-                            <option value="1">Design & multimedia</option>
-                            <option value="2">Programming & tech</option>
-                            <option value="3">Accounting/finance</option>
-                            <option value="4">content writting</option>
-                            <option value="5">Training</option>
-                            <option value="6">Digital Marketing</option>
-                            </select>
-                        </div>
-                        <div class="banner-form-input">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
+<!-- Section Start - Major Services -->
+<section class='major-services gray-boxes' id='major-services'><div class="container">
+	<div class="row">
+			<h1 class="heading">Major Services</h1>
+			<div class="headul"></div>
+			<p class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
+					<!-- Service - Start -->
+		<div class="col-lg-4 col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 service inviewport animated delay1" data-effect="fadeInUp">
+			<div class="service-wrap">
+				<div class="pic">
+					<img alt="service-image" class="img-responsive" src="img\service-1.jpg">
+					<div class="info-layer transition">
+						<a class="btn btn-primary fancybox" title="Air Freight Service" data-fancybox-group="service-gallery" href="img\service-1.jpg"><i class="icon icon-image-area"></i></a>
+					</div>
+					<div class="more">
+                        <a href="#">Read More</a>
+                        <span class="name">Anter#Anter</span>
+					</div>
+				</div>
+				<div class="info">
+					<h4 class="title">Air Freight</h4>
+					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>
+				</div>
+			</div>
+		</div>
+		<!-- Service - End -->
+
+					<!-- Service - Start -->
+		<div class="col-lg-4 col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 service inviewport animated delay2" data-effect="fadeInUp">
+			<div class="service-wrap">
+				<div class="pic">
+					<img alt="service-image" class="img-responsive" src="img\service-2.jpg">
+					<div class="info-layer transition">
+						<a class="btn btn-primary fancybox" title="Roadway Freight Service" data-fancybox-group="service-gallery" href="img\service-2.jpg"><i class="icon icon-image-area"></i></a>
+					</div>
+					<div class="more">
+						<a href="#">Read More</a>
+					</div>
+				</div>
+				<div class="info">
+					<h4 class="title">Roadway Freight</h4>
+					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>
+				</div>
+			</div>
+		</div>
+		<!-- Service - End -->
+
+					<!-- Service - Start -->
+		<div class="col-lg-4 col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 service inviewport animated delay3" data-effect="fadeInUp">
+			<div class="service-wrap">
+				<div class="pic">
+					<img alt="service-image" class="img-responsive" src="img\service-3.jpg">
+					<div class="info-layer transition">
+						<a class="btn btn-primary fancybox" title="Ocean Freight Service" data-fancybox-group="service-gallery" href="img\service-3.jpg"><i class="icon icon-image-area"></i></a>
+					</div>
+					<div class="more">
+						<a href="#">Read More</a>
+					</div>
+				</div>
+				<div class="info">
+					<h4 class="title">Ocean Freight</h4>
+					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>
+				</div>
+			</div>
+		</div>
+		<!-- Service - End -->
+
+	   </div>
+</div></section>
+<!-- Section End - Major Services -->
+
+<!-- Section Start - Tracking App -->
+<section class='bg-lightgray' id='tracking-app-mobile'><div class="container">	<div class="row">
+			<h1 class="heading">Tracking App</h1>
+			<div class="headul"></div>
+			<p class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
+			
+			<div class="features-wrap">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<div class="row">
+						
+
+		<!-- Feature - Start -->
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right-align feature inviewport animated delay1" data-effect="fadeInUp">
+			<div class="icon-wrap">	
+				<i class="icon icon-air6"></i>
+			</div>
+			<div class="info">
+				<h5 class="title">Air Freight</h5>
+				<p>We provide quality logistic and transport services.</p>				
+			</div>
+		</div>
+		<!-- Feature - End -->
+
+						
+
+		<!-- Feature - Start -->
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right-align feature inviewport animated delay2" data-effect="fadeInUp">
+			<div class="icon-wrap">	
+				<i class="icon icon-boat17"></i>
+			</div>
+			<div class="info">
+				<h5 class="title">Ocean Freight</h5>
+				<p>We provide quality logistic and transport services.</p>				
+			</div>
+		</div>
+		<!-- Feature - End -->
+
+						
+
+		<!-- Feature - Start -->
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right-align feature inviewport animated delay3" data-effect="fadeInUp">
+			<div class="icon-wrap">	
+				<i class="icon icon-delivery18"></i>
+			</div>
+			<div class="info">
+				<h5 class="title">Road Freight</h5>
+				<p>We provide quality logistic and transport services.</p>				
+			</div>
+		</div>
+		<!-- Feature - End -->
+
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="app-phones">
+						<img src="img\phone-white-blue.png" class="img-responsive phone-white style-dependent" alt="phone white">
+						<img src="img\phone-black-blue.png" class="img-responsive phone-black style-dependent" alt="phone black">
+					</div>
+
+				</div>
+				
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<div class="row">
+						
+
+		<!-- Feature - Start -->
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 left-align feature inviewport animated delay1" data-effect="fadeInUp">
+			<div class="icon-wrap">	
+				<i class="icon icon-packages2"></i>
+			</div>
+			<div class="info">
+				<h5 class="title">Warehousing</h5>
+				<p>We provide quality logistic and transport services.</p>				
+			</div>
+		</div>
+		<!-- Feature - End -->
+
+						
+
+		<!-- Feature - Start -->
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 left-align feature inviewport animated delay2" data-effect="fadeInUp">
+			<div class="icon-wrap">	
+				<i class="icon icon-commercial15"></i>
+			</div>
+			<div class="info">
+				<h5 class="title">Contract Logistics</h5>
+				<p>We provide quality logistic and transport services.</p>				
+			</div>
+		</div>
+		<!-- Feature - End -->
+
+						
+
+		<!-- Feature - Start -->
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 left-align feature inviewport animated delay3" data-effect="fadeInUp">
+			<div class="icon-wrap">	
+				<i class="icon icon-delivery27"></i>
+			</div>
+			<div class="info">
+				<h5 class="title">Consulting Services</h5>
+				<p>We provide quality logistic and transport services.</p>				
+			</div>
+		</div>
+		<!-- Feature - End -->
+
+					</div>
+				</div>
+			</div>
+
+	   </div>
+</div></section>
+<!-- Section End - Tracking App -->
+
+<!-- Section Start - Worldwide Centres -->
+<section class='bg-black' id='worldwide'><div class="container">
+	<div class="row">
+			<h1 class="heading text-white">Worldwide Centres</h1>
+			<div class="headul"></div>
+			<p class="subheading text-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
+			<div class="worldwide col-md-12 col-xs-12">
+				<div class="map">
+					<img src="img\map.png" class="img-responsive" alt="Map image">
+				</div>
+				<div class="map-locations inviewport animated delay2" data-effect="fadeIn">
+					<img src="img\map-locations-blue.png" class="img-responsive style-dependent" alt="Map Locations">
+				</div>
+				<div class="map-connect inviewport animated delay6" data-effect="fadeIn">
+					<img src="img\map-connect-blue.png" class="img-responsive style-dependent" alt="Map Connections">
+				</div>
+
+			</div>
+	   </div>
+</div></section>
+<!-- Section End - Worldwide Centres -->
+
+<!-- Section Start - Company Updates -->
+<section id='company-updates'><div class="container">		<div class="row">
+			<h1 class="heading">Company Updates</h1>
+			<div class="headul"></div>
+			<p class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
+			<div class="news-blocks">
+				
+						<!-- Service - Start -->
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 news_small inviewport animated delay1" data-effect="fadeInUp">
+			<div class="news-wrap row">
+				<div class="pic col-md-3 col-xs-3 col-sm-3 col-lg-3">
+					<img alt="news-image" class="img-responsive" src="img\news-1.jpg">
+				</div>
+				<div class="info col-md-9 col-xs-9 col-sm-9 col-lg-9">
+					<div class="date">21st October 2015</div>
+					<h5 class="title">Freight & Logistics Award</h5>
+					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>				</div>
+			</div>
+		</div>
+		<!-- Service - End -->
+		<!-- Service - Start -->
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 news_small inviewport animated delay2" data-effect="fadeInUp">
+			<div class="news-wrap row">
+				<div class="pic col-md-3 col-xs-3 col-sm-3 col-lg-3">
+					<img alt="news-image" class="img-responsive" src="img\news-2.jpg">
+				</div>
+				<div class="info col-md-9 col-xs-9 col-sm-9 col-lg-9">
+					<div class="date">21st October 2015</div>
+					<h5 class="title">Freight & Logistics Award</h5>
+					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>				</div>
+			</div>
+		</div>
+		<!-- Service - End -->
+		<!-- Service - Start -->
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 news_small inviewport animated delay1" data-effect="fadeInUp">
+			<div class="news-wrap row">
+				<div class="pic col-md-3 col-xs-3 col-sm-3 col-lg-3">
+					<img alt="news-image" class="img-responsive" src="img\news-3.jpg">
+				</div>
+				<div class="info col-md-9 col-xs-9 col-sm-9 col-lg-9">
+					<div class="date">21st October 2015</div>
+					<h5 class="title">Freight & Logistics Award</h5>
+					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>				</div>
+			</div>
+		</div>
+		<!-- Service - End -->
+		<!-- Service - Start -->
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 news_small inviewport animated delay2" data-effect="fadeInUp">
+			<div class="news-wrap row">
+				<div class="pic col-md-3 col-xs-3 col-sm-3 col-lg-3">
+					<img alt="news-image" class="img-responsive" src="img\news-4.jpg">
+				</div>
+				<div class="info col-md-9 col-xs-9 col-sm-9 col-lg-9">
+					<div class="date">21st October 2015</div>
+					<h5 class="title">Freight & Logistics Award</h5>
+					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>				</div>
+			</div>
+		</div>
+		<!-- Service - End -->
+			</div>
+		</div>
+</div></section>
+<!-- Section End - Company Updates -->
+
+<!-- Section Start - Testimonials -->
+<section class='testimonials parallax ' id='testimonials'><div class="bg-overlay"></div><div class="container">	<div class="row">
+
+			<h1 class="heading">Testimonials</h1>
+			<div class="headul"></div>
+
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+			<div class="row">
+						
+		<!-- Testimonials Carousel - Start -->
+            <ul id="testimonial-carousel" class="owl-carousel">
+            			<!-- Testimonial - Start -->
+		<li class="">
+	              <h5 class="testi" data-id="testi-1">
+		              Shipping Logistics is one of the top logistics providers in the industry. and first class customer service and live by the 'Never Say Never' attitude to accomplish every mission.	              </h5>
+	              <div class="testi_by">
+	              	<div class="pic">
+	              		<img src="img\avatar-1.jpg" alt="User Avatar Image">
+	              	</div>
+	              	<div class="name">Kate Douglas</div>
+	              	<div class="company">Company Co. In.</div>
+	              </div>
+	              <!-- <div class="tweet_by">Kate Douglas</div>
+	              <div class="tweet_time">1 day ago</div> -->
+		</li>
+		<!-- Testimonial - End -->
+            			<!-- Testimonial - Start -->
+		<li class="">
+	              <h5 class="testi" data-id="testi-2">
+		              Asunt in anim uis aute irure dolor in reprehenderit in voluptate cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cun proident, sunt in anim id est laborum.	              </h5>
+	              <div class="testi_by">
+	              	<div class="pic">
+	              		<img src="img\avatar-2.jpg" alt="User Avatar Image">
+	              	</div>
+	              	<div class="name">Jim Arthur</div>
+	              	<div class="company">Company Co. In.</div>
+	              </div>
+	              <!-- <div class="tweet_by">Jim Arthur</div>
+	              <div class="tweet_time">1 day ago</div> -->
+		</li>
+		<!-- Testimonial - End -->
+            			<!-- Testimonial - Start -->
+		<li class="">
+	              <h5 class="testi" data-id="testi-1">
+		              Shipping Logistics is one of the top logistics providers in the industry. and first class customer service and live by the 'Never Say Never' attitude to accomplish every mission.	              </h5>
+	              <div class="testi_by">
+	              	<div class="pic">
+	              		<img src="img\avatar-1.jpg" alt="User Avatar Image">
+	              	</div>
+	              	<div class="name">Kate Douglas</div>
+	              	<div class="company">Company Co. In.</div>
+	              </div>
+	              <!-- <div class="tweet_by">Kate Douglas</div>
+	              <div class="tweet_time">1 day ago</div> -->
+		</li>
+		<!-- Testimonial - End -->
+            			<!-- Testimonial - Start -->
+		<li class="">
+	              <h5 class="testi" data-id="testi-2">
+		              Asunt in anim uis aute irure dolor in reprehenderit in voluptate cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cun proident, sunt in anim id est laborum.	              </h5>
+	              <div class="testi_by">
+	              	<div class="pic">
+	              		<img src="img\avatar-2.jpg" alt="User Avatar Image">
+	              	</div>
+	              	<div class="name">Jim Arthur</div>
+	              	<div class="company">Company Co. In.</div>
+	              </div>
+	              <!-- <div class="tweet_by">Jim Arthur</div>
+	              <div class="tweet_time">1 day ago</div> -->
+		</li>
+		<!-- Testimonial - End -->
+            </ul>
+		<!-- Testimonials Carousel - End -->
+				</div>
+			</div>
+
+	   </div>
+
+	</div></section>
+<!-- Section End - Testimonials -->
+
+<!-- Section Start - Service Estimate -->
+<section class='estimate' id='estimate'>	<div class="estimate-wrap">
+		<div class="row">
+		<div class="col-lg-8 col-md-8 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-sm-10  col-xs-offset-1 col-xs-10 ">
+			<h1 class="heading left-align">Service Estimate</h1>
+			<div class="headul left-align"></div>
+			<p class="subheading left-align">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa ipsum dolor sit amet, consectetuer adipisc</p>
+		</div>
+
+			<div class="col-lg-4 col-md-4 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-sm-10  col-xs-offset-1 col-xs-10 ">
+				
+	<!-- Estimate Form - Start -->
+	<div class='row'><form action='#' method='post'><div class='col-xs-12'><label>Load Type</label><input type='text' placeholder='' class='transition' id='est_load_type'></div><div class='col-xs-6'><label>Quantity</label><input type='text' placeholder='' class='transition' id='est_qty'></div><div class='col-xs-6'><label>Weight</label><input type='text' placeholder='' class='transition' id='est_weight'></div><div class='col-xs-4'><label>Length</label><input type='text' placeholder='' class='transition' id='est_length'></div><div class='col-xs-4'><label>Height</label><input type='text' placeholder='' class='transition' id='est_height'></div><div class='col-xs-4'><label>Width</label><input type='text' placeholder='' class='transition' id='est_width'></div><div class='col-xs-12'><label>Total (Auto Calculate)</label><input type='text' placeholder='' class='transition' id='est_total'></div></form></div>
+	<!-- Estimate Form - End -->
+				</div>
+
+			<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 pic">
+				<img src="img\estimate-fork-blue.jpg" class="img-responsive style-dependent" alt="Estimate Fork Image">
+			</div>
+		</div>
+	</div>
+
 </section>
-<!-- Banner Area End -->
+<!-- Section End - Service Estimate -->
+
+<!-- Section Start - Our Clients -->
+<section class='clients bg-primary white-text' id='clients'><div class="container">	<div class="row">
+	<div class="col-md-12 col-xs-12">
+			<h1 class="heading left-align">Our Clients</h1>
+			<div class="headul left-align"></div>
+			<p class="subheading left-align">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
+
+					<!-- Client Image - Start -->
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 client inviewport animated delay1" data-effect="fadeInUp">
+			<h4><img alt="client-logo" src="img\client-1.png" class="img-responsive"></h4>
+		</div>
+		<!-- Client Image - End -->
+					<!-- Client Image - Start -->
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 client inviewport animated delay2" data-effect="fadeInUp">
+			<h4><img alt="client-logo" src="img\client-2.png" class="img-responsive"></h4>
+		</div>
+		<!-- Client Image - End -->
+					<!-- Client Image - Start -->
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 client inviewport animated delay3" data-effect="fadeInUp">
+			<h4><img alt="client-logo" src="img\client-3.png" class="img-responsive"></h4>
+		</div>
+		<!-- Client Image - End -->
+					<!-- Client Image - Start -->
+		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 client inviewport animated delay4" data-effect="fadeInUp">
+			<h4><img alt="client-logo" src="img\client-4.png" class="img-responsive"></h4>
+		</div>
+		<!-- Client Image - End -->
+
+				   </div>
+	</div>
+	
+	</div></section>
+<!-- Section End - Our Clients -->
+
+<!-- Section Start - Get In Touch -->
+<section class='contact contact-small' id='contact'><div class="container">		<div class="row">
+			<h1 class="heading">Get In Touch</h1>
+			<div class="headul"></div>
+			<p class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
+
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+				
+	<!-- Contact Form - Start -->
+	<div class='row'><form action='send_email.php' method='post'><div class='col-xs-6'><input type='text' placeholder='Name' class='transition' id='c_name'></div><div class='col-xs-6'><input type='text' placeholder='Email' class='transition' id='c_email'></div><div class='col-xs-12'><textarea class='transition' placeholder='Message' id='c_message'></textarea></div><div id='response_email' class='col-xs-12'></div><div class='col-xs-4'><button type='button' class='btn btn-primary disabled transition' id='c_send'>Send Message</button></div></form></div>
+	<!-- Contact Form - End -->
+				</div>
 
 
-<!-- Categories Area Start -->
-<section class="jobguru-categories-area section_70">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-heading">
-                <h2>Job <span>Categories</span></h2>
-                <p>A better career is out there. We'll help you find it. We're your first step to becoming everything you want to be.</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <?php foreach($kategori_pekerjaan as $row){ ?>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <a href="#" class="single-category-holder account_cat">
-                <div class="category-holder-icon">
-                <i class="<?= $row->icon ?>"></i>
-                </div>
-                <div class="category-holder-text">
-                <h3><?= ucwords($row->nama_kategori_pek) ?></h3>
-                </div>
-                <img src="<?= base_url() ?>assets\img\<?= $row->background_image ?>" alt="category">
-            </a>
-        </div>
-        <?php } ?>
-    </div>
-   
-    </div>
-</section>
-<!-- Categories Area End -->
+			
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+				<div class="contact-info">
+					<i class="icon icon-envelope"></i>
+					<div class="title">Email</div>
+					<div class="value">deskhelp@example.com</div>
+				</div>
+				<div class="contact-info">
+					<i class="icon icon-phone"></i>
+					<div class="title">Phone</div>
+					<div class="value">+02-234-5678-910</div>
+				</div>
+			</div>
+			
 
-
-<!-- Inner Hire Area Start -->
-<section class="jobguru-inner-hire-area section_100">
-    <div class="hire_circle"></div>
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="inner-hire-left">
-                <h3>Hire an employee</h3>
-                <p>placerat congue dui rhoncus sem et blandit .et consectetur Fusce nec nunc lobortis lorem ultrices facilisis. Ut dapibus placerat blandit nunc.congue dui rhoncus sem et blandit .et consectetur Fusce nec nunc lobortis lorem ultrices facilisis. Ut dapibus placerat blandi </p>
-                <a href="#" class="jobguru-btn-3">sign up as company</a>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Inner Hire Area End -->
-
-
-<!-- Job Tab Area Start -->
-<section class="jobguru-job-tab-area section_70">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-heading">
-                <h2>Companies & <span>job offers</span></h2>
-                <p>It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class=" job-tab">
-                <ul class="nav nav-pills job-tab-switch" id="pills-tab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="pills-companies-tab" data-toggle="pill" href="#pills-companies" role="tab" aria-controls="pills-companies" aria-selected="true">top Companies</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="false">job openning</a>
-                </li>
-                </ul>
-            </div>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-companies" role="tabpanel" aria-labelledby="pills-companies-tab">
-                <div class="top-company-tab">
-                    <ul>
-                        <?php 
-                        foreach($perusahaan as $row){ 
-                            $explode_alamat = explode(",",$row->alamat_perusahaan); 
-                            $lokasi_perusahaan = $explode_alamat[count($explode_alamat) - 2].', '.end($explode_alamat);
-                        ?>
-                        <li>
-                            <div class="top-company-list">
-                            <div class="company-list-logo">
-                                <a href="#">
-                                <img src="<?= base_url() ?>assets\img\logo_perusahaan\<?= $row->logo_perusahaan ?>" alt="<?= ucwords($row->nama_perusahaan) ?>">
-                                </a>
-                            </div>
-                            <div class="company-list-details">
-                                <h3><a href="#"><?= ucwords($row->nama_perusahaan) ?> - <?= ucwords($row->nama_kategori_per) ?></a></h3>
-                                <p class="company-state"><i class="fa fa-map-marker"></i> <?= ucwords($lokasi_perusahaan) ?></p>
-                                <p class="open-icon"><i class="fa fa-briefcase"></i>32 open position</p>
-                                <!-- <p class="varify"><i class="fa fa-check"></i>Verified</p> -->
-                                <!-- <p class="rating-company">4.9</p> -->
-                            </div>
-                            <div class="company-list-btn">
-                                <a href="#" class="jobguru-btn">view profile</a>
-                            </div>
-                            </div>
-                        </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                </div>
-                <div class="tab-pane fade" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
-                <div class="top-company-tab">
-                    <ul>
-                        <?php
-                        foreach($jobOpening as $row){
-                        $explode = explode(",",$row->lokasi_pekerjaan); 
-                        $lokasi = $explode[count($explode) - 2].', '.end($explode);
-                        ?>
-                        <li>
-                            <div class="top-company-list">
-                            <div class="company-list-logo">
-                                <a href="#">
-                                <img src="<?= base_url() ?>assets\img\logo_perusahaan\<?= $row->logo_perusahaan ?>" alt="<?= ucwords($row->nama_perusahaan) ?>">
-                                </a>
-                            </div>
-                            <div class="company-list-details">
-                                <h3><a href="#"><?= ucwords($row->nama_lowongan) ?></a></h3>
-                                <p class="company-state"><i class="fa fa-map-marker"></i> <?= ucwords($lokasi) ?></p>
-                                <p class="open-icon"><i class="fa fa-calendar"></i><?= tanggal_indo($row->date_start).' - '.tanggal_indo($row->date_end) ?></p>
-                                <p class="varify"><i class="fa fa-money"></i>Salary : <?= $row->gaji_min.' - '.$row->gaji_max ?></p>
-                                <!-- <p class="rating-company">4.1</p> -->
-                            </div>
-                            <div class="company-list-btn">
-                                <a href="#" class="jobguru-btn">apply now</a>
-                            </div>
-                            </div>
-                        </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="load-more">
-                <a href="#" class="jobguru-btn">browse more listing</a>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Job Tab Area End -->
-
-
-<!-- Video Area Start -->
-<section class="jobguru-video-area section_100">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="video-container">
-                <h2>Hire experts freelancers today for <br> any job, any time.</h2>
-                <div class="video-btn">
-                <a class="popup-youtube" href="..\..\watch.html?v=k-R6AFn9-ek">
-                <i class="fa fa-play"></i>
-                how it works
-                </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Video Area End -->
-
-
-<!-- How Works Area Start -->
-<section class="how-works-area section_70">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-heading">
-                <h2>how it <span>works</span></h2>
-                <p>It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="how-works-box box-1">
-                <img src="<?= base_url() ?>assets\img\arrow-right-top.png" alt="works">
-                <div class="works-box-icon">
-                <i class="fa fa-user"></i>
-                </div>
-                <div class="works-box-text">
-                <p>sign up</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="how-works-box box-2">
-                <img src="<?= base_url() ?>assets\img\arrow-right-bottom.png" alt="works">
-                <div class="works-box-icon">
-                <i class="fa fa-gavel"></i>
-                </div>
-                <div class="works-box-text">
-                <p>post job</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="how-works-box box-3">
-                <div class="works-box-icon">
-                <i class="fa fa-thumbs-up"></i>
-                </div>
-                <div class="works-box-text">
-                <p>choose expert</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- How Works Area End -->
-
-
-<!-- Blog Area Start -->
-<section class="jobguru-blog-area section_70">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-heading">
-                <h2>Recent From <span>Blog</span></h2>
-                <p>It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-12">
-            <a href="#">
-                <div class="single-blog">
-                <div class="blog-image">
-                    <img src="<?= base_url() ?>assets\img\blog-1.jpeg" alt="blog image">
-                    <p><span> 21</span> July</p>
-                </div>
-                <div class="blog-text">
-                    <h3>If you're having trouble coming up with</h3>
-                </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-12">
-            <a href="#">
-                <div class="single-blog">
-                <div class="blog-image">
-                    <img src="<?= base_url() ?>assets\img\blog-2.jpeg" alt="blog image">
-                    <p><span> 21</span> July</p>
-                </div>
-                <div class="blog-text">
-                    <h3>details about Apple’s new iPad Pro models</h3>
-                </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-12">
-            <a href="#">
-                <div class="single-blog">
-                <div class="blog-image">
-                    <img src="<?= base_url() ?>assets\img\blog-3.jpeg" alt="blog image">
-                    <p><span> 21</span> July</p>
-                </div>
-                <div class="blog-text">
-                    <h3>what are those Steps to be a Successful developer</h3>
-                </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Blog Area End -->
+		</div>
+</div></section>
+<!-- Section End - Get In Touch -->
+		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="row">
+                		<div id="contact-map" class="gmap"></div>
+            		</div>
+		</div>
