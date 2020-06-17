@@ -1,63 +1,291 @@
 <?= $this->session->flashdata('message'); ?>
-<section class="container mt-5">
-    <h2 class="text-center">Halaman Order</h2>
-    <div class="row mt-4">
-        <div class="col-md-8 col-12">
-            <div class="card">
-                <div class="card-header">
-                    Data Pengirim
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="id_order">ID ORDER</label>
-                        <input type="text" class="form-control" id="id_order" readonly>
+<?php
+    $jumlah = $this->db->count_all('order_customer')+1;
+    $level  = $customer['level'];
+    $dt     = explode(" ",$customer['tanggal_bergabung']);
+    $date   = explode("-",$dt[0]);
+    $thn    = substr($date[0],2);
+    $bln    = $date[1];
+
+    if($level=="customer"){
+        $level_user = "CC";
+    }else if($level=="member"){
+        $level_user = "MM";
+    }else{
+        $level_user = "B2B";
+    }
+    if($jumlah == 1){
+        $running_number = '000000'.$jumlah; 
+    }else if($jumlah >9 && $jumlah< 100){
+        $running_number = '00000'.$jumlah;
+    }else if($jumlah >100 && $jumlah< 1000){
+        $running_number = '0000'.$jumlah;
+    }else if($jumlah >1000 && $jumlah< 10000){
+        $running_number = '000'.$jumlah;
+    }else if($jumlah >10000 && $jumlah< 100000){
+        $running_number = '00'.$jumlah;
+    }else if($jumlah >100000 && $jumlah< 1000000){
+        $running_number = '0'.$jumlah;
+    }else{
+        $running_number = $jumlah;
+    }
+    $id_orderan = $level_user.$thn.$bln.$running_number;
+?>
+<div class="site-section-cover overlay inner-page bg-light" style="background-image: url('<?php echo base_url();?>assets/frontend/depan/images/box.jpg')" data-aos="fade">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-lg-10">
+                <div class="box-shadow-content">
+                    <div class="block-heading-1">
+                        <h1 class="mb-4" data-aos="fade-up" data-aos-delay="100">Order Paket</h1>
                     </div>
-                    <div class="form-group">
-                        <label for="pengirim">Pengirim</label>
-                        <input type="text" class="form-control" id="pengirim" readonly value="<?php echo $this->session->userdata('nama');?>">
-                    </div>
-                    <div class="form-group">
-                        <label for="penerima">Penerima</label>
-                        <input type="text" class="form-control" id="penerima" name="penerima" placeholder="Masukkan nama penerima" required="">
-                    </div>
-                    <div class="form-group">
-                        <label for="no_tlpn_penerima">Nomor Telpon Penerima</label>
-                        <input type="text" class="form-control" id="no_tlpn_penerima" name="no_tlpn_penerima" placeholder="Masukkan nomor telpon penerima" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="14" required="">
-                    </div>
-                    <div class="form-group">
-                        <label for="jenis_pembayaran">Jenis Pembayaran</label>
-                        <select name="jenis_pembayaran" id="jenis_pembayaran" class="form-control" required>
-                            <option>Pilih Metode Pembayaran</option>
-                            <option value="cash">Cash</option>
-                            <option value="transfer">Transfer</option>
-                            <option value="cicilan">Cicilan</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="alamat_asal">Alamat Asal</label>
-                        <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Masukkan alamat asal" required=""></textarea>
-                        <input type="hidden" name="koordinat_asal" value="">
-                    </div>
-                    <div class="form-group">
-                        <label for="alamat_tujuan">Alamat Tujuan</label>
-                        <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required=""></textarea>
-                        <input type="hidden" name="koordinat_tujuan" value="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 col-12">
-            <div class="card">
-                <div class="card-header">
-                    List Barang
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-</section>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 blog-content">
+                <div class="card">
+                    <div class="card-header">
+                        Data Pengirim
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="id_order">ID ORDER</label>
+                            <input type="text" class="form-control" id="id_order" value="<?php echo $id_orderan; ?>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="pengirim">Pengirim</label>
+                            <input type="text" class="form-control" id="pengirim" readonly value="<?php echo $this->session->userdata('nama');?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="penerima">Penerima</label>
+                            <input type="text" class="form-control" id="penerima" name="penerima" placeholder="Masukkan nama penerima" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="no_tlpn_penerima">Nomor Telpon Penerima</label>
+                            <input type="text" class="form-control" id="no_tlpn_penerima" name="no_tlpn_penerima" placeholder="Masukkan nomor telpon penerima" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="14" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="jenis_pembayaran">Jenis Pembayaran</label>
+                            <select name="jenis_pembayaran" id="jenis_pembayaran" class="form-control" required>
+                                <option>Pilih Metode Pembayaran</option>
+                                <option value="cash">Cash</option>
+                                <option value="transfer">Transfer</option>
+                                <option value="cicilan">Cicilan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat_asal">Alamat Asal</label>
+                            <?php if(isset($_SESSION['alamat_asal'])&&$_SESSION['alamat_asal']!=""):?>
+                                <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoAsal()"><?php echo $_SESSION['alamat_asal']['alamat']?></textarea>
+                                <input type="hidden" name="koordinat_asal" value="<?php echo $_SESSION['alamat_asal']['koordinat']?>">
+                                <input type="hidden" name="kabupaten" value="<?php echo $_SESSION['alamat_asal']['kabupaten']?>">
+                            <?php else:?>
+                                <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoAsal()"></textarea>
+                            <?php endif;?>
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat_tujuan">Alamat Tujuan</label>
+                            <?php if(isset($_SESSION['alamat_penerima'])&&$_SESSION['alamat_penerima']!=""):?>
+                                <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoPenerima()"><?php echo $_SESSION['alamat_penerima']['alamat']?></textarea>
+                                <input type="hidden" name="koordinat_tujuan" value="<?php echo $_SESSION['alamat_penerima']['koordinat']?>">
+                                <input type="hidden" name="kabupaten" value="<?php echo $_SESSION['alamat_penerima']['kabupaten']?>">
+                            <?php else:?>
+                                <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoPenerima()"></textarea>
+                            <?php endif;?>
+                        </div>
+                        <div class="form-group">
+                            <label for="referal_code">Referal Code</label>
+                            <input type="text" class="form-control" id="referal_code" name="referal_code" placeholder="Masukkan referal code">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <span class="float-left" id="judulOngkir">Ongkir</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="float-left"></span>
+                            </div>
+                            <div class="col-6">
+                                <span class="float-left">Subtotal</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="float-left"></span>
+                            </div>
+                            <div class="col-6">
+                                <span class="float-left">Total</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="float-left"></span>
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-block" type="submit">Simpan</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 sidebar mt-md-0 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        List Barang
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary" type="button" onclick="tambahBarang()">Masukkan Barang</button>
+                        <?php if($tmp_order !=""):?>
+                            <?php foreach($tmp_order as $tmp):?>
+                            <div class="row border rounded mt-3">
+                                <div class="col-md-4 py-md-2 pt-5 d-none d-md-block">
+                                    <img src="<?php echo base_url()?>assets/frontend/img/box.png" alt="box" class="img-fluid">
+                                </div>
+                                <div class=" col-12 col-md-8 py-2 row">
+                                    <div class="col-6">Volume</div>
+                                    <div class="col-6"><?php echo $tmp['volume_barang']; ?></div>
+                                    <div class="col-6">Berat</div>
+                                    <div class="col-6"><?php echo number_format($tmp['berat_barang'],1,'.','.'); ?>&nbsp;kg</div>
+                                    <div class="col-6">Status Berat</div>
+                                    <div class="col-6"><?php echo $tmp['status_berat']; ?></div>
+                                    <div class="col-6">Total</div>
+                                    <div class="col-6"><?php echo number_format($tmp['total'],0,'.','.'); ?></div>
+                                    <div class="col-12">
+                                        <span class="text-success" style="cursor:pointer;" onclick="editTmp(<?php echo $tmp['id_barang'];?>)">Edit</span>&nbsp;||&nbsp;<span class="text-danger" onclick="hapusTmp(<?php echo $tmp['id_barang']; ?>)" style="cursor:pointer;">Hapus</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach;?>
+                        <?php endif;?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Tambah Barang -->
+<div class="modal fade" id="modalBarang" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Masukkan Data Barang</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php echo form_open('order/save_order_detail_customer_tmp');?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="id_order_db">ID ORDER</label>
+                    <input type="text" class="form-control" id="id_order_db" name="id_order_db" value="<?php echo $id_orderan; ?>" readonly>
+                </div>
+                <small class="form-text text-info"><i class="fa fa-info-circle"></i> Satuan volume dalam cm</small>
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="panjang">Panjang</label>
+                        <input type="text" class="form-control" id="panjang" name="panjang" placeholder="P" required>
+                    </div>
+                    <div class="col">
+                        <label for="lebar">Lebar</label>
+                        <input type="text" class="form-control" id="lebar" name="lebar" placeholder="L" required>
+                    </div>
+                    <div class="col">
+                        <label for="tinggi">Tinggi</label>
+                        <input type="text" class="form-control" id="tinggi" name="tinggi" placeholder="T" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="overweight" value="overweight" name="berat_barang[]">
+                            <label class="form-check-label" for="overweight">Overweight</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="oversize" value="oversize" name="berat_barang[]">
+                            <label class="form-check-label" for="oversize">Oversize</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="normal" value="normal" name="berat_barang[]">
+                            <label class="form-check-label" for="normal">Normal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catatan">Catatan</label>
+                    <textarea class="form-control" name="catatan" id="catatan" name="catatan" placeholder="Masukkan catatan"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submot" class="btn btn-primary">Simpan</button>
+            </div>
+            <?php echo form_close();?>
+        </div>
+    </div>
+</div>
+<!-- Modal Tambah Edit -->
+<div class="modal fade" id="modalBarangEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Masukkan Data Barang</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php echo form_open('order/update_order_detail_customer_tmp');?>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="id_order_db_edit">ID ORDER</label>
+                    <input type="text" class="form-control" id="id_order_db_edit" name="id_order_db" value="<?php echo $id_orderan; ?>" readonly>
+                </div>
+                <small class="form-text text-info"><i class="fa fa-info-circle"></i> Satuan volume dalam cm</small>
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="panjang_edit">Panjang</label>
+                        <input type="text" class="form-control" id="panjang_edit" name="panjang" placeholder="P" required>
+                    </div>
+                    <div class="col">
+                        <label for="lebar_edit">Lebar</label>
+                        <input type="text" class="form-control" id="lebar_edit" name="lebar" placeholder="L" required>
+                    </div>
+                    <div class="col">
+                        <label for="tinggi_edit">Tinggi</label>
+                        <input type="text" class="form-control" id="tinggi_edit" name="tinggi" placeholder="T" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="overweight_edit" value="overweight" name="berat_barang[]">
+                            <label class="form-check-label" for="overweight_edit">Overweight</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="oversize_edit" value="oversize" name="berat_barang[]">
+                            <label class="form-check-label" for="oversize_edit">Oversize</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="normal_edit" value="normal" name="berat_barang[]">
+                            <label class="form-check-label" for="normal_edit">Normal</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catatan_edit">Catatan</label>
+                    <textarea class="form-control" name="catatan" id="catatan_edit" name="catatan" placeholder="Masukkan catatan"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="id_barang" id="idBarang">
+                <button type="submot" class="btn btn-primary">Simpan</button>
+            </div>
+            <?php echo form_close();?>
+        </div>
+    </div>
+</div>

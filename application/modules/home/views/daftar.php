@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                    <input class="input100" type="text" name="no_telpn"  placeholder="Masukkan Nomor Telepon" required="" maxlength="6" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                    <input class="input100" type="text" name="no_telpn"  placeholder="Masukkan Nomor Telepon" required="" maxlength="14" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
                         <i class="fa fa-mobile" aria-hidden="true"></i>

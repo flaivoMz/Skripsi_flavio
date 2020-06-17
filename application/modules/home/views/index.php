@@ -1,448 +1,535 @@
-<!-- Section Start - Major Services -->
-<section class='major-services gray-boxes' id='major-services'><div class="container">
-	<div class="row">
-			<h1 class="heading">Major Services</h1>
-			<div class="headul"></div>
-			<p class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
-					<!-- Service - Start -->
-		<div class="col-lg-4 col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 service inviewport animated delay1" data-effect="fadeInUp">
-			<div class="service-wrap">
-				<div class="pic">
-					<img alt="service-image" class="img-responsive" src="img\service-1.jpg">
-					<div class="info-layer transition">
-						<a class="btn btn-primary fancybox" title="Air Freight Service" data-fancybox-group="service-gallery" href="img\service-1.jpg"><i class="icon icon-image-area"></i></a>
-					</div>
-					<div class="more">
-                        <a href="#">Read More</a>
-                        <span class="name">Anter#Anter</span>
-					</div>
-				</div>
-				<div class="info">
-					<h4 class="title">Air Freight</h4>
-					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>
-				</div>
-			</div>
-		</div>
-		<!-- Service - End -->
 
-					<!-- Service - Start -->
-		<div class="col-lg-4 col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 service inviewport animated delay2" data-effect="fadeInUp">
-			<div class="service-wrap">
-				<div class="pic">
-					<img alt="service-image" class="img-responsive" src="img\service-2.jpg">
-					<div class="info-layer transition">
-						<a class="btn btn-primary fancybox" title="Roadway Freight Service" data-fancybox-group="service-gallery" href="img\service-2.jpg"><i class="icon icon-image-area"></i></a>
-					</div>
-					<div class="more">
-						<a href="#">Read More</a>
-					</div>
-				</div>
-				<div class="info">
-					<h4 class="title">Roadway Freight</h4>
-					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>
-				</div>
-			</div>
-		</div>
-		<!-- Service - End -->
 
-					<!-- Service - Start -->
-		<div class="col-lg-4 col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 service inviewport animated delay3" data-effect="fadeInUp">
-			<div class="service-wrap">
-				<div class="pic">
-					<img alt="service-image" class="img-responsive" src="img\service-3.jpg">
-					<div class="info-layer transition">
-						<a class="btn btn-primary fancybox" title="Ocean Freight Service" data-fancybox-group="service-gallery" href="img\service-3.jpg"><i class="icon icon-image-area"></i></a>
-					</div>
-					<div class="more">
-						<a href="#">Read More</a>
-					</div>
-				</div>
-				<div class="info">
-					<h4 class="title">Ocean Freight</h4>
-					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>
-				</div>
-			</div>
-		</div>
-		<!-- Service - End -->
-
-	   </div>
-</div></section>
-<!-- Section End - Major Services -->
-
-<!-- Section Start - Tracking App -->
-<section class='bg-lightgray' id='tracking-app-mobile'><div class="container">	<div class="row">
-			<h1 class="heading">Tracking App</h1>
-			<div class="headul"></div>
-			<p class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
-			
-			<div class="features-wrap">
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-					<div class="row">
-						
-
-		<!-- Feature - Start -->
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right-align feature inviewport animated delay1" data-effect="fadeInUp">
-			<div class="icon-wrap">	
-				<i class="icon icon-air6"></i>
-			</div>
-			<div class="info">
-				<h5 class="title">Air Freight</h5>
-				<p>We provide quality logistic and transport services.</p>				
-			</div>
-		</div>
-		<!-- Feature - End -->
-
-						
-
-		<!-- Feature - Start -->
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right-align feature inviewport animated delay2" data-effect="fadeInUp">
-			<div class="icon-wrap">	
-				<i class="icon icon-boat17"></i>
-			</div>
-			<div class="info">
-				<h5 class="title">Ocean Freight</h5>
-				<p>We provide quality logistic and transport services.</p>				
-			</div>
-		</div>
-		<!-- Feature - End -->
-
-						
-
-		<!-- Feature - Start -->
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 right-align feature inviewport animated delay3" data-effect="fadeInUp">
-			<div class="icon-wrap">	
-				<i class="icon icon-delivery18"></i>
-			</div>
-			<div class="info">
-				<h5 class="title">Road Freight</h5>
-				<p>We provide quality logistic and transport services.</p>				
-			</div>
-		</div>
-		<!-- Feature - End -->
-
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-					<div class="app-phones">
-						<img src="img\phone-white-blue.png" class="img-responsive phone-white style-dependent" alt="phone white">
-						<img src="img\phone-black-blue.png" class="img-responsive phone-black style-dependent" alt="phone black">
-					</div>
-
-				</div>
-				
-				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-					<div class="row">
-						
-
-		<!-- Feature - Start -->
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 left-align feature inviewport animated delay1" data-effect="fadeInUp">
-			<div class="icon-wrap">	
-				<i class="icon icon-packages2"></i>
-			</div>
-			<div class="info">
-				<h5 class="title">Warehousing</h5>
-				<p>We provide quality logistic and transport services.</p>				
-			</div>
-		</div>
-		<!-- Feature - End -->
-
-						
-
-		<!-- Feature - Start -->
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 left-align feature inviewport animated delay2" data-effect="fadeInUp">
-			<div class="icon-wrap">	
-				<i class="icon icon-commercial15"></i>
-			</div>
-			<div class="info">
-				<h5 class="title">Contract Logistics</h5>
-				<p>We provide quality logistic and transport services.</p>				
-			</div>
-		</div>
-		<!-- Feature - End -->
-
-						
-
-		<!-- Feature - Start -->
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 left-align feature inviewport animated delay3" data-effect="fadeInUp">
-			<div class="icon-wrap">	
-				<i class="icon icon-delivery27"></i>
-			</div>
-			<div class="info">
-				<h5 class="title">Consulting Services</h5>
-				<p>We provide quality logistic and transport services.</p>				
-			</div>
-		</div>
-		<!-- Feature - End -->
-
-					</div>
-				</div>
-			</div>
-
-	   </div>
-</div></section>
-<!-- Section End - Tracking App -->
-
-<!-- Section Start - Worldwide Centres -->
-<section class='bg-black' id='worldwide'><div class="container">
-	<div class="row">
-			<h1 class="heading text-white">Worldwide Centres</h1>
-			<div class="headul"></div>
-			<p class="subheading text-white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
-			<div class="worldwide col-md-12 col-xs-12">
-				<div class="map">
-					<img src="img\map.png" class="img-responsive" alt="Map image">
-				</div>
-				<div class="map-locations inviewport animated delay2" data-effect="fadeIn">
-					<img src="img\map-locations-blue.png" class="img-responsive style-dependent" alt="Map Locations">
-				</div>
-				<div class="map-connect inviewport animated delay6" data-effect="fadeIn">
-					<img src="img\map-connect-blue.png" class="img-responsive style-dependent" alt="Map Connections">
-				</div>
-
-			</div>
-	   </div>
-</div></section>
-<!-- Section End - Worldwide Centres -->
-
-<!-- Section Start - Company Updates -->
-<section id='company-updates'><div class="container">		<div class="row">
-			<h1 class="heading">Company Updates</h1>
-			<div class="headul"></div>
-			<p class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
-			<div class="news-blocks">
-				
-						<!-- Service - Start -->
-		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 news_small inviewport animated delay1" data-effect="fadeInUp">
-			<div class="news-wrap row">
-				<div class="pic col-md-3 col-xs-3 col-sm-3 col-lg-3">
-					<img alt="news-image" class="img-responsive" src="img\news-1.jpg">
-				</div>
-				<div class="info col-md-9 col-xs-9 col-sm-9 col-lg-9">
-					<div class="date">21st October 2015</div>
-					<h5 class="title">Freight & Logistics Award</h5>
-					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>				</div>
-			</div>
-		</div>
-		<!-- Service - End -->
-		<!-- Service - Start -->
-		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 news_small inviewport animated delay2" data-effect="fadeInUp">
-			<div class="news-wrap row">
-				<div class="pic col-md-3 col-xs-3 col-sm-3 col-lg-3">
-					<img alt="news-image" class="img-responsive" src="img\news-2.jpg">
-				</div>
-				<div class="info col-md-9 col-xs-9 col-sm-9 col-lg-9">
-					<div class="date">21st October 2015</div>
-					<h5 class="title">Freight & Logistics Award</h5>
-					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>				</div>
-			</div>
-		</div>
-		<!-- Service - End -->
-		<!-- Service - Start -->
-		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 news_small inviewport animated delay1" data-effect="fadeInUp">
-			<div class="news-wrap row">
-				<div class="pic col-md-3 col-xs-3 col-sm-3 col-lg-3">
-					<img alt="news-image" class="img-responsive" src="img\news-3.jpg">
-				</div>
-				<div class="info col-md-9 col-xs-9 col-sm-9 col-lg-9">
-					<div class="date">21st October 2015</div>
-					<h5 class="title">Freight & Logistics Award</h5>
-					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>				</div>
-			</div>
-		</div>
-		<!-- Service - End -->
-		<!-- Service - Start -->
-		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 news_small inviewport animated delay2" data-effect="fadeInUp">
-			<div class="news-wrap row">
-				<div class="pic col-md-3 col-xs-3 col-sm-3 col-lg-3">
-					<img alt="news-image" class="img-responsive" src="img\news-4.jpg">
-				</div>
-				<div class="info col-md-9 col-xs-9 col-sm-9 col-lg-9">
-					<div class="date">21st October 2015</div>
-					<h5 class="title">Freight & Logistics Award</h5>
-					<p>We offer a comprehensive range of air air-freight forwarding services that has a good major airports..</p>				</div>
-			</div>
-		</div>
-		<!-- Service - End -->
-			</div>
-		</div>
-</div></section>
-<!-- Section End - Company Updates -->
-
-<!-- Section Start - Testimonials -->
-<section class='testimonials parallax ' id='testimonials'><div class="bg-overlay"></div><div class="container">	<div class="row">
-
-			<h1 class="heading">Testimonials</h1>
-			<div class="headul"></div>
-
-			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-			<div class="row">
-						
-		<!-- Testimonials Carousel - Start -->
-            <ul id="testimonial-carousel" class="owl-carousel">
-            			<!-- Testimonial - Start -->
-		<li class="">
-	              <h5 class="testi" data-id="testi-1">
-		              Shipping Logistics is one of the top logistics providers in the industry. and first class customer service and live by the 'Never Say Never' attitude to accomplish every mission.	              </h5>
-	              <div class="testi_by">
-	              	<div class="pic">
-	              		<img src="img\avatar-1.jpg" alt="User Avatar Image">
-	              	</div>
-	              	<div class="name">Kate Douglas</div>
-	              	<div class="company">Company Co. In.</div>
-	              </div>
-	              <!-- <div class="tweet_by">Kate Douglas</div>
-	              <div class="tweet_time">1 day ago</div> -->
-		</li>
-		<!-- Testimonial - End -->
-            			<!-- Testimonial - Start -->
-		<li class="">
-	              <h5 class="testi" data-id="testi-2">
-		              Asunt in anim uis aute irure dolor in reprehenderit in voluptate cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cun proident, sunt in anim id est laborum.	              </h5>
-	              <div class="testi_by">
-	              	<div class="pic">
-	              		<img src="img\avatar-2.jpg" alt="User Avatar Image">
-	              	</div>
-	              	<div class="name">Jim Arthur</div>
-	              	<div class="company">Company Co. In.</div>
-	              </div>
-	              <!-- <div class="tweet_by">Jim Arthur</div>
-	              <div class="tweet_time">1 day ago</div> -->
-		</li>
-		<!-- Testimonial - End -->
-            			<!-- Testimonial - Start -->
-		<li class="">
-	              <h5 class="testi" data-id="testi-1">
-		              Shipping Logistics is one of the top logistics providers in the industry. and first class customer service and live by the 'Never Say Never' attitude to accomplish every mission.	              </h5>
-	              <div class="testi_by">
-	              	<div class="pic">
-	              		<img src="img\avatar-1.jpg" alt="User Avatar Image">
-	              	</div>
-	              	<div class="name">Kate Douglas</div>
-	              	<div class="company">Company Co. In.</div>
-	              </div>
-	              <!-- <div class="tweet_by">Kate Douglas</div>
-	              <div class="tweet_time">1 day ago</div> -->
-		</li>
-		<!-- Testimonial - End -->
-            			<!-- Testimonial - Start -->
-		<li class="">
-	              <h5 class="testi" data-id="testi-2">
-		              Asunt in anim uis aute irure dolor in reprehenderit in voluptate cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cun proident, sunt in anim id est laborum.	              </h5>
-	              <div class="testi_by">
-	              	<div class="pic">
-	              		<img src="img\avatar-2.jpg" alt="User Avatar Image">
-	              	</div>
-	              	<div class="name">Jim Arthur</div>
-	              	<div class="company">Company Co. In.</div>
-	              </div>
-	              <!-- <div class="tweet_by">Jim Arthur</div>
-	              <div class="tweet_time">1 day ago</div> -->
-		</li>
-		<!-- Testimonial - End -->
+<div class="ftco-blocks-cover-1">
+   <div class="ftco-cover-1 overlay" style="background-image: url('https://source.unsplash.com/pSyfecRCBQA/1920x780')">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col-lg-6">
+               <h1>Choose Your Quality Delivery of Your Cargo</h1>
+               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est magni perferendis fugit modi similique, suscipit, deserunt a iure.</p>
+               <form action="#">
+                  <div class="form-group d-flex">
+                     <input type="text" class="form-control" placeholder="Enter your tracking number">
+                     <input type="submit" class="btn btn-primary text-white px-4" value="Track Now">
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- END .ftco-cover-1 -->
+   <div class="ftco-service-image-1 pb-5">
+      <div class="container">
+         <div class="owl-carousel owl-all">
+            <div class="service text-center">
+               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="px-md-3">
+                  <h3><a href="#">Sea Freight</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+               </div>
+            </div>
+            <div class="service text-center">
+               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_air_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="px-md-3">
+                  <h3><a href="#">Air Freight</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+               </div>
+            </div>
+            <div class="service text-center">
+               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_delivery_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="px-md-3">
+                  <h3><a href="#">Package Forwarding</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section bg-light" id="services-section">
+   <div class="container">
+      <div class="row mb-5 justify-content-center">
+         <div class="col-md-7 text-center">
+            <div class="block-heading-1">
+               <h2>What We Offer</h2>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+         </div>
+      </div>
+      <div class="owl-carousel owl-all">
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-ferry"></span>
+            </div>
+            <h3 class="mb-3">Sea Freight</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-airplane"></span>
+            </div>
+            <h3 class="mb-3">Air Freight</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-box"></span>
+            </div>
+            <h3 class="mb-3">Package Forwarding</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-lorry"></span>
+            </div>
+            <h3 class="mb-3">Trucking</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-warehouse"></span>
+            </div>
+            <h3 class="mb-3">Warehouse</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-add"></span>
+            </div>
+            <h3 class="mb-3">Delivery</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section" id="about-section">
+   <div class="container">
+      <div class="row mb-5 justify-content-center">
+         <div class="col-md-7 text-center">
+            <div class="block-heading-1" data-aos="fade-up" data-aos-delay="">
+               <h2>About Us</h2>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section bg-light" id="about-section">
+   <div class="container">
+      <div class="row justify-content-center mb-4 block-img-video-1-wrap">
+         <div class="col-md-12 mb-5">
+            <figure class="block-img-video-1" data-aos="fade">
+               <a href="https://vimeo.com/45830194" data-fancybox data-ratio="2">
+               <span class="icon"><span class="icon-play"></span></span>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_delivery_big.jpg" alt="Image" class="img-fluid">
+               </a>
+            </figure>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-12">
+            <div class="row">
+               <div class="col-6 col-md-6 mb-4 col-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="">
+                  <div class="block-counter-1">
+                     <span class="number"><span data-number="50">0</span>+</span>
+                     <span class="caption">Years of Experience</span>
+                  </div>
+               </div>
+               <div class="col-6 col-md-6 mb-4 col-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                  <div class="block-counter-1">
+                     <span class="number"><span data-number="300">0</span>+</span>
+                     <span class="caption">Companies</span>
+                  </div>
+               </div>
+               <div class="col-6 col-md-6 mb-4 col-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                  <div class="block-counter-1">
+                     <span class="number"><span data-number="108">0</span>+</span>
+                     <span class="caption">Covered Countries</span>
+                  </div>
+               </div>
+               <div class="col-6 col-md-6 mb-4 col-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                  <div class="block-counter-1">
+                     <span class="number"><span data-number="1500">0</span>+</span>
+                     <span class="caption">Couriers</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section" id="team-section">
+   <div class="container">
+      <div class="row mb-5 justify-content-center">
+         <div class="col-md-7 text-center">
+            <div class="block-heading-1" data-aos="fade-up" data-aos-delay="">
+               <h2>Our Staff</h2>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+         </div>
+      </div>
+      <div class="owl-carousel owl-all">
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_1.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Max Carlson</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Co-Founder</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Charlotte Pilat</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Co-Founder</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_3.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Nicole Lewis</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Co-Founder</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Jean Smith</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Financial Manager</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_1.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Bob Carry</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Loader Manager</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Anne Fisher</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Package Manager</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section bg-light" id="pricing-section">
+   <div class="container">
+      <div class="row mb-5 justify-content-center text-center">
+         <div class="col-md-7">
+            <div class="block-heading-1" data-aos="fade-up" data-aos-delay="">
+               <h2>Pricing</h2>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+         </div>
+      </div>
+      <div class="row mb-5">
+         <div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="">
+            <div class="pricing">
+               <h3 class="text-center text-black">Basic</h3>
+               <div class="price text-center mb-4 ">
+                  <span><span>$47</span> / year</span>
+               </div>
+               <ul class="list-unstyled ul-check success mb-5">
+                  <li>Officia quaerat eaque neque</li>
+                  <li>Possimus aut consequuntur incidunt</li>
+                  <li class="remove">Lorem ipsum dolor sit amet</li>
+                  <li class="remove">Consectetur adipisicing elit</li>
+                  <li class="remove">Dolorum esse odio quas architecto sint</li>
+               </ul>
+               <p class="text-center">
+                  <a href="#" class="btn btn-secondary btn-md">Buy Now</a>
+               </p>
+            </div>
+         </div>
+         <div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing">
+               <h3 class="text-center text-black">Premium</h3>
+               <div class="price text-center mb-4 ">
+                  <span><span>$200</span> / year</span>
+               </div>
+               <ul class="list-unstyled ul-check success mb-5">
+                  <li>Officia quaerat eaque neque</li>
+                  <li>Possimus aut consequuntur incidunt</li>
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipisicing elit</li>
+                  <li class="remove">Dolorum esse odio quas architecto sint</li>
+               </ul>
+               <p class="text-center">
+                  <a href="#" class="btn btn-primary btn-md text-white">Buy Now</a>
+               </p>
+            </div>
+         </div>
+         <div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="pricing">
+               <h3 class="text-center text-black">Professional</h3>
+               <div class="price text-center mb-4 ">
+                  <span><span>$750</span> / year</span>
+               </div>
+               <ul class="list-unstyled ul-check success mb-5">
+                  <li>Officia quaerat eaque neque</li>
+                  <li>Possimus aut consequuntur incidunt</li>
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipisicing elit</li>
+                  <li>Dolorum esse odio quas architecto sint</li>
+               </ul>
+               <p class="text-center">
+                  <a href="#" class="btn btn-secondary btn-md">Buy Now</a>
+               </p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section" id="faq-section">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="block-heading-1 col-12 text-center">
+            <h2>Frequently Ask Questions</h2>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-6">
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>Can I accept both Paypal and Stripe?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>What available is refund period?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>Can I accept both Paypal and Stripe?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>What available is refund period?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+         </div>
+         <div class="col-lg-6">
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>Where are you from?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>What is your opening time?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>Can I accept both Paypal and Stripe?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>What available is refund period?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="block__73694 site-section border-top" id="why-us-section">
+   <div class="container">
+      <div class="row d-flex no-gutters align-items-stretch">
+         <div class="col-12 col-lg-6 block__73422 order-lg-2" style="background-image: url('<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg');" data-aos="fade-left" data-aos-delay="">
+         </div>
+         <div class="col-lg-5 mr-auto p-lg-5 mt-4 mt-lg-0 order-lg-1" data-aos="fade-right" data-aos-delay="">
+            <h2 class="mb-4 text-black">Why Us</h2>
+            <h4 class="text-primary">We work quickly and efficiently!</h4>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+            <ul class="ul-check primary list-unstyled mt-5">
+               <li>Cargo express</li>
+               <li>Secure Services</li>
+               <li>Secure Warehouseing</li>
+               <li>Cost savings</li>
+               <li>Proven by great companies</li>
             </ul>
-		<!-- Testimonials Carousel - End -->
-				</div>
-			</div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section bg-light block-13" id="testimonials-section" data-aos="fade">
+   <div class="container">
+      <div class="text-center mb-5">
+         <div class="block-heading-1">
+            <h2>Happy Clients</h2>
+         </div>
+      </div>
+      <div class="owl-carousel nonloop-block-13">
+         <div>
+            <div class="block-testimony-1 text-center">
+               <blockquote class="mb-4">
+                  <p>&ldquo;The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt
+                     and made herself on the way.&rdquo;
+                  </p>
+               </blockquote>
+               <figure>
+                  <img src="<?php echo base_url()?>assets/frontend/depan/images/person_4.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+               </figure>
+               <h3 class="font-size-20 text-black">Ricky Fisher</h3>
+            </div>
+         </div>
+         <div>
+            <div class="block-testimony-1 text-center">
+               <blockquote class="mb-4">
+                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+               </blockquote>
+               <figure>
+                  <img src="<?php echo base_url()?>assets/frontend/depan/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+               </figure>
+               <h3 class="font-size-20 mb-4 text-black">Ken Davis</h3>
+            </div>
+         </div>
+         <div>
+            <div class="block-testimony-1 text-center">
+               <blockquote class="mb-4">
+                  <p>&ldquo;A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
+               </blockquote>
+               <figure>
+                  <img src="<?php echo base_url()?>assets/frontend/depan/images/person_1.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+               </figure>
+               <h3 class="font-size-20 text-black">Mellisa Griffin</h3>
+            </div>
+         </div>
+         <div>
+            <div class="block-testimony-1 text-center">
+               <blockquote class="mb-4">
+                  <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+               </blockquote>
+               <figure>
+                  <img src="<?php echo base_url()?>assets/frontend/depan/images/person_3.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+               </figure>
+               <h3 class="font-size-20 mb-4 text-black">Robert Steward</h3>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section py-5" id="blog-section">
+   <div class="container">
+      <div class="row justify-content-center text-center mb-5">
+         <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="block-heading-1" data-aos="fade-right" data-aos-delay="">
+               <h2>Articles</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-6">
+            <div class="mb-5 d-flex blog-entry" data-aos="fade-right" data-aos-delay="">
+               <a href="#" class="blog-thumbnail"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="blog-excerpt">
+                  <span class="d-block text-muted">Apr 19, 2019</span>
+                  <h2 class="h4  mb-3"><a href="single.html">Knowing the Difference Is Key to Effective Logistics</a></h2>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
+                  <p><a href="single.html" class="text-primary">Read More</a></p>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6">
+            <div class="mb-5 d-flex blog-entry" data-aos="fade-right" data-aos-delay="">
+               <a href="#" class="blog-thumbnail"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_air_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="blog-excerpt">
+                  <span class="d-block text-muted">Apr 19, 2019</span>
+                  <h2 class="h4  mb-3"><a href="single.html">Knowing the Difference Is Key to Effective Logistics</a></h2>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
+                  <p><a href="single.html" class="text-primary">Read More</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+<div class="site-section bg-light" id="contact-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-12 text-center mb-5" data-aos="fade-up" data-aos-delay="">
+            <div class="block-heading-1">
+               <span>Get In Touch</span>
+               <h2>Contact Us</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
+            <form action="#" method="post">
+               <div class="form-group row">
+                  <div class="col-md-6 mb-4 mb-lg-0">
+                     <input type="text" class="form-control" placeholder="First name">
+                  </div>
+                  <div class="col-md-6">
+                     <input type="text" class="form-control" placeholder="First name">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-md-12">
+                     <input type="text" class="form-control" placeholder="Email address">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-md-12">
+                     <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-md-6 mr-auto">
+                     <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Send Message">
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white p-3 p-md-5">
+               <h3 class="text-black mb-4">Contact Info</h3>
+               <ul class="list-unstyled footer-link">
+                  <li class="d-block mb-3">
+                     <span class="d-block text-black">Address:</span>
+                     <span>34 Street Name, City Name Here, United States</span>
+                  </li>
+                  <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+1 242 4942 290</span></li>
+                  <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>info@yourdomain.com</span></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
-	   </div>
-
-	</div></section>
-<!-- Section End - Testimonials -->
-
-<!-- Section Start - Service Estimate -->
-<section class='estimate' id='estimate'>	<div class="estimate-wrap">
-		<div class="row">
-		<div class="col-lg-8 col-md-8 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-sm-10  col-xs-offset-1 col-xs-10 ">
-			<h1 class="heading left-align">Service Estimate</h1>
-			<div class="headul left-align"></div>
-			<p class="subheading left-align">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa ipsum dolor sit amet, consectetuer adipisc</p>
-		</div>
-
-			<div class="col-lg-4 col-md-4 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-sm-10  col-xs-offset-1 col-xs-10 ">
-				
-	<!-- Estimate Form - Start -->
-	<div class='row'><form action='#' method='post'><div class='col-xs-12'><label>Load Type</label><input type='text' placeholder='' class='transition' id='est_load_type'></div><div class='col-xs-6'><label>Quantity</label><input type='text' placeholder='' class='transition' id='est_qty'></div><div class='col-xs-6'><label>Weight</label><input type='text' placeholder='' class='transition' id='est_weight'></div><div class='col-xs-4'><label>Length</label><input type='text' placeholder='' class='transition' id='est_length'></div><div class='col-xs-4'><label>Height</label><input type='text' placeholder='' class='transition' id='est_height'></div><div class='col-xs-4'><label>Width</label><input type='text' placeholder='' class='transition' id='est_width'></div><div class='col-xs-12'><label>Total (Auto Calculate)</label><input type='text' placeholder='' class='transition' id='est_total'></div></form></div>
-	<!-- Estimate Form - End -->
-				</div>
-
-			<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 pic">
-				<img src="img\estimate-fork-blue.jpg" class="img-responsive style-dependent" alt="Estimate Fork Image">
-			</div>
-		</div>
-	</div>
-
-</section>
-<!-- Section End - Service Estimate -->
-
-<!-- Section Start - Our Clients -->
-<section class='clients bg-primary white-text' id='clients'><div class="container">	<div class="row">
-	<div class="col-md-12 col-xs-12">
-			<h1 class="heading left-align">Our Clients</h1>
-			<div class="headul left-align"></div>
-			<p class="subheading left-align">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
-
-					<!-- Client Image - Start -->
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 client inviewport animated delay1" data-effect="fadeInUp">
-			<h4><img alt="client-logo" src="img\client-1.png" class="img-responsive"></h4>
-		</div>
-		<!-- Client Image - End -->
-					<!-- Client Image - Start -->
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 client inviewport animated delay2" data-effect="fadeInUp">
-			<h4><img alt="client-logo" src="img\client-2.png" class="img-responsive"></h4>
-		</div>
-		<!-- Client Image - End -->
-					<!-- Client Image - Start -->
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 client inviewport animated delay3" data-effect="fadeInUp">
-			<h4><img alt="client-logo" src="img\client-3.png" class="img-responsive"></h4>
-		</div>
-		<!-- Client Image - End -->
-					<!-- Client Image - Start -->
-		<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 client inviewport animated delay4" data-effect="fadeInUp">
-			<h4><img alt="client-logo" src="img\client-4.png" class="img-responsive"></h4>
-		</div>
-		<!-- Client Image - End -->
-
-				   </div>
-	</div>
-	
-	</div></section>
-<!-- Section End - Our Clients -->
-
-<!-- Section Start - Get In Touch -->
-<section class='contact contact-small' id='contact'><div class="container">		<div class="row">
-			<h1 class="heading">Get In Touch</h1>
-			<div class="headul"></div>
-			<p class="subheading">Lorem ipsum dolor sit amet, consectetuer adipiscing elit enean commodo  eget dolor aenean massa eget dolor aenean massa</p>
-
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-				
-	<!-- Contact Form - Start -->
-	<div class='row'><form action='send_email.php' method='post'><div class='col-xs-6'><input type='text' placeholder='Name' class='transition' id='c_name'></div><div class='col-xs-6'><input type='text' placeholder='Email' class='transition' id='c_email'></div><div class='col-xs-12'><textarea class='transition' placeholder='Message' id='c_message'></textarea></div><div id='response_email' class='col-xs-12'></div><div class='col-xs-4'><button type='button' class='btn btn-primary disabled transition' id='c_send'>Send Message</button></div></form></div>
-	<!-- Contact Form - End -->
-				</div>
-
-
-			
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-				<div class="contact-info">
-					<i class="icon icon-envelope"></i>
-					<div class="title">Email</div>
-					<div class="value">deskhelp@example.com</div>
-				</div>
-				<div class="contact-info">
-					<i class="icon icon-phone"></i>
-					<div class="title">Phone</div>
-					<div class="value">+02-234-5678-910</div>
-				</div>
-			</div>
-			
-
-		</div>
-</div></section>
-<!-- Section End - Get In Touch -->
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<div class="row">
-                		<div id="contact-map" class="gmap"></div>
-            		</div>
-		</div>

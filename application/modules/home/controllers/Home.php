@@ -11,7 +11,8 @@ class Home extends MX_Controller
     
     public function index()
     {
-        $this->load->view('templates/frontend/depan/header');
+        $data['title'] = "Home";
+        $this->load->view('templates/frontend/depan/header',$data);
         $this->load->view('templates/frontend/depan/menu');
         $this->load->view('index');
         $this->load->view('templates/frontend/depan/footer');
@@ -48,10 +49,11 @@ class Home extends MX_Controller
         ];
         // print('<pre>');print_r($post);exit();
         $this->mod->m_save_daftar($post);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                Registrasi Berhasil
-            </div>');
-        redirect('home');
+        // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        //         Registrasi Berhasil
+        //     </div>');
+        $_SESSION['msg'] = 'berhasil';
+        redirect('home/show_login');
     }
 
     /*--------- Auth ----------*/
@@ -72,12 +74,15 @@ class Home extends MX_Controller
                     'email'         => $user['email']
                 ];
                 $this->session->set_userdata($data);
-                redirect('dashboard');
-            } else {
+                $_SESSION['msg'] = 'berhasil_login';
                 redirect('home');
+            } else {
+                $_SESSION['msg'] = 'gagal_salah';
+                redirect('home/show_login');
             }
         }else{
-            redirect('home');
+            $_SESSION['msg'] = 'gagal_kosong';
+            redirect('home/show_login');
         }
     }
 
