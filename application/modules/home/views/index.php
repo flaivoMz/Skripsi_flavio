@@ -1,327 +1,535 @@
-<!-- Banner Area Start -->
-<section class="jobguru-banner-area">
-    <div class="banner-slider owl-carousel">
-    <div class="banner-single-slider slider-item-1">
-        <div class="slider-offset"></div>
-    </div>
-    <div class="banner-single-slider slider-item-2">
-        <div class="slider-offset"></div>
-    </div>
-    </div>
-    <div class="banner-text">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="banner-search">
-                <h2>Hire expert freelancers.</h2>
-                <h4>We have 1542 job offers for you! </h4>
-                <form>
-                    <div class="banner-form-box">
-                        <div class="banner-form-input">
-                            <input type="text" placeholder="Job Title, Keywords, or Phrase">
-                        </div>
-                        <div class="banner-form-input">
-                            <input type="text" placeholder="City, State or ZIP">
-                        </div>
-                        <div class="banner-form-input">
-                            <select class="banner-select">
-                            <option selected="">Select Sector</option>
-                            <option value="1">Design & multimedia</option>
-                            <option value="2">Programming & tech</option>
-                            <option value="3">Accounting/finance</option>
-                            <option value="4">content writting</option>
-                            <option value="5">Training</option>
-                            <option value="6">Digital Marketing</option>
-                            </select>
-                        </div>
-                        <div class="banner-form-input">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Banner Area End -->
 
 
-<!-- Categories Area Start -->
-<section class="jobguru-categories-area section_70">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-heading">
-                <h2>Job <span>Categories</span></h2>
-                <p>A better career is out there. We'll help you find it. We're your first step to becoming everything you want to be.</p>
+<div class="ftco-blocks-cover-1">
+   <div class="ftco-cover-1 overlay" style="background-image: url('https://source.unsplash.com/pSyfecRCBQA/1920x780')">
+      <div class="container">
+         <div class="row align-items-center">
+            <div class="col-lg-6">
+               <h1>Choose Your Quality Delivery of Your Cargo</h1>
+               <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est magni perferendis fugit modi similique, suscipit, deserunt a iure.</p>
+               <form action="#">
+                  <div class="form-group d-flex">
+                     <input type="text" class="form-control" placeholder="Enter your tracking number">
+                     <input type="submit" class="btn btn-primary text-white px-4" value="Track Now">
+                  </div>
+               </form>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <?php foreach($kategori_pekerjaan as $row){ ?>
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <a href="#" class="single-category-holder account_cat">
-                <div class="category-holder-icon">
-                <i class="<?= $row->icon ?>"></i>
-                </div>
-                <div class="category-holder-text">
-                <h3><?= ucwords($row->nama_kategori_pek) ?></h3>
-                </div>
-                <img src="<?= base_url() ?>assets\img\<?= $row->background_image ?>" alt="category">
-            </a>
-        </div>
-        <?php } ?>
-    </div>
-   
-    </div>
-</section>
-<!-- Categories Area End -->
+         </div>
+      </div>
+   </div>
+   <!-- END .ftco-cover-1 -->
+   <div class="ftco-service-image-1 pb-5">
+      <div class="container">
+         <div class="owl-carousel owl-all">
+            <div class="service text-center">
+               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="px-md-3">
+                  <h3><a href="#">Sea Freight</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+               </div>
+            </div>
+            <div class="service text-center">
+               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_air_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="px-md-3">
+                  <h3><a href="#">Air Freight</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+               </div>
+            </div>
+            <div class="service text-center">
+               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_delivery_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="px-md-3">
+                  <h3><a href="#">Package Forwarding</a></h3>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section bg-light" id="services-section">
+   <div class="container">
+      <div class="row mb-5 justify-content-center">
+         <div class="col-md-7 text-center">
+            <div class="block-heading-1">
+               <h2>What We Offer</h2>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+         </div>
+      </div>
+      <div class="owl-carousel owl-all">
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-ferry"></span>
+            </div>
+            <h3 class="mb-3">Sea Freight</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-airplane"></span>
+            </div>
+            <h3 class="mb-3">Air Freight</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-box"></span>
+            </div>
+            <h3 class="mb-3">Package Forwarding</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-lorry"></span>
+            </div>
+            <h3 class="mb-3">Trucking</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-warehouse"></span>
+            </div>
+            <h3 class="mb-3">Warehouse</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+         <div class="block__35630">
+            <div class="icon mb-0">
+               <span class="flaticon-add"></span>
+            </div>
+            <h3 class="mb-3">Delivery</h3>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section" id="about-section">
+   <div class="container">
+      <div class="row mb-5 justify-content-center">
+         <div class="col-md-7 text-center">
+            <div class="block-heading-1" data-aos="fade-up" data-aos-delay="">
+               <h2>About Us</h2>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section bg-light" id="about-section">
+   <div class="container">
+      <div class="row justify-content-center mb-4 block-img-video-1-wrap">
+         <div class="col-md-12 mb-5">
+            <figure class="block-img-video-1" data-aos="fade">
+               <a href="https://vimeo.com/45830194" data-fancybox data-ratio="2">
+               <span class="icon"><span class="icon-play"></span></span>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_delivery_big.jpg" alt="Image" class="img-fluid">
+               </a>
+            </figure>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-12">
+            <div class="row">
+               <div class="col-6 col-md-6 mb-4 col-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="">
+                  <div class="block-counter-1">
+                     <span class="number"><span data-number="50">0</span>+</span>
+                     <span class="caption">Years of Experience</span>
+                  </div>
+               </div>
+               <div class="col-6 col-md-6 mb-4 col-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                  <div class="block-counter-1">
+                     <span class="number"><span data-number="300">0</span>+</span>
+                     <span class="caption">Companies</span>
+                  </div>
+               </div>
+               <div class="col-6 col-md-6 mb-4 col-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                  <div class="block-counter-1">
+                     <span class="number"><span data-number="108">0</span>+</span>
+                     <span class="caption">Covered Countries</span>
+                  </div>
+               </div>
+               <div class="col-6 col-md-6 mb-4 col-lg-0 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                  <div class="block-counter-1">
+                     <span class="number"><span data-number="1500">0</span>+</span>
+                     <span class="caption">Couriers</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section" id="team-section">
+   <div class="container">
+      <div class="row mb-5 justify-content-center">
+         <div class="col-md-7 text-center">
+            <div class="block-heading-1" data-aos="fade-up" data-aos-delay="">
+               <h2>Our Staff</h2>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            </div>
+         </div>
+      </div>
+      <div class="owl-carousel owl-all">
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_1.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Max Carlson</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Co-Founder</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Charlotte Pilat</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Co-Founder</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_3.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Nicole Lewis</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Co-Founder</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Jean Smith</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Financial Manager</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_1.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Bob Carry</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Loader Manager</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+         <div class="block-team-member-1 text-center rounded h-100">
+            <figure>
+               <img src="<?php echo base_url()?>assets/frontend/depan/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle">
+            </figure>
+            <h3 class="font-size-20 text-black">Anne Fisher</h3>
+            <span class="d-block font-gray-5 letter-spacing-1 text-uppercase font-size-12 mb-3">Package Manager</span>
+            <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <div class="block-social-1">
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-facebook"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-twitter"></span></a>
+               <a href="#" class="btn border-w-2 rounded primary-primary-outline--hover"><span class="icon-instagram"></span></a>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section bg-light" id="pricing-section">
+   <div class="container">
+      <div class="row mb-5 justify-content-center text-center">
+         <div class="col-md-7">
+            <div class="block-heading-1" data-aos="fade-up" data-aos-delay="">
+               <h2>Pricing</h2>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+         </div>
+      </div>
+      <div class="row mb-5">
+         <div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="">
+            <div class="pricing">
+               <h3 class="text-center text-black">Basic</h3>
+               <div class="price text-center mb-4 ">
+                  <span><span>$47</span> / year</span>
+               </div>
+               <ul class="list-unstyled ul-check success mb-5">
+                  <li>Officia quaerat eaque neque</li>
+                  <li>Possimus aut consequuntur incidunt</li>
+                  <li class="remove">Lorem ipsum dolor sit amet</li>
+                  <li class="remove">Consectetur adipisicing elit</li>
+                  <li class="remove">Dolorum esse odio quas architecto sint</li>
+               </ul>
+               <p class="text-center">
+                  <a href="#" class="btn btn-secondary btn-md">Buy Now</a>
+               </p>
+            </div>
+         </div>
+         <div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing">
+               <h3 class="text-center text-black">Premium</h3>
+               <div class="price text-center mb-4 ">
+                  <span><span>$200</span> / year</span>
+               </div>
+               <ul class="list-unstyled ul-check success mb-5">
+                  <li>Officia quaerat eaque neque</li>
+                  <li>Possimus aut consequuntur incidunt</li>
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipisicing elit</li>
+                  <li class="remove">Dolorum esse odio quas architecto sint</li>
+               </ul>
+               <p class="text-center">
+                  <a href="#" class="btn btn-primary btn-md text-white">Buy Now</a>
+               </p>
+            </div>
+         </div>
+         <div class="col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="pricing">
+               <h3 class="text-center text-black">Professional</h3>
+               <div class="price text-center mb-4 ">
+                  <span><span>$750</span> / year</span>
+               </div>
+               <ul class="list-unstyled ul-check success mb-5">
+                  <li>Officia quaerat eaque neque</li>
+                  <li>Possimus aut consequuntur incidunt</li>
+                  <li>Lorem ipsum dolor sit amet</li>
+                  <li>Consectetur adipisicing elit</li>
+                  <li>Dolorum esse odio quas architecto sint</li>
+               </ul>
+               <p class="text-center">
+                  <a href="#" class="btn btn-secondary btn-md">Buy Now</a>
+               </p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section" id="faq-section">
+   <div class="container">
+      <div class="row mb-5">
+         <div class="block-heading-1 col-12 text-center">
+            <h2>Frequently Ask Questions</h2>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-6">
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>Can I accept both Paypal and Stripe?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>What available is refund period?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>Can I accept both Paypal and Stripe?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>What available is refund period?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+         </div>
+         <div class="col-lg-6">
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>Where are you from?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>What is your opening time?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>Can I accept both Paypal and Stripe?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="100">
+               <h3 class="text-black h4 mb-4"><span class="icon-question_answer text-primary mr-2"></span>What available is refund period?</h3>
+               <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="block__73694 site-section border-top" id="why-us-section">
+   <div class="container">
+      <div class="row d-flex no-gutters align-items-stretch">
+         <div class="col-12 col-lg-6 block__73422 order-lg-2" style="background-image: url('<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg');" data-aos="fade-left" data-aos-delay="">
+         </div>
+         <div class="col-lg-5 mr-auto p-lg-5 mt-4 mt-lg-0 order-lg-1" data-aos="fade-right" data-aos-delay="">
+            <h2 class="mb-4 text-black">Why Us</h2>
+            <h4 class="text-primary">We work quickly and efficiently!</h4>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+            <ul class="ul-check primary list-unstyled mt-5">
+               <li>Cargo express</li>
+               <li>Secure Services</li>
+               <li>Secure Warehouseing</li>
+               <li>Cost savings</li>
+               <li>Proven by great companies</li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section bg-light block-13" id="testimonials-section" data-aos="fade">
+   <div class="container">
+      <div class="text-center mb-5">
+         <div class="block-heading-1">
+            <h2>Happy Clients</h2>
+         </div>
+      </div>
+      <div class="owl-carousel nonloop-block-13">
+         <div>
+            <div class="block-testimony-1 text-center">
+               <blockquote class="mb-4">
+                  <p>&ldquo;The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt
+                     and made herself on the way.&rdquo;
+                  </p>
+               </blockquote>
+               <figure>
+                  <img src="<?php echo base_url()?>assets/frontend/depan/images/person_4.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+               </figure>
+               <h3 class="font-size-20 text-black">Ricky Fisher</h3>
+            </div>
+         </div>
+         <div>
+            <div class="block-testimony-1 text-center">
+               <blockquote class="mb-4">
+                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+               </blockquote>
+               <figure>
+                  <img src="<?php echo base_url()?>assets/frontend/depan/images/person_2.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+               </figure>
+               <h3 class="font-size-20 mb-4 text-black">Ken Davis</h3>
+            </div>
+         </div>
+         <div>
+            <div class="block-testimony-1 text-center">
+               <blockquote class="mb-4">
+                  <p>&ldquo;A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
+               </blockquote>
+               <figure>
+                  <img src="<?php echo base_url()?>assets/frontend/depan/images/person_1.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+               </figure>
+               <h3 class="font-size-20 text-black">Mellisa Griffin</h3>
+            </div>
+         </div>
+         <div>
+            <div class="block-testimony-1 text-center">
+               <blockquote class="mb-4">
+                  <p>&ldquo;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+               </blockquote>
+               <figure>
+                  <img src="<?php echo base_url()?>assets/frontend/depan/images/person_3.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
+               </figure>
+               <h3 class="font-size-20 mb-4 text-black">Robert Steward</h3>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="site-section py-5" id="blog-section">
+   <div class="container">
+      <div class="row justify-content-center text-center mb-5">
+         <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="block-heading-1" data-aos="fade-right" data-aos-delay="">
+               <h2>Articles</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-6">
+            <div class="mb-5 d-flex blog-entry" data-aos="fade-right" data-aos-delay="">
+               <a href="#" class="blog-thumbnail"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="blog-excerpt">
+                  <span class="d-block text-muted">Apr 19, 2019</span>
+                  <h2 class="h4  mb-3"><a href="single.html">Knowing the Difference Is Key to Effective Logistics</a></h2>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
+                  <p><a href="single.html" class="text-primary">Read More</a></p>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6">
+            <div class="mb-5 d-flex blog-entry" data-aos="fade-right" data-aos-delay="">
+               <a href="#" class="blog-thumbnail"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_air_small.jpg" alt="Image" class="img-fluid"></a>
+               <div class="blog-excerpt">
+                  <span class="d-block text-muted">Apr 19, 2019</span>
+                  <h2 class="h4  mb-3"><a href="single.html">Knowing the Difference Is Key to Effective Logistics</a></h2>
+                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
+                  <p><a href="single.html" class="text-primary">Read More</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+<div class="site-section bg-light" id="contact-section">
+   <div class="container">
+      <div class="row">
+         <div class="col-12 text-center mb-5" data-aos="fade-up" data-aos-delay="">
+            <div class="block-heading-1">
+               <span>Get In Touch</span>
+               <h2>Contact Us</h2>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
+            <form action="#" method="post">
+               <div class="form-group row">
+                  <div class="col-md-6 mb-4 mb-lg-0">
+                     <input type="text" class="form-control" placeholder="First name">
+                  </div>
+                  <div class="col-md-6">
+                     <input type="text" class="form-control" placeholder="First name">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-md-12">
+                     <input type="text" class="form-control" placeholder="Email address">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-md-12">
+                     <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <div class="col-md-6 mr-auto">
+                     <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Send Message">
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white p-3 p-md-5">
+               <h3 class="text-black mb-4">Contact Info</h3>
+               <ul class="list-unstyled footer-link">
+                  <li class="d-block mb-3">
+                     <span class="d-block text-black">Address:</span>
+                     <span>34 Street Name, City Name Here, United States</span>
+                  </li>
+                  <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+1 242 4942 290</span></li>
+                  <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>info@yourdomain.com</span></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
-
-<!-- Inner Hire Area Start -->
-<section class="jobguru-inner-hire-area section_100">
-    <div class="hire_circle"></div>
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="inner-hire-left">
-                <h3>Hire an employee</h3>
-                <p>placerat congue dui rhoncus sem et blandit .et consectetur Fusce nec nunc lobortis lorem ultrices facilisis. Ut dapibus placerat blandit nunc.congue dui rhoncus sem et blandit .et consectetur Fusce nec nunc lobortis lorem ultrices facilisis. Ut dapibus placerat blandi </p>
-                <a href="#" class="jobguru-btn-3">sign up as company</a>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Inner Hire Area End -->
-
-
-<!-- Job Tab Area Start -->
-<section class="jobguru-job-tab-area section_70">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-heading">
-                <h2>Companies & <span>job offers</span></h2>
-                <p>It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class=" job-tab">
-                <ul class="nav nav-pills job-tab-switch" id="pills-tab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="pills-companies-tab" data-toggle="pill" href="#pills-companies" role="tab" aria-controls="pills-companies" aria-selected="true">top Companies</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="pills-job-tab" data-toggle="pill" href="#pills-job" role="tab" aria-controls="pills-job" aria-selected="false">job openning</a>
-                </li>
-                </ul>
-            </div>
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-companies" role="tabpanel" aria-labelledby="pills-companies-tab">
-                <div class="top-company-tab">
-                    <ul>
-                        <?php 
-                        foreach($perusahaan as $row){ 
-                            $explode_alamat = explode(",",$row->alamat_perusahaan); 
-                            $lokasi_perusahaan = $explode_alamat[count($explode_alamat) - 2].', '.end($explode_alamat);
-                        ?>
-                        <li>
-                            <div class="top-company-list">
-                            <div class="company-list-logo">
-                                <a href="#">
-                                <img src="<?= base_url() ?>assets\img\logo_perusahaan\<?= $row->logo_perusahaan ?>" alt="<?= ucwords($row->nama_perusahaan) ?>">
-                                </a>
-                            </div>
-                            <div class="company-list-details">
-                                <h3><a href="#"><?= ucwords($row->nama_perusahaan) ?> - <?= ucwords($row->nama_kategori_per) ?></a></h3>
-                                <p class="company-state"><i class="fa fa-map-marker"></i> <?= ucwords($lokasi_perusahaan) ?></p>
-                                <p class="open-icon"><i class="fa fa-briefcase"></i>32 open position</p>
-                                <!-- <p class="varify"><i class="fa fa-check"></i>Verified</p> -->
-                                <!-- <p class="rating-company">4.9</p> -->
-                            </div>
-                            <div class="company-list-btn">
-                                <a href="#" class="jobguru-btn">view profile</a>
-                            </div>
-                            </div>
-                        </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                </div>
-                <div class="tab-pane fade" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
-                <div class="top-company-tab">
-                    <ul>
-                        <?php
-                        foreach($jobOpening as $row){
-                        $explode = explode(",",$row->lokasi_pekerjaan); 
-                        $lokasi = $explode[count($explode) - 2].', '.end($explode);
-                        ?>
-                        <li>
-                            <div class="top-company-list">
-                            <div class="company-list-logo">
-                                <a href="#">
-                                <img src="<?= base_url() ?>assets\img\logo_perusahaan\<?= $row->logo_perusahaan ?>" alt="<?= ucwords($row->nama_perusahaan) ?>">
-                                </a>
-                            </div>
-                            <div class="company-list-details">
-                                <h3><a href="#"><?= ucwords($row->nama_lowongan) ?></a></h3>
-                                <p class="company-state"><i class="fa fa-map-marker"></i> <?= ucwords($lokasi) ?></p>
-                                <p class="open-icon"><i class="fa fa-calendar"></i><?= tanggal_indo($row->date_start).' - '.tanggal_indo($row->date_end) ?></p>
-                                <p class="varify"><i class="fa fa-money"></i>Salary : <?= $row->gaji_min.' - '.$row->gaji_max ?></p>
-                                <!-- <p class="rating-company">4.1</p> -->
-                            </div>
-                            <div class="company-list-btn">
-                                <a href="#" class="jobguru-btn">apply now</a>
-                            </div>
-                            </div>
-                        </li>
-                        <?php } ?>
-                    </ul>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="load-more">
-                <a href="#" class="jobguru-btn">browse more listing</a>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Job Tab Area End -->
-
-
-<!-- Video Area Start -->
-<section class="jobguru-video-area section_100">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="video-container">
-                <h2>Hire experts freelancers today for <br> any job, any time.</h2>
-                <div class="video-btn">
-                <a class="popup-youtube" href="..\..\watch.html?v=k-R6AFn9-ek">
-                <i class="fa fa-play"></i>
-                how it works
-                </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Video Area End -->
-
-
-<!-- How Works Area Start -->
-<section class="how-works-area section_70">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-heading">
-                <h2>how it <span>works</span></h2>
-                <p>It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="how-works-box box-1">
-                <img src="<?= base_url() ?>assets\img\arrow-right-top.png" alt="works">
-                <div class="works-box-icon">
-                <i class="fa fa-user"></i>
-                </div>
-                <div class="works-box-text">
-                <p>sign up</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="how-works-box box-2">
-                <img src="<?= base_url() ?>assets\img\arrow-right-bottom.png" alt="works">
-                <div class="works-box-icon">
-                <i class="fa fa-gavel"></i>
-                </div>
-                <div class="works-box-text">
-                <p>post job</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="how-works-box box-3">
-                <div class="works-box-icon">
-                <i class="fa fa-thumbs-up"></i>
-                </div>
-                <div class="works-box-text">
-                <p>choose expert</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- How Works Area End -->
-
-
-<!-- Blog Area Start -->
-<section class="jobguru-blog-area section_70">
-    <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="site-heading">
-                <h2>Recent From <span>Blog</span></h2>
-                <p>It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-12">
-            <a href="#">
-                <div class="single-blog">
-                <div class="blog-image">
-                    <img src="<?= base_url() ?>assets\img\blog-1.jpeg" alt="blog image">
-                    <p><span> 21</span> July</p>
-                </div>
-                <div class="blog-text">
-                    <h3>If you're having trouble coming up with</h3>
-                </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-12">
-            <a href="#">
-                <div class="single-blog">
-                <div class="blog-image">
-                    <img src="<?= base_url() ?>assets\img\blog-2.jpeg" alt="blog image">
-                    <p><span> 21</span> July</p>
-                </div>
-                <div class="blog-text">
-                    <h3>details about Apple’s new iPad Pro models</h3>
-                </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-md-12">
-            <a href="#">
-                <div class="single-blog">
-                <div class="blog-image">
-                    <img src="<?= base_url() ?>assets\img\blog-3.jpeg" alt="blog image">
-                    <p><span> 21</span> July</p>
-                </div>
-                <div class="blog-text">
-                    <h3>what are those Steps to be a Successful developer</h3>
-                </div>
-                </div>
-            </a>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- Blog Area End -->
