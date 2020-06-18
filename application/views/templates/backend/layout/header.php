@@ -20,6 +20,8 @@
   <!-- Custom styles for this template-->
   <link href="<?= base_url('assets/backend/') ?>css/sb-admin-2.min.css" rel="stylesheet">
   <link href="<?= base_url('assets/backend/') ?>vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>vendor/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/backend/') ?>vendor/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 </head>
 
 <body id="page-top">
