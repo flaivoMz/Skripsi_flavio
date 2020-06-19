@@ -45,7 +45,7 @@
                             <a class="nav-link">Order</a>
                             <ul class="dropdown arrow-top">
                                 <li><a href="<?php echo base_url('order');?>" class="nav-link">Pesan</a></li>
-                                <li><a href="#pricing-section" class="nav-link">Riwayat Order</a></li>
+                                <li><a href="<?php echo base_url('order/show_riwayat_order');?>" class="nav-link">Riwayat Order</a></li>
                             </ul>
                         </li>
                         <li><a href="#services-section" class="nav-link">Akun</a></li>

@@ -75,7 +75,10 @@
 	<?php $method = $this->router->fetch_method();?>
 	<?php if($module == "order"):?>
 		<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBau0Pzx51NtQ9aLA9xWadAph60lE30sY8&sensor=false"></script>  -->
+		<!-- Kantor -->
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDAgO_spZs9ye05XI0BbPE-mDlJvaXuYzY&sensor=false"></script> 
+		<!-- Abdul -->
+		<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD7YMa2bN1zTJR20m4SuOmkbC7_Iy8kVFk&sensor=false"></script> -->
 	<?php endif;?>
 	<script>
 		<?php if($module == "home"):?>
@@ -95,6 +98,12 @@
 			<?php endif;?>
 		<?php endif; ?>
 		<?php if($module == "order"):?>
+			function convertToRupiah(angka){
+				var rupiah = '';        
+				var angkarev = angka.toString().split('').reverse().join('');
+				for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+				return rupiah.split('',rupiah.length-1).reverse().join('');
+			}
 			function gotoAsal(){
 				window.location.href = "<?php echo base_url('order/show_alamat_asal');?>"
 			}
@@ -283,9 +292,7 @@
 			}
 			var directionsService = new google.maps.DirectionsService();
 			var koordinat_asal 		= $("input[name='koordinat_asal']").val();
-			console.log(koordinat_asal);
 			var koordinat_tujuan	= $("input[name='koordinat_tujuan']").val();
-			console.log(koordinat_tujuan);
 			var request = {
 				origin      : koordinat_asal, 
 				destination : koordinat_tujuan,
@@ -295,7 +302,21 @@
 				if ( status == google.maps.DirectionsStatus.OK ) {
 					jarak =  response.routes[0].legs[0].distance.text; 
 					$("#judulOngkir").text("Ongkir ("+jarak+")");
-					console.log(jarak);
+					$("#jarak").val(jarak);
+					$.ajax({
+						url		: "<?php echo base_url('order/count_ongkir'); ?>",
+						method	: "POST",
+						data 	: {jarak : jarak},
+						success : function(res){
+							var hasil = $.parseJSON(res);
+							$("#nominalOngkir").text(convertToRupiah(Number(hasil)));
+							$("#inputNominalOngkir").val(hasil);
+							var nominalSubTotal = $("#inputNominalSubtotal").val();
+							var total = parseInt(hasil) + parseInt(nominalSubTotal);
+							$("#nominalTotal").text(convertToRupiah(total));
+							$("#inputNominalTotal").val(total);
+						}
+					});
 				} 
 			}); 
 			<?php if($method=="show_alamat_asal" || $method == "show_alamat_penerima"):?>
@@ -319,28 +340,28 @@
 						var p = vSplit[0];
 						var l = vSplit[1];
 						var t = vSplit[2];
-						var sbAsli 	= hasil.status_berat;
-						if(sbAsli == "overweight,oversize,normal"){
-							$("#overweight_edit").attr("checked", "checked");
-							$("#oversize_edit").attr("checked", "checked");
-							$("#normal_edit").attr("checked", "checked");
-						}else if(sbAsli == "overweight,oversize" ){
-							$("#overweight_edit").attr("checked", "checked");
-							$("#oversize_edit").attr("checked", "checked");
-							$("#normal_edit").removeAttr("checked", "checked");
-						}else if(sbAsli == "overweight"){
-							$("#overweight_edit").attr("checked", "checked");
-							$("#oversize_edit").removeAttr("checked", "checked");
-							$("#normal_edit").removeAttr("checked", "checked");
-						}else if(sbAsli == "oversize"){
-							$("#overweight_edit").removeAttr("checked", "checked");
-							$("#oversize_edit").attr("checked", "checked");
-							$("#normal_edit").removeAttr("checked", "checked");
-						}else if(sbAsli == "normal"){
-							$("#overweight_edit").removeAttr("checked", "checked");
-							$("#oversize_edit").removeAttr("checked", "checked");
-							$("#normal_edit").attr("checked", "checked");
-						}
+						// var sbAsli 	= hasil.status_berat;
+						// if(sbAsli == "overweight,oversize,normal"){
+						// 	$("#overweight_edit").attr("checked", "checked");
+						// 	$("#oversize_edit").attr("checked", "checked");
+						// 	$("#normal_edit").attr("checked", "checked");
+						// }else if(sbAsli == "overweight,oversize" ){
+						// 	$("#overweight_edit").attr("checked", "checked");
+						// 	$("#oversize_edit").attr("checked", "checked");
+						// 	$("#normal_edit").removeAttr("checked", "checked");
+						// }else if(sbAsli == "overweight"){
+						// 	$("#overweight_edit").attr("checked", "checked");
+						// 	$("#oversize_edit").removeAttr("checked", "checked");
+						// 	$("#normal_edit").removeAttr("checked", "checked");
+						// }else if(sbAsli == "oversize"){
+						// 	$("#overweight_edit").removeAttr("checked", "checked");
+						// 	$("#oversize_edit").attr("checked", "checked");
+						// 	$("#normal_edit").removeAttr("checked", "checked");
+						// }else if(sbAsli == "normal"){
+						// 	$("#overweight_edit").removeAttr("checked", "checked");
+						// 	$("#oversize_edit").removeAttr("checked", "checked");
+						// 	$("#normal_edit").attr("checked", "checked");
+						// }
 						$("#idBarang").val(hasil.id_barang);
 						$("#panjang_edit").val(p);
 						$("#lebar_edit").val(l);
@@ -354,8 +375,7 @@
 			function hapusTmp(id){
 				// console.log(id);
 				Swal.fire({
-					title: 'Are you sure?',
-					text: "You won't be able to revert this!",
+					text: "Apakah anda yakin akan menghapus barang ini?",
 					icon: 'warning',
 					showCancelButton: true,
 					confirmButtonColor: '#d33',
@@ -375,6 +395,11 @@
 					}
 				});
 			}
+			<?php if($method=="show_riwayat_order"):?>
+				function goToDetailRiwayatOrder(id){
+					window.location.href = "<?php echo base_url();?>order/detail_riwayat/"+id
+				}
+			<?php endif;?>
 		<?php endif;?>
 	</script>
 

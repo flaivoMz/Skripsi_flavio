@@ -14,7 +14,7 @@
     }else{
         $level_user = "B2B";
     }
-    if($jumlah == 1){
+    if($jumlah >= 1){
         $running_number = '000000'.$jumlah; 
     }else if($jumlah >9 && $jumlah< 100){
         $running_number = '00000'.$jumlah;
@@ -48,85 +48,99 @@
 <div class="site-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 blog-content">
-                <div class="card">
-                    <div class="card-header">
-                        Data Pengirim
+                <div class="col-md-6 blog-content">
+                    <?php echo form_open('order/save_to_order');?>
+                    <div class="card">
+                        <div class="card-header">
+                            Data Pengirim
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="id_order">ID ORDER</label>
+                                <input type="text" class="form-control"  id="id_order" name="id_order" value="<?php echo $id_orderan; ?>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="pengirim">Pengirim</label>
+                                <input type="text" class="form-control" id="pengirim" name="pengirim" readonly value="<?php echo $this->session->userdata('nama');?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="no_tlpn_pengirim">Nomor Telpon Pengirim</label>
+                                <input type="text" class="form-control" id="no_tlpn_pengirim" name="no_tlpn_pengirim" placeholder="Masukkan nomor telpon penerima" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="14" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="penerima">Penerima</label>
+                                <input type="text" class="form-control" id="penerima" name="penerima" placeholder="Masukkan nama penerima" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="no_tlpn_penerima">Nomor Telpon Penerima</label>
+                                <input type="text" class="form-control" id="no_tlpn_penerima" name="no_tlpn_penerima" placeholder="Masukkan nomor telpon penerima" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="14" required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="jenis_pembayaran">Jenis Pembayaran</label>
+                                <select name="jenis_pembayaran" id="jenis_pembayaran" class="form-control" required="">
+                                    <option disabled>Pilih Metode Pembayaran</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="transfer">Transfer</option>
+                                    <option value="cicilan">Cicilan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="alamat_asal">Alamat Asal</label>
+                                <?php if(isset($_SESSION['alamat_asal'])&&$_SESSION['alamat_asal']!=""):?>
+                                    <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoAsal()"><?php echo $_SESSION['alamat_asal']['alamat']?></textarea>
+                                    <input type="hidden" name="koordinat_asal" value="<?php echo $_SESSION['alamat_asal']['koordinat']?>">
+                                    <input type="hidden" name="kabupaten_asal" value="<?php echo $_SESSION['alamat_asal']['kabupaten']?>">
+                                <?php else:?>
+                                    <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoAsal()"></textarea>
+                                <?php endif;?>
+                            </div>
+                            <div class="form-group">
+                                <label for="alamat_tujuan">Alamat Tujuan</label>
+                                <?php if(isset($_SESSION['alamat_penerima'])&&$_SESSION['alamat_penerima']!=""):?>
+                                    <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoPenerima()"><?php echo $_SESSION['alamat_penerima']['alamat']?></textarea>
+                                    <input type="hidden" name="koordinat_tujuan" value="<?php echo $_SESSION['alamat_penerima']['koordinat']?>">
+                                    <input type="hidden" name="kabupaten_tujuan" value="<?php echo $_SESSION['alamat_penerima']['kabupaten']?>">
+                                <?php else:?>
+                                    <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoPenerima()"></textarea>
+                                <?php endif;?>
+                            </div>
+                            <div class="form-group">
+                                <label for="referal_code">Referal Code</label>
+                                <input type="text" class="form-control" id="referal_code" name="referal_code" placeholder="Masukkan referal code">
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span class="float-left" id="judulOngkir">Ongkir</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="float-right" id="nominalOngkir"></span>
+                                    <input type="hidden" id="jarak" name="jarak">
+                                    <input type="hidden" id="inputNominalOngkir" name="nominal_ongkir">
+                                </div>
+                                <div class="col-6">
+                                    <span class="float-left">Subtotal</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="float-right"><?php echo number_format($sub_total['total'],0,'.','.'); ?></span>
+                                    <?php if($sub_total['total'] =="" || $sub_total['total'] == 0):?>
+                                        <input type="hidden" id="inputNominalSubtotal" name="nominal_subtotal" value="0">
+                                    <?php else:?>
+                                        <input type="hidden" id="inputNominalSubtotal" name="nominal_subtotal" value="<?php echo $sub_total['total'];?>">
+                                    <?php endif;?>
+                                </div>
+                                <div class="col-6">
+                                    <span class="float-left">Total</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="float-right" id="nominalTotal"></span>
+                                    <input type="hidden" name="nominal_total" id="inputNominalTotal">
+                                </div>
+                            </div>
+                            <button class="btn btn-success btn-block text-uppercase" type="submit">order</button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="id_order">ID ORDER</label>
-                            <input type="text" class="form-control" id="id_order" value="<?php echo $id_orderan; ?>" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="pengirim">Pengirim</label>
-                            <input type="text" class="form-control" id="pengirim" readonly value="<?php echo $this->session->userdata('nama');?>">
-                        </div>
-                        <div class="form-group">
-                            <label for="penerima">Penerima</label>
-                            <input type="text" class="form-control" id="penerima" name="penerima" placeholder="Masukkan nama penerima" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="no_tlpn_penerima">Nomor Telpon Penerima</label>
-                            <input type="text" class="form-control" id="no_tlpn_penerima" name="no_tlpn_penerima" placeholder="Masukkan nomor telpon penerima" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="14" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="jenis_pembayaran">Jenis Pembayaran</label>
-                            <select name="jenis_pembayaran" id="jenis_pembayaran" class="form-control" required>
-                                <option>Pilih Metode Pembayaran</option>
-                                <option value="cash">Cash</option>
-                                <option value="transfer">Transfer</option>
-                                <option value="cicilan">Cicilan</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat_asal">Alamat Asal</label>
-                            <?php if(isset($_SESSION['alamat_asal'])&&$_SESSION['alamat_asal']!=""):?>
-                                <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoAsal()"><?php echo $_SESSION['alamat_asal']['alamat']?></textarea>
-                                <input type="hidden" name="koordinat_asal" value="<?php echo $_SESSION['alamat_asal']['koordinat']?>">
-                                <input type="hidden" name="kabupaten" value="<?php echo $_SESSION['alamat_asal']['kabupaten']?>">
-                            <?php else:?>
-                                <textarea name="alamat_asal" id="alamat_asal" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoAsal()"></textarea>
-                            <?php endif;?>
-                        </div>
-                        <div class="form-group">
-                            <label for="alamat_tujuan">Alamat Tujuan</label>
-                            <?php if(isset($_SESSION['alamat_penerima'])&&$_SESSION['alamat_penerima']!=""):?>
-                                <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoPenerima()"><?php echo $_SESSION['alamat_penerima']['alamat']?></textarea>
-                                <input type="hidden" name="koordinat_tujuan" value="<?php echo $_SESSION['alamat_penerima']['koordinat']?>">
-                                <input type="hidden" name="kabupaten" value="<?php echo $_SESSION['alamat_penerima']['kabupaten']?>">
-                            <?php else:?>
-                                <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoPenerima()"></textarea>
-                            <?php endif;?>
-                        </div>
-                        <div class="form-group">
-                            <label for="referal_code">Referal Code</label>
-                            <input type="text" class="form-control" id="referal_code" name="referal_code" placeholder="Masukkan referal code">
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <span class="float-left" id="judulOngkir">Ongkir</span>
-                            </div>
-                            <div class="col-6">
-                                <span class="float-left"></span>
-                            </div>
-                            <div class="col-6">
-                                <span class="float-left">Subtotal</span>
-                            </div>
-                            <div class="col-6">
-                                <span class="float-left"></span>
-                            </div>
-                            <div class="col-6">
-                                <span class="float-left">Total</span>
-                            </div>
-                            <div class="col-6">
-                                <span class="float-left"></span>
-                            </div>
-                        </div>
-                        <button class="btn btn-success btn-block" type="submit">Simpan</button>
-                    </div>
+                    <?php echo form_close();?>
                 </div>
-            </div>
             <div class="col-md-6 sidebar mt-md-0 mt-3">
                 <div class="card">
                     <div class="card-header">
@@ -145,8 +159,6 @@
                                     <div class="col-6"><?php echo $tmp['volume_barang']; ?></div>
                                     <div class="col-6">Berat</div>
                                     <div class="col-6"><?php echo number_format($tmp['berat_barang'],1,'.','.'); ?>&nbsp;kg</div>
-                                    <div class="col-6">Status Berat</div>
-                                    <div class="col-6"><?php echo $tmp['status_berat']; ?></div>
                                     <div class="col-6">Total</div>
                                     <div class="col-6"><?php echo number_format($tmp['total'],0,'.','.'); ?></div>
                                     <div class="col-12">
@@ -193,7 +205,7 @@
                         <input type="text" class="form-control" id="tinggi" name="tinggi" placeholder="T" required>
                     </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <div class="col">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="overweight" value="overweight" name="berat_barang[]">
@@ -212,9 +224,10 @@
                             <label class="form-check-label" for="normal">Normal</label>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="catatan">Catatan</label>
+                    <input type="hidden" name="berat_barang" value="normal">
                     <textarea class="form-control" name="catatan" id="catatan" name="catatan" placeholder="Masukkan catatan"></textarea>
                 </div>
             </div>
@@ -256,7 +269,7 @@
                         <input type="text" class="form-control" id="tinggi_edit" name="tinggi" placeholder="T" required>
                     </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <div class="col">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="overweight_edit" value="overweight" name="berat_barang[]">
@@ -275,7 +288,7 @@
                             <label class="form-check-label" for="normal_edit">Normal</label>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="catatan_edit">Catatan</label>
                     <textarea class="form-control" name="catatan" id="catatan_edit" name="catatan" placeholder="Masukkan catatan"></textarea>
@@ -283,6 +296,7 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="id_barang" id="idBarang">
+                <input type="hidden" name="berat_barang" value="normal">
                 <button type="submot" class="btn btn-primary">Simpan</button>
             </div>
             <?php echo form_close();?>
