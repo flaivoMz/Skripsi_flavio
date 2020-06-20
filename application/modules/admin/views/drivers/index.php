@@ -29,8 +29,9 @@
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>No</th>
+            <th>Profile</th>
             <th>Nama</th>
+            <th>Handphone</th>
             <th>Alamat</th>
             <th>No.Plat</th>
             <th>Bergabung</th>
@@ -46,8 +47,17 @@
         
         ?>
           <tr>
-            <td><?= $no++ ?></td>
+            <td width="10%">
+            <?php if(empty($row->foto)){ ?>
+              <a href="<?= base_url('assets/backend/img/driver/profile.png') ?>" target="_blank">
+              <img src="<?= base_url('assets/backend/img/driver/profile.png') ?>" class="img-thumbnail" alt="<?= "photo ".$row->nama_rider ?>" width="100%"/></a>
+            <?php }else{ ?>
+              <a href="<?= base_url('assets/backend/img/driver/'.$row->foto) ?>" target="_blank">
+              <img src="<?= base_url('assets/backend/img/driver/'.$row->foto) ?>" class="img-thumbnail" alt="<?= "photo ".$row->nama_rider ?>" width="100%"/></a>
+            <?php } ?>
+            </td>
             <td><?= ucwords($row->nama_rider) ?></td>
+            <td><?= $row->no_telpn ?></td>
             <td><?= $row->alamat ?></td>
             <td width="15%"><?= strtoupper($row->plat_nomor) ?></td>
             <td><?= tanggal_indo($row->tanggal_bergabung) ?></td>

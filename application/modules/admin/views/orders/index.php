@@ -20,7 +20,7 @@
             <th>Tanggal</th>
             <th>Kab.Asal</th>
             <th>Kab.Tujuan</th>
-            <th>Tarif</th>
+            <th>Total</th>
             <th>Status</th>
             <th>Bayar</th>
             <th>Kurir</th>
@@ -40,7 +40,7 @@
             <td><?= tanggal_indo($row->tanggal_order) ?></td>
             <td><?= ucwords($row->kabupaten_asal) ?></td>
             <td><?= ucwords($row->kabupaten_tujuan) ?></td>
-            <td><?= format_rupiah($row->charge) ?></td>
+            <td><?= format_rupiah($row->total) ?></td>
             <td>
                 <?php 
                 $order = $row->status_order;
@@ -61,7 +61,7 @@
                   Aksi
                   </button>
                   <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a data-toggle="modal" data-target="#detailOrder" class="dropdown-item detail-order" href="#" data-orderid="<?= $row->id_order ?>" data-alamatasal="<?= $row->alamat_asal.' <b> [ '.$row->koordinat_asal.' </b>] ' ?>" data-alamattujuan="<?= $row->alamat_tujuan.' <b> [ '.$row->koordinat_tujuan.' ] </b>' ?>" data-jarak="<?= $row->jarak ?>" data-verifikasidriver="<?= ucwords($row->verifikasi_driver) ?>" data-notelppenerima="<?= $row->no_telp_penerima ?>" data-kodereferal="<?= $row->referal_code ?>" data-penerima="<?= ucwords($row->nama_penerima) ?>" data-volumebarang="<?= $row->volume_barang ?>" data-beratbarang="<?= $row->berat_barang ?>" data-catatan="<?= $row->catatan ?>" data-gambarpengambilan="<?= $row->gambar_pengambilan ?>" data-gambarpengantaran="<?= $row->gambar_pengantaran ?>" data-kondisibarang="<?= $row->kondisi_barang ?>" >Detail</a>
+                  <a data-toggle="modal" data-target="#detailOrder" class="dropdown-item detail-order" href="#" data-orderid="<?= $row->id_order ?>" data-alamatasal="<?= $row->alamat_asal.' <b> [ '.$row->koordinat_asal.' </b>] ' ?>" data-alamattujuan="<?= $row->alamat_tujuan.' <b> [ '.$row->koordinat_tujuan.' ] </b>' ?>" data-jarak="<?= $row->jarak ?>" data-verifikasidriver="<?= ucwords($row->verifikasi_driver) ?>" data-notelppenerima="<?= $row->no_telpn_penerima ?>" data-kodereferal="<?= $row->referal_code ?>" data-penerima="<?= ucwords($row->nama_penerima) ?>" data-volumebarang="<?= $row->volume_barang ?>" data-beratbarang="<?= $row->berat_barang ?>" data-catatan="<?= $row->catatan ?>" data-gambarpengambilan="<?= $row->gambar_pengambilan ?>" data-gambarpengantaran="<?= $row->gambar_pengantaran ?>" data-kondisibarang="<?= $row->kondisi_barang ?>" data-pengirim="<?= ucwords($row->nama_pengirim) ?>" data-notelppengirim="<?= $row->no_telpn_pengirim ?>" data-ongkir="<?= $row->ongkir ?>" data-subtotal="<?= $row->subtotal ?>" data-denda="<?= $row->denda ?>" data-jenispembayaran="<?= ucwords($row->jenis_pembayaran) ?>">Detail</a>
                   <?php if($row->nama_rider == ""){ ?>
                   <a data-toggle="modal" data-target="#formPilihKurir" data-orderid="<?= $row->id_order ?>" href="#" class="dropdown-item pilih-kurir text-danger">Pilih Kurir</a>
                   <?php } ?>
@@ -126,12 +126,12 @@
       <div class="modal-body">
         <table width="100" class="table table-borderless">
             <tr>
-                <th width="20%">Alamat Asal</th>
+                <th width="10%">Asal</th>
                 <th>:</th>
                 <td colspan="2" class="alamatasal"></td>
             </tr>
             <tr>
-                <th>Alamat Tujuan</th>
+                <th>Tujuan</th>
                 <th>:</th>
                 <td colspan="2" class="alamattujuan"></td>
             </tr>
@@ -140,29 +140,49 @@
           <div class="col-md-6">
             <table class="table table-borderless">
               <tr>
+                <th>Pengirim</th>
+                <td class="pengirim"></td>
+              </tr>
+              <!-- <tr>
+                <th>Telp. Pengirim</th>
+                <td class="notelppengirim"></td>
+              </tr> -->
+              <tr>
                 <th>Penerima</th>
                 <td class="penerima"></td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <th>Telp. Penerima</th>
                 <td class="notelppenerima"></td>
-              </tr>
+              </tr> -->
               <tr>
                 <th>Jarak</th>
                 <td class="jarak"></td>
               </tr>
               <tr>
-                <th>Kode Referal</th>
-                <td class="kodereferal"></td>
+                <th>Ongkir</th>
+                <td class="ongkir"></td>
               </tr>
               <tr>
-                <th>Kondisi</th>
-                <td class="kondisibarang"></td>
+                <th>Subtotal</th>
+                <td class="subtotal"></td>
+              </tr>
+              <tr>
+                <th>Denda</th>
+                <td class="denda"></td>
+              </tr>
+              <tr>
+                <th>Kode Referal</th>
+                <td class="kodereferal"></td>
               </tr>
             </table>
           </div>
           <div class="col-md-6">
             <table class="table table-borderless">
+              <tr>
+                <th>Cara Bayar</th>
+                <td class="jenispembayaran"></td>
+              </tr>
               <tr>
                 <th>Volume</th>
                 <td class="volumebarang"></td>
@@ -171,18 +191,24 @@
                 <th>Berat</th>
                 <td class="beratbarang"></td>
               </tr>
+             
               <tr>
                 <th>Pengambilan</th>
-                <td class=""><a href="" class="gambarpengambilan" target="_blank">Lihat Gambar</a></td>
+                <td class="gambarpengambilan"></td>
               </tr>
               <tr>
                 <th>Pengantaran</th>
-                <td class=""><a href="" class="gambarpengantaran" target="_blank">Lihat Gambar</a></td>
+                <td class="gambarpengantaran"></td>
               </tr>
               <tr>
                 <th>Catatan</th>
                 <td class="catatan"></td>
               </tr>
+              <tr>
+                <th>Kondisi</th>
+                <td class="kondisibarang"></td>
+              </tr>
+              
             </table>
           </div>
         </div>

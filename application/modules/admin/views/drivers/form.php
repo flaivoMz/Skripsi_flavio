@@ -3,16 +3,20 @@
         
         $id_rider = $driver->id_rider;
         $nama_rider = $driver->nama_rider;
+        $no_telpn = $driver->no_telpn;
         $alamat = $driver->alamat;
         $plat_nomor = $driver->plat_nomor;
         $tanggal_bergabung = $driver->tanggal_bergabung;
         $status = $driver->status;
+        $old_image = $driver->foto;
         $url = base_url('admin/drivers/update');
         $submit = "Edit";
     }else{
         $id_rider=NULL;
         $nama_rider = NULL;
+        $no_telpn=NULL;
         $alamat = NULL;
+        $old_image = NULL;
         $plat_nomor = NULL;
         $tanggal_bergabung = NULL;
         $status = NULL;
@@ -34,13 +38,17 @@
   </div> -->
   <div class="card-body">
     <div class="table-responsive">
-        <form action="<?= $url ?>" method="post" id="driver">
+        <form action="<?= $url ?>" method="post" id="driver" enctype="multipart/form-data">
             <div class="row col-md-12">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama_rider">Nama</label>
                         <input type="hidden" name="id_rider" value="<?= $id_rider ?>">
-                        <input type="text" class="form-control" name="nama_rider" id="name" placeholder="Driver name" required value="<?= $nama_rider ?>">
+                        <input type="text" class="form-control" name="nama_rider" id="name" placeholder="Nama kurir" required value="<?= $nama_rider ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="no_telpn">No. Handphone</label>
+                        <input type="text" class="form-control" name="no_telpn" minlength="5" required value="<?= $no_telpn ?>">
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
@@ -64,9 +72,22 @@
                     <div class="form-group">
                         <label for="password">Password</label>
                         <input type="number" class="form-control" name="password" minlength="6" required <?= $submit=="Edit" ? "readonly" : "" ?>>
-                        <small id="emailHelp" class="form-text text-muted"><?= $submit=="Edit" ? "password hanya bisa di edit oleh driver masing-masing" : "Password berupa pin dengan panjang 6 digit angka" ?></small>
+                        <small id="emailHelp" class="form-text text-danger"><?= $submit=="Edit" ? "password hanya bisa di edit oleh driver masing-masing" : "Password berupa pin dengan panjang 6 digit angka" ?></small>
 
                     </div>
+                    <div class="form-group">
+                        <label for="foto">Gambar Profile</label>
+                        <input type="hidden" name="old_image" value="<?= $old_image ?>">
+                        <input type="file" name="foto" accept=".png,.jpg,.jpeg" class="form-control" <?= $submit=="Tambah" ? "required" : "" ?>>
+                        <small id="" class="form-text text-danger"><?= $submit=="Edit" ? "kosongkan gambar jika tidak diubah" : "" ?></small>
+                    </div>
+                    <?php if($submit == "Edit"){ ?>
+                    <div class="form-group">
+                        <label>Preview</label><br/>
+                        <a href="<?= base_url('assets/backend/img/driver/'.$old_image) ?>" target="_blank">
+                            <img src="<?= base_url('assets/backend/img/driver/'.$old_image) ?>" class="img-thumbnail" alt="<?= "photo ".$nama_rider ?>" width="30%"/></a>
+                    </div>
+                    <?php } ?>
                     <label for="status">Status Kurir</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="status" id="status1" value="aktif" <?= $status=="aktif" ? "checked" : "" ?>>

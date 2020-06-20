@@ -45,8 +45,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Pengirim</label>
-                                <select name="pengirim" id="" class="select2 form-control" style="width: 100%;">
+                                <label for="">Customer</label>
+                                <select name="customer" id="" class="select2 form-control" style="width: 100%;">
                                     <option value="">- Pilih Pengirim -</option>
                                     <?php foreach($customers as $c){
                                         echo "<option value='".$c->id_customer."'>".ucwords($c->nama)."</option>";  

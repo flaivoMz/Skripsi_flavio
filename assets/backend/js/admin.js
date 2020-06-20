@@ -178,19 +178,29 @@ $('.detail-order').on('click', function (e) {
   var verifikasidriver = $(this).data('verifikasidriver');
   var kodereferal = $(this).data('kodereferal');
   var notelppenerima = $(this).data('notelppenerima');
+  var notelppengirim = $(this).data('notelppengirim');
   var penerima = $(this).data('penerima');
+  var pengirim = $(this).data('pengirim');
   var volumebarang = $(this).data('volumebarang');
   var beratbarang = $(this).data('beratbarang');
+  var ongkir = $(this).data('ongkir');
+  var subtotal = $(this).data('subtotal');
   var catatan = $(this).data('catatan');
   var gambarpengambilan = $(this).data('gambarpengambilan');
   var gambarpengantaran = $(this).data('gambarpengantaran');
   var kondisibarang = $(this).data('kondisibarang');
+  var denda = $(this).data('denda');
+  var jenispembayaran = $(this).data('jenispembayaran');
 
   if(alamatasal){
     $(".modal-orderId").html(orderid);
     $(".alamatasal").html(alamatasal);
     $(".alamattujuan").html(alamattujuan);
-    $(".jarak").html(jarak+" km");
+    if(jarak != ''){
+      $(".jarak").html(jarak+" km");
+    }else{
+      $(".jarak").html("");
+    }
     
     if(kodereferal == ''){
       $(".kodereferal").html('-');
@@ -198,21 +208,34 @@ $('.detail-order').on('click', function (e) {
       $(".kodereferal").html(kodereferal);
     }
 
-    // if(driver == ''){
-    //   $(".driver").html('<span class="badge badge-danger">Kurir belum dipilih</span>');
-    // }else{
-    //   $(".driver").html(driver);
-    // }
-    $(".penerima").html(penerima);
-    $(".notelppenerima").html(notelppenerima);
+    $(".pengirim").html(pengirim+" ( "+notelppengirim+" )");
+    $(".penerima").html(penerima+" ( "+notelppenerima+" )");
+    // $(".notelppengirim").html(notelppengirim);
+    // $(".notelppenerima").html(notelppenerima);
     $(".volumebarang").html(volumebarang);
-    $(".beratbarang").html(beratbarang);
+    $(".jenispembayaran").html(jenispembayaran);
+    $(".ongkir").html("Rp."+ongkir);
+    $(".subtotal").html("Rp."+subtotal);
+    $(".beratbarang").html(beratbarang+" kg");
     $(".catatan").html(catatan);
-    $(".gambarpengambilan").attr('href','../assets/backend/img/'+gambarpengambilan);
-    $(".gambarpengantaran").attr('href','../assets/backend/img/'+gambarpengantaran);
+    $(".denda").html("Rp."+denda);
+    
+
+    if(gambarpengambilan != ''){
+      $(".gambarpengambilan").html('<a href="../assets/backend/img/'+gambarpengambilan+'" class="" target="_blank">Lihat Gambar</a>');
+    }else{
+      $(".gambarpengambilan").html("<span class='text-danger'>Gambar Kosong</span>");
+    }
+    if(gambarpengantaran != ''){
+      $(".gambarpengantaran").html('<a href="../assets/backend/img/'+gambarpengantaran+'" class="" target="_blank">Lihat Gambar</a>');
+    }else{
+      $(".gambarpengantaran").html("<span class='text-danger'>Gambar Kosong</span>");
+    }
     $(".kondisibarang").html(kondisibarang);
   }
 });
+
+
 //tombol-hapus
 
 $('.button-konfirmasi').on('click', function (e) {
