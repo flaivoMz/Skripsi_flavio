@@ -34,7 +34,8 @@ class Drivers extends MX_Controller
         $this->form_validation->set_rules('plat_nomor', 'No. Plat', 'required');
         $this->form_validation->set_rules('tanggal_bergabung', 'Tanggal Bergabung', 'required');
         $this->form_validation->set_rules('status', 'Status Kurir', 'required');
-
+        // var_dump($_FILES);
+        // die;
         if ($this->form_validation->run() == FALSE) {
             redirect('admin/drivers');
         } else {
@@ -81,8 +82,15 @@ class Drivers extends MX_Controller
     }
     public function delete($id)
     {
-        $this->driver->delete($id);
-        $this->session->set_flashdata('success', 'Data Kurir Berhasil Dihapus');
+        $driver = $this->driver->getDriver($id);
+
+        if($driver){
+            if($this->driver->delete($id)){
+                $img_file = "./assets/backend/img/driver/".$driver->foto;
+                unlink($img_file);
+            }
+            $this->session->set_flashdata('success', 'Data Kurir Berhasil Dihapus');
+        }
         redirect('admin/drivers');;
     }
     

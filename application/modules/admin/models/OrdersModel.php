@@ -5,7 +5,7 @@ class OrdersModel extends CI_Model {
   
     public function getAllOrders()
     {
-        $this->db->select('oc.*, r.nama_rider,c.nama,odc.volume_barang,odc.berat_barang,odc.catatan,od.gambar_pengambilan,od.gambar_pengantaran,od.berat_barang as kondisi_barang');
+        $this->db->select('oc.*, r.nama_rider,c.nama,odc.volume_barang,odc.berat_barang,odc.catatan,od.gambar_pengambilan,od.gambar_pengantaran,od.berat_barang as kondisi_barang,odc.charge as denda');
         $this->db->from('order_customer AS oc');
         $this->db->join('customer AS c','c.id_customer=oc.id_customer');
         $this->db->join('order_detail_customer AS odc','odc.id_order=oc.id_order','left');
