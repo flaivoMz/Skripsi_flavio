@@ -134,8 +134,10 @@ CREATE TABLE `order_customer` (
   `id_order` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `id_customer` bigint(20) NOT NULL,
   `id_rider` bigint(20) DEFAULT NULL,
+  `nama_pengirim` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_penerima` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_telpn_penerima` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `no_telpn_pengirim` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenis_pembayaran` enum('cash','transfer','cicilan') COLLATE utf8mb4_unicode_ci NOT NULL,
   `koordinat_asal` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `koordinat_tujuan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -145,11 +147,13 @@ CREATE TABLE `order_customer` (
   `kabupaten_tujuan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jarak` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status_order` enum('order','proses','selesai') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `charge` bigint(20) DEFAULT NULL,
   `tanggal_order` datetime NOT NULL,
   `status_pembayaran` enum('lunas','belum') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'belum',
   `referal_code` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `verifikasi_driver` enum('sudah','belum') COLLATE utf8mb4_unicode_ci DEFAULT 'belum',
+  `ongkir` bigint(20) NOT NULL,
+  `subtotal` bigint(20) NOT NULL,
+  `total` bigint(20) NOT NULL,
   PRIMARY KEY (`id_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -160,6 +164,7 @@ CREATE TABLE `order_customer` (
 
 LOCK TABLES `order_customer` WRITE;
 /*!40000 ALTER TABLE `order_customer` DISABLE KEYS */;
+INSERT INTO `order_customer` VALUES ('CC20060000001',3,NULL,'endrakocak','tono','082333444555','08911','cash','-7.792744099999999,110.408355','-7.782893849976345,110.36705409325408','Jl. Janti No.143, Jaranan, Karang Jambe, Kec. Banguntapan, Bantul, Daerah Istimewa Yogyakarta 55918, Indonesia','Jl. Margomulyo No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Bantul','Daerah Istimewa Yogyakarta','','order','2020-06-18 17:44:59','belum',NULL,'belum',13000,24400,37400);
 /*!40000 ALTER TABLE `order_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,12 +176,15 @@ DROP TABLE IF EXISTS `order_detail_customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order_detail_customer` (
-  `id_barang` bigint(20) NOT NULL AUTO_INCREMENT,
-  `id_order` bigint(20) NOT NULL,
+  `id_barang` bigint(20) NOT NULL,
+  `id_order` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_customer` bigint(20) NOT NULL,
   `volume_barang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `berat_barang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `berat_barang` decimal(20,2) NOT NULL,
+  `status_berat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `catatan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id_barang`)
+  `total` bigint(20) DEFAULT NULL,
+  `charge` bigint(20) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -186,6 +194,7 @@ CREATE TABLE `order_detail_customer` (
 
 LOCK TABLES `order_detail_customer` WRITE;
 /*!40000 ALTER TABLE `order_detail_customer` DISABLE KEYS */;
+INSERT INTO `order_detail_customer` VALUES (13,'CC20060000001',3,'15x30x48',3.60,'normal','helm barang mudah pecah',3600,0),(14,'CC20060000001',3,'50x50x50',20.80,'normal','susu',20800,0);
 /*!40000 ALTER TABLE `order_detail_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +215,7 @@ CREATE TABLE `order_detail_customer_tmp` (
   `catatan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_barang`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +224,6 @@ CREATE TABLE `order_detail_customer_tmp` (
 
 LOCK TABLES `order_detail_customer_tmp` WRITE;
 /*!40000 ALTER TABLE `order_detail_customer_tmp` DISABLE KEYS */;
-INSERT INTO `order_detail_customer_tmp` VALUES (7,'CC20060000001',3,'38x29x28',5.10,'overweight,oversize','guys edit',45900),(9,'CC20060000001',3,'10x10x25',0.40,'normal','asdf',400);
 /*!40000 ALTER TABLE `order_detail_customer_tmp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,6 +264,7 @@ CREATE TABLE `rider` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `plat_nomor` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tanggal_bergabung` datetime NOT NULL,
   `status` enum('aktif','tidak') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'aktif',
   PRIMARY KEY (`id_rider`)
@@ -323,7 +332,7 @@ CREATE TABLE `tarif_ongkir` (
 
 LOCK TABLES `tarif_ongkir` WRITE;
 /*!40000 ALTER TABLE `tarif_ongkir` DISABLE KEYS */;
-INSERT INTO `tarif_ongkir` VALUES (1,'2','tidak',5000,2000,'customer'),(2,'2','tidak',2500,3000,'member');
+INSERT INTO `tarif_ongkir` VALUES (1,'2','aktif',5000,2000,'customer'),(2,'2','tidak',2500,3000,'member');
 /*!40000 ALTER TABLE `tarif_ongkir` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -336,4 +345,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-18  0:55:43
+-- Dump completed on 2020-06-19  9:55:11
