@@ -7,12 +7,7 @@
             <div class="col-lg-6">
                <h1>Choose Your Quality Delivery of Your Cargo</h1>
                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est magni perferendis fugit modi similique, suscipit, deserunt a iure.</p>
-               <form action="#">
-                  <div class="form-group d-flex">
-                     <input type="text" class="form-control" placeholder="Enter your tracking number">
-                     <input type="submit" class="btn btn-primary text-white px-4" value="Track Now">
-                  </div>
-               </form>
+               
             </div>
          </div>
       </div>
@@ -248,7 +243,7 @@
       </div>
    </div>
 </div>
-<div class="site-section bg-light" id="pricing-section">
+<!-- <div class="site-section bg-light" id="pricing-section">
    <div class="container">
       <div class="row mb-5 justify-content-center text-center">
          <div class="col-md-7">
@@ -315,8 +310,8 @@
          </div>
       </div>
    </div>
-</div>
-<div class="site-section" id="faq-section">
+</div> -->
+<!-- <div class="site-section" id="faq-section">
    <div class="container">
       <div class="row mb-5">
          <div class="block-heading-1 col-12 text-center">
@@ -362,7 +357,7 @@
          </div>
       </div>
    </div>
-</div>
+</div> -->
 <div class="block__73694 site-section border-top" id="why-us-section">
    <div class="container">
       <div class="row d-flex no-gutters align-items-stretch">

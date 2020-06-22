@@ -7,10 +7,6 @@ class Order extends MX_Controller
     {
         parent::__construct();
         $this->load->model('OrderModel', 'mod');
-        if(($this->session->userdata('id_customer')=="")||($this->session->userdata('id_rider')=="")){
-            $_SESSION['msg'] = "login_dulu";
-            redirect('/');
-        }
     }
 
     public function index()
@@ -198,6 +194,16 @@ class Order extends MX_Controller
         $id_customer    = $this->session->userdata('id_customer');
         $referal_code   = $this->input->post('referal_code', true);
         $cek_referal    = $this->mod->m_get_referal($referal_code);
+        if($cek_referal !=""){
+            $potongan_referal = 5/100;
+        }else{
+            $potongan_referal = 0;
+        }
+        if($cek_referal['diskon']!=""){
+            $diskon = $cek_referal['diskon']/100;
+        }else{
+            $diskon = 0;
+        }
         $post =  [
             'id_order'              => $this->input->post('id_order', true),
             'id_customer'           => $id_customer,
@@ -214,10 +220,12 @@ class Order extends MX_Controller
             'kabupaten_tujuan'      => $this->input->post('kabupaten_tujuan', true),
             'ongkir'                => $this->input->post('nominal_ongkir', true),
             'subtotal'              => $this->input->post('nominal_subtotal', true),
-            'total'                 => $this->input->post('nominal_total', true),
+            'total'                 => ceil($this->input->post('nominal_total', true)-($potongan_referal+$diskon)),
             'tanggal_order'         => date('Y-m-d H:i:s'),
             'jarak'                 => $this->input->post('jarak', true),
-            'verifikasi_customer'   => $this->input->post('verifikasi_customer', true)
+            'verifikasi_customer'   => $this->input->post('verifikasi_customer', true),
+            'referal_code'          => $referal_code,
+            'diskon'                => $diskon+$potongan_referal
         ];
         $temp = $this->mod->m_get_data_order_customer_tmp($id_customer);
         $i=0;

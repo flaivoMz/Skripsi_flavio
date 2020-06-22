@@ -71,7 +71,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (3,'endrakocak','$2y$10$dpWKl5.Ej816kCaQQwyUSOv3dUd5mA4Dk9GCI6YnmQKG9nXz0EQs2','endra_kocak@mail.com','asdf','089',NULL,'2020-06-15 15:07:49','customer','aktif',NULL),(4,'hyung','$2y$10$4mjz1q2uPBPXAN5LK5nfSeMgKGrMFUlWltYs1Og.lUN8AU3TYOcgG','hyung@mail.com','godean','08123',NULL,'2020-06-15 19:16:25','customer','aktif',NULL),(5,'hyung endra','$2y$10$jXL3kVgR3WumuaOg93YEKOMVPzW3WtGiBX/0QGdn2mSTOcs90Uu5m','hyung_endra@mail.com','test','087',NULL,'2020-06-15 19:17:16','customer','aktif',NULL),(6,'test','$2y$10$mRa.Jqw2qFBE0YtG/AOjWuZDgOfzlmerqtpzX8cTn0QHO/KSjsj82','test@mail.com','test','087',NULL,'2020-06-15 19:17:57','customer','aktif',NULL),(7,'Koh Afuk','$2y$10$QGgxcW0zielxgi1W7GoVEO5NyzEcHlBPOpbed5I7aGUZEX26PKSMC','kohafuk@mail.com','godean','081222333444',NULL,'2020-06-16 17:32:51','customer','aktif',NULL),(8,'usertest2','$2y$10$lECw5jddkO6lS8z/XdY3mOeb9csGzlaVbaeCmRDcv6YdQvSJ/chRu','usertest2@mail.com','godean','089123',NULL,'2020-06-16 17:33:52','customer','aktif',NULL),(9,'usertest3','$2y$10$IjwxnXEFgnK04FmQh0aHoeWNVx6siMsmp/RNjPQqan3Cm//tIJsWK','usertest3@mail.com','godean','087999',NULL,'2020-06-16 17:34:29','customer','aktif',NULL);
+INSERT INTO `customer` VALUES (3,'endrakocak','$2y$10$dpWKl5.Ej816kCaQQwyUSOv3dUd5mA4Dk9GCI6YnmQKG9nXz0EQs2','endra_kocak@mail.com','asdf','089',NULL,'2020-06-15 15:07:49','customer','aktif',NULL),(4,'hyung','$2y$10$4mjz1q2uPBPXAN5LK5nfSeMgKGrMFUlWltYs1Og.lUN8AU3TYOcgG','hyung@mail.com','godean','08123',NULL,'2020-06-15 19:16:25','customer','aktif',50),(5,'hyung endra','$2y$10$jXL3kVgR3WumuaOg93YEKOMVPzW3WtGiBX/0QGdn2mSTOcs90Uu5m','hyung_endra@mail.com','test','087','03ABCD','2020-06-15 19:17:16','member','aktif',0),(6,'test','$2y$10$mRa.Jqw2qFBE0YtG/AOjWuZDgOfzlmerqtpzX8cTn0QHO/KSjsj82','test@mail.com','test','0871',NULL,'2020-06-15 19:17:57','customer','aktif',NULL),(7,'Koh Afuk','$2y$10$QGgxcW0zielxgi1W7GoVEO5NyzEcHlBPOpbed5I7aGUZEX26PKSMC','kohafuk@mail.com','godean','081222333444',NULL,'2020-06-16 17:32:51','customer','aktif',NULL),(8,'usertest2','$2y$10$lECw5jddkO6lS8z/XdY3mOeb9csGzlaVbaeCmRDcv6YdQvSJ/chRu','usertest2@mail.com','godean','089123',NULL,'2020-06-16 17:33:52','customer','aktif',NULL),(9,'usertest3','$2y$10$IjwxnXEFgnK04FmQh0aHoeWNVx6siMsmp/RNjPQqan3Cm//tIJsWK','usertest3@mail.com','godean','087999',NULL,'2020-06-16 17:34:29','customer','aktif',NULL);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -157,6 +157,7 @@ CREATE TABLE `order_customer` (
   `subtotal` bigint(20) NOT NULL,
   `total` bigint(20) NOT NULL,
   `verifikasi_customer` enum('sudah','belum') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'belum',
+  `diskon` decimal(20,2) DEFAULT NULL,
   PRIMARY KEY (`id_order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -167,7 +168,7 @@ CREATE TABLE `order_customer` (
 
 LOCK TABLES `order_customer` WRITE;
 /*!40000 ALTER TABLE `order_customer` DISABLE KEYS */;
-INSERT INTO `order_customer` VALUES ('CC20060000001',3,1,'endrakocak','tono','082333444555','08911','cash','-7.792744099999999,110.408355','-7.782893849976345,110.36705409325408','Jl. Janti No.143, Jaranan, Karang Jambe, Kec. Banguntapan, Bantul, Daerah Istimewa Yogyakarta 55918, Indonesia','Jl. Margomulyo No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Bantul','Daerah Istimewa Yogyakarta','','selesai','2020-06-18 17:44:59','belum',NULL,'sudah',13000,70800,83800,'sudah'),('CC20060000002',3,2,'endrakocak','mawar','087888999','089','cash','-7.804125199999999,110.3980215','-7.758782030746977,110.39930938954924','Jl. Kebun Raya No.2, Rejowinangun, Kec. Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171, Indonesia','Jl. Ring Road Utara Jl. Kaliwaru No.73, Kaliwaru, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Daerah Istimewa Yogyakarta','Kecamatan Depok','8.1 km','order','2020-06-19 16:56:57','belum',NULL,'belum',17000,2600,19600,'sudah'),('CC20060000003',3,1,'endrakocak','mawar','086122432111','089','transfer','-7.78334561882169,110.37455320358276','-7.784004677928404,110.35738706588745','Jl. A.M. Sangaji No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Jl. A.M. Sangaji No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','2.0 km','order','2020-06-21 20:09:33','belum',NULL,'belum',10000,121500,131500,'sudah'),('CC20060000004',3,1,'endrakocak','koh afuk','888','999','transfer','-7.783033705818436,110.41256606815338','-7.782511719698654,110.36147135700836','Jl. Laksda Adisucipto No.204-205, Ngentak, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Jl. Pangeran Diponegoro No.106, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Kabupaten Sleman','Daerah Istimewa Yogyakarta','6.6 km','order','2020-06-21 20:38:11','belum',NULL,'sudah',15000,4500,19500,'sudah');
+INSERT INTO `order_customer` VALUES ('CC20060000001',3,1,'endrakocak','tono','082333444555','08911','cash','-7.792744099999999,110.408355','-7.782893849976345,110.36705409325408','Jl. Janti No.143, Jaranan, Karang Jambe, Kec. Banguntapan, Bantul, Daerah Istimewa Yogyakarta 55918, Indonesia','Jl. Margomulyo No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Bantul','Daerah Istimewa Yogyakarta','','selesai','2020-06-18 17:44:59','belum',NULL,'sudah',13000,70800,83800,'sudah',NULL),('CC20060000002',3,2,'endrakocak','mawar','087888999','089','cash','-7.804125199999999,110.3980215','-7.758782030746977,110.39930938954924','Jl. Kebun Raya No.2, Rejowinangun, Kec. Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171, Indonesia','Jl. Ring Road Utara Jl. Kaliwaru No.73, Kaliwaru, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Daerah Istimewa Yogyakarta','Kecamatan Depok','8.1 km','selesai','2020-06-19 16:56:57','belum',NULL,'sudah',17000,13300,30300,'sudah',NULL),('CC20060000003',3,1,'endrakocak','mawar','086122432111','089','transfer','-7.78334561882169,110.37455320358276','-7.784004677928404,110.35738706588745','Jl. A.M. Sangaji No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Jl. A.M. Sangaji No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','2.0 km','selesai','2020-06-21 20:09:33','belum',NULL,'sudah',10000,60750,70750,'sudah',NULL),('CC20060000004',3,1,'endrakocak','koh afuk','888','999','transfer','-7.783033705818436,110.41256606815338','-7.782511719698654,110.36147135700836','Jl. Laksda Adisucipto No.204-205, Ngentak, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Jl. Pangeran Diponegoro No.106, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Kabupaten Sleman','Daerah Istimewa Yogyakarta','6.6 km','order','2020-06-21 20:38:11','belum',NULL,'sudah',15000,4500,19500,'sudah',NULL),('CC20060000005',4,NULL,'hyung','dj desa','081454672111','087333444555','cash','-7.756713899999999,110.3958566','-7.786049299999999,110.3783757','Condong Catur Bus Terminal, Jl. Anggajaya 1, Gejayan, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55283, Indonesia','Jl. Dr. Wahidin Sudirohusodo No.5-25, Kotabaru, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55224, Indonesia','Kabupaten Sleman','Daerah Istimewa Yogyakarta','4.5 km','order','2020-06-22 16:09:23','belum','03ABCD','belum',11000,10700,21700,'sudah',0.05),('CC20060000006',3,NULL,'endrakocak','dj desa','082333444555','087333444555','cash','-7.7840131,110.3573881','-7.759725899999999,110.4088805','Jl. Tentara Rakyat Mataram No.58, Bumijo, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55231, Indonesia','Jl. Ring Road Utara, Ngringin, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','9.8 km','order','2020-06-22 16:41:47','belum','03ABCD','belum',21000,10700,31700,'sudah',0.05),('CC20060000007',4,NULL,'hyung','bu aya','123456','08764512344','cash','-7.7826508,110.3614677','-7.804125199999999,110.3980215','Jl. Pangeran Diponegoro No.106, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Jl. Kebun Raya No.2, Rejowinangun, Kec. Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','6.4 km','order','2020-06-22 17:05:27','belum','03ABCD','belum',13000,6000,19000,'sudah',0.05);
 /*!40000 ALTER TABLE `order_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +198,7 @@ CREATE TABLE `order_detail_customer` (
 
 LOCK TABLES `order_detail_customer` WRITE;
 /*!40000 ALTER TABLE `order_detail_customer` DISABLE KEYS */;
-INSERT INTO `order_detail_customer` VALUES (13,'CC20060000001',3,'50x50x50',20.80,'overweight,oversize','helm barang mudah pecah',70800,0),(15,'CC20060000002',3,'25x25x25',2.60,'normal','',2600,0),(17,'CC20060000003',3,'90x90x90',121.50,'normal','asdf',121500,0),(18,'CC20060000004',3,'30x30x30',4.50,'normal','asdf',4500,0);
+INSERT INTO `order_detail_customer` VALUES (13,'CC20060000001',3,'50x50x50',20.80,'overweight,oversize','helm barang mudah pecah',70800,0),(15,'CC20060000002',3,'40x40x40',10.70,'overweight,oversize','',13300,0),(17,'CC20060000003',3,'90x90x90',121.50,'overweight','asdf',60750,0),(18,'CC20060000004',3,'30x30x30',4.50,'normal','asdf',4500,0),(22,'CC20060000005',4,'40x40x40',10.70,'normal','',10700,0),(23,'CC20060000006',3,'40x40x40',10.70,'normal','',10700,0),(24,'CC20060000007',4,'30x30x40',6.00,'normal','',6000,0);
 /*!40000 ALTER TABLE `order_detail_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +219,7 @@ CREATE TABLE `order_detail_customer_tmp` (
   `catatan` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id_barang`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -254,7 +255,7 @@ CREATE TABLE `order_driver` (
 
 LOCK TABLES `order_driver` WRITE;
 /*!40000 ALTER TABLE `order_driver` DISABLE KEYS */;
-INSERT INTO `order_driver` VALUES ('CC20060000001','pulung1592735645CC20060000001.png','pulung1592755440CC20060000001.png','50x50x50',20.80,'overweight,oversize',150000);
+INSERT INTO `order_driver` VALUES ('CC20060000001','pulung1592735645CC20060000001.png','pulung1592755440CC20060000001.png','50x50x50',20.80,'overweight,oversize',150000),('CC20060000003','pulung1592829153CC20060000003.png','profile.png','90x90x90',121.50,'overweight',0),('CC20060000002','simaikel1592838682CC20060000002.png','simaikel1592838706CC20060000002.png','40x40x40',10.70,'overweight,oversize',0);
 /*!40000 ALTER TABLE `order_driver` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -354,4 +355,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-22  9:43:31
+-- Dump completed on 2020-06-22 22:19:07
