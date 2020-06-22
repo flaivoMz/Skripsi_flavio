@@ -20,8 +20,8 @@
             <div class="card">
                 <div class="card-header">
                     Alamat Pengirim
+                    <!-- <button class="btn btn-success btn-sm float-right" type="button" onclick="getLocation()"><i class="fas fa-map-marker-alt"></i></button> -->
                 </div>
-            
                 <div class="card-body">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Cari Alamat" id="address" name="address" onchange="getlatlang()" >

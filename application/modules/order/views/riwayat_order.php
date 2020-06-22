@@ -16,7 +16,7 @@
     <div class="container">
         <div class="col-12 blog-content">
             <?php foreach($order as $orders):?>
-            <div class="row" onclick="goToDetailRiwayatOrder('<?php echo $orders['id_order'];?>')" style="cursor:pointer;">
+            <div class="row my-3 my-lg-5" onclick="goToDetailRiwayatOrder('<?php echo $orders['id_order'];?>')" style="cursor:pointer;">
                 <div class="col-2 d-none d-md-block">
                     <?php if($orders['status_order'] == "order"):?>
                         <img src="<?php echo base_url();?>assets/frontend/img/box_order.png" alt="box_order" class="img-fluid">
@@ -38,6 +38,10 @@
                             <span class="float-right">Penerima:</span><br>
                             <span class="float-right"><?php echo $orders['nama_penerima'];?></span><br>
                             <span class="float-right"><?php echo $orders['no_telpn_penerima'];?></span>
+                        </div>
+                        <div class="col-12 <?php if($orders['id_rider'] ==""){echo "d-none"; }?>">
+                            <span class="text-muted">Rider:</span>
+                            <span><?php echo $orders['nama_rider'];?></span>
                         </div>
                     </div>
                     <?php if($orders['status_order'] == "order"):?>

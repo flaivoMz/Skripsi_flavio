@@ -1,7 +1,7 @@
 
 
 <div class="ftco-blocks-cover-1">
-   <div class="ftco-cover-1 overlay" style="background-image: url('https://source.unsplash.com/pSyfecRCBQA/1920x780')">
+   <div class="ftco-cover-1 overlay" style="background-image: url('<?php echo base_url('')?>assets/frontend/depan/images/box.jpg')">
       <div class="container">
          <div class="row align-items-center">
             <div class="col-lg-6">
@@ -119,10 +119,8 @@
       <div class="row justify-content-center mb-4 block-img-video-1-wrap">
          <div class="col-md-12 mb-5">
             <figure class="block-img-video-1" data-aos="fade">
-               <a href="https://vimeo.com/45830194" data-fancybox data-ratio="2">
                <span class="icon"><span class="icon-play"></span></span>
                <img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_delivery_big.jpg" alt="Image" class="img-fluid">
-               </a>
             </figure>
          </div>
       </div>
@@ -437,96 +435,6 @@
                   <img src="<?php echo base_url()?>assets/frontend/depan/images/person_3.jpg" alt="Image" class="img-fluid rounded-circle mx-auto">
                </figure>
                <h3 class="font-size-20 mb-4 text-black">Robert Steward</h3>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-<div class="site-section py-5" id="blog-section">
-   <div class="container">
-      <div class="row justify-content-center text-center mb-5">
-         <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="block-heading-1" data-aos="fade-right" data-aos-delay="">
-               <h2>Articles</h2>
-            </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-lg-6">
-            <div class="mb-5 d-flex blog-entry" data-aos="fade-right" data-aos-delay="">
-               <a href="#" class="blog-thumbnail"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg" alt="Image" class="img-fluid"></a>
-               <div class="blog-excerpt">
-                  <span class="d-block text-muted">Apr 19, 2019</span>
-                  <h2 class="h4  mb-3"><a href="single.html">Knowing the Difference Is Key to Effective Logistics</a></h2>
-                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
-                  <p><a href="single.html" class="text-primary">Read More</a></p>
-               </div>
-            </div>
-         </div>
-         <div class="col-lg-6">
-            <div class="mb-5 d-flex blog-entry" data-aos="fade-right" data-aos-delay="">
-               <a href="#" class="blog-thumbnail"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_air_small.jpg" alt="Image" class="img-fluid"></a>
-               <div class="blog-excerpt">
-                  <span class="d-block text-muted">Apr 19, 2019</span>
-                  <h2 class="h4  mb-3"><a href="single.html">Knowing the Difference Is Key to Effective Logistics</a></h2>
-                  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts</p>
-                  <p><a href="single.html" class="text-primary">Read More</a></p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-</div>
-<div class="site-section bg-light" id="contact-section">
-   <div class="container">
-      <div class="row">
-         <div class="col-12 text-center mb-5" data-aos="fade-up" data-aos-delay="">
-            <div class="block-heading-1">
-               <span>Get In Touch</span>
-               <h2>Contact Us</h2>
-            </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
-            <form action="#" method="post">
-               <div class="form-group row">
-                  <div class="col-md-6 mb-4 mb-lg-0">
-                     <input type="text" class="form-control" placeholder="First name">
-                  </div>
-                  <div class="col-md-6">
-                     <input type="text" class="form-control" placeholder="First name">
-                  </div>
-               </div>
-               <div class="form-group row">
-                  <div class="col-md-12">
-                     <input type="text" class="form-control" placeholder="Email address">
-                  </div>
-               </div>
-               <div class="form-group row">
-                  <div class="col-md-12">
-                     <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
-                  </div>
-               </div>
-               <div class="form-group row">
-                  <div class="col-md-6 mr-auto">
-                     <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Send Message">
-                  </div>
-               </div>
-            </form>
-         </div>
-         <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
-            <div class="bg-white p-3 p-md-5">
-               <h3 class="text-black mb-4">Contact Info</h3>
-               <ul class="list-unstyled footer-link">
-                  <li class="d-block mb-3">
-                     <span class="d-block text-black">Address:</span>
-                     <span>34 Street Name, City Name Here, United States</span>
-                  </li>
-                  <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+1 242 4942 290</span></li>
-                  <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>info@yourdomain.com</span></li>
-               </ul>
             </div>
          </div>
       </div>
