@@ -54,8 +54,8 @@ class OrdersModel extends CI_Model {
         $id_order = $this->input->post('id_order', true);
 
         $data = [
-            "id_rider" => $this->input->post('id_rider',true),
-            "verifikasi_driver" => "sudah"
+            "id_rider" => $this->input->post('id_rider',true)
+            // "verifikasi_driver" => "sudah"
         ];
         try{
             $this->db->where('id_order', $id_order);
