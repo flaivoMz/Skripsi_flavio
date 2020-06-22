@@ -11,34 +11,20 @@
 						<h2 class="footer-heading mb-4">Features</h2>
 						<ul class="list-unstyled">
 						<li><a href="#">About Us</a></li>
-						<li><a href="#">Testimonials</a></li>
+						<!-- <li><a href="#">Testimonials</a></li>
 						<li><a href="#">Terms of Service</a></li>
-						<li><a href="#">Privacy</a></li>
-						<li><a href="#">Contact Us</a></li>
+						<li><a href="#">Privacy</a></li> -->
+						<!-- <li><a href="#">Contact Us</a></li> -->
 						</ul>
 					</div>
 
 					</div>
 				</div>
 				<div class="col-md-4 ml-auto">
-
-					<div class="mb-5">
-					<h2 class="footer-heading mb-4">Subscribe to Newsletter</h2>
-					<form action="#" method="post" class="footer-suscribe-form">
-						<div class="input-group mb-3">
-						<input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2">
-						<div class="input-group-append">
-							<button class="btn btn-primary text-white" type="button" id="button-addon2">Subscribe</button>
-						</div>
-						</div>
-					</div>
-
-
 					<h2 class="footer-heading mb-4">Follow Us</h2>
-					<a href="#about-section" class="smoothscroll pl-0 pr-3"><span class="icon-facebook"></span></a>
-					<a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-					<a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-					<a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+					<a href="https://www.facebook.com/anteranterjogja" class="smoothscroll pl-0 pr-3" target="_blank"><span class="icon-facebook"></span></a>
+					<a href="https://www.instagram.com/anteranterjogja/" class="pl-3 pr-3" target="_blank"><span class="icon-instagram"></span></a>
+					<a href="https://wa.me/6281325300489" class="pl-3 pr-3" target="_blank"><span class="fab fa-whatsapp"></span></a>
 					</form>
 				</div>
 				</div>
@@ -70,6 +56,7 @@
     <script src="<?php echo base_url()?>assets/frontend/depan/js/jquery.easing.1.3.js"></script>
     <script src="<?php echo base_url()?>assets/frontend/depan/js/aos.js"></script>
 	<script src="<?php echo base_url()?>assets/frontend/depan/js/main.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<?php $module = $this->_module = $this->router->fetch_module();?>
 	<?php $method = $this->router->fetch_method();?>
@@ -82,6 +69,20 @@
 	<?php endif;?>
 	<script>
 		<?php if($module == "home"):?>
+			<?php if(isset($_SESSION['msg'])&& $_SESSION['msg']=="login_dulu"):?>
+				Swal.fire({
+					text: "Harap Login Terlebih Dahulu",
+					icon: 'error',
+					showCancelButton: false,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'OK'
+					}).then((result) => {
+					if (result.value) {
+						<?php unset($_SESSION['msg'])?>
+					}
+				});
+			<?php endif;?>
 			<?php if(isset($_SESSION['msg'])&& $_SESSION['msg']=="berhasil_login"):?>
 				Swal.fire({
 					text: "Berhasil Login",
@@ -98,25 +99,28 @@
 			<?php endif;?>
 		<?php endif; ?>
 		<?php if($module == "order"):?>
+			var map;
+			var marker
+			var geocoder = new google.maps.Geocoder();
+			var koordinatNow;
+			var koordinat = new google.maps.LatLng(-7.782946999999998,110.367038);
+			var geocoder = new google.maps.Geocoder();
+			var infowindow = new google.maps.InfoWindow();
+			var latitudeNow;
+			var longtitudeNow;
 			function convertToRupiah(angka){
 				var rupiah = '';        
 				var angkarev = angka.toString().split('').reverse().join('');
 				for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
 				return rupiah.split('',rupiah.length-1).reverse().join('');
 			}
+			$('.uang').mask('000.000.000', {reverse:true});
 			function gotoAsal(){
 				window.location.href = "<?php echo base_url('order/show_alamat_asal');?>"
 			}
 			function gotoPenerima(){
 				window.location.href = "<?php echo base_url('order/show_alamat_penerima');?>"
 			}
-			var map;
-			var marker
-			var geocoder = new google.maps.Geocoder();
-			var koordinat = new google.maps.LatLng(-7.782946999999998,110.367038);
-			var geocoder = new google.maps.Geocoder();
-			var infowindow = new google.maps.InfoWindow();
-        
 			function taruhMarker(peta, posisiTitik){
 				
 				if( marker ){
@@ -158,7 +162,6 @@
 					geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
 						if (status == google.maps.GeocoderStatus.OK) {
 							if (results[0]) {
-								// console.log(results[0].address_components[5]['long_name']);
 								$('#kabupaten').val(results[0].address_components[5]['long_name']);
 								$('#streetAddress').text(results[0].address_components[1]['long_name']);
 								$('#detailAlamat').text(results[0].formatted_address);
@@ -186,6 +189,7 @@
 					} 
 				})
 				}
+
 				marker = new google.maps.Marker({
 				position: koordinat,
 				map: peta,
@@ -193,12 +197,11 @@
 				draggable:true
 				});
 
-
 				google.maps.event.addListener(marker, 'dragend', function() {
 					geocoder.geocode({'latLng': marker.getPosition()}, function(results, status) {
 						if (status == google.maps.GeocoderStatus.OK) {
 							if (results[0]) {
-								// console.log(results);
+						
 								$('#kabupaten').val(results[0].address_components[5]['long_name']);
 								$('#streetAddress').text(results[0].address_components[1]['long_name']);
 								$('#detailAlamat').text(results[0].formatted_address);
@@ -319,6 +322,20 @@
 					});
 				} 
 			}); 
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.watchPosition(showPosition);
+				} else { 
+					x.innerHTML = "Geolocation is not supported by this browser.";
+				}
+			}
+
+			function showPosition(position) {
+				latitudeNow = position.coords.latitude; 
+				longtitudeNow = position.coords.longitude;
+				koordinatNow = new google.maps.LatLng(latitudeNow+","+longtitudeNow);
+			
+			}
 			<?php if($method=="show_alamat_asal" || $method == "show_alamat_penerima"):?>
 				google.maps.event.addDomListener(window, 'load', initialize);
 			<?php endif;?>
@@ -327,14 +344,14 @@
 				$("#modalBarang").modal('show');
 			}
 			function editTmp(id){
-				// console.log(id);
+				
 				$.ajax({
 					url 	: "<?php echo base_url('order/show_order_detail_customer_tmp');?>",
 					method 	: "POST",
 					data 	: { id : id},
 					success : function(res){
 						var hasil = $.parseJSON(res);
-						console.log(hasil);
+					
 						var vAsli = hasil.volume_barang;
 						var vSplit = vAsli.split("x");
 						var p = vSplit[0];
@@ -373,7 +390,7 @@
 				});
 			}
 			function hapusTmp(id){
-				// console.log(id);
+			
 				Swal.fire({
 					text: "Apakah anda yakin akan menghapus barang ini?",
 					icon: 'warning',
@@ -398,6 +415,116 @@
 			<?php if($method=="show_riwayat_order"):?>
 				function goToDetailRiwayatOrder(id){
 					window.location.href = "<?php echo base_url();?>order/detail_riwayat/"+id
+				}
+			<?php endif;?>
+			<?php if($method=="order_driver_masuk"):?>
+				function cekOrderan(id){
+					$.ajax({
+						url 	: "<?php echo base_url('order/detail_order_driver');?>",
+						method 	: "POST",
+						data 	: {id : id},
+						success : function(res){
+							var hasil = $.parseJSON(res);
+							var vAsli = hasil.list_barang[0]['volume_barang'];
+							var vSplit = vAsli.split("x");
+							var p = vSplit[0];
+							var l = vSplit[1];
+							var t = vSplit[2];
+							$("#panjang").val(p);
+							$("#lebar").val(l);
+							$("#tinggi").val(t);
+							$("#catatan").val( hasil.list_barang[0]['catatan']);
+							$("#id_order_db").val(id);
+							var sbAsli 	= hasil.list_barang[0]['status_berat'];
+							if(sbAsli == "overweight,oversize,normal"){
+								$("#overweight").attr("checked", "checked");
+								$("#oversize").attr("checked", "checked");
+								$("#normal").attr("checked", "checked");
+							}else if(sbAsli == "overweight,oversize" ){
+								$("#overweight").attr("checked", "checked");
+								$("#oversize").attr("checked", "checked");
+								$("#normal").removeAttr("checked", "checked");
+							}else if(sbAsli == "overweight"){
+								$("#overweight").attr("checked", "checked");
+								$("#oversize").removeAttr("checked", "checked");
+								$("#normal").removeAttr("checked", "checked");
+							}else if(sbAsli == "oversize"){
+								$("#overweight").removeAttr("checked", "checked");
+								$("#oversize").attr("checked", "checked");
+								$("#normal").removeAttr("checked", "checked");
+							}else if(sbAsli == "normal"){
+								$("#overweight").removeAttr("checked", "checked");
+								$("#oversize").removeAttr("checked", "checked");
+								$("#normal").attr("checked", "checked");
+							}
+							if(hasil.detail['jenis_pembayaran'] == "cash"){
+								$("#blockUangDiterima").addClass("d-block");
+							}
+							$("#idCustomer").val(hasil.detail['id_customer']);
+							$("#levelCustomer").val(hasil.level['level']);
+							$("#totalSebelumnya").val(hasil.detail['subtotal']);
+							$("#ongkir").val(hasil.detail['ongkir']);
+							$("#namaPengirim").text(hasil.detail['nama_pengirim']);
+							$("#noHpPengirim").text(hasil.detail['no_telpn_pengirim']);
+							$("#alamatPengirim").text(hasil.detail['alamat_asal']);
+							$("#namaPenerima").text(hasil.detail['nama_penerima']);
+							$("#noHpPenerima").text(hasil.detail['no_telpn_penerima']);
+							$("#alamatPenerima").text(hasil.detail['alamat_tujuan']);
+							$("#modalCekOrder").modal("show");
+						}
+					});
+				}
+				function prosesOrderan(id){
+					$.ajax({
+						url 	: "<?php echo base_url('order/detail_order_driver')?>",
+						method	: "POST",
+						data	: {id : id},
+						success : function(res){
+							var hasil = $.parseJSON(res);
+							if(hasil.detail['verifikasi_driver'] == "sudah"){
+								if(hasil.detail['status_order'] == "proses"){
+									Swal.fire({
+										icon: 'warning',
+										text: 'Harap selesaikan orderan terlebih dahulu!',
+									});
+								}else{
+									if(hasil.detail['jenis_pembayaran'] == "cash"){
+										$("#uangDiterima").addClass("d-block");
+									}else{
+										$("#uangDiterima").removeClass("d-block");
+									}
+									$("#idOrderanProses").val(hasil.detail['id_order']);
+									$("#modalProsesOrder").modal("show");
+								}
+							}else{
+								Swal.fire({
+									icon: 'warning',
+									text: 'Harap cek orderan terlebih dahulu sebelum melakukan proses!',
+								})
+							}
+							
+						}
+					});
+				}
+				function prosesOrderanSelesai(id){
+					$.ajax({
+						url 	: "<?php echo base_url('order/detail_order_driver')?>",
+						method	: "POST",
+						data	: {id : id},
+						success : function(res){
+							var hasil = $.parseJSON(res);
+							console.log(hasil);
+							if(hasil.detail['status_order'] == "proses"){
+								$("#idOrderSelesai").val(hasil.detail['id_order']);
+								$("#modalSelesaiOrder").modal("show");
+							}else{
+								Swal.fire({
+									icon: 'warning',
+									text: 'Harap selesaikan orderan terlebih dahulu!',
+								})
+							}
+						}
+					});
 				}
 			<?php endif;?>
 		<?php endif;?>

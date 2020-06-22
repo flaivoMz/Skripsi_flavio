@@ -64,18 +64,20 @@
                         <div class="col-6">
                             <span class="float-right"><?php echo $detail['tanggal_order']; ?></span>
                         </div>
+                        <?php if($detail['id_rider']!=""):?>
                         <div class="col-6">
                             <span class="float-left">Nama Driver</span>
                         </div>
                         <div class="col-6">
-                            <span class="float-right"></span>
+                            <span class="float-right"><?php echo $detail['nama_rider'];?></span>
                         </div>
                         <div class="col-6">
                             <span class="float-left">Plat Nomor Driver</span>
                         </div>
                         <div class="col-6">
-                            <span class="float-right"></span>
+                            <span class="float-right"><?php echo $detail['plat_nomor'];?></span>
                         </div>
+                        <?php endif;?>
                         <div class="col-6">
                             <span class="float-left">Status Order</span>
                         </div>
@@ -92,10 +94,10 @@
                         </div>
                     </div>
                     <hr>
-                    <h5>List Barang</h5>
+                    <h5>Barang</h5>
                     <div class="row">
                         <?php foreach($list_barang as $list):?>
-                        <div class="col-md-6 col-12 border rounded mx-0 mb-2 py-2 row">
+                        <div class="col-12 border rounded mx-0 mb-2 py-2 row">
                             <div class="col-6"><span>Volume barang</span></div>
                             <div class="col-6"><span class="float-right"><?php echo $list['volume_barang'];?></span></div>
                             <div class="col-6"><span>Berat barang</span></div>

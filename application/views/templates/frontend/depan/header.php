@@ -21,6 +21,8 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
 		<!-- MAIN CSS -->
 		<link rel="stylesheet" href="<?php echo base_url()?>assets/frontend/depan/css/style.css">
+		<!-- MY CSS -->
+		<link rel="stylesheet" href="<?php echo base_url()?>assets/frontend/depan/css/anteranter.css">
 
 	</head>
 
