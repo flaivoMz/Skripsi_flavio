@@ -39,16 +39,15 @@
             <div class="col-12">
             <nav class="site-navigation text-right ml-auto " role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                    <li><a href="<?php echo base_url();?>" class="nav-link">Home</a></li>
-                    <?php if($this->session->userdata('nama') != ""): ?>
+                    <?php if($this->session->userdata('nama_rider') != ""): ?>
                         <li class="has-children">
-                            <a class="nav-link">Order</a>
+                            <a class="nav-link">Orderan</a>
                             <ul class="dropdown arrow-top">
-                                <li><a href="<?php echo base_url('order');?>" class="nav-link">Pesan</a></li>
-                                <li><a href="<?php echo base_url('order/show_riwayat_order');?>" class="nav-link">Riwayat Order</a></li>
+                                <li><a href="<?php echo base_url('order/order_driver_masuk');?>" class="nav-link">Masuk</a></li>
+                                <li><a href="<?php echo base_url('order/order_driver_selesai');?>" class="nav-link">Selesai</a></li>
                             </ul>
                         </li>
-                        <li><a href="<?php echo base_url('akun')?>" class="nav-link">Akun</a></li>
+                        <li><a href="<?php echo base_url('akun/akun_driver')?>" class="nav-link">Akun</a></li>
                     <?php endif;?>
                     <?php if($this->session->userdata('level') == ""): ?>
                         <li><a href="<?php echo base_url('home/show_login')?>" class="nav-link">Login</a></li>

@@ -7,19 +7,34 @@ class Akun extends MX_Controller
     {
         parent::__construct();
         $this->load->model('AkunModel', 'mod');
+        if(($this->session->userdata('id_customer')=="")||($this->session->userdata('id_rider')=="")){
+            $_SESSION['msg'] = "login_dulu";
+            redirect('/');
+        }
     }
     
     public function index()
     {
-
-        // $data['title'] = 'Home';
-        // $data['kategori_pekerjaan'] = $this->home->getAllKategoriPekerjaan();
-        // $data['perusahaan'] = $this->home->getAllPerusahaan();
-        // $data['jobOpening'] = $this->home->getAllJobOpening();
-        $this->load->view('templates/frontend/header');
-        $this->load->view('templates/frontend/navbar');
+        $data['title']  = 'Akun';
+        $id_customer    = $this->session->userdata('id_customer');
+        $data['akun']   = $this->mod->m_show_details_account($id_customer);
+        // print('<pre>');print_r($data);exit();
+        $this->load->view('templates/frontend/depan/header', $data);
+        $this->load->view('templates/frontend/depan/menu');
         $this->load->view('index');
-        $this->load->view('templates/frontend/footer');
+        $this->load->view('templates/frontend/depan/footer');
+    }
+
+    public function akun_driver()
+    {
+        $id_driver      =  $this->session->userdata('id_rider');
+        $data['title']  = "Akun Driver";
+        $data['akun'] = $this->mod->m_show_details_account_driver($id_driver);
+        // print('<pre>');print_r($data);exit();
+        $this->load->view('templates/frontend/depan/header', $data);
+        $this->load->view('templates/frontend/depan/menu_driver');
+        $this->load->view('akun_driver');
+        $this->load->view('templates/frontend/depan/footer');
     }
 
 

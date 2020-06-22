@@ -56,12 +56,23 @@ class Home extends MX_Controller
         redirect('home/show_login');
     }
 
+    public function driver()
+    {
+        $data['title'] = "Driver";
+        
+        $this->load->view('templates/frontend/depan/header',$data);
+        $this->load->view('templates/frontend/depan/menu_driver');
+        $this->load->view('driver');
+        $this->load->view('templates/frontend/depan/footer');
+    }
+
     /*--------- Auth ----------*/
     public function login()
     {
         $no_telpn = $this->input->post('no_telpn');
         $password = $this->input->post('password');
         $user = $this->db->get_where('customer', ['no_telpn' => $no_telpn])->row_array();
+        // print('<pre>');print_r($user);
         if($user) {
             if(password_verify($password, $user['password'])) {
                 //echo "sini";
@@ -75,20 +86,42 @@ class Home extends MX_Controller
                 ];
                 $this->session->set_userdata($data);
                 $_SESSION['msg'] = 'berhasil_login';
-                redirect('home');
+                redirect('/');
             } else {
+                
                 $_SESSION['msg'] = 'gagal_salah';
                 redirect('home/show_login');
             }
         }else{
-            $_SESSION['msg'] = 'gagal_kosong';
-            redirect('home/show_login');
+            
+            $driver = $this->db->get_where('rider',['no_telpn' => $no_telpn])->row_array();
+            print('<pre>');print_r($driver);
+            if($driver){
+                if(password_verify($password, $driver['password'])) {
+                    echo "sini";
+                    $data = [
+                        'id_rider'      => $driver['id_rider'],
+                        'nama_rider'    => $driver['nama_rider'],
+                        'no_telpn'      => $driver['no_telpn'],
+                        'level'         => 'driver'
+                    ];
+                    $this->session->set_userdata($data);
+                    $_SESSION['msg'] = 'berhasil_login';
+                    redirect('home/driver');
+                }else{
+                    $_SESSION['msg'] = 'gagal_salah';
+                    redirect('home/show_login');
+                }
+            }else{
+                $_SESSION['msg'] = 'gagal_kosong';
+                redirect('home/show_login');
+            }
         }
     }
 
     public function logout()
 	{
 		session_destroy();
-		redirect('home');
+		redirect('/');
 	}
 }
