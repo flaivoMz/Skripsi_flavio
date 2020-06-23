@@ -41,13 +41,8 @@
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                     <li><a href="<?php echo base_url();?>" class="nav-link">Home</a></li>
                     <?php if($this->session->userdata('nama') != ""): ?>
-                        <li class="has-children">
-                            <a class="nav-link">Order</a>
-                            <ul class="dropdown arrow-top">
-                                <li><a href="<?php echo base_url('order');?>" class="nav-link">Pesan</a></li>
-                                <li><a href="<?php echo base_url('order/show_riwayat_order');?>" class="nav-link">Riwayat Order</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="<?php echo base_url('order');?>" class="nav-link">Order</a></li>
+                        <li><a href="<?php echo base_url('order/show_riwayat_order');?>" class="nav-link">Riwayat Order</a></li>
                         <li><a href="<?php echo base_url('akun')?>" class="nav-link">Akun</a></li>
                     <?php endif;?>
                     <?php if($this->session->userdata('level') == ""): ?>

@@ -19,7 +19,7 @@
             <?php if(count($order) > 0):?>
                 <?php foreach($order as $orders):?>
                 <div class="row my-3 my-lg-5" style="cursor:pointer;">
-                    <div class="col-2 d-none d-md-block">
+                    <div class="col-md-2 d-none d-md-block">
                         <?php if($orders['status_order'] == "order"):?>
                             <img src="<?php echo base_url();?>assets/frontend/img/box_order.png" alt="box_order" class="img-fluid">
                         <?php elseif($orders['status_order'] == "proses"):?>
@@ -28,7 +28,7 @@
                             <img src="<?php echo base_url();?>assets/frontend/img/box_selesai.png" alt="box_selesai" class="img-fluid">
                         <?php endif;?>
                     </div>
-                    <div class="col-10">
+                    <div class="col-12 col-md-10">
                         <h5><?php echo $orders['id_order']; ?></h5>
                         <div class="row">
                             <div class="col-6">
@@ -192,10 +192,10 @@
                 <label for="gambarAmbil">Gambar Barang Pengambilan</label>
                 <input type="file" class="form-control" id="gambarAmbil"  name="foto_ambil" required="">
             </div>
-            <div class="form-group d-none" id="uangDiterima">
+            <!-- <div class="form-group d-none" id="uangDiterima">
                 <label for="uang_diterima">Uang Di Terima</label>
                 <input type="text" class="form-control uang" id="uang_diterima" name="uang_diterima" placeholder="Uang diterima" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-            </div>
+            </div> -->
         </div>
         <div class="modal-footer">
             <input type="hidden" name="id_orderan" id="idOrderanProses">

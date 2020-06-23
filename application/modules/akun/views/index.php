@@ -61,7 +61,31 @@
                         </div>
                     <?php endif;?>
                 </div>
-                
+                <?php if($akun['referal_code'] != null): ?>
+                    <h5 class="pt-3">Pengguna Referal Code</h5>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                $i = 1;
+                                foreach($pengguna_referal as $val):
+                            ?>
+                            <tr>
+                                <th scope="row"><?php echo $i;?></th>
+                                <td><?php echo $val['nama_pengirim'];?></td>
+                            </tr>
+                            <?php 
+                                $i++;
+                                endforeach;
+                            ?>
+                        </tbody>
+                    </table>
+                <?php endif;?>
             </div>
         </div>
     </div>

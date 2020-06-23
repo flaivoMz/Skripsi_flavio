@@ -12,10 +12,10 @@
     </div>
 </div>
 
-<div class="site-section">
+<div class="site-section pb-0">
     <div class="container">
         <div class="col-12 blog-content">
-            <div class="card">
+            <div class="card mb-5">
                 <div class="card-header">
                     ID ORDER : <?php echo $detail['id_order']; ?>
                     <span class="float-right font-weight-bold">Rp&nbsp;<?php echo number_format($detail['total'] + $charge['charge'],0,'.','.'); ?></span>
@@ -78,6 +78,14 @@
                             <span class="float-right"><?php echo $detail['plat_nomor'];?></span>
                         </div>
                         <?php endif;?>
+                        <?php if($detail['referal_code']!=""):?>
+                            <div class="col-6">
+                                <span class="float-left">Referal Code</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="badge badge-dark float-right p-2"><?php echo $detail['referal_code'];?></span>
+                            </div>
+                        <?php endif;?>
                         <div class="col-6">
                             <span class="float-left">Status Order</span>
                         </div>
@@ -97,7 +105,7 @@
                     <h5>Barang</h5>
                     <div class="row">
                         <?php foreach($list_barang as $list):?>
-                        <div class="col-12 border rounded mx-0 mb-2 py-2 row">
+                        <div class="col-12 mb-1 py-2 row">
                             <div class="col-6"><span>Volume barang</span></div>
                             <div class="col-6"><span class="float-right"><?php echo $list['volume_barang'];?></span></div>
                             <div class="col-6"><span>Berat barang</span></div>
@@ -108,11 +116,27 @@
                             <div class="col-12"><p><?php echo $list['catatan'];?></p></div>
                             <div class="col-6"><span>Charge</span></div>
                             <div class="col-6"><span class="float-right"><?php echo number_format($list['charge'],0,'.','.');?></span></div>
-                            <div class="col-6"><span>Total</span></div>
+                            <div class="col-6"><span>Sub total</span></div>
                             <div class="col-6"><span class="float-right"><?php echo number_format($list['total'],0,'.','.');?></span></div>
                         </div>
                         <?php endforeach;?>
-                    </>
+                        <div class="col-12 row">
+                            <div class="col-6">
+                                <span>Ongkir</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="float-right"><?php echo number_format($detail['ongkir'],0,'.','.');?></span>
+                            </div>
+                            <?php if($detail['diskon'] != 0 || $detail['diskon'] != ""):?>
+                                <div class="col-6">
+                                    <span>Diskon</span>
+                                </div>
+                                <div class="col-6">
+                                    <span class="float-right"><?php echo number_format($detail['diskon'],2,'.','.');?></span>
+                                </div>
+                            <?php endif;?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

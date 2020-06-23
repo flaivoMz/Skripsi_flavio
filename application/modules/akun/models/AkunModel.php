@@ -12,6 +12,17 @@ class AkunModel extends CI_Model {
         return $data;
     }
 
+    public function m_show_use_referal($referal)
+    {
+        $this->db->select("b.nama_pengirim")
+            ->from('customer AS a')
+            ->join('order_customer AS b','a.referal_code=b.referal_code')
+            ->where("a.referal_code", $referal);
+        $query = $this->db->get_compiled_select();
+        $data  = $this->db->query($query)->result_array();
+        return $data;
+    }
+
     public function m_show_details_account_driver($id_driver)
     {
         $this->db->select()
