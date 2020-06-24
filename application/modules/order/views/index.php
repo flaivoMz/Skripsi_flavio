@@ -48,7 +48,7 @@
 <div class="site-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 blog-content">
+            <div class="col-md-6 blog-content mt-3 mt-md-0 order-last order-md-first">
                 <?php echo form_open('order/save_to_order');?>
                 <div class="card">
                     <div class="card-header">
@@ -137,7 +137,7 @@
                             </div>
                         </div>
                         <hr class="style-two">
-                        <span class="text-danger font-weight-bold">*Sebelum di verifikasi oleh driver harga bisa berubah</span>
+                        <span class="text-danger font-weight-bold">*Sebelum di verifikasi oleh driver harga bisa berubah</span><br>
                         <span class="font-weight-bold" data-toggle="modal" data-target="#modalPersyaratan" style="cursor:pointer">*Selengkapnya tentang persyaratan pengiriman</span>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="sudah" id="verifikasi_customer" name="verifikasi_customer" required="">
@@ -150,7 +150,7 @@
                 </div>
                 <?php echo form_close();?>
             </div>
-            <div class="col-md-6 sidebar mt-md-0 mt-3">
+            <div class="col-md-6 sidebar  order-first order-md-last">
                 <div class="card">
                     <div class="card-header">
                         List Barang

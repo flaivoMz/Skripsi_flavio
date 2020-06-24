@@ -7,10 +7,6 @@ class Akun extends MX_Controller
     {
         parent::__construct();
         $this->load->model('AkunModel', 'mod');
-        if(($this->session->userdata('id_customer')=="")||($this->session->userdata('id_rider')=="")){
-            $_SESSION['msg'] = "login_dulu";
-            redirect('/');
-        }
     }
     
     public function index()
@@ -18,6 +14,10 @@ class Akun extends MX_Controller
         $data['title']  = 'Akun';
         $id_customer    = $this->session->userdata('id_customer');
         $data['akun']   = $this->mod->m_show_details_account($id_customer);
+        if($data['akun']['referal_code']!=""){
+            $referal = $data['akun']['referal_code'];
+            $data['pengguna_referal'] = $this->mod->m_show_use_referal($referal);
+        }
         // print('<pre>');print_r($data);exit();
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu');
