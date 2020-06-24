@@ -86,9 +86,10 @@ CREATE TABLE `ganti_driver` (
   `id_orderan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `koordinat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jarak_tempuh` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jarak_tempuh_driver_lama` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jarak_tempuh_driver_baru` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_driver_lama` bigint(20) NOT NULL,
-  `id_driver_baru` bigint(20) NOT NULL
+  `id_driver_baru` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -98,6 +99,7 @@ CREATE TABLE `ganti_driver` (
 
 LOCK TABLES `ganti_driver` WRITE;
 /*!40000 ALTER TABLE `ganti_driver` DISABLE KEYS */;
+INSERT INTO `ganti_driver` VALUES ('CC20060000004','Jl. Rama Gg. Anoman No.858, Tlogowungu, Muncar, Gemawang, Kabupaten Temanggung, Jawa Tengah 56281, Indonesia','-7.150975,110.14025939999999','87.3 km','88.5 km',1,2);
 /*!40000 ALTER TABLE `ganti_driver` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,7 +115,7 @@ CREATE TABLE `iklan` (
   `gambar_iklan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` enum('aktif','tidak') COLLATE utf8mb4_unicode_ci DEFAULT 'tidak',
   PRIMARY KEY (`id_iklan`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,6 +124,7 @@ CREATE TABLE `iklan` (
 
 LOCK TABLES `iklan` WRITE;
 /*!40000 ALTER TABLE `iklan` DISABLE KEYS */;
+INSERT INTO `iklan` VALUES (1,'1.jpeg','aktif'),(2,'2.jpg','aktif'),(3,'3.jpeg','aktif'),(4,'4.jpg','aktif');
 /*!40000 ALTER TABLE `iklan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +171,7 @@ CREATE TABLE `order_customer` (
 
 LOCK TABLES `order_customer` WRITE;
 /*!40000 ALTER TABLE `order_customer` DISABLE KEYS */;
-INSERT INTO `order_customer` VALUES ('CC20060000001',3,1,'endrakocak','tono','082333444555','08911','cash','-7.792744099999999,110.408355','-7.782893849976345,110.36705409325408','Jl. Janti No.143, Jaranan, Karang Jambe, Kec. Banguntapan, Bantul, Daerah Istimewa Yogyakarta 55918, Indonesia','Jl. Margomulyo No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Bantul','Daerah Istimewa Yogyakarta','','selesai','2020-06-18 17:44:59','belum',NULL,'sudah',13000,70800,83800,'sudah',NULL),('CC20060000002',3,2,'endrakocak','mawar','087888999','089','cash','-7.804125199999999,110.3980215','-7.758782030746977,110.39930938954924','Jl. Kebun Raya No.2, Rejowinangun, Kec. Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171, Indonesia','Jl. Ring Road Utara Jl. Kaliwaru No.73, Kaliwaru, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Daerah Istimewa Yogyakarta','Kecamatan Depok','8.1 km','selesai','2020-06-19 16:56:57','belum',NULL,'sudah',17000,13300,30300,'sudah',NULL),('CC20060000003',3,1,'endrakocak','mawar','086122432111','089','transfer','-7.78334561882169,110.37455320358276','-7.784004677928404,110.35738706588745','Jl. A.M. Sangaji No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Jl. A.M. Sangaji No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','2.0 km','selesai','2020-06-21 20:09:33','belum',NULL,'sudah',10000,60750,70750,'sudah',NULL),('CC20060000004',3,1,'endrakocak','koh afuk','888','999','transfer','-7.783033705818436,110.41256606815338','-7.782511719698654,110.36147135700836','Jl. Laksda Adisucipto No.204-205, Ngentak, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Jl. Pangeran Diponegoro No.106, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Kabupaten Sleman','Daerah Istimewa Yogyakarta','6.6 km','order','2020-06-21 20:38:11','belum',NULL,'sudah',15000,4500,19500,'sudah',NULL),('CC20060000005',4,NULL,'hyung','dj desa','081454672111','087333444555','cash','-7.756713899999999,110.3958566','-7.786049299999999,110.3783757','Condong Catur Bus Terminal, Jl. Anggajaya 1, Gejayan, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55283, Indonesia','Jl. Dr. Wahidin Sudirohusodo No.5-25, Kotabaru, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55224, Indonesia','Kabupaten Sleman','Daerah Istimewa Yogyakarta','4.5 km','order','2020-06-22 16:09:23','belum','03ABCD','belum',11000,10700,21700,'sudah',0.05),('CC20060000006',3,NULL,'endrakocak','dj desa','082333444555','087333444555','cash','-7.7840131,110.3573881','-7.759725899999999,110.4088805','Jl. Tentara Rakyat Mataram No.58, Bumijo, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55231, Indonesia','Jl. Ring Road Utara, Ngringin, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','9.8 km','order','2020-06-22 16:41:47','belum','03ABCD','belum',21000,10700,31700,'sudah',0.05),('CC20060000007',4,NULL,'hyung','bu aya','123456','08764512344','cash','-7.7826508,110.3614677','-7.804125199999999,110.3980215','Jl. Pangeran Diponegoro No.106, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Jl. Kebun Raya No.2, Rejowinangun, Kec. Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','6.4 km','order','2020-06-22 17:05:27','belum','03ABCD','belum',13000,6000,19000,'sudah',0.05);
+INSERT INTO `order_customer` VALUES ('CC20060000001',3,1,'endrakocak','tono','082333444555','08911','cash','-7.792744099999999,110.408355','-7.782893849976345,110.36705409325408','Jl. Janti No.143, Jaranan, Karang Jambe, Kec. Banguntapan, Bantul, Daerah Istimewa Yogyakarta 55918, Indonesia','Jl. Margomulyo No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Bantul','Daerah Istimewa Yogyakarta','','selesai','2020-06-18 17:44:59','belum',NULL,'sudah',13000,70800,83800,'sudah',NULL),('CC20060000002',3,2,'endrakocak','mawar','087888999','089','cash','-7.804125199999999,110.3980215','-7.758782030746977,110.39930938954924','Jl. Kebun Raya No.2, Rejowinangun, Kec. Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171, Indonesia','Jl. Ring Road Utara Jl. Kaliwaru No.73, Kaliwaru, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Daerah Istimewa Yogyakarta','Kecamatan Depok','8.1 km','selesai','2020-06-19 16:56:57','belum',NULL,'sudah',17000,13300,30300,'sudah',NULL),('CC20060000003',3,1,'endrakocak','mawar','086122432111','089','transfer','-7.78334561882169,110.37455320358276','-7.784004677928404,110.35738706588745','Jl. A.M. Sangaji No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Jl. A.M. Sangaji No.70, Gowongan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','2.0 km','selesai','2020-06-21 20:09:33','belum',NULL,'sudah',10000,60750,70750,'sudah',NULL),('CC20060000004',3,2,'endrakocak','koh afuk','888','999','transfer','-7.783033705818436,110.41256606815338','-7.782511719698654,110.36147135700836','Jl. Laksda Adisucipto No.204-205, Ngentak, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Jl. Pangeran Diponegoro No.106, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Kabupaten Sleman','Daerah Istimewa Yogyakarta','6.6 km','selesai','2020-06-21 20:38:11','belum',NULL,'sudah',15000,25300,40300,'sudah',NULL),('CC20060000005',4,NULL,'hyung','dj desa','081454672111','087333444555','cash','-7.756713899999999,110.3958566','-7.786049299999999,110.3783757','Condong Catur Bus Terminal, Jl. Anggajaya 1, Gejayan, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55283, Indonesia','Jl. Dr. Wahidin Sudirohusodo No.5-25, Kotabaru, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55224, Indonesia','Kabupaten Sleman','Daerah Istimewa Yogyakarta','4.5 km','order','2020-06-22 16:09:23','belum','03ABCD','belum',11000,10700,21700,'sudah',0.05),('CC20060000006',3,NULL,'endrakocak','dj desa','082333444555','087333444555','cash','-7.7840131,110.3573881','-7.759725899999999,110.4088805','Jl. Tentara Rakyat Mataram No.58, Bumijo, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55231, Indonesia','Jl. Ring Road Utara, Ngringin, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','9.8 km','order','2020-06-22 16:41:47','belum','03ABCD','belum',21000,10700,31700,'sudah',0.05),('CC20060000007',4,NULL,'hyung','bu aya','123456','08764512344','cash','-7.7826508,110.3614677','-7.804125199999999,110.3980215','Jl. Pangeran Diponegoro No.106, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia','Jl. Kebun Raya No.2, Rejowinangun, Kec. Kotagede, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55171, Indonesia','Daerah Istimewa Yogyakarta','Daerah Istimewa Yogyakarta','6.4 km','order','2020-06-22 17:05:27','belum','03ABCD','belum',13000,6000,19000,'sudah',0.05);
 /*!40000 ALTER TABLE `order_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +201,7 @@ CREATE TABLE `order_detail_customer` (
 
 LOCK TABLES `order_detail_customer` WRITE;
 /*!40000 ALTER TABLE `order_detail_customer` DISABLE KEYS */;
-INSERT INTO `order_detail_customer` VALUES (13,'CC20060000001',3,'50x50x50',20.80,'overweight,oversize','helm barang mudah pecah',70800,0),(15,'CC20060000002',3,'40x40x40',10.70,'overweight,oversize','',13300,0),(17,'CC20060000003',3,'90x90x90',121.50,'overweight','asdf',60750,0),(18,'CC20060000004',3,'30x30x30',4.50,'normal','asdf',4500,0),(22,'CC20060000005',4,'40x40x40',10.70,'normal','',10700,0),(23,'CC20060000006',3,'40x40x40',10.70,'normal','',10700,0),(24,'CC20060000007',4,'30x30x40',6.00,'normal','',6000,0);
+INSERT INTO `order_detail_customer` VALUES (13,'CC20060000001',3,'50x50x50',20.80,'overweight,oversize','helm barang mudah pecah',70800,0),(15,'CC20060000002',3,'40x40x40',10.70,'overweight,oversize','',13300,0),(17,'CC20060000003',3,'90x90x90',121.50,'overweight','asdf',60750,0),(18,'CC20060000004',3,'50x50x50',20.80,'overweight,oversize','asdf',25300,0),(22,'CC20060000005',4,'40x40x40',10.70,'normal','',10700,0),(23,'CC20060000006',3,'40x40x40',10.70,'normal','',10700,0),(24,'CC20060000007',4,'30x30x40',6.00,'normal','',6000,0);
 /*!40000 ALTER TABLE `order_detail_customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +258,7 @@ CREATE TABLE `order_driver` (
 
 LOCK TABLES `order_driver` WRITE;
 /*!40000 ALTER TABLE `order_driver` DISABLE KEYS */;
-INSERT INTO `order_driver` VALUES ('CC20060000001','pulung1592735645CC20060000001.png','pulung1592755440CC20060000001.png','50x50x50',20.80,'overweight,oversize',150000),('CC20060000003','pulung1592829153CC20060000003.png','profile.png','90x90x90',121.50,'overweight',0),('CC20060000002','simaikel1592838682CC20060000002.png','simaikel1592838706CC20060000002.png','40x40x40',10.70,'overweight,oversize',0);
+INSERT INTO `order_driver` VALUES ('CC20060000001','pulung1592735645CC20060000001.png','pulung1592755440CC20060000001.png','50x50x50',20.80,'overweight,oversize',150000),('CC20060000003','pulung1592829153CC20060000003.png','profile.png','90x90x90',121.50,'overweight',0),('CC20060000002','simaikel1592838682CC20060000002.png','simaikel1592838706CC20060000002.png','40x40x40',10.70,'overweight,oversize',0),('CC20060000004','pulung1592927229CC20060000004.png','simaikel1593009602CC20060000004.png','50x50x50',20.80,'overweight,oversize',0);
 /*!40000 ALTER TABLE `order_driver` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -355,4 +358,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-22 22:19:07
+-- Dump completed on 2020-06-24 22:02:11

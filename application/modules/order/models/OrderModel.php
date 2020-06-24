@@ -213,8 +213,9 @@ class OrderModel extends CI_Model {
     public function m_get_order_driver_masuk($id_rider)
     {
         $this->db->select()
-            ->from('order_customer')
-            ->where("id_rider", $id_rider)
+            ->from('order_customer AS a')
+            ->join('ganti_driver AS b','b.id_orderan=a.id_order')
+            ->where("a.id_rider", $id_rider)
             ->where("status_order != 'selesai'");
         $query = $this->db->get_compiled_select();
         $data  = $this->db->query($query)->result_array();
@@ -314,6 +315,44 @@ class OrderModel extends CI_Model {
         $query = $this->db->get_compiled_select();
         $data  = $this->db->query($query)->row_array();
         return $data;
+    }
+
+    public function m_save_ganti_driver($post)
+    {
+        $this->db->insert('ganti_driver', $post);
+        return true;
+    }
+
+    public function m_update_rider_order_customer($update)
+    {
+        $this->db->select()
+            ->from('order_customer')
+            ->where("id_order" , $update['id_order']);
+        $query = $this->db->set($update)->get_compiled_update();
+        // print('<pre>');print_r($query);exit();
+        $this->db->query($query);
+        return true;	
+    }
+
+    public function m_get_order_driver_ganti($id_rider)
+    {
+        $this->db->select()
+            ->from('ganti_driver')
+            ->where("id_driver_lama",$id_rider);
+        $query = $this->db->get_compiled_select();
+        $data  = $this->db->query($query)->result_array();
+        return $data;
+    }
+
+    public function m_update_jarak_tempuh_driver_baru($post)
+    {
+        $this->db->select()
+            ->from('ganti_driver')
+            ->where("id_orderan" , $post['id_orderan']);
+        $query = $this->db->set($post)->get_compiled_update();
+        // print('<pre>');print_r($query);exit();
+        $this->db->query($query);
+        return true;	
     }
 
 }

@@ -37,25 +37,26 @@
             <a href="<?php echo base_url()?>" class="text-black"><span class="text-primary">Anter#Anter</a>
             </div>
             <div class="col-12">
-            <nav class="site-navigation text-right ml-auto " role="navigation">
-                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                    <?php if($this->session->userdata('nama_rider') != ""): ?>
-                        <li class="has-children">
-                            <a class="nav-link">Orderan</a>
-                            <ul class="dropdown arrow-top">
-                                <li><a href="<?php echo base_url('order/order_driver_masuk');?>" class="nav-link">Masuk</a></li>
-                                <li><a href="<?php echo base_url('order/order_driver_selesai');?>" class="nav-link">Selesai</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="<?php echo base_url('akun/akun_driver')?>" class="nav-link">Akun</a></li>
-                    <?php endif;?>
-                    <?php if($this->session->userdata('level') == ""): ?>
-                        <li><a href="<?php echo base_url('home/show_login')?>" class="nav-link">Login</a></li>
-                    <?php else:?>
-                        <li><a href="<?php echo base_url('home/logout')?>" class="nav-link">Logout</a></li>
-                    <?php endif;?>
-                </ul>
-            </nav>
+                <nav class="site-navigation text-right ml-auto " role="navigation">
+                    <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                        <?php if($this->session->userdata('nama_rider') != ""): ?>
+                            <li class="has-children">
+                                <a class="nav-link">Orderan</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="<?php echo base_url('order/order_driver_masuk');?>" class="nav-link">Masuk</a></li>
+                                    <li><a href="<?php echo base_url('order/order_driver_selesai');?>" class="nav-link">Selesai</a></li>
+                                    <li><a href="<?php echo base_url('order/order_driver_ganti');?>" class="nav-link">Ganti Driver</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="<?php echo base_url('akun/akun_driver')?>" class="nav-link">Akun</a></li>
+                        <?php endif;?>
+                        <?php if($this->session->userdata('level') == ""): ?>
+                            <li><a href="<?php echo base_url('home/show_login')?>" class="nav-link">Login</a></li>
+                        <?php else:?>
+                            <li><a href="<?php echo base_url('home/logout')?>" class="nav-link">Logout</a></li>
+                        <?php endif;?>
+                    </ul>
+                </nav>
             </div>
             <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
         </div>

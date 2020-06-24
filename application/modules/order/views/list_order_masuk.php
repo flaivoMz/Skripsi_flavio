@@ -50,8 +50,16 @@
                             <span class="badge badge-success text-uppercase">Diterima</span>
                         <?php endif;?>
                         <button class="btn btn-success btn-sm float-right" type="button" onclick="prosesOrderanSelesai('<?php echo $orders['id_order'];?>')">Selesai</button>
-                        <button class="btn btn-primary btn-sm float-right mr-2" onclick="prosesOrderan('<?php echo $orders['id_order'];?>')">Proses</button>
-                        <button class="btn btn-dark btn-sm float-right mr-2" onclick="cekOrderan('<?php echo $orders['id_order'];?>')">Cek</button>
+                        <?php if($orders['id_rider'] == $orders['id_driver_baru']):?>
+                            <button class="btn btn-dark btn-sm float-right mr-2" onclick="prosesOrderanDariGanti('<?php echo $orders['id_order'];?>','<?php echo $orders['koordinat_tujuan'];?>','<?php echo $orders['koordinat'];?>')">Proses</button>
+                        <?php else:?>
+                            <button class="btn btn-primary btn-sm float-right mr-2" onclick="prosesOrderan('<?php echo $orders['id_order'];?>')">Proses</button>
+                        <?php endif;?>
+                        <?php if($orders['status_order']=="proses"):?>
+                            <button class="btn btn-danger btn-sm float-right mr-2" onclick="gantiDriver('<?php echo $orders['id_order'];?>', '<?php echo $orders['koordinat_tujuan']?>')">Ganti Driver</button>
+                        <?php else:?>
+                            <button class="btn btn-dark btn-sm float-right mr-2" onclick="cekOrderan('<?php echo $orders['id_order'];?>')">Cek</button>
+                        <?php endif;?>
                     </div>
                 </div>
                 <?php endforeach;?>
@@ -61,7 +69,7 @@
         </div>
     </div>
 </div>
-<!-- Modal Tambah Barang -->
+<!-- Modal Cek Barang -->
 <div class="modal fade" id="modalCekOrder" tabindex="-1" role="dialog" >
     <div class="modal-dialog">
         <div class="modal-content">
@@ -230,3 +238,4 @@
         </div>
     </div>
 </div>
+
