@@ -46,9 +46,12 @@
                     Aksi
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a data-toggle="modal" data-target="#detailCustomer" class="dropdown-item detail-customer" href="#" data-customer="<?= ucwords($row->nama); ?>" data-kodereferal="<?= $row->referal_code; ?>" data-bergabung="<?= tanggal_indo($row->tanggal_bergabung); ?>" data-level="<?= ucwords($row->level); ?>" data-status="<?= ucwords($row->status); ?>">Detail</a>
+                    <a data-toggle="modal" data-target="#detailCustomer" class="dropdown-item detail-customer" href="#" data-customer="<?= ucwords($row->nama); ?>" data-kodereferal="<?= $row->referal_code; ?>" data-bergabung="<?= tanggal_indo($row->tanggal_bergabung); ?>" data-level="<?= ucwords($row->level); ?>" data-status="<?= ucwords($row->status); ?>" data-diskon="<?= $row->diskon; ?>">Detail</a>
                     <?php if($row->level == "customer"){ ?>
                     <a class="dropdown-item button-konfirmasi text-success" data-konfirmasi="Pelanggan ini akan menjadi member" href="<?= base_url('admin/customers/verifikasi_member/').$row->id_customer ?>">Verifikasi Member</a>
+                    <?php } ?>
+                    <?php if($row->level == "member"){ ?>
+                    <a data-toggle="modal" data-target="#formSettingDiskon" class="dropdown-item setting-diskon text-success" href="#" data-idcustomer="<?= $row->id_customer ?>" data-customer="<?= ucwords($row->nama); ?>" data-diskon="<?= $row->diskon; ?>">Setting Diskon</a>
                     <?php } ?>
                     <a class="dropdown-item button-konfirmasi text-danger" data-konfirmasi="Status pelanggan ini akan di nonaktifkan" href="<?= base_url('admin/customers/status_customer/'.$row->id_customer.'/'.$row->status) ?>">
                       <?= $row->status=="aktif" ? "Blokir Pelanggan" : "Aktifkan" ?>
@@ -98,12 +101,42 @@
                 <th>:</th>
                 <td class="kodereferal"></td>
             </tr>
+            <tr>
+                <th>Diskon</th>
+                <th>:</th>
+                <td class="diskon"></td>
+            </tr>
             
           </thead>
         </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="formSettingDiskon" tabindex="-1" role="dialog" aria-labelledby="formSettingDiskonLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="formSettingDiskonLabel">Setting Diskon Pelanggan <span class="modal-cust-name"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= base_url('admin/customers/setting_diskon') ?>" id="setting_diskon" method="post">
+            <div class="form-group">
+                <input type="hidden" name="id_customer" id="id_customer">
+                <input type="number" name="diskon" class="form-control" id="diskon" placeholder="Jumlah diskon 0-100 (%)" min="0" max="100" required>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+        <button type="submit" name="submit" form="setting_diskon" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>

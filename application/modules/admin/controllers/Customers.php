@@ -34,7 +34,17 @@ class Customers extends MX_Controller
         }
         redirect('admin/customers');
     }
-
+    public function setting_diskon()
+    {
+        
+        if($this->customer->setting_diskon()){
+            $this->session->set_flashdata('success', 'Setting Diskon Berhasil');
+            
+        }else{
+            $this->session->set_flashdata('danger', 'Setting Diskon Gagal');
+        }
+        redirect('admin/customers');
+    }
     public function status_customer()
     {
         $id_cust = $this->uri->segment(4);
@@ -55,7 +65,7 @@ class Customers extends MX_Controller
         redirect('admin/customers');
 
     }
-    public function referal_code($length)
+    static function referal_code($length)
         {
         $data = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
         $string = '';
