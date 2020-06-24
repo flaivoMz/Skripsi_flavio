@@ -7,6 +7,12 @@ class Order extends MX_Controller
     {
         parent::__construct();
         $this->load->model('OrderModel', 'mod');
+
+        if(($this->session->userdata('id_customer')=="")||($this->session->userdata('id_rider')=="")){
+             $_SESSION['msg'] = "login_dulu";
+             redirect('/');
+         }
+
     }
 
     public function index()

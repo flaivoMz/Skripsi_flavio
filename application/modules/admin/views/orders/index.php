@@ -61,7 +61,7 @@
                   Aksi
                   </button>
                   <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a data-toggle="modal" data-target="#detailOrder" class="dropdown-item detail-order" href="#" data-orderid="<?= $row->id_order ?>" data-alamatasal="<?= $row->alamat_asal.' <b> [ '.$row->koordinat_asal.' </b>] ' ?>" data-alamattujuan="<?= $row->alamat_tujuan.' <b> [ '.$row->koordinat_tujuan.' ] </b>' ?>" data-jarak="<?= $row->jarak ?>" data-verifikasidriver="<?= ucwords($row->verifikasi_driver) ?>" data-notelppenerima="<?= $row->no_telpn_penerima ?>" data-kodereferal="<?= $row->referal_code ?>" data-penerima="<?= ucwords($row->nama_penerima) ?>" data-volumebarang="<?= $row->volume_barang ?>" data-beratbarang="<?= $row->berat_barang ?>" data-catatan="<?= $row->catatan ?>" data-gambarpengambilan="<?= $row->gambar_pengambilan ?>" data-gambarpengantaran="<?= $row->gambar_pengantaran ?>" data-kondisibarang="<?= $row->kondisi_barang ?>" data-pengirim="<?= ucwords($row->nama_pengirim) ?>" data-notelppengirim="<?= $row->no_telpn_pengirim ?>" data-ongkir="<?= $row->ongkir ?>" data-subtotal="<?= $row->subtotal ?>" data-denda="<?= $row->denda ?>" data-jenispembayaran="<?= ucwords($row->jenis_pembayaran) ?>">Detail</a>
+                  <a data-toggle="modal" data-target="#detailOrder" class="dropdown-item detail-order" href="#" data-orderid="<?= $row->id_order ?>" data-alamatasal="<?= $row->alamat_asal.' <b> [ '.$row->koordinat_asal.' </b>] ' ?>" data-alamattujuan="<?= $row->alamat_tujuan.' <b> [ '.$row->koordinat_tujuan.' ] </b>' ?>" data-jarak="<?= $row->jarak ?>" data-verifikasidriver="<?= ucwords($row->verifikasi_driver) ?>" data-notelppenerima="<?= $row->no_telpn_penerima ?>" data-kodereferal="<?= $row->referal_code ?>" data-penerima="<?= ucwords($row->nama_penerima) ?>" data-volumebarang="<?= $row->volume_barang ?>" data-beratbarang="<?= $row->berat_barang ?>" data-catatan="<?= $row->catatan ?>" data-gambarpengambilan="<?= $row->gambar_pengambilan ?>" data-gambarpengantaran="<?= $row->gambar_pengantaran ?>" data-kondisibarang="<?= $row->kondisi_barang ?>" data-pengirim="<?= ucwords($row->nama_pengirim) ?>" data-notelppengirim="<?= $row->no_telpn_pengirim ?>" data-ongkir="<?= $row->ongkir ?>" data-subtotal="<?= $row->subtotal ?>" data-denda="<?= $row->denda ?>" data-jenispembayaran="<?= ucwords($row->jenis_pembayaran) ?>" data-diskon="<?= $row->diskon ?>">Detail</a>
                   <?php if($row->nama_rider == ""){ ?>
                   <a data-toggle="modal" data-target="#formPilihKurir" data-orderid="<?= $row->id_order ?>" href="#" class="dropdown-item pilih-kurir text-danger">Pilih Kurir</a>
                   <?php } ?>
@@ -170,6 +170,10 @@
               <tr>
                 <th>Denda</th>
                 <td class="denda"></td>
+              </tr>
+              <tr>
+                <th>Diskon</th>
+                <td class="diskon"></td>
               </tr>
               <tr>
                 <th>Kode Referal</th>

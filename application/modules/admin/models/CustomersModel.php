@@ -20,6 +20,22 @@ class CustomersModel extends CI_Model {
         $this->db->update('customer', $data);
         return true;
     }
+    public function setting_diskon()
+    {
+        $id_cust = $this->input->post('id_customer');
+        $diskon = $this->input->post('diskon');
+        $data = [
+            "diskon" => $diskon
+        ];
+        try{
+            $this->db->where('id_customer', $id_cust);
+            $this->db->update('customer', $data);
+            return true;
+
+        }catch(\SQLException $e){
+            return $e->getMessage();
+        }
+    }
     public function update_status_customer($id_cust,$status_cust)
     {
         $data = [

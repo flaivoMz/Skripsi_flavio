@@ -147,6 +147,7 @@ $('.detail-customer').on('click', function (e) {
   var status = $(this).data('status');
   var level = $(this).data('level');
   var kodereferal = $(this).data('kodereferal');
+  var diskon = $(this).data('diskon');
 
   if(bergabung){
     $(".modal-cust-name").html(customer);
@@ -158,7 +159,28 @@ $('.detail-customer').on('click', function (e) {
     }else{
       $(".kodereferal").html(kodereferal);
     }
+    if(diskon == 0){
+      $(".diskon").html('0 %');
+    }else{
+      $(".diskon").html(diskon+"%");
+    }
   }
+});
+$('.setting-diskon').on('click', function (e) {
+  e.preventDefault();
+  var customer = $(this).data('customer');
+  var id_customer = $(this).data('idcustomer');
+  var diskon = $(this).data('diskon');
+
+    $(".modal-cust-name").html(customer);
+    $("#id_customer").val(id_customer);
+
+    if(diskon == 0){
+      $("#diskon").val(0);
+    }else{
+      $("#diskon").val(diskon);
+    }
+  
 });
 
 $('.pilih-kurir').on('click', function (e) {
@@ -191,6 +213,7 @@ $('.detail-order').on('click', function (e) {
   var kondisibarang = $(this).data('kondisibarang');
   var denda = $(this).data('denda');
   var jenispembayaran = $(this).data('jenispembayaran');
+  var diskon = $(this).data('diskon');
 
   if(alamatasal){
     $(".modal-orderId").html(orderid);
@@ -214,6 +237,7 @@ $('.detail-order').on('click', function (e) {
     // $(".notelppenerima").html(notelppenerima);
     $(".volumebarang").html(volumebarang);
     $(".jenispembayaran").html(jenispembayaran);
+    $(".diskon").html("Rp."+diskon);
     $(".ongkir").html("Rp."+ongkir);
     $(".subtotal").html("Rp."+subtotal);
     $(".beratbarang").html(beratbarang+" kg");
