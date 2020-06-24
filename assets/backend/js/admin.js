@@ -246,12 +246,12 @@ $('.detail-order').on('click', function (e) {
     
 
     if(gambarpengambilan != ''){
-      $(".gambarpengambilan").html('<a href="../assets/backend/img/'+gambarpengambilan+'" class="" target="_blank">Lihat Gambar</a>');
+      $(".gambarpengambilan").html('<a href="../assets/frontend/img/foto_ambil/'+gambarpengambilan+'" class="" target="_blank">Lihat Gambar</a>');
     }else{
       $(".gambarpengambilan").html("<span class='text-danger'>Gambar Kosong</span>");
     }
     if(gambarpengantaran != ''){
-      $(".gambarpengantaran").html('<a href="../assets/backend/img/'+gambarpengantaran+'" class="" target="_blank">Lihat Gambar</a>');
+      $(".gambarpengantaran").html('<a href="../assets/frontend/img/foto_antar/'+gambarpengantaran+'" class="" target="_blank">Lihat Gambar</a>');
     }else{
       $(".gambarpengantaran").html("<span class='text-danger'>Gambar Kosong</span>");
     }
