@@ -293,7 +293,7 @@
 				});
 			}
 			}
-			var directionsService = new google.maps.DirectionsService();
+			var directionsService 	= new google.maps.DirectionsService();
 			var koordinat_asal 		= $("input[name='koordinat_asal']").val();
 			var koordinat_tujuan	= $("input[name='koordinat_tujuan']").val();
 			var request = {
@@ -334,7 +334,6 @@
 				latitudeNow = position.coords.latitude; 
 				longtitudeNow = position.coords.longitude;
 				koordinatNow = new google.maps.LatLng(latitudeNow+","+longtitudeNow);
-			
 			}
 			<?php if($method=="show_alamat_asal" || $method == "show_alamat_penerima"):?>
 				google.maps.event.addDomListener(window, 'load', initialize);
@@ -418,6 +417,9 @@
 				}
 			<?php endif;?>
 			<?php if($method=="order_driver_masuk"):?>
+				var idOrderan;
+				var koordinatTujuan;
+				var idDriver = '<?php echo $this->session->userdata('id_rider');?>'
 				function cekOrderan(id){
 					$.ajax({
 						url 	: "<?php echo base_url('order/detail_order_driver');?>",
@@ -526,6 +528,96 @@
 						}
 					});
 				}
+				function prosesOrderanDariGanti(id,koordinat_tujuan,koordinat_pergantian){
+					var directionsService 	= new google.maps.DirectionsService();
+					var koordinat_asal 		= koordinat_pergantian;
+					var koordinat_tujuan	= koordinat_tujuan;
+					var request = {
+						origin      : koordinat_asal, 
+						destination : koordinat_tujuan,
+						travelMode  : google.maps.DirectionsTravelMode.DRIVING
+					};
+					directionsService.route(request, function(response, status) {
+						if ( status == google.maps.DirectionsStatus.OK ) {
+							jarak =  response.routes[0].legs[0].distance.text; 
+							$.ajax({
+								url		: "<?php echo base_url('order/update_jarak_tempuh_driver_baru')?>",
+								method 	: "POST",
+								data 	: {id:id,jarak : jarak},
+								success : function(res){
+									// console.log(res);
+									location.reload();
+								}
+							});
+						} 
+					}); 
+				}
+				function gantiDriver(id,koordinat_tujuan){
+					Swal.fire({
+						text: "Anda yakin akan menganti rider untuk paket ini?",
+						icon: 'warning',
+						showCancelButton: true,
+						confirmButtonColor: '#d33',
+						cancelButtonColor: '#3085d6',
+						confirmButtonText: 'Ya',
+						cancelButtonText: 'Tidak'
+						}).then((result) => {
+						if (result.value) {
+							idOrderan = id;
+							koordinatTujuan = koordinat_tujuan;
+							if (navigator.geolocation) {
+								navigator.geolocation.getCurrentPosition(showPosition);
+							} else { 
+								x.innerHTML = "Geolocation is not supported by this browser.";
+							}
+						}
+					})
+				}
+
+				function showPosition(position) {
+					idOrderan;
+					koordinatTujuan;
+					var lat  =  position.coords.latitude;
+					var long = position.coords.longitude;
+					var kord = lat+","+long;
+					var directionsService 	= new google.maps.DirectionsService();
+					var koordinat_asal 		= koordinatTujuan;
+					var koordinat_tujuan	= kord;
+					var request = {
+						origin      : koordinat_asal, 
+						destination : koordinat_tujuan,
+						travelMode  : google.maps.DirectionsTravelMode.DRIVING
+					};
+					directionsService.route(request, function(response, status) {
+						if ( status == google.maps.DirectionsStatus.OK ) {
+							jarak =  response.routes[0].legs[0].distance.text; 
+							var latlng = {lat: lat, lng: long};
+							var geocoder = new google.maps.Geocoder;
+							var alamatDetail;
+							geocoder.geocode({'location': latlng}, function(results, status) {
+								if (status === 'OK') {
+									if (results[0]) {
+										rs = results[0].formatted_address;
+										alamatDetail = rs;
+										$.ajax({
+											url 	: "<?php echo base_url('order/ganti_driver');?>",
+											method 	: "POST",
+											data  	: { id : idOrderan, alamat : alamatDetail, koordinat : latlng, jarak : jarak, id_driver : idDriver  },
+											success : function(){
+												location.reload();
+											}
+										});
+									} else {
+										Swal.fire('Lokasi Tidak Ditemukan')
+									}
+								} 
+							});
+							
+							
+						} 
+					}); 
+				}
+				
 			<?php endif;?>
 		<?php endif;?>
 	</script>

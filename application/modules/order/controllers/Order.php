@@ -7,12 +7,6 @@ class Order extends MX_Controller
     {
         parent::__construct();
         $this->load->model('OrderModel', 'mod');
-
-        if(($this->session->userdata('id_customer')=="")||($this->session->userdata('id_rider')=="")){
-             $_SESSION['msg'] = "login_dulu";
-             redirect('/');
-         }
-
     }
 
     public function index()
@@ -421,6 +415,55 @@ class Order extends MX_Controller
         $this->load->view('templates/frontend/depan/menu_driver');
         $this->load->view('list_order_selesai_detail', $data);
         $this->load->view('templates/frontend/depan/footer');
+    }
+
+    public function ganti_driver()
+    {
+        $id_order   = $this->input->post('id',true);
+        $alamat     = $this->input->post('alamat',true);
+        $koordinat  = $this->input->post('koordinat', true);
+        $jarak      = $this->input->post('jarak', true);
+        $id_driver  = $this->input->post('id_driver', true);
+        $post = [
+            'id_orderan'  => $id_order,
+            'alamat'    => $alamat,
+            'koordinat' => implode(",",$koordinat),
+            'jarak_tempuh_driver_lama'     => $jarak,
+            'id_driver_lama' => $id_driver
+        ];
+        $update = [
+            'id_order'  => $id_order,
+            'id_rider'  => 0
+        ];
+        // print_r($post);
+        $this->mod->m_save_ganti_driver($post);
+        $this->mod->m_update_rider_order_customer($update);
+        
+    }
+
+    public function order_driver_ganti()
+    {
+        $data['title']  = "Orderan Ganti  Driver";
+        $id_rider       = $this->session->userdata('id_rider');
+        $data['order']  = $this->mod->m_get_order_driver_ganti($id_rider);
+        // print('<pre>');print_r($data);exit();
+        $this->load->view('templates/frontend/depan/header', $data);
+        $this->load->view('templates/frontend/depan/menu_driver');
+        $this->load->view('list_order_ganti', $data);
+        $this->load->view('templates/frontend/depan/footer');
+
+    }
+
+    public function update_jarak_tempuh_driver_baru()
+    {
+        $id = $this->input->post('id',true);
+        $jarak = $this->input->post('jarak',true);
+        $post = [
+            'id_orderan' => $id,
+            'jarak_tempuh_driver_baru' => $jarak
+        ];
+        $this->mod->m_update_jarak_tempuh_driver_baru($post);
+        
     }
 
 }

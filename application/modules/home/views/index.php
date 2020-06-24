@@ -52,48 +52,11 @@
          </div>
       </div>
       <div class="owl-carousel owl-all">
-         <div class="block__35630">
-            <div class="icon mb-0">
-               <span class="flaticon-ferry"></span>
+         <?php foreach($iklan as $ikln):?>
+            <div class="block__35630">
+               <img src="<?php echo base_url()?>assets/frontend/img/iklan/<?php echo $ikln['gambar_iklan'];?>" alt="Iklan">
             </div>
-            <h3 class="mb-3">Sea Freight</h3>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-         </div>
-         <div class="block__35630">
-            <div class="icon mb-0">
-               <span class="flaticon-airplane"></span>
-            </div>
-            <h3 class="mb-3">Air Freight</h3>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-         </div>
-         <div class="block__35630">
-            <div class="icon mb-0">
-               <span class="flaticon-box"></span>
-            </div>
-            <h3 class="mb-3">Package Forwarding</h3>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-         </div>
-         <div class="block__35630">
-            <div class="icon mb-0">
-               <span class="flaticon-lorry"></span>
-            </div>
-            <h3 class="mb-3">Trucking</h3>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-         </div>
-         <div class="block__35630">
-            <div class="icon mb-0">
-               <span class="flaticon-warehouse"></span>
-            </div>
-            <h3 class="mb-3">Warehouse</h3>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-         </div>
-         <div class="block__35630">
-            <div class="icon mb-0">
-               <span class="flaticon-add"></span>
-            </div>
-            <h3 class="mb-3">Delivery</h3>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. </p>
-         </div>
+         <?php endforeach;?>
       </div>
    </div>
 </div>
@@ -114,7 +77,6 @@
       <div class="row justify-content-center mb-4 block-img-video-1-wrap">
          <div class="col-md-12 mb-5">
             <figure class="block-img-video-1" data-aos="fade">
-               <span class="icon"><span class="icon-play"></span></span>
                <img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_delivery_big.jpg" alt="Image" class="img-fluid">
             </figure>
          </div>
