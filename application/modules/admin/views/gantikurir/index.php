@@ -17,13 +17,12 @@
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>No</th>
             <th>TRX ID</th>
             <th>Alamat</th>
             <th>Koordinat</th>
-            <th>Jarak</th>
-            <th>Sebelumnya</th>
-            <th>Pengganti</th>
+            <th>Jarak Sebelumnya</th>
+            <th>Driver Sebelumnya</th>
+            <th>Driver Pengganti</th>
           </tr>
         </thead>
        
@@ -34,11 +33,10 @@
         
         ?>
           <tr>
-            <td><?= $no++ ?></td>
             <td><?= $row->id_orderan ?></td>
             <td><?= $row->alamat ?></td>
             <td><?= $row->koordinat ?></td>
-            <td><?= $row->jarak_tempuh." km" ?></td>
+            <td><?= $row->jarak_tempuh_driver_lama ?></td>
             <td><?= ucwords($row->driver_lama) ?></td>
             <td class="d-flex justify-content-center">
                 <?php

@@ -220,7 +220,7 @@ $('.detail-order').on('click', function (e) {
     $(".alamatasal").html(alamatasal);
     $(".alamattujuan").html(alamattujuan);
     if(jarak != ''){
-      $(".jarak").html(jarak+" km");
+      $(".jarak").html(jarak);
     }else{
       $(".jarak").html("");
     }
