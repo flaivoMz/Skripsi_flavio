@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class GantiKurir extends MX_Controller
+class Gantikurir extends MX_Controller
 {
     public function __construct()
     {
@@ -21,6 +21,7 @@ class GantiKurir extends MX_Controller
     public function ganti_kurir()
     {
         if($this->ganti_kurir->update_kurir()){
+            $this->orders->update_kurir();
             $this->session->set_flashdata('success', 'Sukses mengganti kurir');
             
         }else{
