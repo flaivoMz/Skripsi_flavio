@@ -5,7 +5,7 @@
       <div class="container">
          <div class="row align-items-center">
             <div class="col-lg-6">
-               <h1>Choose Your Quality Delivery of Your Cargo</h1>
+               <h1>Choose Your Quality Delivery of Your Package</h1>
                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est magni perferendis fugit modi similique, suscipit, deserunt a iure.</p>
                
             </div>
@@ -17,16 +17,16 @@
       <div class="container">
          <div class="owl-carousel owl-all">
             <div class="service text-center">
-               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg" alt="Image" class="img-fluid"></a>
+               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/four.jpg" alt="Image" class="img-fluid"></a>
                <div class="px-md-3">
-                  <h3><a href="#">Sea Freight</a></h3>
+                  <h3><a href="#">Easy</a></h3>
                   <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
                </div>
             </div>
             <div class="service text-center">
-               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/cargo_air_small.jpg" alt="Image" class="img-fluid"></a>
+               <a href="#"><img src="<?php echo base_url()?>assets/frontend/depan/images/five.jpg" alt="Image" class="img-fluid"></a>
                <div class="px-md-3">
-                  <h3><a href="#">Air Freight</a></h3>
+                  <h3><a href="#">Cheap</a></h3>
                   <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
                </div>
             </div>
@@ -323,10 +323,10 @@
 <div class="block__73694 site-section border-top" id="why-us-section">
    <div class="container">
       <div class="row d-flex no-gutters align-items-stretch">
-         <div class="col-12 col-lg-6 block__73422 order-lg-2" style="background-image: url('<?php echo base_url()?>assets/frontend/depan/images/cargo_sea_small.jpg');" data-aos="fade-left" data-aos-delay="">
+         <div class="col-12 col-lg-6 block__73422 order-lg-2" style="background-image: url('<?php echo base_url()?>assets/frontend/depan/images/three.jpg');" data-aos="fade-left" data-aos-delay="">
          </div>
          <div class="col-lg-5 mr-auto p-lg-5 mt-4 mt-lg-0 order-lg-1" data-aos="fade-right" data-aos-delay="">
-            <h2 class="mb-4 text-black">Why Us</h2>
+            <h2 class="mb-4 text-black">Why Us</h2>`
             <h4 class="text-primary">We work quickly and efficiently!</h4>
             <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
             <ul class="ul-check primary list-unstyled mt-5">

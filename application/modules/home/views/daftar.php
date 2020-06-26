@@ -6,6 +6,9 @@
             </div>
 
             <form class="login100-form validate-form" action="<?php echo base_url()?>home/save_daftar" method="POST">
+                <div class="alert alert-danger" role="alert">
+                    Maaf, untuk sementara website ini masih dalam tahap pengujian. belum menerima orderan langsung. Web sudah bisa digunakan ketika informasi ini sudah tidak ada
+                </div>
                 <span class="login100-form-title">
                     Daftar Member
                 </span>
@@ -25,6 +28,9 @@
                         <i class="fa fa-lock" aria-hidden="true"></i>
                     </span>
                 </div>
+                <small id="passwordHelpBlock" class="form-text text-primary text-center">
+                    Password berupa angka dan panjang 6 digit
+                </small>
 
                 <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                     <input class="input100" type="text" name="email" placeholder="Masukkan email" required>

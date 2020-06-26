@@ -20,5 +20,6 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/frontend/login/css/util.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/frontend/login/css/main.css">
 <!--===============================================================================================-->
+	<link rel="stylesheet" href="<?php echo base_url()?>assets/frontend/depan/css/anteranter.css">
 </head>
 <body>

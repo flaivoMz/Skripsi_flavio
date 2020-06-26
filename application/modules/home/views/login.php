@@ -33,7 +33,7 @@
                     </button>
                 </div>
                 <div class="text-center p-t-136">
-                    <a class="txt2" href="<?php echo base_url('home/daftar');?>">
+                    <a class="txt2 btn btn-primary text-white btn-sm" href="<?php echo base_url('home/daftar');?>">
                         Daftar
                         <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                     </a>
