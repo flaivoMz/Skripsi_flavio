@@ -1,3 +1,7 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+}
 hr.style-two {
     border: 0;
     height: 1px;
@@ -11,5 +15,13 @@ hr.style-two {
     .img-order-driver{
         width: 90px;
         height: 90px;
+    }
+
+    .wrap-login100-daftar{
+        padding: 10px;
+    }
+
+    .p-t-136{
+        padding-top: 75px;
     }
 }
