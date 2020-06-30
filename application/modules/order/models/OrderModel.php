@@ -55,13 +55,23 @@ class OrderModel extends CI_Model {
         $this->db->insert('order_detail_customer_tmp', $post);
         return true;
     }
-    
-    /*--------- Orders ----------*/
-    public function m_get_tarif_barang($level_user)
+
+    public function m_get_tmp_by_id($id_customer)
     {
         $this->db->select()
-            ->from('tarif_barang')
-            ->where("kategori", $level_user);
+                ->from('order_detail_customer_tmp')
+                ->where('id_customer', $id_customer);
+        $query = $this->db->get_compiled_select();
+        $data  = $this->db->query($query)->row_array();
+        return $data;
+    }
+    
+    /*--------- Orders ----------*/
+    public function m_get_tarif_barang($id_order)
+    {
+        $this->db->select("ongkir,total")
+            ->from('order_customer')
+            ->where("id_order", $id_order);
         $query = $this->db->get_compiled_select();
         $data  = $this->db->query($query)->row_array();
         return $data;
@@ -214,7 +224,7 @@ class OrderModel extends CI_Model {
     {
         $this->db->select()
             ->from('order_customer AS a')
-            ->join('ganti_driver AS b','b.id_orderan=a.id_order')
+            ->join('ganti_driver AS b','b.id_orderan=a.id_order','left')
             ->where("a.id_rider", $id_rider)
             ->where("status_order != 'selesai'");
         $query = $this->db->get_compiled_select();

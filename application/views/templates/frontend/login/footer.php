@@ -16,6 +16,20 @@
 	<script src="<?php echo base_url()?>assets/frontend/login/js/main.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 	<script>
+		<?php if(isset($_SESSION['msg'])&& $_SESSION['msg']=="sama"):?>
+			Swal.fire({
+				text: "Nomor Handphone telah digunakan",
+				icon: 'error',
+				showCancelButton: false,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'OK'
+				}).then((result) => {
+				if (result.value) {
+					<?php unset($_SESSION['msg'])?>
+				}
+			});
+		<?php endif;?>
 		<?php if(isset($_SESSION['msg'])&& $_SESSION['msg']=="berhasil"):?>
 			Swal.fire({
 				text: "Registrasi berhasil",

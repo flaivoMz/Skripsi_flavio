@@ -11,6 +11,10 @@ hr.style-two {
     width: 200px;
     height: 200px;
 }
+.mt-200{
+    margin-top: 200px;
+}
+
 @media only screen and (max-width: 768px) {
     .img-order-driver{
         width: 90px;
@@ -18,7 +22,7 @@ hr.style-two {
     }
 
     .wrap-login100-daftar{
-        padding: 10px;
+        padding: 10px !important;
     }
 
     .p-t-136{

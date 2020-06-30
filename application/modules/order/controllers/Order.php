@@ -12,7 +12,8 @@ class Order extends MX_Controller
     public function index()
     {
 
-        $id_customer            = $this->session->userdata('id_customer');
+        $id_customer            = $this->session->userdata('cust_id_customer');
+        $_SESSION['lokasi_sekarang'] = 0;
         $data['title']          = 'Order';
         $data['customer']       = $this->mod->m_get_data_customer($id_customer);
         $data['tmp_order']      = $this->mod->m_get_data_order_customer_tmp($id_customer);
@@ -69,14 +70,26 @@ class Order extends MX_Controller
     }
 
     /*---------- Order Barang ----------*/
+    public function aktifkan_lokasi()
+    {
+        $koordinat = $this->input->post('koordinat', true);
+        if($koordinat !=""){
+            $_SESSION['lokasi_sekarang'] = $koordinat;
+            $data = 1;
+        }else{
+            $_SESSION['lokasi_sekarang'] = 0;
+            $data = 0;
+        }
+        echo json_encode($data);
+    }
     public function save_order_detail_customer_tmp()
     {
         $panjang        = $this->input->post('panjang', true);
         $lebar          = $this->input->post('lebar', true);
         $tinggi         = $this->input->post('tinggi', true);
         $berat_barang   = $this->input->post('berat_barang', true);
-        $id_user        = $this->session->userdata('id_customer');
-        $level_user     = $this->session->userdata('level');
+        $id_user        = $this->session->userdata('cust_id_customer');
+        $level_user     = $this->session->userdata('cust_level');
         $tarif_barang   = $this->mod->m_get_tarif_barang($level_user);
         $berat = round(($panjang*$lebar*$tinggi)/6000,1);
         if(($berat_barang[0] == "overweight") && ($berat_barang[1] == "oversize")){
@@ -124,8 +137,8 @@ class Order extends MX_Controller
         $lebar          = $this->input->post('lebar', true);
         $tinggi         = $this->input->post('tinggi', true);
         $berat_barang   = $this->input->post('berat_barang', true);
-        $id_user        = $this->session->userdata('id_customer');
-        $level_user     = $this->session->userdata('level');
+        $id_user        = $this->session->userdata('cust_id_customer');
+        $level_user     = $this->session->userdata('cust_level');
         $tarif_barang   = $this->mod->m_get_tarif_barang($level_user);
         if(($berat_barang[0] == "overweight") && ($berat_barang[1] == "oversize")){
             echo "true 2 kondisi";
@@ -173,25 +186,36 @@ class Order extends MX_Controller
 
     public function count_ongkir()
     {
-        $jarak = str_replace(' km', '', round($this->input->post('jarak',true)));
-        $level = $this->session->userdata('level');
+        $cek_jarak = substr($this->input->post('jarak',true),3);
+        if($cek_jarak == "m"){
+            $jarak_1 = str_replace(' m', '', round($this->input->post('jarak',true)));
+            $jarak = $jarak_1/1000;
+        }else{
+            // echo "here";
+            $jarak_ori = substr($this->input->post('jarak',true),0,-3);
+            $jarak_ori_2 = str_replace(",",".",$jarak_ori);
+            $jarak = ceil($jarak_ori_2);
+        }
+        $level = $this->session->userdata('cust_level');
         $harga_ongkir = $this->mod->m_get_data_ongkir($level);
         if($harga_ongkir['status_jarak_minimal'] == "aktif"){
             if($jarak <= $harga_ongkir['jarak_minimal']){
-                $total_ongkir = $jarak * $harga_ongkir['harga_jarak_minimal'];
+                $total_ongkir = ceil(($jarak/2)) * $harga_ongkir['harga_jarak_minimal'];
             }else{
                 $lebih_ongkir = $jarak - $harga_ongkir['jarak_minimal'];
                 $total_ongkir = $harga_ongkir['harga_jarak_minimal'] + ($lebih_ongkir * $harga_ongkir['harga']);
             }
         }else{
-            $total_ongkir = $jarak * $harga_ongkir['harga'];
+            $total_ongkir = ceil(($jarak/2)) * $harga_ongkir['harga'];
         }
         print_r($total_ongkir);
+        // echo $jarak;
     }
 
     public function save_to_order()
     {
-        $id_customer    = $this->session->userdata('id_customer');
+        $id_customer    = $this->session->userdata('cust_id_customer');
+        $cek_temp       = $this->mod->m_get_tmp_by_id($id_customer);  
         $referal_code   = $this->input->post('referal_code', true);
         $cek_referal    = $this->mod->m_get_referal($referal_code);
         if($cek_referal !=""){
@@ -199,11 +223,12 @@ class Order extends MX_Controller
         }else{
             $potongan_referal = 0;
         }
-        if($cek_referal['diskon']!=""){
+        if($cek_referal['diskon']!=""|| $cek_referal['diskon']!=0){
             $diskon = $cek_referal['diskon']/100;
         }else{
             $diskon = 0;
         }
+        $harga_cod = str_replace(".","",$this->input->post('harga_cod', true));
         $post =  [
             'id_order'              => $this->input->post('id_order', true),
             'id_customer'           => $id_customer,
@@ -220,12 +245,16 @@ class Order extends MX_Controller
             'kabupaten_tujuan'      => $this->input->post('kabupaten_tujuan', true),
             'ongkir'                => $this->input->post('nominal_ongkir', true),
             'subtotal'              => $this->input->post('nominal_subtotal', true),
-            'total'                 => ceil($this->input->post('nominal_total', true)-($potongan_referal+$diskon)),
+            'total'                 => ceil(($this->input->post('nominal_ongkir', true)+$harga_cod)-($potongan_referal+$diskon)),
             'tanggal_order'         => date('Y-m-d H:i:s'),
-            'jarak'                 => $this->input->post('jarak', true),
+            'jarak'                 => str_replace(",",".",$this->input->post('jarak', true)),
             'verifikasi_customer'   => $this->input->post('verifikasi_customer', true),
             'referal_code'          => $referal_code,
-            'diskon'                => $diskon+$potongan_referal
+            'diskon'                => $diskon+$potongan_referal,
+            'patokan_asal'          => $this->input->post('patokan_asal', true),
+            'patokan_tujuan'        => $this->input->post('patokan_tujuan', true),
+            'harga_cod'             => $harga_cod,
+            'paid_by'               => $this->input->post('paid_by', true)
         ];
         $temp = $this->mod->m_get_data_order_customer_tmp($id_customer);
         $i=0;
@@ -244,32 +273,38 @@ class Order extends MX_Controller
         }
         // print('<pre>');print_r($post);
         // print('<pre>');print_r($temp);
-        // print('<pre>');print_r($post_detail);exit();
-        $this->mod->m_save_to_order($post);
-        $this->mod->m_save_to_order_detail_customer($post_detail);
-        $this->mod->m_destroy_all_order_detail_customer_tmp($id_customer);
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Order Barang Berhasil
-        </div>');
+        // print('<pre>');print_r($post);exit();
+        if($cek_temp == "" || $cek_temp == 0){
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Harap isi data barang terlebih dahulu
+        </div>');    
+        }else{
+            $this->mod->m_save_to_order($post);
+            $this->mod->m_save_to_order_detail_customer($post_detail);
+            $this->mod->m_destroy_all_order_detail_customer_tmp($id_customer);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Order Barang Berhasil
+            </div>');
+        }
         redirect('order');
     }
     
     /* ---------- Riwayat Order ----------*/
     public function show_riwayat_order()
     {
-        $id_customer = $this->session->userdata('id_customer');
+        $id_customer = $this->session->userdata('cust_id_customer');
         $data['title'] = 'Riwayat Order';
         $data['order'] = $this->mod->m_get_order_customer($id_customer);
         // print('<pre>');print_r($data);exit();
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu');
-        $this->load->view('riwayat_order');
+        $this->load->view('riwayat_order',$data);
         $this->load->view('templates/frontend/depan/footer');
     }
 
     public function detail_riwayat()
     {
-        $id_customer    = $this->session->userdata('id_customer');
+        $id_customer    = $this->session->userdata('cust_id_customer');
         $id_order       = $this->uri->segment(3);
         $data['title']  = 'Detail  Order';
         $data['detail'] = $this->mod->m_get_detail_order_customer($id_order);
@@ -285,9 +320,10 @@ class Order extends MX_Controller
     /*--------- Driver ----------*/
     public function order_driver_masuk()
     {
-        $id_rider           = $this->session->userdata('id_rider');
+        $id_rider           = $this->session->userdata('rider_id_rider');
         $data['title']      = 'Orderan Masuk';
         $data['order']       = $this->mod->m_get_order_driver_masuk($id_rider);
+        // print('<pre>');print_r($id_rider);
         // print('<pre>');print_r($data);exit();
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu_driver');
@@ -297,7 +333,7 @@ class Order extends MX_Controller
 
     public function detail_order_driver()
     {
-        $id_customer    = $this->session->userdata('id_customer');
+        $id_customer    = $this->session->userdata('cust_id_customer');
         $id_order       = $this->input->post('id', true);
         $data['detail'] = $this->mod->m_get_detail_order_customer($id_order);
         $data['list_barang']    = $this->mod->m_get_list_order_customer($id_order);
@@ -307,29 +343,32 @@ class Order extends MX_Controller
 
     public function update_order_detail_driver()
     {
+        $id_order       = $this->input->post('id_order_db', true);
         $panjang        = $this->input->post('panjang', true);
         $lebar          = $this->input->post('lebar', true);
         $tinggi         = $this->input->post('tinggi', true);
         $berat_barang   = $this->input->post('berat_barang', true);
         $id_user        = $this->input->post('id_customer',true);
         $level_user     = $this->input->post('level_user', true);
-        $tarif_barang   = $this->mod->m_get_tarif_barang($level_user);
+        // $tarif_barang   = $this->mod->m_get_tarif_barang($level_user);
+        $tarif_barang   = $this->mod->m_get_tarif_barang($id_order);
         $total_sebelum  = $this->input->post('total_sebelum', true);
         $berat          = round(($panjang*$lebar*$tinggi)/6000,1);
         $harga_overweight   = ($tarif_barang['harga_overweight']*$total_sebelum)/100;
         $harga_oversize     = ($tarif_barang['harga_oversize']*$total_sebelum)/100;
         if(($berat_barang[0] == "overweight") && ($berat_barang[1] == "oversize")){
             echo "true 2 kondisi";
-            $total = ceil(($berat * $tarif_barang['harga_normal'])+ $harga_overweight + $harga_oversize);
+            // $total = ceil(($berat * $tarif_barang['harga_normal'])+ $harga_overweight + $harga_oversize);
+            $total = $tarif_barang['total']+($tarif_barang['ongkir']*2);
         }else if($berat_barang[0] == "overweight"){
             echo "true 1 overweight";
-            $total = ceil(($berat * $tarif_barang['normal'])+ $harga_overweight);
+            $total = $tarif_barang['total']+$tarif_barang['ongkir'];
         }else if($berat_barang[0] == "oversize"){
             echo "true 1 oversize";
-            $total = ceil(($berat * $tarif_barang['normal'])+ $harga_oversize);
+            $total = $tarif_barang['total']+$tarif_barang['ongkir'];
         }else{
             echo "normal";
-            $total = ceil($berat * $tarif_barang['harga_normal']);
+            $total = $tarif_barang['total'];
         }
 
         // if($uang_diterima ==""){
@@ -342,7 +381,7 @@ class Order extends MX_Controller
         // print('<pre>');print_r($berat_barang);
         // print('<pre>');print_r($tarif_barang);
         $post = [
-            'id_order'      => $this->input->post('id_order_db', true),
+            'id_order'      => $id_order,
             'id_customer'   => $id_user,
             'volume_barang' => $panjang."x".$lebar."x".$tinggi,
             'berat_barang'  => $berat,
@@ -351,13 +390,13 @@ class Order extends MX_Controller
             'total'         => $total
         ];
         $post_order_customer = [
-            'id_order'          => $this->input->post('id_order_db', true),
+            'id_order'          => $id_order,
             'verifikasi_driver' => 'sudah',
             'subtotal'          => $total,
-            'total'             => $total + $this->input->post('ongkir', true)
+            'total'             => $total
         ];
         $post_order_driver = [
-            'id_order'      => $this->input->post('id_order_db', true),
+            'id_order'      => $id_order,
             'volume_barang' => $panjang."x".$lebar."x".$tinggi,
             'berat_barang'  => $berat,
             'status_berat'  => implode(",",$this->input->post('berat_barang', true))
@@ -396,7 +435,7 @@ class Order extends MX_Controller
     public function order_driver_selesai()
     {
         $data['title']  = "Orderan Selesai";
-        $id_rider       = $this->session->userdata('id_rider');
+        $id_rider       = $this->session->userdata('rider_id_rider');
         $data['order']  = $this->mod->m_get_order_driver_selesai($id_rider);
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu_driver');
@@ -444,7 +483,7 @@ class Order extends MX_Controller
     public function order_driver_ganti()
     {
         $data['title']  = "Orderan Ganti  Driver";
-        $id_rider       = $this->session->userdata('id_rider');
+        $id_rider       = $this->session->userdata('rider_id_rider');
         $data['order']  = $this->mod->m_get_order_driver_ganti($id_rider);
         // print('<pre>');print_r($data);exit();
         $this->load->view('templates/frontend/depan/header', $data);

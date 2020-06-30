@@ -1,11 +1,11 @@
-		<footer class="site-footer">
+<footer class="site-footer">
 			<div class="container">
 				<div class="row">
 				<div class="col-md-6">
 					<div class="row">
 					<div class="col-md-7">
 						<h2 class="footer-heading mb-4">About Us</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+						<p>Anter#Anter </p>
 					</div>
 					<div class="col-md-4 ml-auto">
 						<h2 class="footer-heading mb-4">Features</h2>
@@ -103,7 +103,13 @@
 			var marker
 			var geocoder = new google.maps.Geocoder();
 			var koordinatNow;
-			var koordinat = new google.maps.LatLng(-7.782946999999998,110.367038);
+			<?php if($this->session->userdata('cust_id_customer')):?>
+				<?php if($_SESSION['lokasi_sekarang']==0):?>
+					var koordinat = new google.maps.LatLng(-7.782946999999998,110.367038);
+				<?php else:?>
+					var koordinat = new google.maps.LatLng(<?php echo $_SESSION['lokasi_sekarang'];?>);
+				<?php endif;?>
+			<?php endif;?>
 			var geocoder = new google.maps.Geocoder();
 			var infowindow = new google.maps.InfoWindow();
 			var latitudeNow;
@@ -115,6 +121,37 @@
 				return rupiah.split('',rupiah.length-1).reverse().join('');
 			}
 			$('.uang').mask('000.000.000', {reverse:true});
+			function getLocation() {
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(showPosition);
+				} else { 
+					x.innerHTML = "Geolocation is not supported by this browser.";
+				}
+			}
+			function showPosition(position) {
+				var lat = position.coords.latitude; 
+				var long = position.coords.longitude;
+				var koordinat = lat+","+long;
+				// console.log(koordinat);
+				$.ajax({
+					url : "<?php echo base_url('order/aktifkan_lokasi');?>",
+					method : "POST",
+					data : {koordinat : koordinat},
+					success: function(res){
+						if(res == 1){
+							Swal.fire({
+								icon: 'success',
+								text: 'Syncron lokasi berhasil'
+							})
+						}else{
+							Swal.fire({
+								icon: 'error',
+								text: 'Syncron lokasi gagal'
+							})
+						}
+					}
+				})
+			}
 			function gotoAsal(){
 				window.location.href = "<?php echo base_url('order/show_alamat_asal');?>"
 			}
@@ -304,37 +341,25 @@
 			directionsService.route(request, function(response, status) {
 				if ( status == google.maps.DirectionsStatus.OK ) {
 					jarak =  response.routes[0].legs[0].distance.text; 
+					var jarakPotong = jarak.slice(0, 3);
 					$("#judulOngkir").text("Ongkir ("+jarak+")");
-					$("#jarak").val(jarak);
+					$("#jarak").val(jarakPotong);
 					$.ajax({
 						url		: "<?php echo base_url('order/count_ongkir'); ?>",
 						method	: "POST",
 						data 	: {jarak : jarak},
 						success : function(res){
 							var hasil = $.parseJSON(res);
+							console.log(hasil);
 							$("#nominalOngkir").text(convertToRupiah(Number(hasil)));
 							$("#inputNominalOngkir").val(hasil);
-							var nominalSubTotal = $("#inputNominalSubtotal").val();
-							var total = parseInt(hasil) + parseInt(nominalSubTotal);
+							var total = parseInt(hasil);
 							$("#nominalTotal").text(convertToRupiah(total));
 							$("#inputNominalTotal").val(total);
 						}
 					});
 				} 
 			}); 
-			function getLocation() {
-				if (navigator.geolocation) {
-					navigator.geolocation.watchPosition(showPosition);
-				} else { 
-					x.innerHTML = "Geolocation is not supported by this browser.";
-				}
-			}
-
-			function showPosition(position) {
-				latitudeNow = position.coords.latitude; 
-				longtitudeNow = position.coords.longitude;
-				koordinatNow = new google.maps.LatLng(latitudeNow+","+longtitudeNow);
-			}
 			<?php if($method=="show_alamat_asal" || $method == "show_alamat_penerima"):?>
 				google.maps.event.addDomListener(window, 'load', initialize);
 			<?php endif;?>
@@ -411,6 +436,15 @@
 					}
 				});
 			}
+			$("#jenis_pembayaran").change(function(){
+				var nilai = $(this).val();
+				if(nilai == "cod" || nilai == "cod_billing"){
+					$("#modalCOD").modal('show');
+					$("#inputHargaCOD").removeClass("d-none");
+				}else{
+					$("#inputHargaCOD").addClass("d-none");
+				}
+			});
 			<?php if($method=="show_riwayat_order"):?>
 				function goToDetailRiwayatOrder(id){
 					window.location.href = "<?php echo base_url();?>order/detail_riwayat/"+id
@@ -427,6 +461,7 @@
 						data 	: {id : id},
 						success : function(res){
 							var hasil = $.parseJSON(res);
+							console.log(hasil);
 							var vAsli = hasil.list_barang[0]['volume_barang'];
 							var vSplit = vAsli.split("x");
 							var p = vSplit[0];
@@ -618,6 +653,20 @@
 					}); 
 				}
 				
+			<?php endif;?>
+			<?php if(isset($_SESSION['msg'])&& $_SESSION['msg']=="berhasil_login"):?>
+				Swal.fire({
+					text: "Berhasil Login",
+					icon: 'success',
+					showCancelButton: false,
+					confirmButtonColor: '#3085d6',
+					cancelButtonColor: '#d33',
+					confirmButtonText: 'OK'
+					}).then((result) => {
+					if (result.value) {
+						<?php unset($_SESSION['msg'])?>
+					}
+				});
 			<?php endif;?>
 		<?php endif;?>
 	</script>

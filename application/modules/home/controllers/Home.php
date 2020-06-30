@@ -41,21 +41,27 @@ class Home extends MX_Controller
 
     public function save_daftar()
     {
-        $post = [
-            'nama'      => $this->input->post('nama',true),
-            'password'  => password_hash($this->input->post('password', true),PASSWORD_DEFAULT),
-            'email'     => $this->input->post('email', true),
-            'alamat'    => $this->input->post('alamat', true),
-            'no_telpn'  => $this->input->post('no_telpn', true),
-            'tanggal_bergabung'  => date('Y-m-d H:i:s')
-        ];
-        // print('<pre>');print_r($post);exit();
-        $this->mod->m_save_daftar($post);
-        // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-        //         Registrasi Berhasil
-        //     </div>');
-        $_SESSION['msg'] = 'berhasil';
-        redirect('home/show_login');
+        $this->form_validation->set_rules('no_telpn', 'Nomor Telphon', 'required|is_unique[customer.no_telpn]');
+        if ($this->form_validation->run() == FALSE) {
+            $_SESSION['msg'] = 'sama';
+            redirect('home/daftar');
+        }else{
+            $post = [
+                'nama'      => $this->input->post('nama',true),
+                'password'  => password_hash($this->input->post('password', true),PASSWORD_DEFAULT),
+                'email'     => $this->input->post('email', true),
+                'alamat'    => $this->input->post('alamat', true),
+                'no_telpn'  => $this->input->post('no_telpn', true),
+                'tanggal_bergabung'  => date('Y-m-d H:i:s')
+            ];
+            // print('<pre>');print_r($post);exit();
+            $this->mod->m_save_daftar($post);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            //         Registrasi Berhasil
+            //     </div>');
+            $_SESSION['msg'] = 'berhasil';
+            redirect('home/show_login');
+        }
     }
 
     public function driver()
@@ -80,15 +86,15 @@ class Home extends MX_Controller
                 //echo "sini";
                 $data = [
 
-                    'id_customer'   => $user['id_customer'],
-                    'nama'          => $user['nama'],
-                    'no_telpn'      => $user['no_telpn'],
-                    'level'         => $user['level'],
-                    'email'         => $user['email']
+                    'cust_id_customer'   => $user['id_customer'],
+                    'cust_nama'          => $user['nama'],
+                    'cust_no_telpn'      => $user['no_telpn'],
+                    'cust_level'         => $user['level'],
+                    'cust_email'         => $user['email']
                 ];
                 $this->session->set_userdata($data);
                 $_SESSION['msg'] = 'berhasil_login';
-                redirect('/');
+                redirect('/order');
             } else {
                 
                 $_SESSION['msg'] = 'gagal_salah';
@@ -102,10 +108,10 @@ class Home extends MX_Controller
                 if(password_verify($password, $driver['password'])) {
                     echo "sini";
                     $data = [
-                        'id_rider'      => $driver['id_rider'],
-                        'nama_rider'    => $driver['nama_rider'],
-                        'no_telpn'      => $driver['no_telpn'],
-                        'level'         => 'driver'
+                        'rider_id_rider'      => $driver['id_rider'],
+                        'rider_nama_rider'    => $driver['nama_rider'],
+                        'rider_no_telpn'      => $driver['no_telpn'],
+                        'rider_level'         => 'driver'
                     ];
                     $this->session->set_userdata($data);
                     $_SESSION['msg'] = 'berhasil_login';

@@ -33,6 +33,11 @@
                     </button>
                 </div>
                 <div class="text-center p-t-136">
+                    <a class="txt2 btn btn-dark text-white btn-sm" href="https://wa.me/6281325300489" target="_blank">
+                        Lupa password
+                    </a>
+                </div>
+                <div class="text-center pt-2">
                     <a class="txt2 btn btn-primary text-white btn-sm" href="<?php echo base_url('home/daftar');?>">
                         Daftar
                         <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
@@ -42,24 +47,3 @@
         </div>
     </div>
 </div>
-<!-- <section class="container mt-5">
-    <div class="col-md-4 col-8 mx-auto">
-        <img src="<?php echo base_url();?>assets/frontend/img/anter_logo_crop.jpg" alt="logo-anter" class="img-fluid">
-    </div>
-    <div class="mt-3">
-        <?php echo form_open('home/login')?>
-        <div class="form-group">
-            <label for="no_telpn">Nomor Telpon</label>
-            <input type="text" class="form-control" name="no_telpn" id="no_telpn" placeholder="Masukkan Nomor Telpon" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="14" required="">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Password" required="" maxlength="6">
-        </div>
-        <div class="">
-            <button class="btn btn-success btn-block text-uppercase" type="submit">masuk</button>
-            <a href="<?php echo base_url('home/daftar');?>" class="btn btn-primary btn-block text-uppercase">daftar</a>
-        </div>
-        <?php echo form_close();?>
-    </div>
-</section> -->

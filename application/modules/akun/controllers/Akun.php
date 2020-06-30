@@ -12,7 +12,7 @@ class Akun extends MX_Controller
     public function index()
     {
         $data['title']  = 'Akun';
-        $id_customer    = $this->session->userdata('id_customer');
+        $id_customer    = $this->session->userdata('cust_id_customer');
         $data['akun']   = $this->mod->m_show_details_account($id_customer);
         if($data['akun']['referal_code']!=""){
             $referal = $data['akun']['referal_code'];
@@ -27,13 +27,13 @@ class Akun extends MX_Controller
 
     public function akun_driver()
     {
-        $id_driver      =  $this->session->userdata('id_rider');
+        $id_driver      =  $this->session->userdata('rider_id_rider');
         $data['title']  = "Akun Driver";
         $data['akun'] = $this->mod->m_show_details_account_driver($id_driver);
         // print('<pre>');print_r($data);exit();
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu_driver');
-        $this->load->view('akun_driver');
+        $this->load->view('akun_driver',$data);
         $this->load->view('templates/frontend/depan/footer');
     }
 
