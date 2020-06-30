@@ -32,14 +32,28 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="">Kurir</label>
-                                <select name="kurir" id="" class="select2 form-control" style="width: 100%;">
-                                <option value="">- Pilih Kurir -</option>
-                                    <?php foreach($drivers as $d){
-                                        echo "<option value='".$d->id_rider."'>".ucwords($d->nama_rider)."</option>";  
-                                    } ?>
-                                </select>
+                            <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="">Kurir</label>
+                                    <select name="kurir" id="" class="select2 form-control" style="width: 100%;">
+                                    <option value="">- Pilih Kurir -</option>
+                                        <?php foreach($drivers as $d){
+                                            echo "<option value='".$d->id_rider."'>".ucwords($d->nama_rider)."</option>";  
+                                        } ?>
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                    <label>Jenis Pembayaran</label>
+                                    <select name="jenis_pembayaran" id="" class="form-control">
+                                      <option value="">- Jenis Pembayaran -</option>
+                                      <option value="cash">Cash</option>
+                                      <option value="cod">COD</option>
+                                      <option value="billing">Billing</option>
+                                      <option value="cod billing">COD Billing</option>
+                                    </select>
+                              </div>
                             </div>
                                     
                         </div>
@@ -57,10 +71,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="">Kode Referal</label>
-                                        <input type="text" class="form-control" name="kode_referal" >
-                                    </div>
+                                  <label>Status Pembayaran</label>
+                                  <select name="status_pembayaran" id="" class="form-control">
+                                    <option value="">- Status Pembayaran -</option>
+                                    <option value="belum">Belum Lunas</option>
+                                    <option value="lunas">Lunas</option>
+                                  </select>
                                 </div>
                             </div>
                             

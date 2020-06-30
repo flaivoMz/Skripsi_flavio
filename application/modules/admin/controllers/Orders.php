@@ -39,4 +39,15 @@ class Orders extends MX_Controller
         redirect('admin/orders');
 
     }
+    public function paid_billing()
+    {
+        
+        if($this->orders->paid_billing()){
+            $this->session->set_flashdata('success', 'Billing sukses dibayarkan');
+            
+        }else{
+            $this->session->set_flashdata('danger', 'Billing gagal dibayarkan');
+        }
+        redirect('admin/orders');
+    }
 }

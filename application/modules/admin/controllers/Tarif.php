@@ -8,13 +8,14 @@ class Tarif extends MX_Controller
         parent::__construct();
         $this->load->model('TarifOngkirModel', 'tarifongkir');
         $this->load->model('TarifBarangModel', 'tarifbarang');
+        $this->load->model('IklanModel', 'iklan');
         is_logged_in(3);
     }
     public function index()
     {
         $data['title'] = 'Setting Tarif';
         $data['tarifongkir'] = $this->tarifongkir->getAllTarif();
-        $data['tarifbarang'] = $this->tarifbarang->getAllTarif();
+        $data['iklan'] = $this->iklan->getAllIklan();
 
         adminView('tarif/index', $data);
     }
@@ -97,6 +98,64 @@ class Tarif extends MX_Controller
     {
         $this->tarifongkir->delete($id);
         $this->session->set_flashdata('success', 'Data Tarif Ongkir Berhasil Dihapus');
+        redirect('admin/tarif');;
+    }
+    public function status_iklan()
+    {
+        $id_iklan = $this->uri->segment(4);
+        $status = $this->uri->segment(5);
+
+        if($status == "aktif"){
+            $status_iklan = "tidak";
+        }else if($status =="tidak"){
+            $status_iklan = "aktif";
+        }
+
+        if($this->iklan->update_status_iklan($id_iklan,$status_iklan)){
+            $this->session->set_flashdata('success', 'Status iklan berhasil diperbarui');
+            
+        }else{
+            $this->session->set_flashdata('danger', 'Status iklan gagal diperbarui');
+        }
+        redirect('admin/tarif');
+
+    }
+    public function create_iklan()
+    {
+        $this->form_validation->set_rules('status', 'Status Iklan', 'required');
+        // $this->form_validation->set_rules('gambar_iklan', 'Gambar Iklan', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            redirect('admin/tarif');
+        } else {
+            $this->iklan->create_iklan();
+            $this->session->set_flashdata('success', 'Data Iklan Berhasil Ditambah');
+            redirect('admin/tarif');
+        }
+    }
+    public function update_iklan()
+    {
+        $this->form_validation->set_rules('status', 'Status Iklan', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            redirect('admin/tarif');
+        } else {
+            $this->iklan->update();
+            $this->session->set_flashdata('success', 'Data Iklan Berhasil Diperbarui');
+            redirect('admin/tarif');
+        }
+    }
+    public function delete_iklan($id)
+    {
+        $iklan = $this->iklan->getIklan($id);
+
+        if($iklan){
+            if($this->iklan->delete($id)){
+                $img_file = "./assets/frontend/img/iklan/".$iklan->gambar_iklan;
+                unlink($img_file);
+            }
+            $this->session->set_flashdata('success', 'Data Iklan Berhasil Dihapus');
+        }
         redirect('admin/tarif');;
     }
 }

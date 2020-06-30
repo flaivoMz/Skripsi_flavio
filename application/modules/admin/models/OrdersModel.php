@@ -11,18 +11,11 @@ class OrdersModel extends CI_Model {
         $this->db->join('order_detail_customer AS odc','odc.id_order=oc.id_order','left');
         $this->db->join('order_driver AS od','od.id_order=oc.id_order','left');
         $this->db->join('rider AS r','r.id_rider=oc.id_rider','left');
+        $this->db->order_by('oc.tanggal_order','DESC');
         $query = $this->db->get();
         return $query->result();
     }
-    public function jumlah_order()
-    {
-        $date=date('Y-m-d');
-        $this->db->select('COUNT(id_order) AS total');
-        $this->db->from('order_customer');
-        $this->db->where('DATE(tanggal_order)', $date);
-        $query = $this->db->get();
-        return $query->row();
-    }
+    
     public function getAllAvailableKurir()
     {
         $this->db->select('r.id_rider,r.nama_rider,oc.id_order,oc.status_order');
@@ -49,6 +42,38 @@ class OrdersModel extends CI_Model {
             return $e->getMessage();
         }
     }
+    public function paid_billing()
+    {
+        $id_order = $this->input->post('id_order');
+        $total_bayar = $this->input->post('total_bayar');
+        $paid = $this->input->post('paid');
+        $dibayar = $this->input->post('dibayar');
+
+        if($paid == $total_bayar){
+            $data = [
+                "paid"=>$paid,
+                "status_pembayaran"=>"lunas"
+            ];
+        }else if(($dibayar + $paid) >= $total_bayar){
+            $data = [
+                "paid"=>$total_bayar,
+                "status_pembayaran"=>"lunas"
+            ];
+            
+        }else{
+            $data = [
+                "paid"=>$paid
+            ];
+        }
+
+        try{
+            $this->db->where('id_order', $id_order);
+            $this->db->update('order_customer', $data);
+            return true;
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
+    }
     public function update_kurir()
     {
         $id_order = $this->input->post('id_order', true);
@@ -65,5 +90,44 @@ class OrdersModel extends CI_Model {
             return $e->getMessage();
         }
     }
-   
+    public function countJarak($data = null)
+    {
+        if($data != null){
+            $this->db->where('tanggal_order >= ', $data['date_start']);
+            $this->db->where('tanggal_order <= ', $data['date_end']);
+        }
+        $this->db->select_sum('jarak');
+        return $this->db->get('order_customer')->row();
+    
+    }
+    public function countOrders($data = null)
+    {
+        if($data != null){
+            $this->db->where('tanggal_order >= ', $data['date_start']);
+            $this->db->where('tanggal_order <= ', $data['date_end']);
+        }
+        return $this->db->count_all_results('order_customer');
+    }
+    public function order_hari_ini($data = null)
+    {
+        // if($data != null){
+        //     $this->db->where('tanggal_order >= ', $data['date_start']);
+        //     $this->db->where('tanggal_order <= ', $data['date_end']);
+        // }else{
+            $date=date('Y-m-d');
+            $this->db->where('DATE(tanggal_order)', $date);
+        // }
+        return $this->db->count_all_results('order_customer');
+        
+    }
+    public function countCustomer($data = null)
+    {
+        if($data != null){
+            $this->db->where('tanggal_order >= ', $data['date_start']);
+            $this->db->where('tanggal_order <= ', $data['date_end']);
+        }
+        $this->db->select('COUNT(DISTINCT id_customer) AS total_customer');
+        $this->db->from('order_customer');
+        return $this->db->get()->row();
+    }
 }

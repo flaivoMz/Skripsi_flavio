@@ -8,21 +8,40 @@ class Dashboard extends MX_Controller
         parent::__construct();
         $this->load->model('OrdersModel', 'orders');
         $this->load->model('CustomersModel', 'customers');
-        $this->load->model('DriversModel', 'drivers');
         $this->load->model('AdminModel', 'admin');
         is_logged_in();
     }
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $orders = $this->orders->getAllOrders();
-        $jumlah_order = $this->orders->jumlah_order();
-        $customers = $this->customers->getAllCustomers();
-        $drivers = $this->drivers->getAllDrivers();
-        $data['total_order'] = count($orders);
-        $data['total_customer'] = count($customers);
-        $data['total_driver'] = count($drivers);
-        $data['order_hari_ini'] = $jumlah_order->total;
+
+        $this->form_validation->set_rules('date_start', 'Tanggal Awal', 'trim|required');
+        $this->form_validation->set_rules('date_end', 'Tanggal Akhir', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $total_pesanan = $this->orders->countOrders();
+            $total_pelanggan = $this->orders->countCustomer();
+            $order_hari_ini = $this->orders->order_hari_ini();
+            $total_jarak = $this->orders->countJarak();
+        }else{
+            $date_start = $this->input->post('date_start');
+            $date_end = $this->input->post('date_end');
+            $date_range = [
+                "date_start" => $date_start,
+                "date_end" => $date_end
+            ];
+
+            $total_pesanan = $this->orders->countOrders($date_range);
+            $total_pelanggan = $this->orders->countCustomer($date_range);
+            $order_hari_ini = $this->orders->order_hari_ini($date_range);
+            $total_jarak = $this->orders->countJarak($date_range);
+
+        }
+
+        $data['total_pesanan'] = $total_pesanan;
+        $data['total_jarak'] = round($total_jarak->jarak,2);
+        $data['order_hari_ini'] = $order_hari_ini;
+        $data['total_pelanggan'] = $total_pelanggan->total_customer;
 
         adminView('dashboard/index', $data);
     }
