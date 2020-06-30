@@ -17,6 +17,26 @@ const flashDanger = $('.flash-danger').data('flashdata');
   }
 $('.select2').select2();
 
+$('.edit-iklan').on('click', function (e) {
+  e.preventDefault();
+  var idiklan = $(this).data('idiklan');
+  var gambariklan = $(this).data('gambariklan');
+  var status = $(this).data('status');
+
+  $("#form-iklan").attr('action','tarif/update_iklan');
+  $(".modal-title").html("Edit Banner Iklan");
+  $("#info").html("Kosongkan gambar jika tetap menggunakan gambar sebelumnya");
+  $("#id_iklan").val(idiklan);
+  $("#old_image").val(gambariklan);
+  $("#gambar_iklan").removeAttr("required");
+
+  if(status=="aktif"){
+    $("#aktif_statusiklan").val(status).prop('checked', true);
+  }else{
+    $("#tidak_statusiklan").val(status).prop('checked', true);
+  }
+});
+
 $('.edit-tarif').on('click', function (e) {
   e.preventDefault();
   var idtarif = $(this).data('idtarif');
@@ -30,6 +50,7 @@ $('.edit-tarif').on('click', function (e) {
   $(".modal-title").html("Edit Tarif Ongkir");
   $("#id_tarif").val(idtarif);
   $("#jarak_minimal").val(jarakminimal);
+
   if(statusjarakminimal=="aktif"){
     $("#aktif").val(statusjarakminimal).prop('checked', true);
   }else{
@@ -190,6 +211,31 @@ $('.pilih-kurir').on('click', function (e) {
   $(".value_id_order").val(orderid);
 });
 
+$('.bayar-billing').on('click', function (e) {
+  e.preventDefault();
+  var orderid = $(this).data('orderid');
+  var totalbayarrp = $(this).data('totalbayarrp');
+  var totalbayar = $(this).data('totalbayar');
+  var paid = $(this).data('paid');
+
+  $(".billing-orderid").html(orderid);
+  $("#id_order").val(orderid);
+  $("#total_bayar").val(totalbayar);
+  $("#dibayar").val(paid);
+  $(".billing-totalbayar").html(totalbayarrp);
+  $(".billing-dibayar").html(paid);
+});
+
+$('.password-customer').on('click', function (e) {
+  e.preventDefault();
+  var idcustomer = $(this).data('idcustomer');
+  var namacustomer = $(this).data('namacustomer');
+
+  $(".passwordcust-name").html(namacustomer);
+  $("#id_customer").val(idcustomer);
+
+});
+
 
 $('.detail-order').on('click', function (e) {
   e.preventDefault();
@@ -214,13 +260,22 @@ $('.detail-order').on('click', function (e) {
   var denda = $(this).data('denda');
   var jenispembayaran = $(this).data('jenispembayaran');
   var diskon = $(this).data('diskon');
+  var paid = $(this).data('paid');
+  var paidby = $(this).data('paidby');
+  var patokanasal = $(this).data('patokanasal');
+  var patokantujuan = $(this).data('patokantujuan');
+  var hargabarang = $(this).data('hargabarang');
 
   if(alamatasal){
     $(".modal-orderId").html(orderid);
+    $(".patokanasal").html(patokanasal);
+    $(".patokantujuan").html(patokantujuan);
+    $(".paidby").html(paidby);
+    $(".hargabarang").html("Rp. "+hargabarang);
     $(".alamatasal").html(alamatasal);
     $(".alamattujuan").html(alamattujuan);
     if(jarak != ''){
-      $(".jarak").html(jarak);
+      $(".jarak").html(jarak+" km");
     }else{
       $(".jarak").html("");
     }
@@ -243,6 +298,7 @@ $('.detail-order').on('click', function (e) {
     $(".beratbarang").html(beratbarang+" kg");
     $(".catatan").html(catatan);
     $(".denda").html("Rp."+denda);
+    $(".paid").html("Rp."+paid);
     
 
     if(gambarpengambilan != ''){

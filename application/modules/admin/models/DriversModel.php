@@ -8,6 +8,7 @@ class DriversModel extends CI_Model {
         $query = $this->db->get('rider');
         return $query->result();
     }
+    
     public function getDriver($id)
     {
         $query = $this->db->get_where('rider', ['id_rider' => $id]);
@@ -18,11 +19,13 @@ class DriversModel extends CI_Model {
     {
         $nama_rider = $this->input->post('nama_rider',true);
         $alamat = $this->input->post('alamat', true);
+        $no_telpn = $this->input->post('no_telpn', true);
         $plat_nomor = $this->input->post('plat_nomor', true);
         $status = $this->input->post('status', true);
         $tanggal_bergabung = $this->input->post('tanggal_bergabung', true);
         $data = [
             "nama_rider" => $nama_rider,
+            "no_telpn" => $no_telpn,
             "password" => password_hash($this->input->post('password', true), PASSWORD_DEFAULT),
             "alamat" => $alamat,
             "plat_nomor" => $plat_nomor,
@@ -43,14 +46,18 @@ class DriversModel extends CI_Model {
         $no_telpn = $this->input->post('no_telpn', true);
         $status = $this->input->post('status', true);
         $old_image = $this->input->post('old_image', true);
+        $password = $this->input->post('password', true);
 
         if (!empty($_FILES["foto"]["name"])) {
             $foto = $this->_uploadImage($nama_rider);
-            $img_file = "./assets/backend/img/driver/".$old_image;
-            unlink($img_file);
+            if($old_image != "profile.png"){
+                $img_file = "./assets/backend/img/driver/".$old_image;
+                unlink($img_file);
+            }
         } else {
             $foto = $old_image;
         }
+        
         
         $data = [
             "nama_rider" => $nama_rider,
@@ -60,6 +67,11 @@ class DriversModel extends CI_Model {
             "status" => $status,
             "foto" => $foto
         ];
+        if(!empty($password)){
+            $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+            // var_dump($data);
+            // die;
+        }
         $this->db->where('id_rider', $id);
         $this->db->update('rider', $data);
     }

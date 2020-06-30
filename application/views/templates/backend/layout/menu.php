@@ -66,7 +66,7 @@
   <li class="nav-item <?= $this->uri->segment(2)=="tarif" ? "active" : "" ?>">
     <a class="nav-link" href="<?= base_url('admin/tarif') ?>">
       <i class="fas fa-fw fa-money-check-alt"></i>
-      <span>Setting Tarif</span></a>
+      <span>Setting Tarif & Iklan</span></a>
   </li>
   <li class="nav-item <?= $this->uri->segment(2)=="users" ? "active" : "" ?>">
     <a class="nav-link" href="<?= base_url('admin/users') ?>">

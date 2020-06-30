@@ -45,7 +45,7 @@
                         <td><?= ucwords($row->kategori_harga) ?></td>
                         <th>
                             <div class="btn-group" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Aksi
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -67,22 +67,19 @@
 
     <div class="card shadow mb-4 border-left-warning">
         <div class="card-header py-3">
-            <a href="#collapseTarifBarang" class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseTarifBarang">
-                <h6 class="m-0 font-weight-bold text-primary">Setting Tarif Barang <sup>Klik untuk minimize</sup>
-                <a href="#" data-toggle="modal" data-target="#formTarifBarang" class="btn btn-primary btn-sm float-right tambah-tarifBarang"><i class="fa fa-plus"></i> Tarif Barang</a></h6>
+            <a href="#collapseIklan" class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseIklan">
+                <h6 class="m-0 font-weight-bold text-primary">Setting Iklan <sup>Klik untuk minimize</sup>
+                <a href="#" data-toggle="modal" data-target="#formIklan" class="btn btn-primary btn-sm float-right tambah-iklan"><i class="fa fa-plus"></i> Iklan</a></h6>
             </a>
         </div>
-        <div class="collapse show" id="collapseTarifBarang">
+        <div class="collapse show" id="collapseIklan">
             <div class="card-body">
                 <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
                         <th>No</th>
-                        <th>Overweight</th>
-                        <th>Oversize</th>
-                        <th>Normal</th>
-                        <th>Kategori</th>
+                        <th>Gambar<sup class="text-danger">* Klik gambar untuk melihat ukuran lebih besar</sup></th>
                         <th>Status</th>
                         <th></th>
                     </tr>
@@ -91,28 +88,33 @@
                     <tbody>
                     <?php
                     $no=1;
-                    foreach($tarifbarang as $row){
+                    foreach($iklan as $row){
                     
                     ?>
                     <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= format_rupiah($row->harga_overweight) ?></td>
-                        <td><?= format_rupiah($row->harga_oversize) ?></td>
-                        <td><?= format_rupiah($row->harga_normal) ?></td>
-                        <td><?= ucwords($row->kategori) ?></td>
-                        <td><?= ucwords($row->status) ?></td>
-                        <th>
+                        <td width="5%"><?= $no++ ?></td>
+                        <td clas="text-center">
+                            <center><a href="<?= base_url('assets/frontend/img/iklan/'.$row->gambar_iklan) ?>" target="_blank">
+                            <img src="<?= base_url('assets/frontend/img/iklan/'.$row->gambar_iklan) ?>" class="img-thumbnail" alt="gambar iklan"  width="15%">
+                            </a></center>    
+                        </td>
+                        <td><?= $row->status=="aktif" ? "<span class='badge badge-success'>Aktif</span>" : "<span class='badge badge-danger'>Nonaktif</span>" ?></td>
+                      
+                        <td width="15%">
                             <div class="btn-group" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Aksi
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item edit-tarifBarang" data-toggle="modal" data-target="#formTarifBarang" href="#" data-idtarifbarang="<?= $row->id ?>" data-hargaoverweight="<?= $row->harga_overweight ?>" data-hargaoversize="<?= $row->harga_oversize ?>" data-harganormal="<?= $row->harga_normal ?>" data-kategori="<?= $row->kategori ?>" data-status="<?= $row->status ?>">Edit</a>
-                                <a class="dropdown-item button-konfirmasi text-danger" data-konfirmasi="Data tarif barang akan dihapus" href="<?= base_url('admin/tarif/delete_barang/').$row->id ?>">Hapus</a>
-                                
+                                <a class="dropdown-item edit-iklan" data-toggle="modal" data-target="#formIklan" href="#" data-idiklan="<?= $row->id_iklan ?>" data-gambariklan="<?= $row->gambar_iklan ?>" data-status="<?= $row->status ?>">Edit</a>
+                                <a class="dropdown-item button-konfirmasi text-success" href="<?= base_url('admin/tarif/status_iklan/'.$row->id_iklan.'/'.$row->status) ?>">
+                                <?= $row->status=="aktif" ? "Nonaktifkan" : "Aktifkan" ?></a>
+                                <a class="dropdown-item button-konfirmasi text-danger" data-konfirmasi="Iklan ini akan di hapus" href="<?= base_url('admin/tarif/delete_iklan/'.$row->id_iklan) ?>">
+                                Hapus
+                                </a>
                                 </div>
                             </div>
-                        </th>
+                        </td>
                     </tr>
                     <?php } ?>
                     </tbody>
@@ -197,79 +199,45 @@
   </div>
 </div>
 <!-- ==================================================================== -->
-<div class="modal fade" id="formTarifBarang" tabindex="-1" role="dialog" aria-labelledby="formTarifBarangLabel" aria-hidden="true">
+<div class="modal fade" id="formIklan" tabindex="-1" role="dialog" aria-labelledby="formIklanLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="formTarifBarangLabel">Tambah Tarif Barang</h5>
+        <h5 class="modal-title" id="formIklanLabel">Tambah Banner Iklan</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="#" method="post" id="form-tarifbarang">
+        <form action="<?= base_url('admin/tarif/create_iklan') ?>" method="post" id="form-iklan" enctype="multipart/form-data">
+        
             <div class="form-group">
-                <label for="">Harga Overweight</label>
-                <input type="hidden" name="id_tarif_barang" id="id_tarif_barang">
-                <input type="number" name="harga_overweight" class="form-control" id="harga_overweight" required>
+                <label for="foto">Gambar Iklan</label>
+                <input type="hidden" name="id_iklan" id="id_iklan">
+                <input type="hidden" name="old_image" id="old_image">
+                <input type="file" id="gambar_iklan" name="gambar_iklan" accept=".png,.jpg,.jpeg" class="form-control" required>
+                <small id="info" class="form-text text-danger"></small>
             </div>
             <div class="form-group">
-                <label for="">Harga Oversize</label>
-                <input type="number" name="harga_oversize" class="form-control" id="harga_oversize" required>
-            </div>
-            <div class="form-group">
-                <label for="">Harga Normal</label>
-                <input type="number" name="harga_normal" class="form-control" id="harga_normal" required>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="">Status</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="aktif_tarifbarang" value="aktif">
-                            <label class="form-check-label" for="">
-                                Aktif
-                            </label>
-                            </div>
-                            <div class="form-check">
-                            <input class="form-check-input" type="radio" name="status" id="tidak_tarifbarang" value="tidak">
-                            <label class="form-check-label" for="">
-                                Tidak
-                            </label>
-                        </div>
+                <label for="">Status</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="aktif_statusiklan" value="aktif" checked>
+                    <label class="form-check-label" for="">
+                        Aktif
+                    </label>
                     </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="status" id="tidak_statusiklan" value="tidak">
+                    <label class="form-check-label" for="">
+                        Tidak
+                    </label>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="">Kategori</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="customer_tarifbarang" value="customer">
-                            <label class="form-check-label" for="">
-                                Customer
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="member_tarifbarang" value="member">
-                            <label class="form-check-label" for="">
-                                Member
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="kategori" id="b2b_tarifbarang" value="B2B">
-                            <label class="form-check-label" for="">
-                                B2B
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-                    
+            </div>  
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-        <button type="submit" form="form-tarifbarang" class="btn btn-primary">Simpan</button>
+        <button type="submit" form="form-iklan" class="btn btn-primary">Simpan</button>
       </div>
     </div>
   </div>

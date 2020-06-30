@@ -49,6 +49,18 @@ class CustomersModel extends CI_Model {
             return $e->getMessage();
         }
     }
-  
+
+    public function edit_password()
+    {
+        $id_customer = $this->input->post('id_customer');
+        
+        $password = $this->input->post('password', true);
+
+        $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+
+        $this->db->where('id_customer', $id_customer);
+        $this->db->update('customer', $data);
+    }
+   
     
 }

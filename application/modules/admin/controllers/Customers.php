@@ -75,6 +75,18 @@ class Customers extends MX_Controller
         }
         return $string;
     }
+    public function edit_password()
+    {
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            redirect('admin/customers');
+        } else {
+            $this->customer->edit_password();
+            $this->session->set_flashdata('success', 'Password customer berhasil diperbarui');
+            redirect('admin/customers');
+        }
+    }
     public function export()
     {
             $semua_pengguna = $this->customer->getAllCustomers();
@@ -112,10 +124,11 @@ class Customers extends MX_Controller
 
           $writer = new Xlsx($spreadsheet);
 
-        header('Content-Type: application/vnd.ms-excel');
+      header('Content-Type: application/vnd.ms-excel');
 	  header('Content-Disposition: attachment;filename="daftar_pelanggan.xlsx"');
 	  header('Cache-Control: max-age=0');
 
 	  $writer->save('php://output');
     }
+    
 }

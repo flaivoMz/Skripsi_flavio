@@ -71,8 +71,8 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="number" class="form-control" name="password" minlength="6" required <?= $submit=="Edit" ? "readonly" : "" ?>>
-                        <small id="emailHelp" class="form-text text-danger"><?= $submit=="Edit" ? "password hanya bisa di edit oleh driver masing-masing" : "Password berupa pin dengan panjang 6 digit angka" ?></small>
+                        <input type="number" class="form-control" name="password" minlength="6" <?= $submit=="Tambah" ? "required" : "" ?>>
+                        <small id="emailHelp" class="form-text text-danger"><?= $submit=="Edit" ? "Kosongkan password jika tidak diubah" : "Password berupa pin dengan panjang 6 digit angka" ?></small>
 
                     </div>
                     <div class="form-group">

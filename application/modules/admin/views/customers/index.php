@@ -14,7 +14,7 @@
   </div> -->
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="dataPelanggan" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>No</th>
@@ -35,7 +35,7 @@
         ?>
           <tr>
             <td><?= $no++ ?></td>
-            <td><?= ucwords($row->nama) ?></td>
+            <td width="30%"><?= ucwords($row->nama) ?></td>
             <td><?= $row->email ?></td>
             <td><?= $row->alamat ?></td>
             <td><?= $row->no_telpn ?></td>
@@ -56,6 +56,7 @@
                     <a class="dropdown-item button-konfirmasi text-danger" data-konfirmasi="Status pelanggan ini akan di nonaktifkan" href="<?= base_url('admin/customers/status_customer/'.$row->id_customer.'/'.$row->status) ?>">
                       <?= $row->status=="aktif" ? "Blokir Pelanggan" : "Aktifkan" ?>
                     </a>
+                    <a data-toggle="modal" data-target="#editPasswordCustomer" class="dropdown-item password-customer" href="#" data-idcustomer="<?= $row->id_customer ?>" data-namacustomer="<?= ucwords($row->nama) ?>">Edit Password</a>
                     </div>
                 </div>
             </th>
@@ -69,6 +70,35 @@
 
 </div>
 <!-- /.container-fluid -->
+
+
+<div class="modal fade" id="editPasswordCustomer" tabindex="-1" role="dialog" aria-labelledby="editPasswordCustomerLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editPasswordCustomerLabel">Edit Password <span class="passwordcust-name"></span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="<?= base_url('admin/customers/edit_password') ?>" method="post" id="passwordcust">
+          <div class="form-group">
+            <label>Password Baru <sup class="text-danger">panjang miniman 6 karakter</sup></label>
+            <input type="hidden" name="id_customer" value="id_customer" id="id_customer">
+            <input type="text" name="password" class="form-control" id="password" minlength="6" required placeholder="masukkan password baru...">
+            <small id="" class="form-text text-danger">Jika mengubah password, maka password yang lama akan dihapus</small>
+           
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="submit" form="passwordcust" name="submit" class="btn btn-primary">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="modal fade" id="detailCustomer" tabindex="-1" role="dialog" aria-labelledby="detailCustomerLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
