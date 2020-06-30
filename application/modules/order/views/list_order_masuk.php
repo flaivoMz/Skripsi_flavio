@@ -1,4 +1,3 @@
-<?= $this->session->flashdata('message'); ?>
 <div class="site-section-cover overlay inner-page bg-light" style="background-image: url('<?php echo base_url();?>assets/frontend/depan/images/box.jpg')" data-aos="fade">
     <div class="container">
         <div class="row align-items-center justify-content-center text-center">
@@ -12,7 +11,7 @@
         </div>
     </div>
 </div>
-
+<?= $this->session->flashdata('message'); ?>
 <div class="site-section">
     <div class="container">
         <div class="col-12 blog-content">
@@ -207,7 +206,7 @@
         </div>
         <div class="modal-footer">
             <input type="hidden" name="id_orderan" id="idOrderanProses">
-            <input type="hidden" name="nama_rider" value="<?php echo $this->session->userdata('nama_rider');?>">
+            <input type="hidden" name="nama_rider" value="<?php echo $this->session->userdata('rider_nama_rider');?>">
             <button type="submit" class="btn btn-primary text-uppercase">Simpan</button>
         </div>
         <?php echo form_close();?>
@@ -231,7 +230,7 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" id="idOrderSelesai" name="id_orderan">
-                <input type="hidden" name="nama_rider" value="<?php echo $this->session->userdata('nama_rider');?>">
+                <input type="hidden" name="nama_rider" value="<?php echo $this->session->userdata('rider_nama_rider');?>">
                 <button type="submit" class="btn btn-primary text-uppercase">Simpan</button>
             </div>
             <?php echo form_close();?>

@@ -1,4 +1,3 @@
-<?= $this->session->flashdata('message'); ?>
 <?php
     $jumlah = $this->db->count_all('order_customer')+1;
     $level  = $customer['level'];
@@ -44,7 +43,7 @@
         </div>
     </div>
 </div>
-
+<?= $this->session->flashdata('message'); ?>
 <div class="site-section">
     <div class="container">
         <div class="row">
@@ -52,12 +51,12 @@
                 <?php echo form_open('order/save_to_order');?>
                 <div class="card">
                     <div class="card-header">
-                        Data Pengirim
+                        Data Pengirim <button class="btn-sm btn-info float-right" type="button" onclick="getLocation()"><i class="fas fa-map-marker-alt"></i></button>
                     </div>
                     <div class="card-body">
                         <div class="form-group">
                             <label for="id_order">ID ORDER</label>
-                            <input type="text" class="form-control"  id="id_order" name="id_order" value="<?php echo $id_orderan; ?>" readonly>
+                            <input type="text" class="form-control" id="id_order" name="id_order" value="<?php echo $id_orderan; ?>" readonly style="background-color:#e9ecef !important;">
                         </div>
                         <div class="form-group">
                             <label for="alamat_asal">Alamat Asal</label>
@@ -70,18 +69,26 @@
                             <?php endif;?>
                         </div>
                         <div class="form-group">
+                            <label for="patokan_asal">Patokan Alamat Asal</label>
+                            <textarea name="patokan_asal" id="patokan_asal" class="form-control" placeholder="Mis. Rumah Warna Biru"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="alamat_tujuan">Alamat Tujuan</label>
                             <?php if(isset($_SESSION['alamat_penerima'])&&$_SESSION['alamat_penerima']!=""):?>
-                                <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoPenerima()"><?php echo $_SESSION['alamat_penerima']['alamat']?></textarea>
+                                <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat tujuan" required="" onclick="gotoPenerima()"><?php echo $_SESSION['alamat_penerima']['alamat']?></textarea>
                                 <input type="hidden" name="koordinat_tujuan" value="<?php echo $_SESSION['alamat_penerima']['koordinat']?>">
                                 <input type="hidden" name="kabupaten_tujuan" value="<?php echo $_SESSION['alamat_penerima']['kabupaten']?>">
                             <?php else:?>
-                                <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat asal" required="" onclick="gotoPenerima()"></textarea>
+                                <textarea name="alamat_tujuan" id="alamat_tujuan" class="form-control" placeholder="Masukkan alamat tujuan" required="" onclick="gotoPenerima()"></textarea>
                             <?php endif;?>
                         </div>
                         <div class="form-group">
+                            <label for="patokan_tujuan">Patokan Alamat Tujuan</label>
+                            <textarea name="patokan_tujuan" id="patokan_tujuan" class="form-control" placeholder="Mis. Rumah Warna Biru"></textarea>
+                        </div>
+                        <div class="form-group">
                             <label for="pengirim">Pengirim</label>
-                            <input type="text" class="form-control" id="pengirim" name="pengirim" readonly value="<?php echo $this->session->userdata('nama');?>">
+                            <input type="text" class="form-control" id="pengirim" name="pengirim" readonly value="<?php echo $this->session->userdata('cust_nama');?>" style="background-color:#e9ecef !important;">
                         </div>
                         <div class="form-group">
                             <label for="no_tlpn_pengirim">Nomor Telpon Pengirim</label>
@@ -99,10 +106,29 @@
                             <label for="jenis_pembayaran">Jenis Pembayaran</label>
                             <select name="jenis_pembayaran" id="jenis_pembayaran" class="form-control" required="">
                                 <option disabled>Pilih Metode Pembayaran</option>
-                                <option value="cash">Cash</option>
-                                <option value="transfer">Transfer</option>
-                                <option value="cicilan">Cicilan</option>
+                                <option value="cash" selected>Cash</option>
+                                <option value="cod">COD</option>
+                                <option value="billing">Billing</option>
+                                <option value="cod_billing">COD Billing</option>
                             </select>
+                        </div>
+                        <div class="form-group d-none" id="inputHargaCOD">
+                            <label for="harga_barang">Harga Barang Yang Di Ambil</label>
+                            <input type="text" name="harga_cod" class="form-control uang" id="harga_barang" placeholder="Masukkan harga">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paid_by" id="paid_by" value="pengirim" checked>
+                                <label class="form-check-label" for="paid_by">
+                                    Pengirim
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paid_by" id="paid_by" value="penerima">
+                                <label class="form-check-label" for="paid_by">
+                                    Penerima
+                                </label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="referal_code">Referal Code</label>
@@ -116,17 +142,6 @@
                                 <span class="float-right" id="nominalOngkir"></span>
                                 <input type="hidden" id="jarak" name="jarak">
                                 <input type="hidden" id="inputNominalOngkir" name="nominal_ongkir">
-                            </div>
-                            <div class="col-6">
-                                <span class="float-left">Subtotal</span>
-                            </div>
-                            <div class="col-6">
-                                <span class="float-right"><?php echo number_format($sub_total['total'],0,'.','.'); ?></span>
-                                <?php if($sub_total['total'] =="" || $sub_total['total'] == 0):?>
-                                    <input type="hidden" id="inputNominalSubtotal" name="nominal_subtotal" value="0">
-                                <?php else:?>
-                                    <input type="hidden" id="inputNominalSubtotal" name="nominal_subtotal" value="<?php echo $sub_total['total'];?>">
-                                <?php endif;?>
                             </div>
                             <div class="col-6">
                                 <span class="float-left">Total</span>
@@ -168,8 +183,6 @@
                                     <div class="col-6"><?php echo $tmp['volume_barang']; ?></div>
                                     <div class="col-6">Berat</div>
                                     <div class="col-6"><?php echo number_format($tmp['berat_barang'],1,'.','.'); ?>&nbsp;kg</div>
-                                    <div class="col-6">Total</div>
-                                    <div class="col-6"><?php echo number_format($tmp['total'],0,'.','.'); ?></div>
                                     <div class="col-12">
                                         <span class="text-success" style="cursor:pointer;" onclick="editTmp(<?php echo $tmp['id_barang'];?>)">Edit</span>&nbsp;||&nbsp;<span class="text-danger" onclick="hapusTmp(<?php echo $tmp['id_barang']; ?>)" style="cursor:pointer;">Hapus</span>
                                     </div>
@@ -323,10 +336,29 @@
                 </button>
             </div>
             <div class="modal-body ">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti, temporibus autem rem excepturi harum, nemo optio sit deleniti dicta, dolores tenetur eum neque sequi quod rerum vel sapiente in voluptatibus. At veniam odit fugit impedit sint dolorem quo asperiores eum eos veritatis aliquam aperiam voluptatibus praesentium rerum quae eveniet, sed non harum, nam architecto, velit accusantium quis iste saepe? Nam ea quae assumenda! Molestiae fuga minus vel quibusdam nisi at aperiam perspiciatis possimus quos doloribus dolor totam odit iure tempore, repellendus quia obcaecati neque, recusandae delectus labore eveniet voluptates voluptatem eligendi! Debitis perferendis fuga quibusdam velit assumenda deleniti repellendus illum voluptates eaque doloribus? Eaque ullam natus excepturi velit commodi dolor veritatis ipsa at odit reprehenderit dolore, eveniet beatae. Illum qui asperiores praesentium laborum, amet voluptates unde vero quam ad optio? Laborum distinctio accusantium culpa reprehenderit, blanditiis quam, libero sapiente, pariatur iste doloremque aut sunt. Totam architecto voluptates, nisi alias ut labore esse nostrum similique repudiandae optio atque, necessitatibus dolorum, expedita consequatur debitis. Optio ratione quos ullam fuga consectetur dignissimos totam odit recusandae quis officia provident, nostrum necessitatibus aut autem blanditiis dolorem non pariatur, enim quasi voluptates error. Pariatur atque repellendus sunt eveniet odio ipsum molestiae aspernatur quibusdam doloremque praesentium ducimus, distinctio, architecto eum cumque. Nisi quo incidunt sed explicabo itaque quas ea cum temporibus et sequi qui ratione totam aliquam provident accusantium culpa distinctio eligendi dolore inventore consequuntur maiores, vitae iusto, minima expedita! Accusamus a illum fugiat itaque, eaque recusandae doloribus amet commodi ipsam ut? Quis at vel nisi sunt tempora? Aspernatur modi illum libero eveniet sint possimus non magni corporis itaque at voluptatibus molestias aliquid enim quis esse, quo delectus deleniti voluptate laborum molestiae quasi. Sint maiores fuga cum ea, tempora consequatur error ad dolore, reiciendis pariatur illum tenetur, asperiores eius adipisci cupiditate inventore quidem sed aut debitis ut deserunt numquam veniam. Nam veritatis suscipit deleniti nesciunt numquam quod itaque earum sequi similique debitis optio explicabo temporibus nihil totam sint esse, accusamus voluptatem unde vitae! Quidem, iure velit ipsum ipsa corrupti voluptatibus quia officia sequi nihil beatae ad vero. Consequatur aspernatur voluptates voluptatum. Earum minus consequatur vero deleniti quas eaque vel? Officia voluptas distinctio corporis? Rem molestias fuga saepe porro veniam quos, ratione est ipsa ad esse. A dignissimos non totam unde nihil saepe repudiandae laudantium distinctio obcaecati optio, eos maiores voluptas eaque adipisci sint. Sed, eaque, asperiores ipsum nesciunt perspiciatis tempore atque voluptas maiores beatae, quae veritatis libero commodi! Exercitationem, ad harum minima reprehenderit cumque sunt fugit dolores? Quaerat eaque doloribus ad dolorem, animi corrupti veniam molestiae natus maxime, id cupiditate ipsam inventore recusandae porro nihil qui odit quo omnis incidunt, architecto eius? Delectus veritatis animi excepturi. Quae delectus nam, harum magni debitis assumenda quis voluptate corporis iusto dolor? Quae maxime numquam unde, repellat et animi fuga temporibus aut non molestias incidunt in officia nulla eaque consequatur saepe, voluptates possimus ullam expedita facere rem tenetur. Mollitia cupiditate tenetur amet quam incidunt necessitatibus officia, adipisci deserunt numquam deleniti odio, illo debitis! Velit dolores, nihil nobis nulla tenetur placeat asperiores.
+                Pengirim menjamin bahwa barang yang dikirim tidak melanggar peraturan dan perundangan yang berlaku di wilayah NKRI
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary text-uppercase" data-dismiss="modal">Keluar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal COD-->
+<div class="modal fade" id="modalCOD" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Term Of Service COD</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ol>
+                    <li>Anter#Anter akan membayar barang COD saat pengambilan barang</li>
+                    <li>Pengirim wajib mengembalikan senilai barang yang di-COD-kan ditambah nilai ongkos kirim kepada Anter#Anter bila ada pembatalan transaksi/ penerima menolak membayar transaksi</li>
+                </ol>
             </div>
         </div>
     </div>

@@ -1,4 +1,3 @@
-
 <div id="overlayer"></div>
 <div class="loader">
     <div class="spinner-border text-primary" role="status">
@@ -39,7 +38,7 @@
             <div class="col-12">
                 <nav class="site-navigation text-right ml-auto " role="navigation">
                     <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-                        <?php if($this->session->userdata('nama_rider') != ""): ?>
+                        <?php if($this->session->userdata('rider_nama_rider') != ""): ?>
                             <li class="has-children">
                                 <a class="nav-link">Orderan</a>
                                 <ul class="dropdown arrow-top">
@@ -50,7 +49,7 @@
                             </li>
                             <li><a href="<?php echo base_url('akun/akun_driver')?>" class="nav-link">Akun</a></li>
                         <?php endif;?>
-                        <?php if($this->session->userdata('level') == ""): ?>
+                        <?php if($this->session->userdata('rider_level') == ""): ?>
                             <li><a href="<?php echo base_url('home/show_login')?>" class="nav-link">Login</a></li>
                         <?php else:?>
                             <li><a href="<?php echo base_url('home/logout')?>" class="nav-link">Logout</a></li>
@@ -62,4 +61,3 @@
         </div>
     </div>
 </header>
-

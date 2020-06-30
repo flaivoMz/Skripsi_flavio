@@ -1,4 +1,3 @@
-
 <div id="overlayer"></div>
 <div class="loader">
     <div class="spinner-border text-primary" role="status">
@@ -34,18 +33,19 @@
     <div class="container">
         <div class="row align-items-center position-relative">
             <div class="site-logo">
-            <a href="<?php echo base_url()?>" class="text-black"><span class="text-primary">Anter#Anter</a>
+            <img src="<?php echo base_url()?>assets/frontend/img/anter_logo_crop.jpg" alt="logo" style="width:50px;">
+            <a href="<?php echo base_url()?>" class="text-black"><span class="text-dark">Anter#Anter</a>
             </div>
             <div class="col-12">
             <nav class="site-navigation text-right ml-auto " role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
                     <li><a href="<?php echo base_url();?>" class="nav-link">Home</a></li>
-                    <?php if($this->session->userdata('nama') != ""): ?>
+                    <?php if($this->session->userdata('cust_nama') != ""): ?>
                         <li><a href="<?php echo base_url('order');?>" class="nav-link">Order</a></li>
                         <li><a href="<?php echo base_url('order/show_riwayat_order');?>" class="nav-link">Riwayat Order</a></li>
                         <li><a href="<?php echo base_url('akun')?>" class="nav-link">Akun</a></li>
                     <?php endif;?>
-                    <?php if($this->session->userdata('level') == ""): ?>
+                    <?php if($this->session->userdata('cust_level') == ""): ?>
                         <li><a href="<?php echo base_url('home/show_login')?>" class="nav-link">Login</a></li>
                     <?php else:?>
                         <li><a href="<?php echo base_url('home/logout')?>" class="nav-link">Logout</a></li>
@@ -57,4 +57,3 @@
         </div>
     </div>
 </header>
-
