@@ -218,13 +218,14 @@ class Order extends MX_Controller
         $cek_temp       = $this->mod->m_get_tmp_by_id($id_customer);  
         $referal_code   = $this->input->post('referal_code', true);
         $cek_referal    = $this->mod->m_get_referal($referal_code);
+        $get_diskon     = $this->mod->m_get_diskon($id_customer);
         if($cek_referal !=""){
             $potongan_referal = 5/100;
         }else{
             $potongan_referal = 0;
         }
-        if($cek_referal['diskon']!=""|| $cek_referal['diskon']!=0){
-            $diskon = $cek_referal['diskon']/100;
+        if($get_diskon['diskon']!=""|| $get_diskon['diskon']!=0){
+            $diskon = $get_diskon['diskon']/100;
         }else{
             $diskon = 0;
         }
