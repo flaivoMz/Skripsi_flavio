@@ -58,6 +58,7 @@
 	<script src="<?php echo base_url()?>assets/frontend/depan/js/main.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script src="<?php echo base_url()?>assets/frontend/depan/js/clipboard.min.js"></script>
 	<?php $module = $this->_module = $this->router->fetch_module();?>
 	<?php $method = $this->router->fetch_method();?>
 	<?php if($module == "order"):?>
@@ -453,7 +454,7 @@
 			<?php if($method=="order_driver_masuk"):?>
 				var idOrderan;
 				var koordinatTujuan;
-				var idDriver = '<?php echo $this->session->userdata('id_rider');?>'
+				var idDriver = '<?php echo $this->session->userdata('rider_id_rider');?>'
 				function cekOrderan(id){
 					$.ajax({
 						url 	: "<?php echo base_url('order/detail_order_driver');?>",
@@ -496,6 +497,11 @@
 							}
 							if(hasil.detail['jenis_pembayaran'] == "cash"){
 								$("#blockUangDiterima").addClass("d-block");
+							}
+							if(hasil.detail['verifikasi_driver'] == "sudah"){
+								$("#btnSimpanCekOrder").attr('disabled','disabled');
+							}else{
+								$("#btnSimpanCekOrder").removeAttr('disabled','disabled');
 							}
 							$("#idCustomer").val(hasil.detail['id_customer']);
 							$("#levelCustomer").val(hasil.level['level']);
@@ -608,7 +614,6 @@
 						}
 					})
 				}
-
 				function showPosition(position) {
 					idOrderan;
 					koordinatTujuan;
@@ -652,7 +657,23 @@
 						} 
 					}); 
 				}
-				
+				$(function () {
+					var clipboard = new ClipboardJS('.clipboard');
+						clipboard.on('success', function(e) {
+						console.log(e);
+						$(e.trigger).text("Copied!");
+						e.clearSelection();
+						setTimeout(function() {
+							$(e.trigger).text("Copy");
+						}, 2500);
+					});
+					clipboard.on('error', function(e) {
+					$(e.trigger).text("Can't in Safari");
+					setTimeout(function() {
+						$(e.trigger).text("Copy");
+					}, 2500);
+					});
+				})
 			<?php endif;?>
 			<?php if(isset($_SESSION['msg'])&& $_SESSION['msg']=="berhasil_login"):?>
 				Swal.fire({
