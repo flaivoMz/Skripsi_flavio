@@ -41,6 +41,26 @@
                                 <span class="float-right"><?php echo $orders['no_telpn_penerima'];?></span>
                             </div>
                         </div>
+                        <div class="col-12 px-0">
+                            <div class="form-group">
+                                <label for="">Koordinat Asal</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control text-center" id="koordinatAsal" readonly value="<?php echo $orders['koordinat_asal'];?>">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-info clipboard" data-toggle="tooltip" data-placement="top" title="Copy To Clipboard" data-clipboard-text="<?php echo $orders['koordinat_asal'];?>"><i class="far fa-copy"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Koordinat Tujuan</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control text-center" id="koordinatAsal" readonly value="<?php echo $orders['koordinat_tujuan'];?>">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-info clipboard" data-toggle="tooltip" data-placement="top" title="Copy To Clipboard" data-clipboard-text="<?php echo $orders['koordinat_tujuan'];?>"><i class="far fa-copy"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <?php if($orders['status_order'] == "order"):?>
                             <span class="badge badge-info text-uppercase">Order</span>
                         <?php elseif($orders['status_order'] == "proses"):?>
@@ -50,7 +70,7 @@
                         <?php endif;?>
                         <button class="btn btn-success btn-sm float-right" type="button" onclick="prosesOrderanSelesai('<?php echo $orders['id_order'];?>')">Selesai</button>
                         <?php if($orders['id_rider'] == $orders['id_driver_baru']):?>
-                            <button class="btn btn-dark btn-sm float-right mr-2" onclick="prosesOrderanDariGanti('<?php echo $orders['id_order'];?>','<?php echo $orders['koordinat_tujuan'];?>','<?php echo $orders['koordinat'];?>')">Proses</button>
+                            <button class="btn btn-dark btn-sm float-right mr-2" onclick="prosesOrderanDariGanti('<?php echo $orders['id_order'];?>','<?php echo $orders['koordinat_tujuan'];?>','<?php echo $orders['koordinat'];?>')">Proses Driver Baru</button>
                         <?php else:?>
                             <button class="btn btn-primary btn-sm float-right mr-2" onclick="prosesOrderan('<?php echo $orders['id_order'];?>')">Proses</button>
                         <?php endif;?>
@@ -68,7 +88,7 @@
         </div>
     </div>
 </div>
-<!-- Modal Cek Barang -->
+<!-- Modal Cek Order -->
 <div class="modal fade" id="modalCekOrder" tabindex="-1" role="dialog" >
     <div class="modal-dialog">
         <div class="modal-content">
@@ -177,7 +197,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary text-uppercase">Simpan</button>
+                <button type="submit" class="btn btn-primary text-uppercase" id="btnSimpanCekOrder">Simpan</button>
             </div>
             <?php echo form_close();?>
         </div>
