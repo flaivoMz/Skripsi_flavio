@@ -360,15 +360,19 @@ class Order extends MX_Controller
             echo "true 2 kondisi";
             // $total = ceil(($berat * $tarif_barang['harga_normal'])+ $harga_overweight + $harga_oversize);
             $total = $tarif_barang['total']+($tarif_barang['ongkir']*2);
+            $charge = $tarif_barang['ongkir']*2;
         }else if($berat_barang[0] == "overweight"){
             echo "true 1 overweight";
             $total = $tarif_barang['total']+$tarif_barang['ongkir'];
+            $charge = $tarif_barang['ongkir'];
         }else if($berat_barang[0] == "oversize"){
             echo "true 1 oversize";
             $total = $tarif_barang['total']+$tarif_barang['ongkir'];
+            $charge = $tarif_barang['ongkir'];
         }else{
             echo "normal";
             $total = $tarif_barang['total'];
+            $charge = 0;
         }
 
         // if($uang_diterima ==""){
@@ -392,7 +396,7 @@ class Order extends MX_Controller
         $post_order_customer = [
             'id_order'          => $id_order,
             'verifikasi_driver' => 'sudah',
-            'subtotal'          => $total,
+            'subtotal'          => $charge,
             'total'             => $total
         ];
         $post_order_driver = [
