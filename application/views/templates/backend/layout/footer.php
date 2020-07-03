@@ -40,7 +40,15 @@
     </div>
 </div>
 </div>
-
+<script>
+	window.setTimeout("waktu()", 1000);
+ 
+	function waktu() {
+		var waktu = new Date();
+		setTimeout("waktu()", 1000);
+		document.getElementById("waktu_skrg").innerHTML = waktu.getHours()+":"+waktu.getMinutes()+":"+waktu.getSeconds();
+	}
+</script>
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/backend/') ?>vendor/jquery/jquery.min.js"></script>
 <script src="<?= base_url('assets/backend/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

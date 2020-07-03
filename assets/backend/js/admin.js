@@ -194,7 +194,7 @@ $('.setting-diskon').on('click', function (e) {
   var diskon = $(this).data('diskon');
 
     $(".modal-cust-name").html(customer);
-    $("#id_customer").val(id_customer);
+    $("#id_cust_diskon").val(id_customer);
 
     if(diskon == 0){
       $("#diskon").val(0);
