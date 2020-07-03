@@ -159,7 +159,7 @@
       <div class="modal-body">
         <form action="<?= base_url('admin/customers/setting_diskon') ?>" id="setting_diskon" method="post">
             <div class="form-group">
-                <input type="hidden" name="id_customer" id="id_customer">
+                <input type="hidden" name="id_customer" id="id_cust_diskon">
                 <input type="number" name="diskon" class="form-control" id="diskon" placeholder="Jumlah diskon 0-100 (%)" min="0" max="100" required>
             </div>
         </form>

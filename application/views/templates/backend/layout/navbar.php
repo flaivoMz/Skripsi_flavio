@@ -12,7 +12,7 @@
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
     <i class="fa fa-bars"></i>
     </button>
-
+    <p class="mt-4 font-weight-bold"><?= tanggal_indo(date('Y-m-d')) ?> <span id="waktu_skrg" class="text-danger"></span></p>
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
