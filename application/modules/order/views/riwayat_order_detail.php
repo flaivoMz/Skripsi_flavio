@@ -114,13 +114,18 @@
                             <div class="col-6"><span class="float-right"><?php echo $list['status_berat'];?></span></div>
                             <div class="col-12"><span>Catatan:</span></div>
                             <div class="col-12"><p><?php echo $list['catatan'];?></p></div>
-                            <div class="col-6"><span>Charge</span></div>
-                            <div class="col-6"><span class="float-right"><?php echo number_format($list['charge'],0,'.','.');?></span></div>
-                            <div class="col-6"><span>Sub total</span></div>
-                            <div class="col-6"><span class="float-right"><?php echo number_format($list['total'],0,'.','.');?></span></div>
+                         
+                            <!--<div class="col-6"><span>Sub total</span></div>
+                            <div class="col-6"><span class="float-right"><?php echo number_format($list['total'],0,'.','.');?></span></div> -->
                         </div>
                         <?php endforeach;?>
                         <div class="col-12 row">
+                            <div class="col-6"><span>Charge</span></div>
+                            <div class="col-6"><span class="float-right"><?php echo number_format($detail['subtotal'],0,'.','.');?></span></div>
+                            <?php if($detail['harga_cod'] != 0):?>
+                            <div class="col-6"><span>Harga Barang COD</span></div>
+                            <div class="col-6"><span class="float-right"><?php echo number_format($detail['harga_cod'],0,'.','.');?></span></div>
+                            <?php endif;?>
                             <div class="col-6">
                                 <span>Ongkir</span>
                             </div>

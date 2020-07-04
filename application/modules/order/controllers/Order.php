@@ -11,7 +11,7 @@ class Order extends MX_Controller
 
     public function index()
     {
-
+        is_logged_in_user();
         $id_customer            = $this->session->userdata('cust_id_customer');
         $_SESSION['lokasi_sekarang'] = 0;
         $data['title']          = 'Order';
@@ -27,6 +27,7 @@ class Order extends MX_Controller
 
     public function show_alamat_asal()
     {
+        is_logged_in_user();
         $data['title'] = 'Alamat Pengirim';
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu');
@@ -49,6 +50,7 @@ class Order extends MX_Controller
 
     public function show_alamat_penerima()
     {
+        is_logged_in_user();
         $data['title'] = 'Alamat Penerima';
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu');
@@ -218,13 +220,14 @@ class Order extends MX_Controller
         $cek_temp       = $this->mod->m_get_tmp_by_id($id_customer);  
         $referal_code   = $this->input->post('referal_code', true);
         $cek_referal    = $this->mod->m_get_referal($referal_code);
+        $get_diskon     = $this->mod->m_get_diskon($id_customer);
         if($cek_referal !=""){
             $potongan_referal = 5/100;
         }else{
             $potongan_referal = 0;
         }
-        if($cek_referal['diskon']!=""|| $cek_referal['diskon']!=0){
-            $diskon = $cek_referal['diskon']/100;
+        if($get_diskon['diskon']!=""|| $get_diskon['diskon']!=0){
+            $diskon = $get_diskon['diskon']/100;
         }else{
             $diskon = 0;
         }
@@ -320,6 +323,7 @@ class Order extends MX_Controller
     /*--------- Driver ----------*/
     public function order_driver_masuk()
     {
+        is_logged_in_rider();
         $id_rider           = $this->session->userdata('rider_id_rider');
         $data['title']      = 'Orderan Masuk';
         $data['order']       = $this->mod->m_get_order_driver_masuk($id_rider);
@@ -360,15 +364,19 @@ class Order extends MX_Controller
             echo "true 2 kondisi";
             // $total = ceil(($berat * $tarif_barang['harga_normal'])+ $harga_overweight + $harga_oversize);
             $total = $tarif_barang['total']+($tarif_barang['ongkir']*2);
+            $charge = $tarif_barang['ongkir']*2;
         }else if($berat_barang[0] == "overweight"){
             echo "true 1 overweight";
             $total = $tarif_barang['total']+$tarif_barang['ongkir'];
+            $charge = $tarif_barang['ongkir'];
         }else if($berat_barang[0] == "oversize"){
             echo "true 1 oversize";
             $total = $tarif_barang['total']+$tarif_barang['ongkir'];
+            $charge = $tarif_barang['ongkir'];
         }else{
             echo "normal";
             $total = $tarif_barang['total'];
+            $charge = 0;
         }
 
         // if($uang_diterima ==""){
@@ -392,7 +400,7 @@ class Order extends MX_Controller
         $post_order_customer = [
             'id_order'          => $id_order,
             'verifikasi_driver' => 'sudah',
-            'subtotal'          => $total,
+            'subtotal'          => $charge,
             'total'             => $total
         ];
         $post_order_driver = [
@@ -434,6 +442,7 @@ class Order extends MX_Controller
 
     public function order_driver_selesai()
     {
+        is_logged_in_rider();
         $data['title']  = "Orderan Selesai";
         $id_rider       = $this->session->userdata('rider_id_rider');
         $data['order']  = $this->mod->m_get_order_driver_selesai($id_rider);
@@ -446,6 +455,7 @@ class Order extends MX_Controller
 
     public function detail_order_driver_selesai()
     {
+        is_logged_in_rider();
         $data['title']  = "Detail Orderan Selesai";
         $id_orderan     = $this->uri->segment(3);
         $data['detail'] = $this->mod->m_get_detail_order_driver_selesai($id_orderan);
@@ -482,6 +492,7 @@ class Order extends MX_Controller
 
     public function order_driver_ganti()
     {
+        is_logged_in_rider();
         $data['title']  = "Orderan Ganti  Driver";
         $id_rider       = $this->session->userdata('rider_id_rider');
         $data['order']  = $this->mod->m_get_order_driver_ganti($id_rider);

@@ -154,6 +154,16 @@ class OrderModel extends CI_Model {
         return $data;
     }
 
+    public function m_get_diskon($id_customer)
+    {
+        $this->db->select("diskon")
+            ->from('customer')
+            ->where("id_customer", $id_customer);
+        $query = $this->db->get_compiled_select();
+        $data  = $this->db->query($query)->row_array();
+        return $data;
+    }
+
     public function m_save_to_order($post)
     {
         $this->db->insert('order_customer', $post);
