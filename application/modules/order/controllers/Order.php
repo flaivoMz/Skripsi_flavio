@@ -11,7 +11,7 @@ class Order extends MX_Controller
 
     public function index()
     {
-
+        is_logged_in_user();
         $id_customer            = $this->session->userdata('cust_id_customer');
         $_SESSION['lokasi_sekarang'] = 0;
         $data['title']          = 'Order';
@@ -27,6 +27,7 @@ class Order extends MX_Controller
 
     public function show_alamat_asal()
     {
+        is_logged_in_user();
         $data['title'] = 'Alamat Pengirim';
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu');
@@ -49,6 +50,7 @@ class Order extends MX_Controller
 
     public function show_alamat_penerima()
     {
+        is_logged_in_user();
         $data['title'] = 'Alamat Penerima';
         $this->load->view('templates/frontend/depan/header', $data);
         $this->load->view('templates/frontend/depan/menu');
@@ -321,6 +323,7 @@ class Order extends MX_Controller
     /*--------- Driver ----------*/
     public function order_driver_masuk()
     {
+        is_logged_in_rider();
         $id_rider           = $this->session->userdata('rider_id_rider');
         $data['title']      = 'Orderan Masuk';
         $data['order']       = $this->mod->m_get_order_driver_masuk($id_rider);
@@ -439,6 +442,7 @@ class Order extends MX_Controller
 
     public function order_driver_selesai()
     {
+        is_logged_in_rider();
         $data['title']  = "Orderan Selesai";
         $id_rider       = $this->session->userdata('rider_id_rider');
         $data['order']  = $this->mod->m_get_order_driver_selesai($id_rider);
@@ -451,6 +455,7 @@ class Order extends MX_Controller
 
     public function detail_order_driver_selesai()
     {
+        is_logged_in_rider();
         $data['title']  = "Detail Orderan Selesai";
         $id_orderan     = $this->uri->segment(3);
         $data['detail'] = $this->mod->m_get_detail_order_driver_selesai($id_orderan);
@@ -487,6 +492,7 @@ class Order extends MX_Controller
 
     public function order_driver_ganti()
     {
+        is_logged_in_rider();
         $data['title']  = "Orderan Ganti  Driver";
         $id_rider       = $this->session->userdata('rider_id_rider');
         $data['order']  = $this->mod->m_get_order_driver_ganti($id_rider);

@@ -63,6 +63,24 @@ function is_logged_in($level=null)
     }
 }
 
+function is_logged_in_user()
+{
+    $ci = get_instance();
+
+    if (!$ci->session->userdata('cust_id_customer')) {
+        redirect('home/show_login');
+    }
+}
+
+function is_logged_in_rider()
+{
+    $ci = get_instance();
+
+    if (!$ci->session->userdata('rider_id_rider')) {
+        redirect('home/show_login');
+    }
+}
+
 // function check_access($role_id, $menu_id)
 // {
 //     $ci = get_instance();

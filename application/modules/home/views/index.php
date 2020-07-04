@@ -150,7 +150,7 @@
             <figure>
                <img src="<?php echo base_url()?>assets/frontend/img/resik.jpeg" alt="Image" class="img-fluid">
             </figure>
-            <h3 class="font-size-20 text-black">Resil</h3>
+            <h3 class="font-size-20 text-black">Resik</h3>
          </div>
       </div>
    </div>

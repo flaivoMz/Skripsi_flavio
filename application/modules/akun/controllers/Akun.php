@@ -11,6 +11,7 @@ class Akun extends MX_Controller
     
     public function index()
     {
+        is_logged_in_user();
         $data['title']  = 'Akun';
         $id_customer    = $this->session->userdata('cust_id_customer');
         $data['akun']   = $this->mod->m_show_details_account($id_customer);
@@ -27,6 +28,7 @@ class Akun extends MX_Controller
 
     public function akun_driver()
     {
+        is_logged_in_rider();
         $id_driver      =  $this->session->userdata('rider_id_rider');
         $data['title']  = "Akun Driver";
         $data['akun'] = $this->mod->m_show_details_account_driver($id_driver);
