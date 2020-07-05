@@ -6,8 +6,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Anter#anter">
+  <meta name="keywords" content="ekspedisi, pengiriman barang, kurir, antar barang">
+  <meta name="author" content="Zada Kreatif Media">
+  <meta http-equiv="refresh" content="180">
   <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('assets/backend/img/') ?>favicon-96x96.png">
 
 
