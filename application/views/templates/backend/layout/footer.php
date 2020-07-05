@@ -5,7 +5,7 @@
     <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-        <span>Copyright &copy; Administrator Anter#Anter</span>
+        <span>Copyright &copy; 2020 Administrator Anter#Anter. Created by <a href="https://zada.web.id" target="_blank">Zada Kreatif Media</a></span>
         </div>
     </div>
     </footer>

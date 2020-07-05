@@ -46,7 +46,7 @@ class AdminModel extends CI_Model
         }else{
             $data = [
                 "username" => $username,
-                "password" => password_hash($username, PASSWORD_DEFAULT),
+                "password" => password_hash($password, PASSWORD_DEFAULT),
                 "level" => $level,
                 "status" => $status
             ];
