@@ -23,6 +23,8 @@
                             <img src="<?php echo base_url();?>assets/frontend/img/box_order.png" alt="box_order" class="img-fluid">
                         <?php elseif($orders['status_order'] == "proses"):?>
                             <img src="<?php echo base_url();?>assets/frontend/img/box_on_porses.png" alt="box_on_porses" class="img-fluid">
+                        <?php elseif($orders['status_order'] == "batal"):?>
+                            <img src="<?php echo base_url();?>assets/frontend/img/box_cancel.png" alt="box_cancel" class="img-fluid">
                         <?php else:?>
                             <img src="<?php echo base_url();?>assets/frontend/img/box_selesai.png" alt="box_selesai" class="img-fluid">
                         <?php endif;?>
@@ -65,9 +67,12 @@
                             <span class="badge badge-info text-uppercase">Order</span>
                         <?php elseif($orders['status_order'] == "proses"):?>
                             <span class="badge badge-primary text-uppercase">Proses</span>
+                        <?php elseif($orders['status_order'] == "batal"):?>
+                            <span class="badge badge-danger text-uppercase">Dibatalkan</span>
                         <?php else:?>
                             <span class="badge badge-success text-uppercase">Diterima</span>
                         <?php endif;?>
+                        <?php if($orders['status_order'] != "batal"):?>
                         <button class="btn btn-success btn-sm float-right" type="button" onclick="prosesOrderanSelesai('<?php echo $orders['id_order'];?>')">Selesai</button>
                         <?php if($orders['id_rider'] == $orders['id_driver_baru']):?>
                             <button class="btn btn-dark btn-sm float-right mr-2" onclick="prosesOrderanDariGanti('<?php echo $orders['id_order'];?>','<?php echo $orders['koordinat_tujuan'];?>','<?php echo $orders['koordinat'];?>')">Proses Driver Baru</button>
@@ -78,7 +83,7 @@
                             <button class="btn btn-danger btn-sm float-right mr-2" onclick="gantiDriver('<?php echo $orders['id_order'];?>', '<?php echo $orders['koordinat_tujuan']?>')">Ganti Driver</button>
                         <?php else:?>
                             <button class="btn btn-dark btn-sm float-right mr-2" onclick="cekOrderan('<?php echo $orders['id_order'];?>')">Cek</button>
-                        <?php endif;?>
+                        <?php endif; endif;?>
                     </div>
                 </div>
                 <?php endforeach;?>

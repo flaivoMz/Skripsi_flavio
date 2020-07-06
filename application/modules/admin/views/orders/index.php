@@ -48,8 +48,10 @@
                     echo "<span class='badge badge-primary'>Order</span>";
                 }else if($order == "proses"){
                     echo "<span class='badge badge-warning'>Proses</span>";
-                }else{
+                }else if($order == "selesai"){
                     echo "<span class='badge badge-success'>Selesai</span>";
+                }else{
+                    echo "<span class='badge badge-danger'>Batal</span>";
                 }
                 ?>
             </td>
@@ -62,16 +64,20 @@
                   </button>
                   <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                   <a data-toggle="modal" data-target="#detailOrder" class="dropdown-item detail-order" href="#" data-orderid="<?= $row->id_order ?>" data-alamatasal="<?= $row->alamat_asal.' <b> [ '.$row->koordinat_asal.' </b>] ' ?>" data-alamattujuan="<?= $row->alamat_tujuan.' <b> [ '.$row->koordinat_tujuan.' ] </b>' ?>" data-jarak="<?= $row->jarak ?>" data-verifikasidriver="<?= ucwords($row->verifikasi_driver) ?>" data-notelppenerima="<?= $row->no_telpn_penerima ?>" data-kodereferal="<?= $row->referal_code ?>" data-penerima="<?= ucwords($row->nama_penerima) ?>" data-volumebarang="<?= $row->volume_barang ?>" data-beratbarang="<?= $row->berat_barang ?>" data-catatan="<?= $row->catatan ?>" data-gambarpengambilan="<?= $row->gambar_pengambilan ?>" data-gambarpengantaran="<?= $row->gambar_pengantaran ?>" data-kondisibarang="<?= $row->kondisi_barang ?>" data-pengirim="<?= ucwords($row->nama_pengirim) ?>" data-notelppengirim="<?= $row->no_telpn_pengirim ?>" data-ongkir="<?= $row->ongkir ?>" data-subtotal="<?= $row->subtotal ?>" data-denda="<?= $row->denda ?>" data-jenispembayaran="<?= ucwords($row->jenis_pembayaran) ?>" data-diskon="<?= format_rupiah($row->diskon) ?>" data-paid="<?= format_rupiah($row->paid) ?>" data-paidby="<?= ucwords($row->paid_by) ?>" data-patokanasal="<?= $row->patokan_asal ?>" data-patokantujuan="<?= $row->patokan_tujuan ?>" data-hargabarang="<?= format_rupiah($row->harga_cod) ?>">Detail</a>
-                  <?php if($row->nama_rider == ""){ ?>
-                  <a data-toggle="modal" data-target="#formPilihKurir" data-orderid="<?= $row->id_order ?>" href="#" class="dropdown-item pilih-kurir text-danger">Pilih Kurir</a>
-                  <?php } ?>
+                  <?php if($row->nama_rider == "" && $order == "order"){ ?>
+                  <a data-toggle="modal" data-target="#formPilihKurir" data-orderid="<?= $row->id_order ?>" href="#" class="dropdown-item pilih-kurir text-success">Pilih Kurir</a>
+                  <?php }
+                    if($order == "order"){
+                  ?>
+                    <a class="dropdown-item button-konfirmasi text-danger" data-konfirmasi="Akan membatalkan pesanan ini" href="<?= base_url('admin/orders/batal_pesanan/').$row->id_order ?>">Batalkan</a>
                   <?php
+                    }
                     if(strtolower($row->jenis_pembayaran) == "billing" || strtolower($row->jenis_pembayaran) == "cod billing"){
                       if($row->status_pembayaran != "lunas"){
                   ?>
                     <a data-toggle="modal" data-target="#bayarBilling" class="dropdown-item bayar-billing text-primary" href="#" data-orderid="<?= $row->id_order ?>" data-totalbayarrp="<?= format_rupiah($row->total) ?>" data-totalbayar="<?= $row->total ?>" data-paid="<?= format_rupiah($row->paid) ?>">Bayar</a>
                   <?php }} ?>
-                  <?php if($row->status_pembayaran == "belum"){ ?>
+                  <?php if($row->status_pembayaran == "belum" && $order != "batal"){ ?>
                   <a class="dropdown-item button-konfirmasi text-success" data-konfirmasi="Ubah status bayar menjadi lunas" href="<?= base_url('admin/orders/lunas_bayar/').$row->id_order ?>">Lunas Bayar</a>
                   <?php } ?>
                   

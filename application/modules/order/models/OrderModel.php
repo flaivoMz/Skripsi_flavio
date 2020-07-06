@@ -236,7 +236,8 @@ class OrderModel extends CI_Model {
             ->from('order_customer AS a')
             ->join('ganti_driver AS b','b.id_orderan=a.id_order','left')
             ->where("a.id_rider", $id_rider)
-            ->where("status_order != 'selesai'");
+            ->where("status_order != 'selesai'")
+            ->where("status_order != 'batal'");
         $query = $this->db->get_compiled_select();
         $data  = $this->db->query($query)->result_array();
         return $data;
@@ -316,10 +317,11 @@ class OrderModel extends CI_Model {
 
     public function m_get_order_driver_selesai($id_rider)
     {
+        $status = array('batal','selesai');
         $this->db->select()
             ->from('order_customer')
             ->where("id_rider", $id_rider)
-            ->where("status_order = 'selesai'");
+            ->where_in("status_order", $status);
         $query = $this->db->get_compiled_select();
         $data  = $this->db->query($query)->result_array();
         return $data;
@@ -327,11 +329,12 @@ class OrderModel extends CI_Model {
 
     public function m_get_detail_order_driver_selesai($id_order)
     {
+        $status = array('batal','selesai');
         $this->db->select('a.id_order,a.nama_pengirim,a.nama_penerima,a.no_telpn_penerima,a.no_telpn_pengirim,a.jenis_pembayaran,a.alamat_asal,a.alamat_tujuan,a.status_order,b.gambar_pengambilan,b.gambar_pengantaran,b.volume_barang,b.berat_barang,b.status_berat')
             ->from('order_customer AS a')
             ->join('order_driver AS b', 'a.id_order=b.id_order')
             ->where("a.id_order", $id_order)
-            ->where("status_order = 'selesai'");
+            ->where_in("status_order", $status);
         $query = $this->db->get_compiled_select();
         $data  = $this->db->query($query)->row_array();
         return $data;

@@ -5,7 +5,7 @@ class OrdersModel extends CI_Model {
   
     public function getAllOrders()
     {
-        $this->db->select('oc.*, r.nama_rider,c.nama,odc.volume_barang,odc.berat_barang,odc.catatan,od.gambar_pengambilan,od.gambar_pengantaran,od.berat_barang as kondisi_barang,odc.charge as denda');
+        $this->db->select('oc.*, r.nama_rider,c.nama,odc.volume_barang,odc.berat_barang,odc.catatan,od.gambar_pengambilan,od.gambar_pengantaran,od.status_berat as kondisi_barang,odc.charge as denda');
         $this->db->from('order_customer AS oc');
         $this->db->join('customer AS c','c.id_customer=oc.id_customer');
         $this->db->join('order_detail_customer AS odc','odc.id_order=oc.id_order','left');
@@ -15,7 +15,10 @@ class OrdersModel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-    
+    public function getOrder($id_order)
+    {
+        return $this->db->get_where('order_customer',['id_order' => $id_order])->row_array();
+    }
     public function getAllAvailableKurir()
     {
         $this->db->select('r.id_rider,r.nama_rider,oc.id_order,oc.status_order');
@@ -30,12 +33,34 @@ class OrdersModel extends CI_Model {
     }
     public function update_lunas_bayar($id)
     {
+        $order = $this->getOrder($id);
         $data = [
-            "status_pembayaran"=>"lunas"
+            "status_pembayaran"=>"lunas",
+            "paid" => $order['total']
         ];
 
         try{
             $this->db->where('id_order', $id);
+            $this->db->update('order_customer', $data);
+            return true;
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
+    }
+    public function batal_pesanan($id_order)
+    {
+        $data = [
+            "ongkir" => 0,
+            "subtotal" => 0,
+            "total" => 0,
+            "harga_cod" => 0,
+            "diskon" => 0,
+            "paid" => 0,
+            "status_order"=>"batal"
+        ];
+
+        try{
+            $this->db->where('id_order', $id_order);
             $this->db->update('order_customer', $data);
             return true;
         }catch(\Exception $e){
