@@ -24,8 +24,6 @@
                             <img src="<?php echo base_url();?>assets/frontend/img/box_order.png" alt="box_order" class="img-fluid">
                         <?php elseif($orders['status_order'] == "proses"):?>
                             <img src="<?php echo base_url();?>assets/frontend/img/box_on_porses.png" alt="box_on_porses" class="img-fluid">
-                        <?php elseif($orders['status_order'] == "batal"):?>
-                            <img src="<?php echo base_url();?>assets/frontend/img/box_cancel.png" alt="box_cancel" class="img-fluid">
                         <?php else:?>
                             <img src="<?php echo base_url();?>assets/frontend/img/box_selesai.png" alt="box_selesai" class="img-fluid">
                         <?php endif;?>
@@ -48,8 +46,6 @@
                             <span class="badge badge-info text-uppercase">Order</span>
                         <?php elseif($orders['status_order'] == "proses"):?>
                             <span class="badge badge-primary text-uppercase">Proses</span>
-                        <?php elseif($orders['status_order'] == "batal"):?>
-                            <span class="badge badge-danger text-uppercase">Dibatalkan</span>
                         <?php else:?>
                             <span class="badge badge-success text-uppercase">Diterima</span>
                         <?php endif;?>

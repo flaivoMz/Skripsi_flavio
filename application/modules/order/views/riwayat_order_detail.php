@@ -95,8 +95,6 @@
                                 <span class="badge badge-info text-uppercase">Order</span>
                             <?php elseif($detail['status_order'] == "proses"):?>
                                 <span class="badge badge-primary text-uppercase">Proses</span>
-                            <?php elseif($detail['status_order'] == "batal"):?>
-                                <span class="badge badge-danger text-uppercase">Dibatalkan</span>
                             <?php else:?>
                                 <span class="badge badge-success text-uppercase">Diterima</span>
                             <?php endif;?>

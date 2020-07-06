@@ -19,11 +19,7 @@
             <div class="card">
                 <div class="card-header">
                     <?php echo $detail['id_order'];?>
-                    <?php if($detail['status_order'] == "selesai"):?>
-                        <span class="badge badge-success float-right text-uppercase p-2"><?php echo $detail['status_order'];?></span>
-                    <?php else: ?>
-                        <span class="badge badge-danger float-right text-uppercase p-2">Dibatalkan</span>
-                    <?php endif; ?>
+                    <span class="badge badge-success float-right text-uppercase p-2"><?php echo $detail['status_order'];?></span>
                 </div>
                 <div class="card-body">
                     <div class="row text-center">

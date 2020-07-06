@@ -1,6 +1,6 @@
-<footer class="site-footer">
-			<div class="container">
-				<div class="row">
+	<footer class="site-footer">
+		<div class="container">
+			<div class="row">
 				<div class="col-md-6">
 					<div class="row">
 					<div class="col-md-7">
@@ -17,7 +17,6 @@
 						<!-- <li><a href="#">Contact Us</a></li> -->
 						</ul>
 					</div>
-
 					</div>
 				</div>
 				<div class="col-md-4 ml-auto">
@@ -25,23 +24,25 @@
 					<a href="https://www.facebook.com/anteranterjogja" class="smoothscroll pl-0 pr-3" target="_blank"><span class="icon-facebook"></span></a>
 					<a href="https://www.instagram.com/anteranterjogja/" class="pl-3 pr-3" target="_blank"><span class="icon-instagram"></span></a>
 					<a href="https://wa.me/6281325300489" class="pl-3 pr-3" target="_blank"><span class="fab fa-whatsapp"></span></a>
-					</form>
-				</div>
-				</div>
-				<div class="row pt-5 mt-5 text-center">
-				<div class="col-md-12">
-					<div class="border-top pt-5">
-					<p class="copyright">
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</p>
-					</div>
-				</div>
-
 				</div>
 			</div>
-		</footer>
+			<div class="text-center mt-3">
+				<h5>anter#anter © 2020 created by <a href="https://zada.web.id" target="_blank" class="text-white">zada kreatif media</a></h5>
+			</div>
+			<div class="row pt-3 text-center">
+			<div class="col-md-12">
+				<div class="border-top pt-5">
+				<p class="copyright">
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
+				</div>
+			</div>
+
+			</div>
+		</div>
+	</footer>
 
     </div>
 
@@ -62,11 +63,7 @@
 	<?php $module = $this->_module = $this->router->fetch_module();?>
 	<?php $method = $this->router->fetch_method();?>
 	<?php if($module == "order"):?>
-		<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBau0Pzx51NtQ9aLA9xWadAph60lE30sY8&sensor=false"></script>  -->
-		<!-- Kantor -->
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDAgO_spZs9ye05XI0BbPE-mDlJvaXuYzY&sensor=false"></script> 
-		<!-- Abdul -->
-		<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD7YMa2bN1zTJR20m4SuOmkbC7_Iy8kVFk&sensor=false"></script> -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-qlg8MsyURHrlu-NcS1wbMF278nxAnJY&sensor=false"></script> 
 	<?php endif;?>
 	<script>
 		<?php if($module == "home"):?>
@@ -686,6 +683,25 @@
 					}).then((result) => {
 					if (result.value) {
 						<?php unset($_SESSION['msg'])?>
+					}
+				});
+			<?php endif;?>
+			<?php if(isset($_SESSION['msg'])&& $_SESSION['msg']=="berhasil_order"):?>
+				Swal.fire({
+					text: "Berhasil Order",
+					icon: 'success',
+					showCancelButton: true,
+					confirmButtonColor: '#5cb85c',
+					cancelButtonColor: '#0275d8 ',
+					confirmButtonText: 'Tambah Kiriman',
+					cancelButtonText: 'Ke halaman home'
+					}).then((result) => {
+					if (result.value) {
+						<?php unset($_SESSION['msg'])?>
+						window.location.href = "<?php echo base_url('order');?>";
+					}else{
+						<?php unset($_SESSION['msg'])?>
+						window.location.href = "<?php echo base_url('/');?>";
 					}
 				});
 			<?php endif;?>
