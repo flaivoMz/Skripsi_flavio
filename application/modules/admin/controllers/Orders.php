@@ -39,6 +39,18 @@ class Orders extends MX_Controller
         redirect('admin/orders');
 
     }
+    public function batal_pesanan($id_order)
+    {
+
+        if($this->orders->batal_pesanan($id_order)){
+            $this->session->set_flashdata('success', 'Pesanan telah dibatalkan');
+            
+        }else{
+            $this->session->set_flashdata('danger', 'Pesanan gagal dibatalkan');
+        }
+        redirect('admin/orders');
+
+    }
     public function paid_billing()
     {
         
