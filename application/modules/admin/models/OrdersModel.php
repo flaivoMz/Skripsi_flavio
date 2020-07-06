@@ -21,8 +21,8 @@ class OrdersModel extends CI_Model {
         $this->db->select('r.id_rider,r.nama_rider,oc.id_order,oc.status_order');
         $this->db->from('rider AS r');
         $this->db->join('order_customer AS oc','oc.id_rider=r.id_rider','left');
-        $this->db->where('oc.id_order IS NULL');
-        $this->db->or_where('oc.status_order','selesai');
+        // $this->db->where('oc.id_order IS NULL');
+        // $this->db->or_where('oc.status_order','selesai');
         $this->db->group_by('r.id_rider');
         
         $query = $this->db->get();
