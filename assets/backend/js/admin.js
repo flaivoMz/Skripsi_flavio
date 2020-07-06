@@ -265,13 +265,15 @@ $('.detail-order').on('click', function (e) {
   var patokanasal = $(this).data('patokanasal');
   var patokantujuan = $(this).data('patokantujuan');
   var hargabarang = $(this).data('hargabarang');
+  var hargacod = $(this).data('hargacod');
 
   if(alamatasal){
     $(".modal-orderId").html(orderid);
     $(".patokanasal").html(patokanasal);
     $(".patokantujuan").html(patokantujuan);
     $(".paidby").html(paidby);
-    $(".hargabarang").html("Rp. "+hargabarang);
+    $(".hargabarang").html("Rp."+hargabarang);
+    $(".hargacod").html("Rp."+hargacod);
     $(".alamatasal").html(alamatasal);
     $(".alamattujuan").html(alamattujuan);
     if(jarak != ''){

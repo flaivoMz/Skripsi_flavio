@@ -43,6 +43,8 @@
             <td><?= format_rupiah($row->total) ?></td>
             <td>
                 <?php 
+                $denda = ($row->total - $row->harga_cod) - $row->ongkir;
+
                 $order = $row->status_order;
                 if($order == "order"){
                     echo "<span class='badge badge-primary'>Order</span>";
@@ -63,7 +65,7 @@
                   Aksi
                   </button>
                   <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <a data-toggle="modal" data-target="#detailOrder" class="dropdown-item detail-order" href="#" data-orderid="<?= $row->id_order ?>" data-alamatasal="<?= $row->alamat_asal.' <b> [ '.$row->koordinat_asal.' </b>] ' ?>" data-alamattujuan="<?= $row->alamat_tujuan.' <b> [ '.$row->koordinat_tujuan.' ] </b>' ?>" data-jarak="<?= $row->jarak ?>" data-verifikasidriver="<?= ucwords($row->verifikasi_driver) ?>" data-notelppenerima="<?= $row->no_telpn_penerima ?>" data-kodereferal="<?= $row->referal_code ?>" data-penerima="<?= ucwords($row->nama_penerima) ?>" data-volumebarang="<?= $row->volume_barang ?>" data-beratbarang="<?= $row->berat_barang ?>" data-catatan="<?= $row->catatan ?>" data-gambarpengambilan="<?= $row->gambar_pengambilan ?>" data-gambarpengantaran="<?= $row->gambar_pengantaran ?>" data-kondisibarang="<?= $row->kondisi_barang ?>" data-pengirim="<?= ucwords($row->nama_pengirim) ?>" data-notelppengirim="<?= $row->no_telpn_pengirim ?>" data-ongkir="<?= $row->ongkir ?>" data-subtotal="<?= $row->subtotal ?>" data-denda="<?= $row->denda ?>" data-jenispembayaran="<?= ucwords($row->jenis_pembayaran) ?>" data-diskon="<?= format_rupiah($row->diskon) ?>" data-paid="<?= format_rupiah($row->paid) ?>" data-paidby="<?= ucwords($row->paid_by) ?>" data-patokanasal="<?= $row->patokan_asal ?>" data-patokantujuan="<?= $row->patokan_tujuan ?>" data-hargabarang="<?= format_rupiah($row->harga_cod) ?>">Detail</a>
+                  <a data-toggle="modal" data-target="#detailOrder" class="dropdown-item detail-order" href="#" data-orderid="<?= $row->id_order ?>" data-alamatasal="<?= $row->alamat_asal.' <b> [ '.$row->koordinat_asal.' </b>] ' ?>" data-alamattujuan="<?= $row->alamat_tujuan.' <b> [ '.$row->koordinat_tujuan.' ] </b>' ?>" data-jarak="<?= $row->jarak ?>" data-verifikasidriver="<?= ucwords($row->verifikasi_driver) ?>" data-notelppenerima="<?= $row->no_telpn_penerima ?>" data-kodereferal="<?= $row->referal_code ?>" data-penerima="<?= ucwords($row->nama_penerima) ?>" data-volumebarang="<?= $row->volume_barang ?>" data-beratbarang="<?= $row->berat_barang ?>" data-catatan="<?= $row->catatan ?>" data-gambarpengambilan="<?= $row->gambar_pengambilan ?>" data-gambarpengantaran="<?= $row->gambar_pengantaran ?>" data-kondisibarang="<?= $row->kondisi_barang ?>" data-pengirim="<?= ucwords($row->nama_pengirim) ?>" data-notelppengirim="<?= $row->no_telpn_pengirim ?>" data-ongkir="<?= format_rupiah($row->ongkir) ?>" data-subtotal="<?= format_rupiah($row->ongkir) ?>" data-denda="<?= format_rupiah($denda) ?>" data-jenispembayaran="<?= ucwords($row->jenis_pembayaran) ?>" data-diskon="<?= format_rupiah($row->diskon) ?>" data-paid="<?= format_rupiah($row->paid) ?>" data-paidby="<?= ucwords($row->paid_by) ?>" data-hargacod="<?= format_rupiah($row->harga_cod) ?>" data-patokanasal="<?= $row->patokan_asal ?>" data-patokantujuan="<?= $row->patokan_tujuan ?>" data-hargabarang="<?= format_rupiah($row->harga_cod) ?>">Detail</a>
                   <?php if($row->nama_rider == "" && $order == "order"){ ?>
                   <a data-toggle="modal" data-target="#formPilihKurir" data-orderid="<?= $row->id_order ?>" href="#" class="dropdown-item pilih-kurir text-success">Pilih Kurir</a>
                   <?php }
@@ -207,6 +209,10 @@
                 <th>Cara Bayar</th>
                 <td class="jenispembayaran"></td>
               </tr>
+              <tr>
+                <th>Kode Referal</th>
+                <td class="kodereferal"></td>
+              </tr>
             </table>
           </div>
           <div class="col-md-3">
@@ -224,6 +230,10 @@
                   <td class="denda"></td>
                 </tr>
                 <tr>
+                  <th>Harga Barang</th>
+                  <td class="hargacod"></td>
+                </tr>
+                <tr>
                   <th>Diskon</th>
                   <td class="diskon"></td>
                 </tr>
@@ -235,10 +245,7 @@
                   <th>Dibayar Oleh</th>
                   <td class="paidby"></td>
                 </tr>
-                <tr>
-                <th>Kode Referal</th>
-                  <td class="kodereferal"></td>
-                </tr>
+                
               </table>
           </div>
           <div class="col-md-4">
