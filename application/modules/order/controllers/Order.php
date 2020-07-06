@@ -288,6 +288,7 @@ class Order extends MX_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Order Barang Berhasil
             </div>');
+            $_SESSION['msg'] = "berhasil_order";
         }
         redirect('order');
     }

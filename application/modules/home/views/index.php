@@ -7,8 +7,12 @@
             <div class="col-sm-6 col-lg-12">
                <h1>Anter#Anter</h1>
                <p class="mb-5">
-                  <a href="<?php echo base_url('home/show_login');?>" class="btn btn-sm mb-2 btn-dark">Kirim Barang</a>
-                  <a href="<?php echo base_url('home/daftar');?>" class="btn btn-sm mb-2 btn-warning">Daftar Langganan</a>
+                  <?php if($this->session->userdata('cust_id_customer')!=""):?>
+                     <a href="<?php echo base_url('order');?>" class="btn btn-sm mb-2 btn-dark">Kirim Barang</a>
+                  <?php else:?>
+                     <a href="<?php echo base_url('home/show_login');?>" class="btn btn-sm mb-2 btn-dark">Kirim Barang</a>
+                  <?php endif;?>
+                  <a href="<?php echo base_url('home/daftar');?>" class="btn btn-sm mb-2 btn-warning <?php if($this->session->userdata('cust_id_customer')!=""){ echo "d-none";}?>">Daftar Langganan</a>
                   <button class="btn btn-sm mb-2 btn-success">Butuh Solusi Korporasi?</button>
                   <button class="btn btn-sm mb-2 btn-light">Belanja di marketplace</button>
                </p>

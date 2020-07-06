@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group">
                             <label for="no_tlpn_pengirim">Nomor Telpon Pengirim</label>
-                            <input type="text" class="form-control" id="no_tlpn_pengirim" name="no_tlpn_pengirim" placeholder="Masukkan nomor telpon penerima" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" maxlength="14" required="">
+                            <input type="text" class="form-control" id="no_tlpn_pengirim" name="no_tlpn_pengirim" placeholder="Masukkan nomor telpon penerima" value="<?php echo $this->session->userdata('cust_no_telpn');?>" readonly style="background-color:#e9ecef !important;">
                         </div>
                         <div class="form-group">
                             <label for="penerima">Penerima</label>
