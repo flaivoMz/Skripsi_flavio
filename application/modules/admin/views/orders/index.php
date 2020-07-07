@@ -209,10 +209,6 @@
                 <th>Cara Bayar</th>
                 <td class="jenispembayaran"></td>
               </tr>
-              <tr>
-                <th>Kode Referal</th>
-                <td class="kodereferal"></td>
-              </tr>
             </table>
           </div>
           <div class="col-md-3">
@@ -241,25 +237,27 @@
                   <th>Terbayar</th>
                   <td class="paid"></td>
                 </tr>
-                <tr>
-                  <th>Dibayar Oleh</th>
-                  <td class="paidby"></td>
-                </tr>
-                
               </table>
           </div>
           <div class="col-md-4">
             <table class="table table-borderless">
               
-              <tr>
+              <tr style="display:none">
                 <th>Volume</th>
                 <td class="volumebarang"></td>
               </tr>
-              <tr>
+              <tr style="display:none">
                 <th>Berat</th>
                 <td class="beratbarang"></td>
               </tr>
-             
+              <tr>
+                <th>Kode Referal</th>
+                <td class="kodereferal"></td>
+              </tr>
+              <tr>
+                <th>Dibayar Oleh</th>
+                <td class="paidby"></td>
+              </tr>
               <tr>
                 <th>Pengambilan</th>
                 <td class="gambarpengambilan"></td>
