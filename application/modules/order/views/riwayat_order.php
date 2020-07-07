@@ -14,9 +14,12 @@
 
 <div class="site-section">
     <div class="container">
+        <div class="col-12">
+            <a href="<?php echo base_url('order');?>" class="btn btn-dark"><i class="fas fa-boxes mr-2"></i>Order</a>
+        </div>
         <div class="col-12 blog-content">
             <?php if($order == null):?>
-                <h3 class="text-center font-weight-bold">Yuk Order</h3>
+                <h3 class="text-center font-weight-bold"><a href="<?php echo base_url('order');?>" class="text-decoration-none">Yuk Order</a></h3>
             <?php else:?>
                 <?php foreach($order as $orders):?>
                     <div class="row my-3 my-lg-5" onclick="goToDetailRiwayatOrder('<?php echo $orders['id_order'];?>')" style="cursor:pointer;">
