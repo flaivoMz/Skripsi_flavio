@@ -178,11 +178,9 @@
                                 <div class="col-md-4 py-md-2 pt-5 d-none d-md-block">
                                     <img src="<?php echo base_url()?>assets/frontend/img/box.png" alt="box" class="img-fluid">
                                 </div>
-                                <div class=" col-12 col-md-8 py-2 row">
-                                    <div class="col-6">Volume</div>
-                                    <div class="col-6"><?php echo $tmp['volume_barang']; ?></div>
-                                    <div class="col-6">Berat</div>
-                                    <div class="col-6"><?php echo number_format($tmp['berat_barang'],1,'.','.'); ?>&nbsp;kg</div>
+                                <div class=" col-12 col-md-8 py-2">
+                                    <div class="col-6 font-weight-bold">Catatan</div>
+                                    <div class="col-6"><?php echo $tmp['catatan']; ?></div>
                                     <div class="col-12">
                                         <span class="text-success" style="cursor:pointer;" onclick="editTmp(<?php echo $tmp['id_barang'];?>)">Edit</span>&nbsp;||&nbsp;<span class="text-danger" onclick="hapusTmp(<?php echo $tmp['id_barang']; ?>)" style="cursor:pointer;">Hapus</span>
                                     </div>
@@ -212,45 +210,13 @@
                     <label for="id_order_db">ID ORDER</label>
                     <input type="text" class="form-control" id="id_order_db" name="id_order_db" value="<?php echo $id_orderan; ?>" readonly>
                 </div>
-                <small class="form-text text-info"><i class="fa fa-info-circle"></i> Satuan volume dalam cm</small>
-                <div class="form-group row">
-                    <div class="col">
-                        <label for="panjang">Panjang</label>
-                        <input type="number" min="1" max="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  class="form-control" id="panjang" name="panjang" placeholder="P" required>
-                    </div>
-                    <div class="col">
-                        <label for="lebar">Lebar</label>
-                        <input type="number" min="1" max="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="lebar" name="lebar" placeholder="L" required>
-                    </div>
-                    <div class="col">
-                        <label for="tinggi">Tinggi</label>
-                        <input type="number" min="1" max="40" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="tinggi" name="tinggi" placeholder="T" required>
-                    </div>
-                </div>
-                <!-- <div class="form-group row">
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="overweight" value="overweight" name="berat_barang[]">
-                            <label class="form-check-label" for="overweight">Overweight</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="oversize" value="oversize" name="berat_barang[]">
-                            <label class="form-check-label" for="oversize">Oversize</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="normal" value="normal" name="berat_barang[]">
-                            <label class="form-check-label" for="normal">Normal</label>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="form-group">
                     <label for="catatan">Catatan</label>
                     <input type="hidden" name="berat_barang" value="normal">
                     <textarea class="form-control" name="catatan" id="catatan" name="catatan" placeholder="Masukkan catatan"></textarea>
+                </div>
+                <div class="alert alert-info" role="alert">
+                    <span class="font-weight-bold">Barang yang dikirim maksimal memiliki volume 40x40x40 dan berat barang maksimal 10 kg. Jika melebihi ukuran tersebut maka akan dikenakan biaya tambahan ketika kurir crosscheck kembali.</span>
                 </div>
             </div>
             <div class="modal-footer">
@@ -276,44 +242,12 @@
                     <label for="id_order_db_edit">ID ORDER</label>
                     <input type="text" class="form-control" id="id_order_db_edit" name="id_order_db" value="<?php echo $id_orderan; ?>" readonly>
                 </div>
-                <small class="form-text text-info"><i class="fa fa-info-circle"></i> Satuan volume dalam cm</small>
-                <div class="form-group row">
-                    <div class="col">
-                        <label for="panjang_edit">Panjang</label>
-                        <input type="text" class="form-control" id="panjang_edit" name="panjang" placeholder="P" required>
-                    </div>
-                    <div class="col">
-                        <label for="lebar_edit">Lebar</label>
-                        <input type="text" class="form-control" id="lebar_edit" name="lebar" placeholder="L" required>
-                    </div>
-                    <div class="col">
-                        <label for="tinggi_edit">Tinggi</label>
-                        <input type="text" class="form-control" id="tinggi_edit" name="tinggi" placeholder="T" required>
-                    </div>
-                </div>
-                <!-- <div class="form-group row">
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="overweight_edit" value="overweight" name="berat_barang[]">
-                            <label class="form-check-label" for="overweight_edit">Overweight</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="oversize_edit" value="oversize" name="berat_barang[]">
-                            <label class="form-check-label" for="oversize_edit">Oversize</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="normal_edit" value="normal" name="berat_barang[]">
-                            <label class="form-check-label" for="normal_edit">Normal</label>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="form-group">
                     <label for="catatan_edit">Catatan</label>
                     <textarea class="form-control" name="catatan" id="catatan_edit" name="catatan" placeholder="Masukkan catatan"></textarea>
+                </div>
+                <div class="alert alert-info" role="alert">
+                    <span class="font-weight-bold">Barang yang dikirim maksimal memiliki volume 40x40x40 dan berat barang maksimal 10 kg. Jika melebihi ukuran tersebut maka akan dikenakan biaya tambahan ketika kurir crosscheck kembali.</span>
                 </div>
             </div>
             <div class="modal-footer">
