@@ -19,6 +19,7 @@
           <tr>
             <th>TRX ID</th>
             <th>Alamat</th>
+            <th>Tanggal</th>
             <th>Koordinat</th>
             <th>Jarak Sebelumnya</th>
             <th>Driver Sebelumnya</th>
@@ -35,6 +36,7 @@
           <tr>
             <td><?= $row->id_orderan ?></td>
             <td><?= $row->alamat ?></td>
+            <td><?= tanggal_indo($row->tanggal) ?></td>
             <td><?= $row->koordinat ?></td>
             <td><?= $row->jarak_tempuh_driver_lama ?></td>
             <td><?= ucwords($row->driver_lama) ?></td>

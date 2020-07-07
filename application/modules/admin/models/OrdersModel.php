@@ -11,7 +11,7 @@ class OrdersModel extends CI_Model {
         $this->db->join('order_detail_customer AS odc','odc.id_order=oc.id_order','left');
         $this->db->join('order_driver AS od','od.id_order=oc.id_order','left');
         $this->db->join('rider AS r','r.id_rider=oc.id_rider','left');
-        $this->db->order_by('oc.tanggal_order','DESC');
+        // $this->db->order_by('oc.tanggal_order','DESC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -118,8 +118,8 @@ class OrdersModel extends CI_Model {
     public function countJarak($data = null)
     {
         if($data != null){
-            $this->db->where('tanggal_order >= ', $data['date_start']);
-            $this->db->where('tanggal_order <= ', $data['date_end']);
+            $this->db->where('DATE(tanggal_order) >= ', $data['date_start']);
+            $this->db->where('DATE(tanggal_order) <= ', $data['date_end']);
         }
         $this->db->select_sum('jarak');
         return $this->db->get('order_customer')->row();
@@ -128,9 +128,18 @@ class OrdersModel extends CI_Model {
     public function countOrders($data = null)
     {
         if($data != null){
-            $this->db->where('tanggal_order >= ', $data['date_start']);
-            $this->db->where('tanggal_order <= ', $data['date_end']);
+            $this->db->where('DATE(tanggal_order) >= ', $data['date_start']);
+            $this->db->where('DATE(tanggal_order) <= ', $data['date_end']);
         }
+        return $this->db->count_all_results('order_customer');
+    }
+    public function countOrdersDone($data = null)
+    {
+        if($data != null){
+            $this->db->where('DATE(tanggal_order) >= ', $data['date_start']);
+            $this->db->where('DATE(tanggal_order) <= ', $data['date_end']);
+        }
+        $this->db->where('status_order','selesai');
         return $this->db->count_all_results('order_customer');
     }
     public function order_hari_ini($data = null)

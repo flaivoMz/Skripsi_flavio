@@ -2,7 +2,7 @@
 $(document).ready(function() {
   $('#dataTable').DataTable({
     order: [
-      [0, 'desc']
+      [2, 'desc']
       ],
   });
   $('#dataPelanggan').DataTable({
