@@ -157,8 +157,8 @@ class OrdersModel extends CI_Model {
     public function countCustomer($data = null)
     {
         if($data != null){
-            $this->db->where('tanggal_order >= ', $data['date_start']);
-            $this->db->where('tanggal_order <= ', $data['date_end']);
+            $this->db->where('DATE(tanggal_order) >= ', $data['date_start']);
+            $this->db->where('DATE(tanggal_order) <= ', $data['date_end']);
         }
         $this->db->select('COUNT(DISTINCT id_customer) AS total_customer');
         $this->db->from('order_customer');
