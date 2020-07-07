@@ -116,21 +116,6 @@
                     <label for="id_order_db">ID ORDER</label>
                     <input type="text" class="form-control" id="id_order_db" name="id_order_db" value="" readonly>
                 </div>
-                <small class="form-text text-info"><i class="fa fa-info-circle"></i> Satuan volume dalam cm</small>
-                <div class="form-group row">
-                    <div class="col">
-                        <label for="panjang">Panjang</label>
-                        <input type="text" class="form-control" id="panjang" name="panjang" placeholder="P" required>
-                    </div>
-                    <div class="col">
-                        <label for="lebar">Lebar</label>
-                        <input type="text" class="form-control" id="lebar" name="lebar" placeholder="L" required>
-                    </div>
-                    <div class="col">
-                        <label for="tinggi">Tinggi</label>
-                        <input type="text" class="form-control" id="tinggi" name="tinggi" placeholder="T" required>
-                    </div>
-                </div>
                 <div class="form-group row">
                     <div class="col">
                         <div class="form-check form-check-inline">
@@ -155,10 +140,9 @@
                     <label for="catatan">Catatan</label>
                     <textarea class="form-control" name="catatan" id="catatan" name="catatan" placeholder="Masukkan catatan"></textarea>
                 </div>
-                <!-- <div class="form-group d-none" id="blockUangDiterima">
-                    <label for="uang_diterima">Uang DIterima</label>
-                    <input type="text" class="form-control uang" id="uang_diterima" name="uang_diterima" placeholder="Masukkan uang yang diterima">
-                </div> -->
+                <div class="alert alert-info" role="alert">
+                    <span class="font-weight-bold">Barang yang dikirim maksimal memiliki volume 40x40x40 dan berat barang maksimal 10 kg. Jika melebihi ukuran tersebut maka akan dikenakan biaya tambahan ketika kurir crosscheck kembali.</span>
+                </div>
                 <hr class="style-two my-3">
                 <h6 class="font-weight-bold">Data Pengirim</h6>
                 <div class="row">
