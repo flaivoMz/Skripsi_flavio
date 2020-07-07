@@ -63,7 +63,7 @@
 	<?php $module = $this->_module = $this->router->fetch_module();?>
 	<?php $method = $this->router->fetch_method();?>
 	<?php if($module == "order"):?>
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-qlg8MsyURHrlu-NcS1wbMF278nxAnJY&sensor=false"></script> 
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC-qlg8MsyURHrlu-NcS1wbMF278nxAnJY&sensor=false"></script> 
 	<?php endif;?>
 	<script>
 		<?php if($module == "home"):?>
@@ -694,14 +694,14 @@
 					confirmButtonColor: '#5cb85c',
 					cancelButtonColor: '#0275d8 ',
 					confirmButtonText: 'Tambah Kiriman',
-					cancelButtonText: 'Ke halaman home'
+					cancelButtonText: 'List Order'
 					}).then((result) => {
 					if (result.value) {
 						<?php unset($_SESSION['msg'])?>
 						window.location.href = "<?php echo base_url('order');?>";
 					}else{
 						<?php unset($_SESSION['msg'])?>
-						window.location.href = "<?php echo base_url('/');?>";
+						window.location.href = "<?php echo base_url('order/show_riwayat_order');?>";
 					}
 				});
 			<?php endif;?>
