@@ -24,6 +24,7 @@ class Dashboard extends MX_Controller
             $order_hari_ini = $this->orders->order_hari_ini();
             $total_jarak = $this->orders->countJarak();
             $pesanan_selesai = $this->orders->countOrdersDone();
+            $total_trx = $this->orders->sumTotalTrx();
         }else{
             $date_start = $this->input->post('date_start');
             $date_end = $this->input->post('date_end');
@@ -37,12 +38,14 @@ class Dashboard extends MX_Controller
             $order_hari_ini = $this->orders->order_hari_ini($date_range);
             $total_jarak = $this->orders->countJarak($date_range);
             $pesanan_selesai = $this->orders->countOrdersDone($date_range);
+            $total_trx = $this->orders->sumTotalTrx($date_range);
 
         }
 
         $data['total_pesanan'] = $total_pesanan;
         $data['pesanan_selesai'] = $pesanan_selesai;
         $data['total_jarak'] = round($total_jarak->jarak,2);
+        $data['total_transaksi'] = $total_trx->total;
         $data['order_hari_ini'] = $order_hari_ini;
         $data['total_pelanggan'] = $total_pelanggan->total_customer;
 

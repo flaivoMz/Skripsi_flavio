@@ -125,6 +125,17 @@ class OrdersModel extends CI_Model {
         return $this->db->get('order_customer')->row();
     
     }
+    public function sumTotalTrx($data = null)
+    {
+        if($data != null){
+            $this->db->where('DATE(tanggal_order) >= ', $data['date_start']);
+            $this->db->where('DATE(tanggal_order) <= ', $data['date_end']);
+        }
+        $this->db->where('status_order','selesai');
+        $this->db->select_sum('total');
+        return $this->db->get('order_customer')->row();
+    
+    }
     public function countOrders($data = null)
     {
         if($data != null){
