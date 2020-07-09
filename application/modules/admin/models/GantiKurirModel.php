@@ -24,6 +24,9 @@ class GantiKurirModel extends CI_Model {
         try{
             $this->db->where('id_orderan', $id_order);
             $this->db->update('ganti_driver', $data);
+
+            $this->db->where('id_order', $id_order);
+            $this->db->update('order_customer', ['id_rider' => $data['id_driver_baru']]);
             return true;
         }catch(\Exception $e){
             return $e->getMessage();

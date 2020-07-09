@@ -36,7 +36,7 @@
           <tr>
             <td><?= $row->id_orderan ?></td>
             <td><?= $row->alamat ?></td>
-            <td><?= tanggal_indo($row->tanggal) ?></td>
+            <td><?= tanggal_indo($row->tanggal_order) ?></td>
             <td><?= $row->koordinat ?></td>
             <td><?= $row->jarak_tempuh_driver_lama ?></td>
             <td><?= ucwords($row->driver_lama) ?></td>
