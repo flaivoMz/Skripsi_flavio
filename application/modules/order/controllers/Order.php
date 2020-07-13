@@ -18,6 +18,67 @@ class Order extends MX_Controller
         $data['customer']       = $this->mod->m_get_data_customer($id_customer);
         $data['tmp_order']      = $this->mod->m_get_data_order_customer_tmp($id_customer);
         $data['sub_total']      = $this->mod->m_count_subtotal($id_customer);
+        
+        $jumlah = $this->db->count_all('order_customer')+1;
+        $level  = $data['customer']['level'];
+        $dt     = explode(" ",$data['customer']['tanggal_bergabung']);
+        $date   = explode("-",$dt[0]);
+        $thn    = substr($date[0],2);
+        $bln    = $date[1];
+
+        if($data['customer']['level']=="customer"){
+            $level_user = "CC";
+        }else if($data['customer']['level'] =="member"){
+            $level_user = "MM";
+        }else{
+            $level_user = "B2B";
+        }
+        if($jumlah >= 1){
+            $running_number = '000000'.$jumlah; 
+        }else if($jumlah >9 && $jumlah< 100){
+            $running_number = '00000'.$jumlah;
+        }else if($jumlah >100 && $jumlah< 1000){
+            $running_number = '0000'.$jumlah;
+        }else if($jumlah >1000 && $jumlah< 10000){
+            $running_number = '000'.$jumlah;
+        }else if($jumlah >10000 && $jumlah< 100000){
+            $running_number = '00'.$jumlah;
+        }else if($jumlah >100000 && $jumlah< 1000000){
+            $running_number = '0'.$jumlah;
+        }else{
+            $running_number = $jumlah;
+        }
+        
+        if($data['tmp_order'] !=""){
+            $id_orderan_old = $level_user."-".$thn."-".$bln."-".$running_number;
+            $pecah_id_order = explode("-",$id_orderan_old);
+            $id_orderan_pecah = $pecah_id_order[3]+1;      
+            if($id_orderan_pecah >= 1){
+                $running_number_now = '000000'.$id_orderan_pecah; 
+            }else if($id_orderan_pecah >9 && $id_orderan_pecah< 100){
+                $running_number_now = '00000'.$id_orderan_pecah;
+            }else if($id_orderan_pecah >100 && $id_orderan_pecah< 1000){
+                $running_number_now = '0000'.$id_orderan_pecah;
+            }else if($id_orderan_pecah >1000 && $id_orderan_pecah< 10000){
+                $running_number_now = '000'.$id_orderan_pecah;
+            }else if($id_orderan_pecah >10000 && $id_orderan_pecah< 100000){
+                $running_number_now = '00'.$id_orderan_pecah;
+            }else if($id_orderan_pecah >100000 && $id_orderan_pecah< 1000000){
+                $running_number_now = '0'.$id_orderan_pecah;
+            }else{
+                $running_number_now = $id_orderan_pecah;
+            }  
+            $data['id_orderan'] = $level_user.$thn.$bln.$running_number_now;
+            $post = [
+                'id_barang' => $data['tmp_order']['id_barang'],
+                'id_order'  => $data['id_orderan']
+            ];
+            // print_r($post);
+            $this->mod->m_update_id_trx_detail_cust($post);
+        }else{
+            $data['id_orderan'] = $level_user.$thn.$bln.$running_number;
+        }
+    
         // print('<pre>');print_r($data);exit();
         $this->load->view('templates/frontend/depan/header',$data);
         $this->load->view('templates/frontend/depan/menu');
@@ -261,19 +322,16 @@ class Order extends MX_Controller
         ];
         $temp = $this->mod->m_get_data_order_customer_tmp($id_customer);
         $i=0;
-        foreach($temp as $val){
-            $post_detail[$i] = [
-                'id_barang'     => $val['id_barang'],
-                'id_order'      => $val['id_order'],
-                'id_customer'   => $val['id_customer'],
-                'volume_barang' => $val['volume_barang'],
-                'berat_barang'  => $val['berat_barang'],
-                'status_berat'  => $val['status_berat'],
-                'catatan'       => $val['catatan'],
-                'total'         => $val['total']
-            ];
-            $i++;
-        }
+        $post_detail[$i] = [
+            'id_barang'     => $temp['id_barang'],
+            'id_order'      => $temp['id_order'],
+            'id_customer'   => $temp['id_customer'],
+            'volume_barang' => $temp['volume_barang'],
+            'berat_barang'  => $temp['berat_barang'],
+            'status_berat'  => $temp['status_berat'],
+            'catatan'       => $temp['catatan'],
+            'total'         => $temp['total']
+        ];
         // print('<pre>');print_r($post);
         // print('<pre>');print_r($temp);
         // print('<pre>');print_r($post);exit();

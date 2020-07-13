@@ -83,7 +83,7 @@ class OrderModel extends CI_Model {
             ->from('order_detail_customer_tmp')
             ->where("id_customer", $id_customer);
         $query = $this->db->get_compiled_select();
-        $data  = $this->db->query($query)->result_array();
+        $data  = $this->db->query($query)->row_array();
         return $data;
     }
 
@@ -124,6 +124,17 @@ class OrderModel extends CI_Model {
     }
 
     public function m_update_order_detail_customer_tmp($post)
+    {
+        $this->db->select()
+            ->from('order_detail_customer_tmp')
+            ->where("id_barang" , $post['id_barang']);
+        $query = $this->db->set($post)->get_compiled_update();
+        // print('<pre>');print_r($query);exit();
+        $this->db->query($query);
+        return true;	
+    }
+
+    public function m_update_id_trx_detail_cust($post)
     {
         $this->db->select()
             ->from('order_detail_customer_tmp')
@@ -212,7 +223,8 @@ class OrderModel extends CI_Model {
         $this->db->select()
             ->from('order_customer AS a')
             ->join('rider AS b', 'a.id_rider=b.id_rider', 'left')
-            ->where("a.id_customer", $id_customer);
+            ->where("a.id_customer", $id_customer)
+            ->order_by('a.tanggal_order', 'DESC');
         $query = $this->db->get_compiled_select();
         $data  = $this->db->query($query)->result_array();
         return $data;
