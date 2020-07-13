@@ -1,35 +1,4 @@
-<?php
-    $jumlah = $this->db->count_all('order_customer')+1;
-    $level  = $customer['level'];
-    $dt     = explode(" ",$customer['tanggal_bergabung']);
-    $date   = explode("-",$dt[0]);
-    $thn    = substr($date[0],2);
-    $bln    = $date[1];
 
-    if($level=="customer"){
-        $level_user = "CC";
-    }else if($level=="member"){
-        $level_user = "MM";
-    }else{
-        $level_user = "B2B";
-    }
-    if($jumlah >= 1){
-        $running_number = '000000'.$jumlah; 
-    }else if($jumlah >9 && $jumlah< 100){
-        $running_number = '00000'.$jumlah;
-    }else if($jumlah >100 && $jumlah< 1000){
-        $running_number = '0000'.$jumlah;
-    }else if($jumlah >1000 && $jumlah< 10000){
-        $running_number = '000'.$jumlah;
-    }else if($jumlah >10000 && $jumlah< 100000){
-        $running_number = '00'.$jumlah;
-    }else if($jumlah >100000 && $jumlah< 1000000){
-        $running_number = '0'.$jumlah;
-    }else{
-        $running_number = $jumlah;
-    }
-    $id_orderan = $level_user.$thn.$bln.$running_number;
-?>
 <div class="site-section-cover overlay inner-page bg-light" style="background-image: url('<?php echo base_url();?>assets/frontend/depan/images/box.jpg')" data-aos="fade">
     <div class="container">
         <div class="row align-items-center justify-content-center text-center">
@@ -47,7 +16,7 @@
 <div class="site-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 blog-content mt-3 mt-md-0 order-last order-md-first">
+            <div class="col-md-6 blog-content mt-3 mt-md-0 order-last order-md-first">  
                 <?php echo form_open('order/save_to_order');?>
                 <div class="card">
                     <div class="card-header">
@@ -171,22 +140,21 @@
                         List Barang
                     </div>
                     <div class="card-body">
-                        <button class="btn btn-primary <?php if(count($tmp_order) > 0){ echo "d-none"; }?>" type="button" onclick="tambahBarang()">Masukkan Barang</button>
+                        <button class="btn btn-primary <?php if($tmp_order != ""){ echo "d-none"; }?>" type="button" onclick="tambahBarang()">Masukkan Barang</button>
                         <?php if($tmp_order !=""):?>
-                            <?php foreach($tmp_order as $tmp):?>
                             <div class="row border rounded mt-3">
                                 <div class="col-md-4 py-md-2 pt-5 d-none d-md-block">
                                     <img src="<?php echo base_url()?>assets/frontend/img/box.png" alt="box" class="img-fluid">
                                 </div>
                                 <div class=" col-12 col-md-8 py-2">
                                     <div class="col-6 font-weight-bold">Catatan</div>
-                                    <div class="col-6"><?php echo $tmp['catatan']; ?></div>
+                                    <div class="col-6"><?php echo $tmp_order['catatan']; ?></div>
                                     <div class="col-12">
-                                        <span class="text-success" style="cursor:pointer;" onclick="editTmp(<?php echo $tmp['id_barang'];?>)">Edit</span>&nbsp;||&nbsp;<span class="text-danger" onclick="hapusTmp(<?php echo $tmp['id_barang']; ?>)" style="cursor:pointer;">Hapus</span>
+                                        <span class="text-success" style="cursor:pointer;" onclick="editTmp(<?php echo $tmp_order['id_barang'];?>)">Edit</span>&nbsp;||&nbsp;<span class="text-danger" onclick="hapusTmp(<?php echo $tmp_order['id_barang']; ?>)" style="cursor:pointer;">Hapus</span>
                                     </div>
                                 </div>
                             </div>
-                            <?php endforeach;?>
+                            
                         <?php endif;?>
                     </div>
                 </div>
