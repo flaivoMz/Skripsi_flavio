@@ -7,22 +7,23 @@ class Orders extends MX_Controller
     {
         parent::__construct();
         $this->load->model('OrdersModel', 'orders');
+        $this->load->model('DriversModel', 'drivers');
         is_logged_in();
     }
     public function index()
     {
         $data['title'] = 'Orders';
-        $data['orders'] = $this->orders->getAllOrders();
-        $data['drivers'] = $this->orders->getAllAvailableKurir();
+        $order_tanggal = "desc";
+        $data['orders'] = $this->orders->getAllOrders($order_tanggal);
+        $data['drivers'] = $this->drivers->getALlDrivers();
         adminView('orders/index', $data);
     }
 
     public function pilih_kurir()
     {
-        if($this->orders->update_kurir()){
+        if ($this->orders->update_kurir()) {
             $this->session->set_flashdata('success', 'Sukses memilih kurir');
-            
-        }else{
+        } else {
             $this->session->set_flashdata('danger', 'Gagal memilih kurir');
         }
         redirect('admin/orders');
@@ -30,34 +31,29 @@ class Orders extends MX_Controller
     public function lunas_bayar($id)
     {
 
-        if($this->orders->update_lunas_bayar($id)){
+        if ($this->orders->update_lunas_bayar($id)) {
             $this->session->set_flashdata('success', 'Status bayar berhasil diperbarui');
-            
-        }else{
+        } else {
             $this->session->set_flashdata('danger', 'Status bayar gagal diperbarui');
         }
         redirect('admin/orders');
-
     }
     public function batal_pesanan($id_order)
     {
 
-        if($this->orders->batal_pesanan($id_order)){
+        if ($this->orders->batal_pesanan($id_order)) {
             $this->session->set_flashdata('success', 'Pesanan telah dibatalkan');
-            
-        }else{
+        } else {
             $this->session->set_flashdata('danger', 'Pesanan gagal dibatalkan');
         }
         redirect('admin/orders');
-
     }
     public function paid_billing()
     {
-        
-        if($this->orders->paid_billing()){
+
+        if ($this->orders->paid_billing()) {
             $this->session->set_flashdata('success', 'Billing sukses dibayarkan');
-            
-        }else{
+        } else {
             $this->session->set_flashdata('danger', 'Billing gagal dibayarkan');
         }
         redirect('admin/orders');
