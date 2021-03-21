@@ -56,7 +56,7 @@
         </div><!-- End row -->
 
         <p class="text-center nopadding">
-            <a href="<?= base_url('wisata') ?>" class="btn_1 medium"><i class="icon-eye-7"></i>View all tours </a>
+            <a href="<?= base_url('wisata') ?>" class="btn_1 medium"><i class="icon-eye-7"></i>Lihat Semua Wisata </a>
         </p>
     </div><!-- End container -->
 
@@ -184,7 +184,7 @@
                     <li><span>2</span>Bayar DP Minimal 50%</li>
                     <li><span>3</span>Selesaikan Pembayaran Ketika Sudah Selesai Berwisata</li>
                 </ul>
-                <a href="all_tour_list.html" class="btn_1">Cari Wisata</a>
+                <a href="<?= base_url('wisata') ?>" class="btn_1">Cari Wisata</a>
             </div>
         </div>
         <!-- End row -->
