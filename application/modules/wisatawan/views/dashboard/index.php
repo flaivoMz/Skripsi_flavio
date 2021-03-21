@@ -36,59 +36,56 @@
             <div class="content">
 
                 <section id="section-1">
-                    <div id="tools">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-3 col-6">
-                                <div class="styled-select-filters">
-                                    <select name="sort_type" id="sort_type">
-                                        <option value="" selected>Sort by type</option>
-                                        <option value="tours">Tours</option>
-                                        <option value="hotels">Hotels</option>
-                                        <option value="transfers">Transfers</option>
-                                    </select>
+                    <?php
+                    if (count($pesanan) == 0) {
+                        echo "<div class='alert alert-info'>";
+                        echo "<div class='alert-heading'>Belum ada data pesanan</div>";
+                        echo "</div>";
+                    } else {
+                        foreach ($pesanan as $p) {
+                            $tgl_pesan = new DateTime($p['tgl_pesanan']);
+                            $tgl_wisata = new DateTime($p['tgl_wisata']);
+                            $tgl_expired = date('Y-m-d H:i:s', strtotime($p['tgl_pesanan'] . ' + 1 days'));
+                    ?>
+                            <div class="strip_booking">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="date">
+                                            <span class="month"><?= $tgl_wisata->format('M') ?></span>
+                                            <span class="day"><strong><?= $tgl_wisata->format('d') ?></strong><?= $tgl_wisata->format('D') ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-5">
+                                        <h3 class="tours_booking"><?= strtoupper($p['nama_wisata']) ?><span><?= $p['jml_dewasa'] ?> Dewasa / <?= $p['jml_balita'] ?> Balita</span></h3>
+                                    </div>
+                                    <div class="col-lg-2 col-md-3">
+                                        <ul class="info_booking">
+                                            <li><strong>Kode Booking</strong> <?= $p['kode_booking'] ?></li>
+                                            <li><strong>Tanggal Booking</strong> <?= tanggal_indo($p['tgl_pesanan']) ?></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2">
+                                        <div class="booking_buttons">
+                                            <a href="#0" class="btn_2 detailOrder" data-toggle="modal" data-target="#detailOrder" data-idpesanan="<?= $p['id_pesanan'] ?>" data-blnwisata="<?= $tgl_wisata->format('M') ?>" data-tglwisata="<?= $tgl_wisata->format('d') ?>" data-hariwisata="<?= $tgl_wisata->format('D') ?>" data-namapemesan="<?= strtoupper($p['nama_pemesan']) ?>" data-nohppemesan="<?= $p['no_hp_pemesan'] ?>" data-jmldewasa="<?= $p['jml_dewasa'] ?>" data-jmlbalita="<?= $p['jml_balita'] ?>" data-totalbayar="<?= format_rupiah($p['total_bayar']) ?>" data-kodebooking="<?= $p['kode_booking'] ?>" data-statuspesan="<?= $p['status_pesan'] ?>" data-statusbayar="<?= $p['status_bayar'] ?>" data-namawisata="<?= $p['nama_wisata'] ?>" data-tglpesanan="<?= tanggal_indo($p['tgl_pesanan']) ?>" data-tglexpired="<?= tanggal_indo($tgl_expired) ?>" data-dpbayar="<?= format_rupiah(($p['total_bayar'] / 2)) ?>" data-nominalterbayar="<?= $p['nominal_terbayar'] != NULL ? format_rupiah($p['nominal_terbayar']) : format_rupiah(0) ?>" data-tglbayar="<?= $p['tgl_bayar'] != NULL ? tanggal_indo($p['tgl_bayar']) : '-' ?>" data-sisabayar="<?php if ($p['status_terbayar'] == "dp") {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                echo format_rupiah(($p['total_bayar'] - $p['nominal_terbayar']));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } else if ($p['status_terbayar'] == "lunas") {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                echo format_rupiah(0);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                echo format_rupiah($p['total_bayar']);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } ?>">Detail</a>
+                                            <?php if ($p['status_bayar'] == NULL || $p['status_bayar'] == "") {
+                                                if ($p['status_pesan'] != "batalw" && $p['status_pesan'] != "batalp") { ?>
+                                                    <a href="<?= base_url('account/batal-pesanan/' . $p['kode_booking']) ?>" class="btn_3 cancelOrder">Batal</a>
+                                            <?php }
+                                            } ?>
+                                        </div>
+                                    </div>
                                 </div>
+                                <!-- End row -->
                             </div>
-                            <div class="col-lg-2 col-md-3 col-6">
-                                <div class="styled-select-filters">
-                                    <select name="sort_date" id="sort_date">
-                                        <option value="" selected>Sort by date</option>
-                                        <option value="oldest">Oldest</option>
-                                        <option value="recent">Recent</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/tools -->
-
-                    <div class="strip_booking">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2">
-                                <div class="date">
-                                    <span class="month">Dec</span>
-                                    <span class="day"><strong>23</strong>Sat</span>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-5">
-                                <h3 class="hotel_booking">Hotel Mariott Paris<span>2 Adults / 2 Nights</span></h3>
-                            </div>
-                            <div class="col-lg-2 col-md-3">
-                                <ul class="info_booking">
-                                    <li><strong>Booking id</strong> 23442</li>
-                                    <li><strong>Booked on</strong> Sat. 23 Dec. 2015</li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="booking_buttons">
-                                    <!-- <a href="#0" class="btn_2">Edit</a> -->
-                                    <a href="#0" class="btn_3">Batal</a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End row -->
-                    </div>
-                    <!-- End strip booking -->
-
+                            <!-- End strip booking -->
+                    <?php }
+                    } ?>
 
                 </section>
                 <!-- End section 1 -->
@@ -97,19 +94,21 @@
                     <div class="row justify-content-center">
                         <div class="col-md-6 add_bottom_30">
                             <h4>Edit Password</h4>
-                            <div class="form-group">
-                                <label>Password Lama</label>
-                                <input class="form-control" name="old_password" id="old_password" type="password">
-                            </div>
-                            <div class="form-group">
-                                <label>Password Baru</label>
-                                <input class="form-control" name="new_password" id="new_password" type="password">
-                            </div>
-                            <div class="form-group">
-                                <label>Konfirmasi Password Baru</label>
-                                <input class="form-control" name="confirm_new_password" id="confirm_new_password" type="password">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Edit Password</button>
+                            <form action="<?= base_url('account/edit-password') ?>" method="post">
+                                <div class="form-group">
+                                    <label>Password Lama</label>
+                                    <input class="form-control" name="old_password" id="old_password" type="password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password Baru</label>
+                                    <input class="form-control" name="new_password" id="new_password" type="password" required minlength="5">
+                                </div>
+                                <div class="form-group">
+                                    <label>Konfirmasi Password Baru</label>
+                                    <input class="form-control" name="confirm_new_password" id="confirm_new_password" type="password">
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary btn-block">Edit Password</button>
+                            </form>
                         </div>
 
                     </div>
@@ -125,27 +124,29 @@
                             <h4>Edit Profil </span></h4>
                             <p class="float-right h6">username : <span class="badge badge-info"><?= strtolower($this->session->userdata('cust-username')) ?></span></p>
                             <hr class="mt-5" />
-                            <div class="form-group">
-                                <label>Nama Lengkap</label>
-                                <input class="form-control" name="nama_wisatawan" type="text" value="<?= strtoupper($user['nama_wisatawan']) ?>">
-                            </div>
+                            <form action="<?= base_url('account/edit-profil') ?>" method="post">
+                                <div class="form-group">
+                                    <label>Nama Lengkap</label>
+                                    <input class="form-control" name="nama_wisatawan" type="text" value="<?= strtoupper($user['nama_wisatawan']) ?>" required>
+                                </div>
 
-                            <div class="form-group">
-                                <label>Alamat</label>
-                                <input class="form-control" name="alamat_wisatawan" type="text" value="<?= $user['alamat_wisatawan'] ?>">
-                            </div>
-                            <div class="form-group">
-                                <label>Jenis Kelamin</label>
-                                <select name="jekel_wisatawan" class="form-control">
-                                    <option value="L" <?= $user['jekel_wisatawan'] == "L" ? "selected" : "" ?>>Laki - laki</option>
-                                    <option value="P" <?= $user['jekel_wisatawan'] == "P" ? "selected" : "" ?>>Perempuan</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>No. Handphone</label>
-                                <input class="form-control" name="no_hp_wisatawan" type="text" value="<?= $user['no_hp_wisatawan'] ?>">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Edit Profil</button>
+                                <div class="form-group">
+                                    <label>Alamat</label>
+                                    <input class="form-control" name="alamat_wisatawan" type="text" value="<?= $user['alamat_wisatawan'] ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Jenis Kelamin</label>
+                                    <select name="jekel_wisatawan" class="form-control">
+                                        <option value="L" <?= $user['jekel_wisatawan'] == "L" ? "selected" : "" ?>>Laki - laki</option>
+                                        <option value="P" <?= $user['jekel_wisatawan'] == "P" ? "selected" : "" ?>>Perempuan</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>No. Handphone</label>
+                                    <input class="form-control" name="no_hp_wisatawan" type="text" value="<?= $user['no_hp_wisatawan'] ?>" required>
+                                </div>
+                                <button type="submit" name="submit" class="btn btn-primary btn-block">Edit Profil</button>
+                            </form>
                         </div>
                     </div>
                 </section>

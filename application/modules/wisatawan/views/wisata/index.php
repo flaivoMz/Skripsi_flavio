@@ -49,12 +49,17 @@ function hitung_kategori($wisata, $kategori)
                 </div>
 
                 <div id="filters_col">
-                    <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt"><i class="icon_set_1_icon-65"></i>Filter</a>
-                    <div class="collapse show" id="collapseFilters">
+                    <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt"><i class="icon_set_1_icon-65"></i>Filter Harga</a>
+                    <div class="collapse show pb-4" id="collapseFilters">
                         <div class="filter_type">
                             <h6>Harga</h6>
-                            <input type="text" id="range" name="range" value="">
-                            <small class="text-danger">perorang</small>
+                            <form action="<?= base_url('wisata') ?>" method="post">
+                                <input type="text" id="range" name="harga" value="" required>
+                                <small class="text-danger">perorang</small>
+                                <div class="float-right mt-4">
+                                    <button type="submit" name="filter" class="btn btn-primary btn-sm">Filter</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!--End collapse -->
@@ -69,92 +74,79 @@ function hitung_kategori($wisata, $kategori)
             </aside>
             <!--End aside -->
             <div class="col-lg-9">
-                <?php if (isset($_POST['keyword'])) { ?>
-
+                <?php
+                if (isset($_POST['keyword'])) { ?>
                     <p class="h6 mb-2">Hasil Pencarian : <span class="font-weight-bold font-italic">"<?= $this->input->post('keyword') ?>"</span></p>
 
-                <?php } ?>
-                <div id="tools">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-4 col-6">
-                            <div class="styled-select-filters">
-                                <select name="sort_price" id="sort_price">
-                                    <option value="" selected>Sort by price</option>
-                                    <option value="lower">Lowest price</option>
-                                    <option value="higher">Highest price</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-4 col-6">
-                            <div class="styled-select-filters">
-                                <select name="sort_rating" id="sort_rating">
-                                    <option value="" selected>Sort by ranking</option>
-                                    <option value="lower">Lowest ranking</option>
-                                    <option value="higher">Highest ranking</option>
-                                </select>
-                            </div>
-                        </div>
+                <?php } else if (isset($_POST['filter'])) {
+                    $explode = explode(';', $this->input->post('harga'));
+                    $hrg_awal = $explode[0];
+                    $hrg_akhir = $explode[1];
+                ?>
+                    <p class="h6 mb-2">Hasil Filter Harga : <span class="font-weight-bold font-italic">"<?= 'Rp. ' . format_rupiah($hrg_awal) . ' - ' . 'Rp. ' . format_rupiah($hrg_akhir) ?></span></p>
+                    <?php
+                }
+                if (count($wisata) == 0) {
+                    echo "<div class='alert alert-info'>";
+                    echo "<div class='alert-header h6'>Tidak ada data wisata ditemukan</div>";
+                    echo "</div>";
+                } else {
 
-                    </div>
-                </div>
-
-                <!--/tools -->
-                <?php
-                $i = 1;
-                foreach ($wisata as $w) { ?>
-                    <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.<?= $i ?>s">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4">
-                                <div class="img_list">
-                                    <a href="<?= base_url('wisata/' . $w['slug']) ?>"><img src="<?= base_url('assets/frontend/') ?>img/wisata/<?= $w['gambar_wisata'] ?>" alt="Image">
-                                        <div class="short_info"><i class="icon-tags-1"></i><?= ucwords($w['kategori_wisata']) ?> </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="tour_list_desc">
-                                    <h3><strong><?= strtoupper($w['nama_wisata']) ?></strong></h3>
-                                    <p align="justify"><?= substr($w['deskripsi'], 0, 400) . '...' ?></p>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2">
-                                <div class="price_list">
-                                    <div><span class="h6 font-weight-bold">Rp. <?= format_rupiah($w['harga_wisata']) ?></span><small>/orang</small>
-                                        <p><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn_1">Detail</a>
-                                        </p>
+                    $i = 1;
+                    foreach ($wisata as $w) { ?>
+                        <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.<?= $i ?>s">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="img_list">
+                                        <a href="<?= base_url('wisata/' . $w['slug']) ?>"><img src="<?= base_url('assets/frontend/') ?>img/wisata/<?= $w['gambar_wisata'] ?>" alt="Image">
+                                            <div class="short_info"><i class="icon-tags-1"></i><?= ucwords($w['kategori_wisata']) ?> </div>
+                                        </a>
                                     </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="tour_list_desc">
+                                        <h3><strong><?= strtoupper($w['nama_wisata']) ?></strong></h3>
+                                        <p align="justify"><?= substr($w['deskripsi'], 0, 400) . '...' ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2">
+                                    <div class="price_list">
+                                        <div><span class="h6 font-weight-bold">Rp. <?= format_rupiah($w['harga_wisata']) ?></span><small>/orang</small>
+                                            <p><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn_1">Detail</a>
+                                            </p>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--End strip -->
-                <?php $i++;
-                } ?>
-                <hr>
+                        <!--End strip -->
+                    <?php $i++;
+                    } ?>
+                    <hr>
 
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                        </li>
-                        <li class="page-item active"><span class="page-link">1<span class="sr-only">(current)</span></span>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- end pagination-->
-
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li class="page-item active"><span class="page-link">1<span class="sr-only">(current)</span></span>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- end pagination-->
+                <?php } ?>
             </div>
             <!-- End col lg-9 -->
         </div>

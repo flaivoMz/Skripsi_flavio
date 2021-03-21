@@ -52,14 +52,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'wisatawan/home';
 $route['wisata']="wisatawan/wisata/index";
 $route['auth']="wisatawan/auth/index";
+$route['auth/daftar']="wisatawan/auth/daftar";
 $route['auth/logout']="wisatawan/auth/logout";
-$route['wisata/pesan']="wisatawan/wisata/form_pesan";
+$route['wisata/form-pesan']="wisatawan/wisata/form_pesan";
+$route['wisata/pesan']="wisatawan/wisata/pesan_wisata";
 $route['wisata/kategori/(:any)']['GET'] = 'wisatawan/wisata/index/$1';
 $route['wisata/(:any)']['GET'] = 'wisatawan/wisata/detail_wisata/$1';
 
 // ----- ROUTES DASHBOARD WISATAWAN
 
 $route['account/dashboard'] = "wisatawan/dashboard/index";
+$route['account/edit-password'] = "wisatawan/users/edit_password";
+$route['account/list-pemandu/(:any)'] = "wisatawan/users/list_pemandu/$1";
+$route['account/edit-profil'] = "wisatawan/users/edit_profil";
+$route['account/batal-pesanan/(:any)'] = "wisatawan/users/batal_pesanan/$1";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -56,7 +56,7 @@
         </div><!-- End row -->
 
         <p class="text-center nopadding">
-            <a href="#" class="btn_1 medium"><i class="icon-eye-7"></i>View all tours (144) </a>
+            <a href="<?= base_url('wisata') ?>" class="btn_1 medium"><i class="icon-eye-7"></i>View all tours </a>
         </p>
     </div><!-- End container -->
 

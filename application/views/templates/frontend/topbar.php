@@ -2,7 +2,7 @@
 $ci = get_instance();
 $ci->load->model('PaketwisataModel');
 $kategori = $ci->PaketwisataModel->semuaKategori();
-if ($this->uri->segment(1) != "auth") {
+if ($this->uri->segment(1) != "auth" && $this->uri->segment(1) != "account") {
 ?>
     <div id="preloader">
         <div class="sk-spinner sk-spinner-wave">
@@ -50,10 +50,9 @@ if ($this->uri->segment(1) != "auth") {
                                         <?php } ?>
                                     </ul>
                                 </li>
-                                <li><a href="<?= base_url() ?>" class="">Tentang Kami</a></li>
                                 <li><a href="<?= base_url() ?>" class="">Hubungi Kami</a></li>
                                 <?php if ($this->session->userdata('cust-iduser')) {  ?>
-                                    <li class="submenu">
+                                    <li class="submenu float-right mr-5">
                                         <a href="javascript:void(0);" class="show-submenu"><i class="icon-user-1"></i> Profil <i class="icon-down-open-mini"></i></a>
                                         <ul>
                                             <li><a href="<?= base_url('account/dashboard') ?>"><i class="icon-user-1"></i> Dashboard</a></li>

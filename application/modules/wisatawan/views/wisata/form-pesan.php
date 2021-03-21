@@ -1,4 +1,7 @@
 <?php
+    if(!$this->session->userdata('cust-iduser')){
+        redirect('auth');
+    }
     $id_wisata = $this->input->post('id_wisata');
     $nama_wisata = $this->input->post('nama_wisata');
     $jml_dewasa = $this->input->post('jml_dewasa');
@@ -12,6 +15,7 @@
     $total = $subtotal_dewasa + $subtotal_balita;
     $datetime = date("c", strtotime($tgl_wisata . ' ' . $jam_wisata));
     $waktu_wisata = substr($datetime,0,10).' '.substr($datetime,11,8);
+    
 
 ?>
 <section id="hero_2">
@@ -73,7 +77,7 @@
                     <h3><strong>1</strong>Detail Pemesan</h3>
 
                 </div>
-                <form action="#" method="post">
+                <form action="<?= base_url('wisata/pesan') ?>" method="post">
                     <input type="hidden" name="id_wisata" value="<?= $id_wisata ?>">
                     <input type="hidden" name="jml_dewasa" value="<?= $jml_dewasa ?>">
                     <input type="hidden" name="jml_balita" value="<?= $jml_balita ?>">

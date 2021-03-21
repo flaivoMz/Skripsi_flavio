@@ -6,6 +6,7 @@ class Wisata extends MX_Controller
     public function __construct()
     {
         $this->load->model('PaketwisataModel');
+        $this->load->model('PesananModel');
         $this->load->model('PemanduwisataModel');
     }
     public function index($kategori = null)
@@ -20,9 +21,15 @@ class Wisata extends MX_Controller
             $data['title'] = "Cari Wisata";
             $data['wisata'] = $this->PaketwisataModel->cariWisata($this->input->post('keyword'));
         } else {
-            if ($kategori != null) {
-                $data['title'] = "Kategori " . str_replace('-', ' ', $kategori);
-                $data['wisata'] = $this->PaketwisataModel->wisataByKategori($kategori);
+
+            if(isset($_POST['filter'])){
+                $data['title'] = "Filter Harga";
+                $data['wisata'] = $this->PaketwisataModel->wisataByHarga($this->input->post('harga'));
+            }else{
+                if ($kategori != null) {
+                    $data['title'] = "Kategori " . str_replace('-', ' ', $kategori);
+                    $data['wisata'] = $this->PaketwisataModel->wisataByKategori($kategori);
+                }
             }
         }
         custView('wisata/index', $data);
@@ -35,7 +42,6 @@ class Wisata extends MX_Controller
         if (count($data['wisataSerupa']) == 0) {
             $data['wisataSerupa'] = $this->PaketwisataModel->wisataSerupa($data['wisata']['id_wisata']);
         }
-        $data['pemandu'] = $this->PemanduwisataModel->pemanduByIdWisata($data['wisata']['id_wisata']);
         custView('wisata/detail-wisata', $data);
     }
 
@@ -43,5 +49,16 @@ class Wisata extends MX_Controller
     {
         $data['title'] = "Lengkapi pesanan";
         custView('wisata/form-pesan', $data);
+    }
+
+    public function pesan_wisata()
+    {
+        if($this->PesananModel->pesanWisata()){
+            $this->session->set_flashdata('success', 'Pesanan berhasil disimpan');
+            redirect('account/dashboard');
+        }else{
+            $this->session->set_flashdata('danger', 'Pesanan gagal disimpan');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 }

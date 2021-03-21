@@ -28,9 +28,14 @@ CREATE TABLE `bayar` (
   `status_bayar` enum('dp','lunas') DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_bayar`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `bayar` */
+
+insert  into `bayar`(`id_bayar`,`id_pesanan`,`tgl_bayar`,`nominal_bayar`,`status_bayar`,`id_user`) values 
+(1,1,'2021-03-21 19:23:45',3162500,'dp',1),
+(2,1,'2021-03-21 19:32:04',3162500,'lunas',1),
+(3,2,'2021-03-21 20:15:30',1225000,'dp',1);
 
 /*Table structure for table `paket_wisata` */
 
@@ -85,22 +90,19 @@ DROP TABLE IF EXISTS `pemandu_wisata`;
 
 CREATE TABLE `pemandu_wisata` (
   `id_pemandu_wisata` int(11) NOT NULL AUTO_INCREMENT,
-  `id_wisata` int(11) DEFAULT NULL,
+  `id_pesanan` int(11) DEFAULT NULL,
   `id_pemandu` int(11) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_pemandu_wisata`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pemandu_wisata` */
 
-insert  into `pemandu_wisata`(`id_pemandu_wisata`,`id_wisata`,`id_pemandu`,`id_user`) values 
-(1,1,1,NULL),
-(2,2,2,NULL),
-(3,3,3,NULL),
-(4,4,1,NULL),
-(5,5,2,NULL),
-(6,6,3,NULL),
-(7,1,2,NULL);
+insert  into `pemandu_wisata`(`id_pemandu_wisata`,`id_pesanan`,`id_pemandu`,`id_user`) values 
+(8,2,2,1),
+(9,2,3,1),
+(10,1,1,1),
+(11,1,2,1);
 
 /*Table structure for table `pesanan` */
 
@@ -108,7 +110,7 @@ DROP TABLE IF EXISTS `pesanan`;
 
 CREATE TABLE `pesanan` (
   `id_pesanan` int(11) NOT NULL AUTO_INCREMENT,
-  `kode_booking` varchar(15) DEFAULT NULL,
+  `kode_booking` varchar(50) NOT NULL,
   `id_wisata` int(11) DEFAULT NULL,
   `id_wisatawan` int(11) DEFAULT NULL,
   `tgl_pesanan` datetime DEFAULT NULL,
@@ -121,9 +123,14 @@ CREATE TABLE `pesanan` (
   `status_pesan` enum('booking','batalw','batalp','expired','selesai') DEFAULT NULL,
   `status_bayar` enum('dp','lunas') DEFAULT NULL,
   PRIMARY KEY (`id_pesanan`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `pesanan` */
+
+insert  into `pesanan`(`id_pesanan`,`kode_booking`,`id_wisata`,`id_wisatawan`,`tgl_pesanan`,`tgl_wisata`,`nama_pemesan`,`no_hp_pemesan`,`jml_dewasa`,`jml_balita`,`total_bayar`,`status_pesan`,`status_bayar`) values 
+(1,'1616274352',1,1,'2021-03-21 04:00:05','2021-03-31 12:00:00','gibran','089876543321',5,1,6325000,'booking','lunas'),
+(2,'1616274412',5,1,'2021-03-21 04:07:23','2021-04-15 14:00:00','naila','082366541287',8,4,2450000,'booking','dp'),
+(3,'1616287347',6,1,'2021-03-21 07:42:27','2021-04-30 12:00:00','ahmad','082243116754',10,8,19600000,'batalw',NULL);
 
 /*Table structure for table `users` */
 
@@ -136,12 +143,13 @@ CREATE TABLE `users` (
   `role` enum('admin','wisatawan') DEFAULT NULL,
   `is_active` int(11) DEFAULT '1',
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `users` */
 
 insert  into `users`(`id_user`,`username`,`password`,`role`,`is_active`) values 
-(1,'wisatawan','$2y$10$qTRFSLi7gnWjmrFOKtakye1WQblsKU2di3xI1ALqUWkBWiCIYatBy','wisatawan',1);
+(1,'wisatawan','$2y$10$9l39QPqKLlbWBrvkODPO7uKFSMKuwQI4Ho63R0WjmPlxwQ90XIFNy','wisatawan',1),
+(2,'hamid','$2y$10$Aa6bzW7SGGFTCCs3m6/TO.zEW6mwtCWFN9aUmu3p5UAq1kVJ4ovga','wisatawan',1);
 
 /*Table structure for table `wisatawan` */
 
@@ -155,12 +163,13 @@ CREATE TABLE `wisatawan` (
   `jekel_wisatawan` enum('L','P') DEFAULT NULL,
   `no_hp_wisatawan` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id_wisatawan`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `wisatawan` */
 
 insert  into `wisatawan`(`id_wisatawan`,`id_user`,`nama_wisatawan`,`alamat_wisatawan`,`jekel_wisatawan`,`no_hp_wisatawan`) values 
-(1,1,'abdul hamid','bantul','L','086675431265');
+(1,1,'ABDUL HAMID','bantul','L','086675431265'),
+(2,2,'abdul hamid','Jl. Raya Janti Karang Jambe No. 143  Yogyakarta, Indonesia','L','081266301224');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

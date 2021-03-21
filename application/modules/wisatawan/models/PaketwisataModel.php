@@ -53,4 +53,14 @@ class PaketwisataModel extends CI_Model
         $this->db->limit(3);
         return $this->db->get('paket_wisata')->result_array();
     }
+    public function wisataByHarga($harga)
+    {
+        $explode = explode(';', $harga);
+        $hrg_awal = $explode[0];
+        $hrg_akhir = $explode[1];
+
+        $this->db->where('harga_wisata BETWEEN '.$hrg_awal.' AND '.$hrg_akhir);
+        // $this->db->where('harga_wisata <=', $hrg_akhir);
+        return $this->db->get('paket_wisata')->result_array();
+    }
 }

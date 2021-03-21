@@ -20,7 +20,7 @@
                                 <a href="#">Forgot Password?</a>
                             </p> -->
                             <button type="submit" name="submit" class="btn_full">Masuk</button>
-                            <a href="#" class="btn_full_outline">Daftar</a>
+                            <a href="<?= base_url('auth/daftar') ?>" class="btn_full_outline"> Belum punya akun? Daftar</a>
                         </form>
                     </div>
                 </div>

@@ -61,7 +61,7 @@
                 <div class="theiaStickySidebar">
                     <div class="box_style_1 expose" id="booking_box">
                         <h3 class="inner">- Booking -</h3>
-                        <form action="<?= base_url('wisata/pesan') ?>" method="post">
+                        <form action="<?= base_url('wisata/form-pesan') ?>" method="post">
                             <div class="row">
                                 <input type="hidden" name="id_wisata" value="<?= $wisata['id_wisata'] ?>">
                                 <input type="hidden" name="nama_wisata" value="<?= $wisata['nama_wisata'] ?>">
@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <span class="text-danger">*Minimal wisatawan <?= $wisata['min_orang'] ?> Orang</span>
+                                    <span class="text-danger">*Minimal <?= $wisata['min_orang'] ?> Orang</span>
                                 </div>
                             </div>
                             <br>
@@ -137,8 +137,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <button type="submit" name="submit" id="submitBook" class="btn_full">Lanjut Pesan <i class="icon-left"></i></button>
-                            <!-- <a class="btn_full_outline" href="#"><i class=" icon-heart"></i> Add to whislist</a> -->
+                            <?php if ($this->session->userdata('cust-iduser')) { ?>
+                                <button type="submit" name="submit" id="submitBook" class="btn_full">Lanjut Pesan <i class="icon-left"></i></button>
+                            <?php } else { ?>
+                                <a href="<?= base_url('auth') ?>" class="btn_full">Masuk untuk pesan <i class="icon-lock-5"></i></a>
+                            <?php } ?>
                         </form>
                     </div>
                 </div>
