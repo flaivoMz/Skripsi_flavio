@@ -6,7 +6,7 @@ class Auth extends MX_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('AdminModel', 'admin');
+        $this->load->model('UsersModel');
     }
     public function index()
     {
@@ -14,7 +14,7 @@ class Auth extends MX_Controller
             redirect('admin/dashboard');
         }
         
-        $data['title'] = 'Login Page';
+        $data['title'] = 'Login';
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
@@ -31,52 +31,46 @@ class Auth extends MX_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $user = $this->admin->getAdmin($username);
+        $user = $this->UsersModel->usersByUsername($username);
 
         if ($user) {
 
-            if ($user->status == "aktif") {
-                if (password_verify($password, $user->password)) {
+            if ($user['is_active'] == 1) {
+                if (password_verify($password, $user['password'])) {
                     $data = [
-                        'id_admin' => $user->id_admin,
-                        'username' => $user->username,
-                        'level' => $user->level
+                        'admin-iduser' => $user['id_user'],
+                        'admin-username' => $user['username'],
+                        'admin-role' => $user['role']
                     ];
 
                     $this->session->set_userdata($data);
-                    // if ($user['level'] == 1) {
-                        redirect('admin/dashboard');
-                    // } else {
-                    //     redirect('user');
-                    // }
+                    redirect('admin/dashboard');
+                    
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password !</div>');
-                    redirect('admin/auth');
+                    $this->session->set_flashdata('danger', 'Password salah!');
+                    redirect('admin/login');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">This username has been not activated</div>');
-                redirect('admin/auth');
+                $this->session->set_flashdata('danger', 'Login gagal. User ini diblokir!');
+                redirect('admin/login');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
-            This username is not registered
-          </div>');
-            redirect('admin/auth');
+            $this->session->set_flashdata('danger', 'Akun ini tidak terdaftar');
+            redirect('admin/login');
         }
     }
 
     public function logout()
     {
-        $this->session->unset_userdata('username');
-        $this->session->unset_userdata('level');
+        $this->session->unset_userdata('admin-iduser');
+        $this->session->unset_userdata('admin-username');
+        $this->session->unset_userdata('admin-role');
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            You have been logged out
-          </div>');
-        redirect('admin/auth');
+        $this->session->set_flashdata('success', 'Terima kasih. Anda telah keluar');
+        redirect('admin/login');
     }
     public function blocked()
     {
-        $this->load->view('admin/auth/blocked');
+        $this->load->view('admin/login/blocked');
     }
 }

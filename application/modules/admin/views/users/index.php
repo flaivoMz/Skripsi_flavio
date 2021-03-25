@@ -1,138 +1,138 @@
-<!-- Begin Page Content -->
-<div class="container-fluid">
-<div class="flash-data" data-flashdata="<?= $this->session->flashdata('success'); ?>"></div>
-<div class="flash-danger" data-flashdata="<?= $this->session->flashdata('danger'); ?>"></div>
+<?php
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800"><?= $title ?></h1>
-    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
-    </div>
-    <div class="card shadow mb-4 border-left-success">
-        <div class="card-header py-3">
-            <a href="#collapseFilterData" class="" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseFilterData">
-                <h6 class="m-0 font-weight-bold text-primary">Data Users <sup>Klik untuk minimize</sup>
-                <a href="#" data-toggle="modal" data-target="#formuser" class="btn btn-primary btn-sm float-right tambah-user"><i class="fa fa-plus"></i> User</a></h6>
-            </a>
-        </div>
-        <div class="collapse show" id="collapseFilterData">
-            <div class="card-body">
-                <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Username</th>
-                        <th>Level</th>
-                        <th>Status</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                
-                    <tbody>
-                    <?php
-                    $no=1;
-                    foreach($users as $row){
-                    
-                    ?>
-                    <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= $row->username ?></td>
-                        <td>
-                        <?php
-                            if($row->level == 1){
-                                echo "Superadmin";
-                            }else if($row->level ==2){
-                                echo "Admin";
-                            }else{
-                                echo "Operator";
-                            }
-                        ?></td>
-                        <td><?= ucwords($row->status) ?></td>
-                      
-                        <th>
-                            <div class="btn-group" role="group">
-                                <button id="btnGroupDrop1" type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Aksi
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                <a class="dropdown-item edit-user" data-toggle="modal" data-target="#formuser" href="#" data-idadmin="<?= $row->id_admin ?>" data-username="<?= $row->username ?>" data-level="<?= $row->level ?>" data-status="<?= $row->status ?>">Edit</a>
-                                <a class="dropdown-item button-konfirmasi text-primary" data-konfirmasi="Status user akan di nonaktifkan" href="<?= base_url('admin/users/status_user/'.$row->id_admin.'/'.$row->status) ?>">
-                                <?= $row->status=="aktif" ? "Blokir User" : "Aktifkan" ?>
-                                </a>
-                                <a class="dropdown-item button-konfirmasi text-danger" data-konfirmasi="Data ini akan dihapus" href="<?= base_url('admin/users/delete/').$row->id_admin ?>">Hapus</a>
-                                </div>
-                            </div>
-                        </th>
-                    </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
+
+if ($this->uri->segment(3)) {
+    //KONDISI TUNTUK EDIT DATA
+    $iduser = $detail['id_user'];
+    $username = $detail['username'];
+    $role = $detail['role'];
+    $is_active = $detail['is_active'];
+    $submit = "Edit";
+    $formType = "Edit Users";
+} else {
+    //KONDISI UNTUK TAMBAH DATA
+    $iduser = NULL;
+    $nama = NULL;
+    $username = NULL;
+    $role = "admin";
+    $is_active = 1;
+    $submit = "Tambah";
+    $formType = "Tambah Admin";
+}
+
+?>
+<!-- Page header -->
+<div class="page-header page-header-light">
+    <div class="page-header page-header-light" style="border-left: 1px solid #ddd; border-right: 1px solid #ddd; margin-bottom: 0;">
+        <div class="page-header-content header-elements-md-inline">
+            <div class="page-title">
+                <h5>
+                    <i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold"><?= $title ?></span>
+                </h5>
+            </div>
+
+            <div class="header-elements py-0">
+                <div class="breadcrumb">
+                    <a href="<?= base_url('admin/dashboard') ?>" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+                    <span class="breadcrumb-item active"><?= $title ?></span>
                 </div>
             </div>
         </div>
-        </div>
-
+    </div>
 </div>
-<!-- /.container-fluid -->
+<!-- /page header -->
 
-<!-- Modal -->
-<div class="modal fade" id="formuser" tabindex="-1" role="dialog" aria-labelledby="formuserLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="formuserLabel">Tambah User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="#" method="post" id="form-user">
-            <div class="form-group">
-                <label for="">Username</label>
-                <input type="hidden" name="id_admin" id="id_admin">
-                <input type="varchar" name="username" class="form-control" id="username" required>
-            </div>
-            <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" name="password" class="form-control" id="password" minlength="6">
-                <small id="pwdHelp" class="form-text text-muted"></small>
+<!-- Main content -->
+<div class="content">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8 table-responsive">
+                    <?= flash() ?>
+                    <table class="table datatable-basic">
+                        <thead>
+                            <tr>
+                                <th width="5%">NO</th>
+                                <th>USERNAME</th>
+                                <th class="text-center">ROLE</th>
+                                <th class="text-center">STATUS</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+                            foreach ($users as $s) { ?>
+                                <tr>
+                                    <td><?= $i ?></td>
+                                    <td><?= $s['username'] ?></td>
+                                    <td class="text-center"><?= $s['role'] == "admin" ? "ADMIN" : "WISATAWAN"  ?></td>
+                                    <td class="text-center">
+                                        <?php if ($s['is_active'] == 1) { ?>
+                                            <span class="badge badge-success">Aktif</span>
+                                        <?php } else { ?>
+                                            <span class="badge badge-danger">Nonaktif</span>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <div class="list-icons">
+                                            <div class="dropdown">
+                                                <a href="#" class="list-icons-item" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a href="<?= base_url('admin/users/' . $s['id_user']) ?>" class="dropdown-item"><i class="icon-pencil5"></i> Edit</a>
+                                                    <a href="<?= base_url('admin/users/hapus_user/' . $s['id_user']) ?>" data-konfirmasi="Data user <?= $s['username'] ?> akan dihapus ?" class="dropdown-item button-konfirmasi"><i class="icon-trash"></i> Hapus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php $i++;
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
 
-            </div>
-            <div class="form-group">
-                <label for="">Level</label>
-                <?php if($this->session->userdata('level') == 1){ ?>
-                <select name="level" id="level" class="form-control">
-                    <option value="2">Admin</option>
-                    <option value="3">Operator</option>
-                </select>
-                <?php }else{ ?>
-                    <input type="hidden" name="level" class="form-control" value="3">
-                    <input type="text" class="form-control" readonly value="Operator">
-                <?php } ?>
-            </div>
-            <div class="form-group">
-                <label for="">Status</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="aktif" value="aktif">
-                    <label class="form-check-label" for="">
-                        Aktif
-                    </label>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header bg-light">
+                            <h5 class="card-title font-weight-semibold"><?= $formType ?></h5>
+                            <span class="float-right">Role : <span class="badge badge-info"><?= ucwords($role) ?></span></span>
+                        </div>
+                        <div class="card-body">
+                            <form role="form" name="user" action="<?= base_url() . 'admin/users/simpan_user' ?>" method="post">
+                                <div class="box-body table-responsive">
+                                    <input type="hidden" name="id_user" value="<?= $iduser ?>">
+
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" class="form-control" id="" placeholder="Masukkan username" minlength="5" required="" <?= $submit == "Edit" ? 'readonly=""' : ''  ?> value="<?= $username ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" class="form-control" id="" placeholder="Masukkan password" minlength="5" <?= $submit == "Tambah" ? 'required=""' : ''  ?> value="">
+                                        <?= $submit == "Edit" ? '<span class="text-danger">Kosongkan password jika tidak diubah.</span>' : '' ?>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Status</label>
+                                        <select name="status" class="form-control">
+                                            <option value="1" <?= $is_active == 1 ? "selected" : "" ?>>Aktif</option>
+                                            <option value="0" <?= $is_active == 0 ? "selected" : "" ?>>Nonaktif</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" name="submit" value="<?= $submit ?>" class="btn btn-primary">Simpan</button>
+                                    <a href="<?= base_url() . 'admin/users' ?>" class="btn btn-secondary">Batal</a>
+                                </div>
+                                <!-- /.box-body -->
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-check">
-                    <input class="form-check-input" type="radio" name="status" id="tidak" value="tidak">
-                    <label class="form-check-label" for="">
-                        Tidak
-                    </label>
                 </div>
             </div>
-            
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
-        <button type="submit" form="form-user" class="btn btn-primary">Simpan</button>
-      </div>
+        </div>
     </div>
-  </div>
 </div>

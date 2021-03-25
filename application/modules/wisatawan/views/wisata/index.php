@@ -104,9 +104,9 @@ function hitung_kategori($wisata, $kategori)
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
-                                    <div class="tour_list_desc">
+                                    <div class="tour_list_desc mt-2">
                                         <h3><strong><?= strtoupper($w['nama_wisata']) ?></strong></h3>
-                                        <p align="justify"><?= substr($w['deskripsi'], 0, 400) . '...' ?></p>
+                                        <p align="justify"><?= substr($w['deskripsi'], 0, 120) . '...' ?></p>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 col-md-2">

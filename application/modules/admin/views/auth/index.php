@@ -2,84 +2,89 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="sistem informasi ekspedisi">
-  <meta name="author" content="Zada Kreatif Media">
-  <link rel="icon" type="image/png" sizes="96x96" href="<?= base_url('assets/backend/img/') ?>favicon-96x96.png">
-  <title>Anter#Anter - <?= $title ?></title>
+  <title><?= $title ?> | City Tours</title>
 
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Global stylesheets -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/backend/') ?>global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/backend/') ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/backend/') ?>assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/backend/') ?>assets/css/layout.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/backend/') ?>assets/css/components.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/backend/') ?>assets/css/colors.min.css" rel="stylesheet" type="text/css">
+  <!-- /global stylesheets -->
 
-  <!-- Custom styles for this template-->
-  <link href="<?= base_url('assets/backend/') ?>css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- Core JS files -->
+  <script src="<?= base_url('assets/backend/') ?>global_assets/js/main/jquery.min.js"></script>
+  <script src="<?= base_url('assets/backend/') ?>global_assets/js/main/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url('assets/backend/') ?>global_assets/js/plugins/loaders/blockui.min.js"></script>
+  <!-- /core JS files -->
+
+  <!-- Theme JS files -->
+  <script src="<?= base_url('assets/backend/') ?>global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+
+  <script src="<?= base_url('assets/backend/') ?>assets/js/app.js"></script>
+  <!-- /theme JS files -->
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-slate-800">
 
-  <div class="container">
+  <!-- Page content -->
+  <div class="page-content">
 
-    <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <!-- Main content -->
+    <div class="content-wrapper">
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
+      <!-- Content area -->
+      <div class="content d-flex justify-content-center align-items-center">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
-          <div class="card-body p-0">
-            <!-- Nested Row within Card Body -->
-            <div class="row">
-              <div class="col-lg-6 d-none d-lg-block">
-                <img src="<?= base_url('assets/backend/img/') ?>logoanteranter.jpeg" alt="logo anteranter" class="col-md-12">
+        <!-- Login card -->
+        <form class="login-form" action="<?= base_url() . 'admin/auth' ?>" method="post">
+          <div class="card mb-0">
+            <div class="card-body">
+              <div class="text-center mb-3">
+                <i class="icon-user-lock icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
+                <h5 class="mb-0">Silahkan Login</h5>
               </div>
-              <div class="col-lg-6">
-                <div class="p-5">
-                  <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome Back</h1>
-                  </div>
-                  <?= $this->session->flashdata('message'); ?>
-                  <form class="user" action="<?= base_url('admin/auth'); ?>" method="post">
-                    <div class="form-group">
-                      <input type="text" name="username" required class="form-control form-control-user"  placeholder="Enter username">
-                    </div>
-                    <div class="form-group">
-                      <input type="password" name="password" required class="form-control form-control-user mb-5" placeholder="Password">
-                    </div>
-                    <!-- <div class="form-group">
-                      <div class="custom-control custom-checkbox small mb-5">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
-                      </div>
-                    </div> -->
-                    <input type="submit" class="btn btn-primary btn-user btn-block" name="submit" value="Login">
-                    <hr>
-                  </form>
+              <?= flash() ?>
+              <div class="form-group form-group-feedback form-group-feedback-left">
+                <input type="text" name="username" class="form-control" placeholder="Username">
+                <div class="form-control-feedback">
+                  <i class="icon-user text-muted"></i>
                 </div>
+              </div>
+
+              <div class="form-group form-group-feedback form-group-feedback-left">
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <div class="form-control-feedback">
+                  <i class="icon-lock2 text-muted"></i>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Masuk <i class="icon-circle-right2 ml-2"></i></button>
+              </div>
+
+              <div class="text-center">
+                <span class="form-text text-muted ">CITY TOURS </span><span>1654100138 | ANGGRI CONESTEN | STMIK AKAKOM YOGYAKARTA</span>
               </div>
             </div>
           </div>
-        </div>
+        </form>
+        <!-- /login card -->
 
       </div>
+      <!-- /content area -->
 
     </div>
+    <!-- /main content -->
 
   </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="<?= base_url('assets/backend/') ?>vendor/jquery/jquery.min.js"></script>
-  <script src="<?= base_url('assets/backend/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="<?= base_url('assets/backend/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="<?= base_url('assets/backend/') ?>js/sb-admin-2.min.js"></script>
-
+  <!-- /page content -->
 </body>
 
 </html>

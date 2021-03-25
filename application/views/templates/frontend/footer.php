@@ -176,24 +176,6 @@
 <script src="<?= base_url('assets/frontend/') ?>js/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/frontend/') ?>js/functions.js"></script>
 <script>
-    const flashData = $(".flash-data").data("flashdata");
-    const flashDanger = $(".flash-danger").data("flashdata");
-
-    if (flashData) {
-        Swal.fire({
-            title: "Success",
-            text: flashData,
-            type: "success",
-        });
-    }
-    if (flashDanger) {
-        Swal.fire({
-            title: "Warning",
-            text: flashDanger,
-            type: "warning",
-        });
-    }
-
     jQuery('#sidebar').theiaStickySidebar({
         additionalMarginTop: 60
     });

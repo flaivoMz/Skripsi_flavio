@@ -29,9 +29,9 @@ if ($this->uri->segment(1) != "auth" && $this->uri->segment(1) != "account") {
             </div>
             <nav class="col-9 ">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                     </div>
-                    <div class="col-md-9">
+                    <div class="col-md-6">
                         <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
                         <div class="main-menu">
                             <div id="header_menu">
@@ -50,7 +50,6 @@ if ($this->uri->segment(1) != "auth" && $this->uri->segment(1) != "account") {
                                         <?php } ?>
                                     </ul>
                                 </li>
-                                <li><a href="<?= base_url() ?>" class="">Hubungi Kami</a></li>
                                 <?php if ($this->session->userdata('cust-iduser')) {  ?>
                                     <li class="submenu float-right mr-5">
                                         <a href="javascript:void(0);" class="show-submenu"><i class="icon-user-1"></i> Profil <i class="icon-down-open-mini"></i></a>

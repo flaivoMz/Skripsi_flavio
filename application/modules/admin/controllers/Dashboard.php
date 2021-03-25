@@ -6,49 +6,14 @@ class Dashboard extends MX_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('OrdersModel', 'orders');
-        $this->load->model('CustomersModel', 'customers');
-        $this->load->model('AdminModel', 'admin');
-        is_logged_in();
+        // $this->load->model('OrdersModel', 'orders');
+        // $this->load->model('CustomersModel', 'customers');
+        // $this->load->model('AdminModel', 'admin');
+        // is_logged_in_admin();
     }
     public function index()
     {
         $data['title'] = 'Dashboard';
-
-        $this->form_validation->set_rules('date_start', 'Tanggal Awal', 'trim|required');
-        $this->form_validation->set_rules('date_end', 'Tanggal Akhir', 'trim|required');
-
-        if ($this->form_validation->run() == FALSE) {
-            $total_pesanan = $this->orders->countOrders();
-            $total_pelanggan = $this->orders->countCustomer();
-            $order_hari_ini = $this->orders->order_hari_ini();
-            $total_jarak = $this->orders->countJarak();
-            $pesanan_selesai = $this->orders->countOrdersDone();
-            $total_trx = $this->orders->sumTotalTrx();
-        }else{
-            $date_start = $this->input->post('date_start');
-            $date_end = $this->input->post('date_end');
-            $date_range = [
-                "date_start" => $date_start,
-                "date_end" => $date_end
-            ];
-
-            $total_pesanan = $this->orders->countOrders($date_range);
-            $total_pelanggan = $this->orders->countCustomer($date_range);
-            $order_hari_ini = $this->orders->order_hari_ini($date_range);
-            $total_jarak = $this->orders->countJarak($date_range);
-            $pesanan_selesai = $this->orders->countOrdersDone($date_range);
-            $total_trx = $this->orders->sumTotalTrx($date_range);
-
-        }
-
-        $data['total_pesanan'] = $total_pesanan;
-        $data['pesanan_selesai'] = $pesanan_selesai;
-        $data['total_jarak'] = round($total_jarak->jarak,2);
-        $data['total_transaksi'] = $total_trx->total;
-        $data['order_hari_ini'] = $order_hari_ini;
-        $data['total_pelanggan'] = $total_pelanggan->total_customer;
-
         adminView('dashboard/index', $data);
     }
 

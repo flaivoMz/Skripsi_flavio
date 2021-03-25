@@ -40,14 +40,11 @@
 
                 <div class="row">
                     <div class="col-lg-3">
-                        <h3>Description</h3>
+                        <h3>Deskripsi</h3>
                     </div>
                     <div class="col-lg-9">
                         <h4><?= ucwords($wisata['nama_wisata']) ?></h4>
                         <p class="justify-content-center">
-                            <?= $wisata['deskripsi'] ?>
-                            <?= $wisata['deskripsi'] ?>
-                            <?= $wisata['deskripsi'] ?>
                             <?= $wisata['deskripsi'] ?>
                         </p>
 
