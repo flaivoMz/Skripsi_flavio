@@ -32,8 +32,11 @@ class PaketwisataModel extends CI_Model
     }
     public function wisataPopuler()
     {
-        $query = $this->db->get('paket_wisata');
-        return $query->result_array();
+        $this->db->select('w.*, (SELECT COUNT(p.id_wisata) FROM pesanan AS p WHERE p.id_wisata=w.id_wisata) AS jml_pesanan');
+        $this->db->from('paket_wisata as w');
+        $this->db->order_by('jml_pesanan','DESC');
+        $this->db->limit(6);
+        return $this->db->get()->result_array();
     }
     public function kategoriPopuler()
     {

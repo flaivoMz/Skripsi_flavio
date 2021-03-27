@@ -35,6 +35,7 @@
     <script src="<?= base_url('assets/backend/') ?>assets/js/app.js"></script>
     <script src="<?= base_url('assets/backend/') ?>global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script>
     <script src="<?= base_url('assets/backend/') ?>global_assets/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="<?= base_url('assets/backend/') ?>global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
 
     <!-- <script src="<?//= base_url('assets/backend/') ?>global_assets/js/demo_pages/dashboard.js"></script> -->
     <script src="<?= base_url('assets/backend/') ?>global_assets/js/demo_pages/datatables_basic.js"></script>

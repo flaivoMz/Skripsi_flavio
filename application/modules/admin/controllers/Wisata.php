@@ -6,8 +6,8 @@ class Wisata extends MX_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in_admin();
         $this->load->model('WisataModel');
-        // is_logged_in_admin();
     }
 
     public function index()

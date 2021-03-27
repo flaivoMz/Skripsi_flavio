@@ -47,7 +47,7 @@
                                 <div class="col-md-9">
                                     <h3><strong><?= strtoupper($w['nama_wisata']) ?></strong></h3>
                                 </div>
-                                <div class="col-md-3"><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn btn-primary btn-sm btn-flat btn-block">Detail</a></div>
+                                <div class="col-md-3"><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn btn-primary btn-sm">Detail</a></div>
                             </div>
                         </div>
                     </div><!-- End box tour -->
@@ -105,7 +105,7 @@
                                                     <div class="col-md-9">
                                                         <h3><strong><?= strtoupper($w['nama_wisata']) ?></strong></h3>
                                                     </div>
-                                                    <div class="col-md-3"><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn btn-primary btn-sm btn-flat btn-block">Detail</a></div>
+                                                    <div class="col-md-3"><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn btn-primary btn-sm">Detail</a></div>
                                                 </div>
                                             </div>
                                         </div><!-- End box tour -->

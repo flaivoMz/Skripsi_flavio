@@ -70,7 +70,7 @@ $route['account/batal-pesanan/(:any)'] = "wisatawan/users/batal_pesanan/$1";
 
 
 // ROUTES BACKEND
-$route['admin/login'] = "admin/auth/index";
+$route['admin'] = "admin/auth/index";
 $route['admin/logout'] = "admin/auth/logout";
 $route['admin/dashboard'] = "admin/dashboard/index";
 
@@ -87,6 +87,9 @@ $route['admin/pemandu/hapus-pemandu/(:any)']['GET'] = 'admin/pemandu/hapus_peman
 // -- ROUTES USERS
 $route['admin/users/(:any)']['GET'] = 'admin/users/index/$1';
 
+// -- ROUTES PESANAN
+$route['admin/pesanan/list-pemandu/(:any)'] = "admin/pesanan/list_pemandu/$1";
+$route['admin/pesanan/batalkan/(:any)'] = "admin/pesanan/batal_pesanan/$1";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

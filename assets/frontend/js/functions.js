@@ -110,7 +110,7 @@ $(".detailOrder").on("click", function (e) {
 		$("#status_pesan").removeClass("badge-success");
 		$("#status_pesan").removeClass("badge-warning");
 		$("#status_pesan").addClass("badge-info");
-	} else if (statuspesan == "batalw" || statuspesan == "batalp") {
+	} else if (statuspesan == "batal") {
 		$("#status_pesan").html("BATAL");
 		$("#status_pesan").removeClass("badge-info");
 		$("#status_pesan").removeClass("badge-success");

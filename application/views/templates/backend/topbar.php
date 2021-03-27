@@ -1,9 +1,8 @@
 <!-- Main navbar -->
 <div class="navbar navbar-expand-md navbar-dark align-items-center">
     <div class="pr-4">
-        <a href="<?= base_url() . 'admin/dashboard' ?>" class="d-inline-block">
-            <img src="<?= base_url('assets/backend/') ?>global_assets/images/logo_light.png" alt="">
-            <!-- <span >SPK PENERIMA BEASISWA</span> -->
+        <a href="<?= base_url() . 'admin/dashboard' ?>" class="d-inline-block pr-5">
+            <img src="<?= base_url('assets/frontend/') ?>img/logo.png" alt="">
         </a>
     </div>
 
@@ -15,7 +14,6 @@
             <i class="icon-paragraph-justify3"></i>
         </button>
     </div>
-
     <div class="collapse navbar-collapse" id="navbar-mobile">
         <ul class="navbar-nav">
             <li class="nav-item">

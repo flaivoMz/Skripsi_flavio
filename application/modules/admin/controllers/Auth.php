@@ -10,7 +10,7 @@ class Auth extends MX_Controller
     }
     public function index()
     {
-        if ($this->session->userdata('username')) {
+        if ($this->session->userdata('admin-username')) {
             redirect('admin/dashboard');
         }
         
@@ -48,15 +48,15 @@ class Auth extends MX_Controller
                     
                 } else {
                     $this->session->set_flashdata('danger', 'Password salah!');
-                    redirect('admin/login');
+                    redirect('admin');
                 }
             } else {
                 $this->session->set_flashdata('danger', 'Login gagal. User ini diblokir!');
-                redirect('admin/login');
+                redirect('admin');
             }
         } else {
             $this->session->set_flashdata('danger', 'Akun ini tidak terdaftar');
-            redirect('admin/login');
+            redirect('admin');
         }
     }
 
@@ -67,10 +67,10 @@ class Auth extends MX_Controller
         $this->session->unset_userdata('admin-role');
 
         $this->session->set_flashdata('success', 'Terima kasih. Anda telah keluar');
-        redirect('admin/login');
+        redirect('admin');
     }
-    public function blocked()
-    {
-        $this->load->view('admin/login/blocked');
-    }
+    // public function blocked()
+    // {
+    //     $this->load->view('admin/blocked');
+    // }
 }

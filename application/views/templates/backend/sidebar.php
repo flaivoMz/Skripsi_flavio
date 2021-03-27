@@ -46,7 +46,7 @@
                         <div class="text-uppercase font-size-xs line-height-xs">TRANSAKSI</div> <i class="icon-menu" title="Main"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() . 'siswa' ?>" class=" nav-link <?= $url == "siswa" ? "active" : "" ?>">
+                        <a href="<?= base_url() . 'admin/pesanan' ?>" class="nav-link <?= $url == "pesanan" ? "active" : "" ?>">
                             <i class="fas fa-shopping-cart"></i>
                             <span>
                                 Pesanan
@@ -54,7 +54,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() . 'kriteria' ?>" class="nav-link <?= $url == "kriteria" ? "active" : "" ?>">
+                        <a href="<?= base_url() . 'admin/bayar' ?>" class=" nav-link <?= $url == "bayar" ? "active" : "" ?>">
                             <i class="fas fa-money-bill"></i>
                             <span>
                                 Pembayaran

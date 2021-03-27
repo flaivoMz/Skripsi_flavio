@@ -36,7 +36,7 @@
                         <th>WISATA</th>
                         <th>KATEGORI</th>
                         <th>HARGA/<sup>Orang</sup></th>
-                        <th width="3%">MIN</th>
+                        <th>MIN. ORANG</th>
                         <th class="text-center"></th>
                     </tr>
                 </thead>

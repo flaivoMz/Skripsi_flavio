@@ -54,11 +54,11 @@ function is_logged_in_admin()
 
     if (!$ci->session->userdata('admin-iduser')) {
         $ci->session->set_flashdata('danger', 'Silahkan login terlebih dahulu');
-        redirect('admin/auth');
+        redirect('admin');
     }
     if ($ci->session->userdata('admin-role') != "admin") {
         $ci->session->set_flashdata('danger', 'Anda tidak ada akses pada halaman tersebut');
-        redirect('admin/auth');
+        redirect('admin');
     }
 }
 
