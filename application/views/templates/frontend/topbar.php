@@ -4,6 +4,7 @@ $ci->load->model('PaketwisataModel');
 $kategori = $ci->PaketwisataModel->semuaKategori();
 if ($this->uri->segment(1) != "auth" && $this->uri->segment(1) != "account") {
 ?>
+
     <div id="preloader">
         <div class="sk-spinner sk-spinner-wave">
             <div class="sk-rect1"></div>
@@ -21,12 +22,19 @@ if ($this->uri->segment(1) != "auth" && $this->uri->segment(1) != "account") {
 <!-- Header================================================== -->
 <header>
     <div class="container">
+        <div class="row" id="offlineAlert" style="display: block;">
+            <div class="col-md-12 text-center">
+                <div class="alert alert-danger"> <b>Anda sedang offline.</b> Akses dan informasi terbatas</div>
+            </div>
+        </div>
         <div class="row">
+
             <div class="col-3">
                 <div id="logo_home">
                     <h1><a href="<?= base_url() ?>" title="City tours travel">City Tours travel</a></h1>
                 </div>
             </div>
+
             <nav class="col-9 ">
                 <div class="row">
                     <div class="col-md-6">

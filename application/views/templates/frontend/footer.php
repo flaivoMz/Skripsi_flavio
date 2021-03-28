@@ -175,7 +175,22 @@
 <script src="<?= base_url('assets/frontend/') ?>js/cat_nav_mobile.js"></script>
 <script src="<?= base_url('assets/frontend/') ?>js/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/frontend/') ?>js/functions.js"></script>
+<script src="<?= base_url() ?>main.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/UpUp/1.1.0/upup.min.js"></script> -->
 <script>
+    // UpUp.start({
+    //     'cache-version':'v2',
+    //     'content-url':'<?//= site_url($this->uri->segment(1)) ?>',
+    //     'content':'Cannot react site. Please check your internet connection',
+    //     'service-worker-url':'/skripsi_anggri/upup.sw.min.js'
+    // });
+    var ifConnected = window.navigator.onLine;
+    if (ifConnected) {
+        $("#offlineAlert").css('display', 'none');
+    } else {
+        $("#offlineAlert").css('display', 'block');
+
+    }
     jQuery('#sidebar').theiaStickySidebar({
         additionalMarginTop: 60
     });
