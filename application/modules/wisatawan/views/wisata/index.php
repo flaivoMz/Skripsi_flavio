@@ -123,7 +123,7 @@ function hitung_kategori($wisata, $kategori)
                         <!--End strip -->
                     <?php $i++;
                     } ?>
-                    <hr>
+                    <!-- <hr>
 
                     <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center">
@@ -144,7 +144,7 @@ function hitung_kategori($wisata, $kategori)
                                 </a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> -->
                     <!-- end pagination-->
                 <?php } ?>
             </div>

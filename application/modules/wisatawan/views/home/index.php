@@ -1,3 +1,15 @@
+<?php
+$ci = get_instance();
+foreach ($pesanan as $p) {
+    $tgl_pesan = new DateTime($p['tgl_pesanan']);
+    $tgl_wisata = new DateTime($p['tgl_wisata']);
+    $tgl_expired = date('Y-m-d H:i:s', strtotime($p['tgl_pesanan'] . ' + 1 days'));
+
+    if (date('Y-m-d H:i:s') >= $tgl_expired && $p['status_bayar'] == NULL && $p['status_pesan'] == "booking") {
+        $ci->PesananModel->expiredPesanan($p['id_pesanan']);
+    }
+}
+?>
 <main>
     <!-- Slider -->
     <div class="tp-banner-container">
@@ -15,7 +27,7 @@
                         <div style="color:#ffffff; font-size:16px; text-transform:uppercase">
                             City Tours / Tour Guides</div>
                     </div>
-                    
+
                 </li>
                 <!-- SLIDE  -->
             </ul>
@@ -47,7 +59,7 @@
                                 <div class="col-md-9">
                                     <h3><strong><?= strtoupper($w['nama_wisata']) ?></strong></h3>
                                 </div>
-                                <div class="col-md-3"><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn btn-primary btn-sm">Detail</a></div>
+                                <div class="col-md-3"><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn btn-primary btn-sm btn-flat btn-block">Detail</a></div>
                             </div>
                         </div>
                     </div><!-- End box tour -->
@@ -102,10 +114,10 @@
                                             </div>
                                             <div class="tour_title">
                                                 <div class="row">
-                                                    <div class="col-md-9">
+                                                    <div class="col-md-8">
                                                         <h3><strong><?= strtoupper($w['nama_wisata']) ?></strong></h3>
                                                     </div>
-                                                    <div class="col-md-3"><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn btn-primary btn-sm">Detail</a></div>
+                                                    <div class="col-md-4"><a href="<?= base_url('wisata/' . $w['slug']) ?>" class="btn btn-primary btn-sm btn-flat btn-block">Detail</a></div>
                                                 </div>
                                             </div>
                                         </div><!-- End box tour -->

@@ -102,8 +102,8 @@
                                             <?php if ($status_pesan == "booking" && $status_pesan != "selesai") { ?>
                                                 <a href="<?= base_url('admin/pesanan/batalkan/' . $p['id_pesanan']) ?>" data-konfirmasi="Batalkan pesanan <?= $p['nama_pemesan'] ?> ?" class="dropdown-item button-konfirmasi text-danger"> Batalkan</a>
                                             <?php } ?>
-                                            <?php if ($expired && $status_bayar == "" && $status_pesan != "batal") { ?>
-                                                <a href="#" data-konfirmasi="Ubah status pesanan <?= $p['nama_pemesan'] ?> menjadi expired ?" class="dropdown-item button-konfirmasi text-warning">Pesanan Expired</a>
+                                            <?php if ($expired && $status_bayar == NULL && $status_pesan == "booking") { ?>
+                                                <a href="<?= base_url('admin/pesanan/expired/' . $p['id_pesanan']) ?>" data-konfirmasi="Ubah status pesanan <?= $p['nama_pemesan'] ?> menjadi expired ?" class="dropdown-item button-konfirmasi text-warning">Pesanan Expired</a>
                                             <?php } ?>
                                             <?php if ($status_bayar == "dp" && $status_pesan != "batal") { ?>
                                                 <a href="#" class="dropdown-item text-success setting-pemandu" data-toggle="modal" data-target="#settingPemanduModal" data-idpesanan="<?= $p['id_pesanan'] ?>">Setting Pemandu</a>
@@ -261,7 +261,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
                                     <?php
                                     $i = 1;
                                     foreach ($pemandu as $s) { ?>

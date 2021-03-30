@@ -1,11 +1,11 @@
 {
     "name": "City Tours",
-    "short_name": "CT",
+    "short_name": "City Tours",
     "theme_color": "#E04F67",
     "background_color": "#F9F9F9",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/skripsi_anggri",
+    "start_url": "/",
     "description": "City Tours",
     "icons": [
         {

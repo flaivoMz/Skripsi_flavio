@@ -31,6 +31,19 @@ class Pesanan extends MX_Controller
         }
         redirect('admin/pesanan');
     }
+    public function expired_pesanan($id_pesanan)
+    {
+        if($this->PesananModel->pesananById($id_pesanan)){
+            if($this->PesananModel->expiredPesanan($id_pesanan)){
+                $this->session->set_flashdata('success', 'Berhasil menggati status pesanan menjadi expired');
+            }else{
+                $this->session->set_flashdata('danger', 'Gagal menggati status pesanan menjadi expired');
+            }
+        }else{
+            $this->session->set_flashdata('danger', 'Gagal membatalkan. Pesanan tidak ditemukan');
+        }
+        redirect('admin/pesanan');
+    }
 
     public function setting_pemandu()
     {

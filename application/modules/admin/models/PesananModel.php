@@ -59,4 +59,14 @@ class PesananModel extends CI_Model
             return false;
         }
     }
+    public function expiredPesanan($id_pesanan)
+    {
+        try {
+            $this->db->where('id_pesanan', $id_pesanan);
+            $this->db->update('pesanan', ['status_pesan' => 'expired']);
+            return true;
+        } catch (\SQLException $e) {
+            return false;
+        }
+    }
 }

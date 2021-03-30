@@ -62,7 +62,7 @@ self.addEventListener("fetch", function (event) {
 				});
 			} catch (err) {
 				console.log(err);
-        if (event.request.url === "http://localhost/skripsi_anggri/auth") {
+        		if (event.request.url === "https://skripsi-anggri.online/auth") {
 					return caches.match("assets/frontend/img/offline.jpg");
 				}
 				return caches.match(event.request).then(function (response) {

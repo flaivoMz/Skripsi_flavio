@@ -15,6 +15,11 @@ class PesananModel extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    public function semuaPesanan()
+    {
+        return $this->db->get('pesanan')->result_array();
+    }
+
     public function pesanWisata()
     {
         try {
@@ -50,6 +55,16 @@ class PesananModel extends CI_Model
             $this->db->update('pesanan', ['status_pesan' => 'batalw']);
             return true;
         }catch(\SQLException $e){
+            return false;
+        }
+    }
+    public function expiredPesanan($id_pesanan)
+    {
+        try {
+            $this->db->where('id_pesanan', $id_pesanan);
+            $this->db->update('pesanan', ['status_pesan' => 'expired']);
+            return true;
+        } catch (\SQLException $e) {
             return false;
         }
     }

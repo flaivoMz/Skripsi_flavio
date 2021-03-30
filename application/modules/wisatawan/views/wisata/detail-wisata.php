@@ -85,7 +85,7 @@
                                     <div class="form-group">
                                         <label>Dewasa</label>
                                         <div class="numbers-row">
-                                            <input type="text" value="0" name="jml_dewasa" id="jml_dewasa" class="qty2 form-control">
+                                            <input type="text" value="0" name="jml_dewasa" id="jml_dewasa" class="qty2 form-control" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                                     <div class="form-group">
                                         <label>Balita</label>
                                         <div class="numbers-row">
-                                            <input type="text" value="0" name="jml_balita" id="jml_balita" class="qty2 form-control">
+                                            <input type="text" value="0" name="jml_balita" id="jml_balita" class="qty2 form-control" readonly>
                                         </div>
                                     </div>
                                 </div>

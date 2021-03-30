@@ -90,6 +90,7 @@ $route['admin/users/(:any)']['GET'] = 'admin/users/index/$1';
 // -- ROUTES PESANAN
 $route['admin/pesanan/list-pemandu/(:any)'] = "admin/pesanan/list_pemandu/$1";
 $route['admin/pesanan/batalkan/(:any)'] = "admin/pesanan/batal_pesanan/$1";
+$route['admin/pesanan/expired/(:any)'] = "admin/pesanan/expired_pesanan/$1";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
