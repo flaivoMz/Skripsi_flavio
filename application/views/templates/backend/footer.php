@@ -128,7 +128,7 @@
                         for (var i = 0; i < data.length; i++) {
                             $("#table-pemandu").append(
                                 "<tr>" +
-                                "<td><img class='thumbnail rounded-circle' src='http://localhost/skripsi_anggri/assets/frontend/img/pemandu/" +
+                                "<td><img class='thumbnail rounded-circle' src='<?= base_url(); ?>assets/frontend/img/pemandu/" +
                                 data[i]["photo"] +
                                 "'></td>" +
                                 "<td style='vertical-align:middle;'>" +

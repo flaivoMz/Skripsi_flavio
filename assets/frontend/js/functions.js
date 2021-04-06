@@ -41,6 +41,7 @@ $(".detailOrder").on("click", function (e) {
 	$.ajax({
 		type: "GET",
 		url: "http://localhost/skripsi_anggri/account/list-pemandu/" + idpesanan,
+		// url: "https://skripsi-anggri.online/account/list-pemandu/" + idpesanan,
 		dataType: "JSON",
 		success: function (data) {
 			if (data.length > 0) {
