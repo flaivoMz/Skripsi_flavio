@@ -41,8 +41,22 @@ class BayarModel extends CI_Model
             $this->db->insert('bayar', $data);
 
             $this->editStatusBayarPesanan($id_pesanan, $status_bayar);
+
+            if($status_bayar == "lunas"){
+                $this->selesaiPesanan($id_pesanan);
+            }
             return true;
         } catch (\SQLEXception $e) {
+            return false;
+        }
+    }
+    public function selesaiPesanan($id_pesanan)
+    {
+        try {
+            $this->db->where('id_pesanan', $id_pesanan);
+            $this->db->update('pesanan', ['status_pesan' => 'selesai']);
+            return true;
+        } catch (\SQLException $e) {
             return false;
         }
     }

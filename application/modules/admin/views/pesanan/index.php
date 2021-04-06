@@ -108,6 +108,9 @@
                                             <?php if ($status_bayar == "dp" && $status_pesan != "batal") { ?>
                                                 <a href="#" class="dropdown-item text-success setting-pemandu" data-toggle="modal" data-target="#settingPemanduModal" data-idpesanan="<?= $p['id_pesanan'] ?>">Setting Pemandu</a>
                                             <?php } ?>
+                                            <!-- <?php //if (date('Y-m-d H:i:s') >= $p['tgl_wisata'] && $status_bayar == "dp"){ ?>
+                                                <a href="#" class="dropdown-item text-primary">Selesai</a>
+                                            <?php //} ?> -->
                                         </div>
                                     </div>
                                 </div>

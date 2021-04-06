@@ -1,4 +1,5 @@
 <?php
+// header('Access-Control-Allow-Origin: *');
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pesanan extends MX_Controller
@@ -56,6 +57,8 @@ class Pesanan extends MX_Controller
     }
     public function list_pemandu($idpesanan)
     {
+        
+        // header("Access-Control-Allow-Methods: GET, OPTIONS");
         $data = $this->PemanduModel->pemanduByIdPesanan($idpesanan);
         echo json_encode($data);
     }

@@ -10,7 +10,6 @@
                 <ul>
                     <li><a href="<?= base_url() ?>">Home</a></li>
                     <li><a href="<?= base_url('wisata') ?>">Wisata</a></li>
-                    <li><a href="#">Hubungi Kami</a></li>
                     <li><a href="<?= base_url('auth') ?>">Login</a></li>
                     <li><a href="<?= base_url('auth/daftar') ?>">Daftar</a></li>
                 </ul>

@@ -74,7 +74,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "http://localhost/skripsi_anggri/admin/pesanan/list-pemandu/" + idpesanan,
+                url: "<?= base_url(); ?>admin/pesanan/list-pemandu/" + idpesanan,
                 dataType: "JSON",
                 success: function(data) {
                     console.log(data);
@@ -120,7 +120,7 @@
             $("#table-pemandu tr").remove();
             $.ajax({
                 type: "GET",
-                url: "http://localhost/skripsi_anggri/admin/pesanan/list-pemandu/" + idpesanan,
+                url: "<?= base_url(); ?>admin/pesanan/list-pemandu/" + idpesanan,
                 dataType: "JSON",
                 success: function(data) {
                     console.log(data);
