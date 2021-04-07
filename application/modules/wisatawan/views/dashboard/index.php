@@ -83,10 +83,15 @@
                                         <div class="booking_buttons">
                                             <a href="#0" class="btn_2 detailOrder" data-toggle="modal" data-target="#detailOrder" data-idpesanan="<?= $p['id_pesanan'] ?>" data-blnwisata="<?= $tgl_wisata->format('M') ?>" data-tglwisata="<?= $tgl_wisata->format('d') ?>" data-hariwisata="<?= $tgl_wisata->format('D') ?>" data-namapemesan="<?= strtoupper($p['nama_pemesan']) ?>" data-nohppemesan="<?= $p['no_hp_pemesan'] ?>" data-jmldewasa="<?= $p['jml_dewasa'] ?>" data-jmlbalita="<?= $p['jml_balita'] ?>" data-totalbayar="<?= format_rupiah($p['total_bayar']) ?>" data-kodebooking="<?= $p['kode_booking'] ?>" data-statuspesan="<?= $p['status_pesan'] ?>" data-statusbayar="<?= $p['status_bayar'] ?>" data-namawisata="<?= $p['nama_wisata'] ?>" data-tglpesanan="<?= tanggal_indo($p['tgl_pesanan']) ?>" data-tglexpired="<?= tanggal_indo($tgl_expired) ?>" data-dpbayar="<?= format_rupiah(($p['total_bayar'] / 2)) ?>" data-nominalterbayar="<?= $p['nominal_terbayar'] != NULL ? format_rupiah($p['nominal_terbayar']) : format_rupiah(0) ?>" data-tglbayar="<?= $p['tgl_bayar'] != NULL ? tanggal_indo($p['tgl_bayar']) : '-' ?>" data-sisabayar="<?php if ($p['status_terbayar'] == "dp") {echo format_rupiah(($p['total_bayar'] - $p['nominal_terbayar']));} else if ($p['status_terbayar'] == "lunas") { echo format_rupiah(0);} else {echo format_rupiah($p['total_bayar']);} ?>">Detail</a>
                                             <?php if ($p['status_bayar'] == NULL || $p['status_bayar'] == "") {
-                                                if ($p['status_pesan'] != "batal") { ?>
+                                                if ($p['status_pesan'] == "booking") { ?>
                                                     <a href="<?= base_url('account/batal-pesanan/' . $p['kode_booking']) ?>" class="btn_3 cancelOrder">Batal</a>
-                                            <?php }
-                                            } ?>
+                                            <?php 
+                                                }
+                                            }else{ 
+                                                if ($p['status_pesan'] == "booking" ) {
+                                            ?>
+                                                <a href="#" class="btn_3" data-toggle="modal" data-target="#btlModal">Batal</a>
+                                            <?php }} ?>
                                         </div>
                                     </div>
                                 </div>
@@ -169,3 +174,22 @@
     <!-- end container -->
 </main>
 <!-- End main -->
+
+<div class="modal fade" id="btlModal" tabindex="-1" aria-labelledby="btlModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="btlModalLabel">Informasi</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="h6" align="justify"> Dikarenakan Anda sudah membayar DP, Silahkan hubungi CS kami untuk konfirmasi pembatalan pesanan</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Keluar</button>
+      </div>
+    </div>
+  </div>
+</div>
