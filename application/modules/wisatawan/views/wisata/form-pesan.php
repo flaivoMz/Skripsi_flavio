@@ -16,7 +16,12 @@ $total = $subtotal_dewasa + $subtotal_balita;
 $datetime = date("c", strtotime($tgl_wisata . ' ' . $jam_wisata));
 $waktu_wisata = substr($datetime, 0, 10) . ' ' . substr($datetime, 11, 8);
 
+$min_tgl_booking = date('Y-m-d H:i:s', strtotime(date('Y-m-d H:i:s').'+ 1 days'));
 
+if (date('Y-m-d H:i:s', strtotime($waktu_wisata)) <= $min_tgl_booking){
+$this->session->set_flashdata('danger', 'Periksa kembali waktu booking. Booking dapat dilakukan maksimal H-1. Atau setelah tanggal '. tanggal_indo($min_tgl_booking));
+    redirect($_SERVER['HTTP_REFERER']);
+}
 ?>
 <section id="hero_2">
     <div class="intro_title">
@@ -88,7 +93,7 @@ $waktu_wisata = substr($datetime, 0, 10) . ' ' . substr($datetime, 11, 8);
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label>Nama Pemesan</label>
-                                    <input type="text" name="nama_pemesan" class="form-control" required>
+                                    <input type="text" name="nama_pemesan" class="form-control" required value="<?= $user['nama_wisatawan'] ?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +101,7 @@ $waktu_wisata = substr($datetime, 0, 10) . ' ' . substr($datetime, 11, 8);
                             <div class="col-md-12 col-sm-12">
                                 <div class="form-group">
                                     <label>No Handphone</label>
-                                    <input type="number" step="0" name="no_hp_pemesan" class="form-control" required>
+                                    <input type="number" step="0" name="no_hp_pemesan" class="form-control" required value="<?= $user['no_hp_wisatawan'] ?>" readonly>
                                 </div>
                             </div>
 

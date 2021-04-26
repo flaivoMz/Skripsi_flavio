@@ -26,6 +26,28 @@
 
 
 <script type="text/javascript">
+    $(".setting-pemandu").on("click", function(e) {
+        var idpesanan = $(this).data("idpesanan");
+        // console.warn('id_pesanan', idpesanan);
+        // console.log('masuk setting pemandu');
+        $('#idpesanan').val(idpesanan);
+
+        $.ajax({
+            type: "GET",
+            url: "<?= base_url(); ?>admin/pesanan/list-pemandu/" + idpesanan,
+            dataType: "JSON",
+            success: function(data) {
+                console.log(data);
+                if (data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+                        $("#pemandu" + data[i]['id_pemandu']).val(data[i]['id_pemandu']).prop('checked', true);
+                    }
+                } else {
+
+                }
+            },
+        });
+    })
     $(document).ready(function() {
         const flashData = $(".flash-data").data("flashdata");
         const flashDanger = $(".flash-danger").data("flashdata");
@@ -67,27 +89,7 @@
                 }
             });
         });
-        $(".setting-pemandu").on("click", function(e) {
-            var idpesanan = $(this).data("idpesanan");
 
-            $('#idpesanan').val(idpesanan);
-
-            $.ajax({
-                type: "GET",
-                url: "<?= base_url(); ?>admin/pesanan/list-pemandu/" + idpesanan,
-                dataType: "JSON",
-                success: function(data) {
-                    console.log(data);
-                    if (data.length > 0) {
-                        for (var i = 0; i < data.length; i++) {
-                            $("#pemandu" + data[i]['id_pemandu']).val(data[i]['id_pemandu']).prop('checked', true);
-                        }
-                    } else {
-
-                    }
-                },
-            });
-        })
         $(".edit-bayar").on("click", function(e) {
             e.preventDefault();
 

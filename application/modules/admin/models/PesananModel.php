@@ -31,6 +31,8 @@ class PesananModel extends CI_Model
             $id_pesanan = $this->input->post('id_pesanan');
             $id_user = $this->session->userdata('admin-iduser');
 
+            // var_dump($this->input->post());
+            // die;
             $this->db->where('id_pesanan', $id_pesanan);
             $this->db->delete('pemandu_wisata');
             $i = 0;

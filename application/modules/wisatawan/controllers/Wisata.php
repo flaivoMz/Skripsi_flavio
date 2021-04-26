@@ -8,6 +8,7 @@ class Wisata extends MX_Controller
         $this->load->model('PaketwisataModel');
         $this->load->model('PesananModel');
         $this->load->model('PemanduwisataModel');
+        $this->load->model('UsersModel');
     }
     public function index($kategori = null)
     {
@@ -48,6 +49,7 @@ class Wisata extends MX_Controller
     public function form_pesan()
     {
         $data['title'] = "Lengkapi pesanan";
+        $data['user'] = $this->UsersModel->wisatawanByIdUser($this->session->userdata('cust-iduser'));
         custView('wisata/form-pesan', $data);
     }
 
