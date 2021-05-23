@@ -38,9 +38,8 @@ class Auth extends MX_Controller
             if ($user['is_active'] == 1) {
                 if (password_verify($password, $user['password'])) {
                     $data = [
-                        'admin-iduser' => $user['id_user'],
+                        'admin-iduser' => $user['id_kpu'],
                         'admin-username' => $user['username'],
-                        'admin-role' => $user['role']
                     ];
 
                     $this->session->set_userdata($data);
@@ -64,7 +63,6 @@ class Auth extends MX_Controller
     {
         $this->session->unset_userdata('admin-iduser');
         $this->session->unset_userdata('admin-username');
-        $this->session->unset_userdata('admin-role');
 
         $this->session->set_flashdata('success', 'Terima kasih. Anda telah keluar');
         redirect('admin');

@@ -43,21 +43,21 @@
                         </a>
                     </li>
                     <li class="nav-item-header">
-                        <div class="text-uppercase font-size-xs line-height-xs">TRANSAKSI</div> <i class="icon-menu" title="Main"></i>
+                        <div class="text-uppercase font-size-xs line-height-xs">PILKADA</div> <i class="icon-menu" title="Main"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() . 'admin/pesanan' ?>" class="nav-link <?= $url == "pesanan" ? "active" : "" ?>">
-                            <i class="fas fa-shopping-cart"></i>
+                        <a href="<?= base_url() . 'admin/calon' ?>" class="nav-link <?= $url == "calon" ? "active" : "" ?>">
+                            <i class="fas fa-user-tie"></i>
                             <span>
-                                Pesanan
+                                Calon Pilkada
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() . 'admin/bayar' ?>" class=" nav-link <?= $url == "bayar" ? "active" : "" ?>">
-                            <i class="fas fa-money-bill"></i>
+                        <a href="<?= base_url() . 'admin/suara' ?>" class=" nav-link <?= $url == "suara" ? "active" : "" ?>">
+                            <i class="fas fa-marker"></i>
                             <span>
-                                Pembayaran
+                                Kotak Suara
                             </span>
                         </a>
                     </li>
@@ -65,27 +65,27 @@
                         <div class="text-uppercase font-size-xs line-height-xs">DATA MASTER</div> <i class="icon-menu" title="Main"></i>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() . 'admin/wisata' ?>" class=" nav-link <?= $url == "wisata" ? "active" : "" ?>">
-                            <i class="fas fa-mountain"></i>
+                        <a href="<?= base_url() . 'admin/pemilih' ?>" class=" nav-link <?= $url == "pemilih" ? "active" : "" ?>">
+                            <i class="fas fa-users"></i>
                             <span>
-                                Wisata
+                                Pemilih
                             </span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() . 'admin/pemandu' ?>" class="nav-link <?= $url == "pemandu" ? "active" : "" ?>">
+                        <a href="<?= base_url() . 'admin/partai' ?>" class="nav-link <?= $url == "partai" ? "active" : "" ?>">
                             <i class="fas fa-user-shield"></i>
                             <span>
-                                Pemandu
+                                Partai Politik
                             </span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="<?= base_url() . 'admin/wisatawan' ?>" class="nav-link <?= $url == "wisatawan" ? "active" : "" ?>">
-                            <i class="fas fa-users"></i>
+                        <a href="<?= base_url() . 'admin/periode' ?>" class="nav-link <?= $url == "periode" ? "active" : "" ?>">
+                            <i class="fas fa-calendar"></i>
                             <span>
-                                Wisatawan
+                                Periode
                             </span>
                         </a>
                     </li>

@@ -5,16 +5,16 @@ class UsersModel extends CI_Model
 
     public function usersByUsername($username)
     {
-        return $this->db->get_where('users', ['username' => $username])->row_array();
+        return $this->db->get_where('kpu', ['username' => $username])->row_array();
     }
     public function usersById($id_user)
     {
-        return $this->db->get_where('users', ['id_user' => $id_user])->row_array();
+        return $this->db->get_where('kpu', ['id_user' => $id_user])->row_array();
     }
 
     public function semuaUsers()
     {
-        return $this->db->get('users')->result_array();
+        return $this->db->get('kpu')->result_array();
     }
 
     public function tambahAdmin()
@@ -27,7 +27,7 @@ class UsersModel extends CI_Model
                 "is_active" => $this->input->post('status', true)
             ];
 
-            $this->db->insert('users', $data);
+            $this->db->insert('kpu', $data);
             return true;
         } catch (\SQLException $e) {
             return false;
@@ -53,7 +53,7 @@ class UsersModel extends CI_Model
             }
 
             $this->db->where('id_user', $id_user);
-            $this->db->update('users', $data);
+            $this->db->update('kpu', $data);
             return true;
         } catch (\SQLException $e) {
             return false;
@@ -63,7 +63,7 @@ class UsersModel extends CI_Model
     public function hapusUser($id_user)
     {
         try {
-            $this->db->delete('users', ['id_user' => $id_user]);
+            $this->db->delete('kpu', ['id_user' => $id_user]);
             return true;
         } catch (\SQLException $e) {
             return false;

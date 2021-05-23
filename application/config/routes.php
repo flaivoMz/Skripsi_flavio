@@ -74,23 +74,5 @@ $route['admin'] = "admin/auth/index";
 $route['admin/logout'] = "admin/auth/logout";
 $route['admin/dashboard'] = "admin/dashboard/index";
 
-// -- ROUTES WISATA
-$route['admin/wisata/form-wisata'] = "admin/wisata/form_wisata";
-$route['admin/wisata/simpan-wisata'] = "admin/wisata/simpan_wisata";
-$route['admin/wisata/(:any)']['GET'] = 'admin/wisata/form_wisata/$1';
-$route['admin/wisata/hapus-wisata/(:any)']['GET'] = 'admin/wisata/hapus_wisata/$1';
-
-// -- ROUTES PEMANDU
-$route['admin/pemandu/simpan-pemandu'] = "admin/pemandu/simpan_pemandu";
-$route['admin/pemandu/hapus-pemandu/(:any)']['GET'] = 'admin/pemandu/hapus_pemandu/$1';
-
-// -- ROUTES USERS
-$route['admin/users/(:any)']['GET'] = 'admin/users/index/$1';
-
-// -- ROUTES PESANAN
-$route['admin/pesanan/list-pemandu/(:any)'] = "admin/pesanan/list_pemandu/$1";
-$route['admin/pesanan/batalkan/(:any)'] = "admin/pesanan/batal_pesanan/$1";
-$route['admin/pesanan/expired/(:any)'] = "admin/pesanan/expired_pesanan/$1";
-
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

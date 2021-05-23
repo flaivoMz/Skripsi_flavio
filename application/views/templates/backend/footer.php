@@ -10,7 +10,7 @@
     <div class="navbar-collapse collapse" id="navbar-footer">
         <div class="col-md-12 text-center">
             <span class="navbar-text">
-                &copy; 2021. <a href="#">CITY TOURS</a> oleh <a href="#">1654100138 | ANGGRI CONESTEN</a>
+                &copy; 2021. <a href="#">E-VOTING</a> oleh <a href="#">165410182 | FLAVIO MONIZ DOUTEL FATIMA</a>
             </span>
         </div>
     </div>
@@ -26,28 +26,6 @@
 
 
 <script type="text/javascript">
-    $(".setting-pemandu").on("click", function(e) {
-        var idpesanan = $(this).data("idpesanan");
-        // console.warn('id_pesanan', idpesanan);
-        // console.log('masuk setting pemandu');
-        $('#idpesanan').val(idpesanan);
-
-        $.ajax({
-            type: "GET",
-            url: "<?= base_url(); ?>admin/pesanan/list-pemandu/" + idpesanan,
-            dataType: "JSON",
-            success: function(data) {
-                console.log(data);
-                if (data.length > 0) {
-                    for (var i = 0; i < data.length; i++) {
-                        $("#pemandu" + data[i]['id_pemandu']).val(data[i]['id_pemandu']).prop('checked', true);
-                    }
-                } else {
-
-                }
-            },
-        });
-    })
     $(document).ready(function() {
         const flashData = $(".flash-data").data("flashdata");
         const flashDanger = $(".flash-danger").data("flashdata");
@@ -89,32 +67,43 @@
                 }
             });
         });
-
-        $(".edit-bayar").on("click", function(e) {
+        $(".tambah-pemilih").on("click", function(e) {
+            e.preventDefault();
+            $("#pemilihLabel").html('Tambah Data Pemilih')
+            $("#idpemilih").val("");
+            $("#nik").val("").removeAttr('readonly','readonly');
+            $("#nama").val("");
+            $("#jekel").val("");
+            $("#alamat").val("");
+            $("#tempatlahir").val("");
+            $("#tgllahir").val("");
+            $("#agama").val("");
+            $("#submit").val("Tambah");
+        })
+        $(".edit-pemilih").on("click", function(e) {
             e.preventDefault();
 
-            var idbayar = $(this).data("idbayar");
-            var idpesanan = $(this).data("idpesanan");
-            var tglbayar = $(this).data("tglbayar");
-            var nominalbayar = $(this).data("nominalbayar");
-            var statusbayar = $(this).data("statusbayar");
-            var kodebooking = $(this).data("kodebooking");
-            var namapemesan = $(this).data("namapemesan");
-            var namawisata = $(this).data("namawisata");
+            var idpemilih = $(this).data("idpemilih");
+            var nik = $(this).data("nik");
+            var nama = $(this).data("nama");
+            var jekel = $(this).data("jekel");
+            var tempatlahir = $(this).data("tempatlahir");
+            var tgllahir = $(this).data("tgllahir");
+            var alamat = $(this).data("alamat");
+            var agama = $(this).data("agama");
+            console.log("nama : "+nama)
 
-            var formattglbayar = tglbayar.trim().replace(' ', 'T') + ".000Z";
-
-            $("#idbayar").val(idbayar);
-            $("#idpesanan").val(idpesanan);
-            $("#idpesananlabel").val("[ " + kodebooking + " ] " + namapemesan + " - " + namawisata);
-            $('#tglbayar').val(new Date(formattglbayar).toISOString().slice(0, 19));
-            $('#nominalbayar').val(nominalbayar);
-            if (statusbayar == "dp") {
-                $("#statusbayardp").val(statusbayar).prop('checked', true);
-            } else {
-                $("#statusbayarlunas").val(statusbayar).prop('checked', true);
-            }
-
+            $("#pemilihLabel").html('Edit Data Pemilih')
+            $("#idpemilih").val(idpemilih);
+            $("#nik").val(nik).attr('readonly','readonly');
+            $("#nama").val(nama);
+            $("#jekel").val(jekel);
+            $("#alamat").val(alamat);
+            $("#tempatlahir").val(tempatlahir);
+            $("#tgllahir").val(tgllahir);
+            $("#agama").val(agama);
+            $("#submit").val("Edit");
+           
         })
         $(".detailOrder").on("click", function(e) {
             e.preventDefault();

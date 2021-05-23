@@ -9,24 +9,24 @@
 
   <!-- Global stylesheets -->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-  <link href="<?= base_url('assets/backend/') ?>global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
-  <link href="<?= base_url('assets/backend/') ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="<?= base_url('assets/backend/') ?>assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
-  <link href="<?= base_url('assets/backend/') ?>assets/css/layout.min.css" rel="stylesheet" type="text/css">
-  <link href="<?= base_url('assets/backend/') ?>assets/css/components.min.css" rel="stylesheet" type="text/css">
-  <link href="<?= base_url('assets/backend/') ?>assets/css/colors.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/') ?>global_assets/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/') ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/') ?>assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/') ?>assets/css/layout.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/') ?>assets/css/components.min.css" rel="stylesheet" type="text/css">
+  <link href="<?= base_url('assets/') ?>assets/css/colors.min.css" rel="stylesheet" type="text/css">
   <!-- /global stylesheets -->
 
   <!-- Core JS files -->
-  <script src="<?= base_url('assets/backend/') ?>global_assets/js/main/jquery.min.js"></script>
-  <script src="<?= base_url('assets/backend/') ?>global_assets/js/main/bootstrap.bundle.min.js"></script>
-  <script src="<?= base_url('assets/backend/') ?>global_assets/js/plugins/loaders/blockui.min.js"></script>
+  <script src="<?= base_url('assets/') ?>global_assets/js/main/jquery.min.js"></script>
+  <script src="<?= base_url('assets/') ?>global_assets/js/main/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url('assets/') ?>global_assets/js/plugins/loaders/blockui.min.js"></script>
   <!-- /core JS files -->
 
   <!-- Theme JS files -->
-  <script src="<?= base_url('assets/backend/') ?>global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+  <script src="<?= base_url('assets/') ?>global_assets/js/plugins/forms/styling/uniform.min.js"></script>
 
-  <script src="<?= base_url('assets/backend/') ?>assets/js/app.js"></script>
+  <script src="<?= base_url('assets/') ?>assets/js/app.js"></script>
   <!-- /theme JS files -->
 
 </head>
@@ -70,7 +70,7 @@
               </div>
 
               <div class="text-center">
-                <span class="form-text text-muted ">CITY TOURS </span><span>1654100138 | ANGGRI CONESTEN | STMIK AKAKOM YOGYAKARTA</span>
+                <span class="form-text text-muted ">E-VOTING </span><span>165410182 | FLAVIO MONIZ DOUTEL FATIMA | STMIK AKAKOM YOGYAKARTA</span>
               </div>
             </div>
           </div>
