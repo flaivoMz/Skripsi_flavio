@@ -14,7 +14,7 @@ class Users extends MX_Controller
         $data['title'] = 'Data Users';
         $data['users'] = $this->UsersModel->semuaUsers();
 
-        if($id_user != null){
+        if ($id_user != null) {
             $data['detail'] = $this->UsersModel->usersById($id_user);
         }
         adminView('users/index', $data);
@@ -22,28 +22,32 @@ class Users extends MX_Controller
 
     public function simpan_user()
     {
-        if($this->input->post('submit') == "Tambah"){
-            $cekUsername = $this->UsersModel->usersByUsername($this->input->post('username'));
-            if($cekUsername){
-                $this->session->set_flashdata('danger', 'Gagal tambah. Username '.$cekUsername['username'].' sudah terdaftar');
-                redirect('admin/users'); 
-            }
+        $cekUsername = $this->UsersModel->usersByUsername($this->input->post('username'));
 
-
-            if($this->UsersModel->tambahAdmin()){
-                $this->session->set_flashdata('success', 'Data Admin Berhasil Ditambah');
-            }else{
-                $this->session->set_flashdata('danger', 'Data Admin Gagal Ditambah');
+        if ($this->input->post('submit') == "Tambah") {
+            if ($cekUsername) {
+                $this->session->set_flashdata('danger', 'Gagal tambah. Username ' . $cekUsername['username'] . ' sudah terdaftar');
+                redirect('admin/users');
             }
-        }else{
-            if ($this->UsersModel->editAdmin()) {
-                $this->session->set_flashdata('success', 'Data Admin Berhasil Diedit');
+            if ($this->UsersModel->tambahAdmin()) {
+                $this->session->set_flashdata('success', 'Data KPU Berhasil Ditambah');
             } else {
-                $this->session->set_flashdata('danger', 'Data Admin Gagal Diedit');
+                $this->session->set_flashdata('danger', 'Data KPU Gagal Ditambah');
+            }
+        } else {
+            if ($this->input->post('username') != $this->input->post('username_lama')) {
+                if ($cekUsername) {
+                    $this->session->set_flashdata('danger', 'Gagal edit. Username ' . $cekUsername['username'] . ' sudah terdaftar');
+                    redirect('admin/users');
+                }
+            }
+            if ($this->UsersModel->editAdmin()) {
+                $this->session->set_flashdata('success', 'Data KPU Berhasil Diedit');
+            } else {
+                $this->session->set_flashdata('danger', 'Data KPU Gagal Diedit');
             }
         }
-        redirect('admin/users');   
-        
+        redirect('admin/users');
     }
 
     public function hapus_user($id_user)
@@ -51,18 +55,13 @@ class Users extends MX_Controller
         $user = $this->UsersModel->usersById($id_user);
 
         if ($user) {
-            // if($user['role']=="wisatawan"){
-            // }
             if ($this->UsersModel->hapusUser($id_user)) {
-               
-                $this->session->set_flashdata('success', 'Data User Berhasil Dihapus');
+
+                $this->session->set_flashdata('success', 'Data KPU Berhasil Dihapus');
             } else {
-                $this->session->set_flashdata('success', 'Data User Gagal Dihapus');
+                $this->session->set_flashdata('success', 'Data KPU Gagal Dihapus');
             }
         }
         redirect('admin/users');;
     }
-    // ----------------------
-
-   
 }

@@ -24,7 +24,7 @@
 <div class="content">
     <div class="card">
         <div class="card-header bg-light">
-            <a href="#" class="btn bg-teal-400 btn-labeled btn-labeled-left tambah-pemilih" data-toggle="modal" data-target="#pemilihModal"><b><i class="fas fa-plus"></i></b> Data pemilih</a>
+            <a href="#" class="btn bg-teal-400 btn-labeled btn-labeled-left tambah-pemilih" data-toggle="modal" data-target="#pemilihModal"><b><i class="fas fa-plus"></i></b> Data Pemilih</a>
         </div>
         <div class="card-body table-responsive">
             <?= flash() ?>

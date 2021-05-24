@@ -7,7 +7,7 @@ if (!function_exists('tanggal_indo')) {
         date_default_timezone_set('Asia/Jakarta');
         // array hari dan bulan
         // $Hari = array("Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu");
-        $Bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+        $Bulan = array("Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des");
 
         // pemisahan tahun, bulan, hari, dan waktu
         $tahun = substr($date, 0, 4);

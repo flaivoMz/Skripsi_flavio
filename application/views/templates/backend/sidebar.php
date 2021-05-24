@@ -55,7 +55,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="<?= base_url() . 'admin/suara' ?>" class=" nav-link <?= $url == "suara" ? "active" : "" ?>">
-                            <i class="fas fa-marker"></i>
+                            <i class="fas fa-archive"></i>
                             <span>
                                 Kotak Suara
                             </span>

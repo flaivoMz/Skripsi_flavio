@@ -3,21 +3,20 @@
 
 if ($this->uri->segment(3)) {
     //KONDISI TUNTUK EDIT DATA
-    $iduser = $detail['id_user'];
+    $id_kpu = $detail['id_kpu'];
+    $nama_lengkap = $detail['nama_lengkap'];
     $username = $detail['username'];
-    $role = $detail['role'];
     $is_active = $detail['is_active'];
     $submit = "Edit";
-    $formType = "Edit Users";
+    $formType = "Edit KPU";
 } else {
     //KONDISI UNTUK TAMBAH DATA
-    $iduser = NULL;
-    $nama = NULL;
+    $id_kpu = NULL;
+    $nama_lengkap = NULL;
     $username = NULL;
-    $role = "admin";
     $is_active = 1;
     $submit = "Tambah";
-    $formType = "Tambah Admin";
+    $formType = "Tambah KPU";
 }
 
 ?>
@@ -44,17 +43,17 @@ if ($this->uri->segment(3)) {
 
 <!-- Main content -->
 <div class="content">
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-8 table-responsive">
+    <div class="row">
+        <div class="col-md-8 table-responsive">
+            <div class="card">
+                <div class="card-body">
                     <?= flash() ?>
                     <table class="table datatable-basic">
                         <thead>
                             <tr>
                                 <th width="5%">NO</th>
+                                <th>NAMA</th>
                                 <th>USERNAME</th>
-                                <th class="text-center">ROLE</th>
                                 <th class="text-center">STATUS</th>
                                 <th class="text-center"></th>
                             </tr>
@@ -65,13 +64,13 @@ if ($this->uri->segment(3)) {
                             foreach ($users as $s) { ?>
                                 <tr>
                                     <td><?= $i ?></td>
+                                    <td><?= strtoupper($s['nama_lengkap']) ?></td>
                                     <td><?= $s['username'] ?></td>
-                                    <td class="text-center"><?= $s['role'] == "admin" ? "ADMIN" : "WISATAWAN"  ?></td>
                                     <td class="text-center">
                                         <?php if ($s['is_active'] == 1) { ?>
-                                            <span class="badge badge-success">Aktif</span>
+                                            <span class="badge badge-success">AKTIF</span>
                                         <?php } else { ?>
-                                            <span class="badge badge-danger">Nonaktif</span>
+                                            <span class="badge badge-danger">NONAKTIF</span>
                                         <?php } ?>
                                     </td>
                                     <td>
@@ -81,8 +80,8 @@ if ($this->uri->segment(3)) {
                                                     <i class="icon-menu9"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a href="<?= base_url('admin/users/' . $s['id_user']) ?>" class="dropdown-item"><i class="icon-pencil5"></i> Edit</a>
-                                                    <a href="<?= base_url('admin/users/hapus_user/' . $s['id_user']) ?>" data-konfirmasi="Data user <?= $s['username'] ?> akan dihapus ?" class="dropdown-item button-konfirmasi"><i class="icon-trash"></i> Hapus</a>
+                                                    <a href="<?= base_url('admin/users/' . $s['id_kpu']) ?>" class="dropdown-item"><i class="icon-pencil5"></i> Edit</a>
+                                                    <a href="<?= base_url('admin/users/hapus_user/' . $s['id_kpu']) ?>" data-konfirmasi="Data user <?= $s['username'] ?> akan dihapus ?" class="dropdown-item button-konfirmasi"><i class="icon-trash"></i> Hapus</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,44 +92,46 @@ if ($this->uri->segment(3)) {
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-success-800">
+                    <h5 class="card-title font-weight-semibold"><?= $formType ?></h5>
+                </div>
+                <div class="card-body">
+                    <form role="form" name="user" action="<?= base_url() . 'admin/users/simpan_user' ?>" method="post">
+                        <div class="box-body table-responsive">
+                            <input type="hidden" name="id_kpu" value="<?= $id_kpu ?>">
+                            <div class="form-group">
+                                <label for="nama_lengkap">Nama Lengkap</label>
+                                <input type="text" name="nama_lengkap" class="form-control" minlength="5" required="" value="<?= $nama_lengkap ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="hidden" name="username_lama" class="form-control" value="<?= $username ?>">
+                                <input type="text" name="username" class="form-control" minlength="5" required="" value="<?= $username ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" class="form-control" id="" minlength="5" <?= $submit == "Tambah" ? 'required=""' : ''  ?> value="">
+                                <?= $submit == "Edit" ? '<span class="text-danger">Kosongkan password jika tidak diubah.</span>' : '' ?>
 
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <h5 class="card-title font-weight-semibold"><?= $formType ?></h5>
-                            <span class="float-right">Role : <span class="badge badge-info"><?= ucwords($role) ?></span></span>
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select name="status" class="form-control">
+                                    <option value="1" <?= $is_active == 1 ? "selected" : "" ?>>Aktif</option>
+                                    <option value="0" <?= $is_active == 0 ? "selected" : "" ?>>Nonaktif</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <form role="form" name="user" action="<?= base_url() . 'admin/users/simpan_user' ?>" method="post">
-                                <div class="box-body table-responsive">
-                                    <input type="hidden" name="id_user" value="<?= $iduser ?>">
-
-                                    <div class="form-group">
-                                        <label for="username">Username</label>
-                                        <input type="text" name="username" class="form-control" id="" placeholder="Masukkan username" minlength="5" required="" <?= $submit == "Edit" ? 'readonly=""' : ''  ?> value="<?= $username ?>">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input type="password" name="password" class="form-control" id="" placeholder="Masukkan password" minlength="5" <?= $submit == "Tambah" ? 'required=""' : ''  ?> value="">
-                                        <?= $submit == "Edit" ? '<span class="text-danger">Kosongkan password jika tidak diubah.</span>' : '' ?>
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Status</label>
-                                        <select name="status" class="form-control">
-                                            <option value="1" <?= $is_active == 1 ? "selected" : "" ?>>Aktif</option>
-                                            <option value="0" <?= $is_active == 0 ? "selected" : "" ?>>Nonaktif</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="box-footer">
-                                    <button type="submit" name="submit" value="<?= $submit ?>" class="btn btn-primary">Simpan</button>
-                                    <a href="<?= base_url() . 'admin/users' ?>" class="btn btn-secondary">Batal</a>
-                                </div>
-                                <!-- /.box-body -->
-                            </form>
+                        <div class="box-footer">
+                            <a href="<?= base_url() . 'admin/users' ?>" class="btn btn-secondary">Batal</a>
+                            <button type="submit" name="submit" value="<?= $submit ?>" class="btn btn-primary">Simpan</button>
                         </div>
-                    </div>
+                        <!-- /.box-body -->
+                    </form>
                 </div>
             </div>
         </div>

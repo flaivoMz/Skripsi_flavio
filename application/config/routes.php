@@ -74,6 +74,8 @@ $route['admin'] = "admin/auth/index";
 $route['admin/logout'] = "admin/auth/logout";
 $route['admin/dashboard'] = "admin/dashboard/index";
 $route['admin/parpol/(:any)']['GET'] = "admin/parpol/index/$1";
+$route['admin/periode/(:any)']['GET'] = "admin/periode/index/$1";
+$route['admin/users/(:any)']['GET'] = "admin/users/index/$1";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

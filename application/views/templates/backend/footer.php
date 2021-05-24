@@ -46,7 +46,16 @@
                 confirmButtonClass: 'btn btn-primary',
             });
         }
-
+        $("select").change(function() {
+            $(this).find("option:selected").each(function() {
+                var optionValue = $(this).attr("value");
+                if (optionValue == "parpol") {
+                    $("#parpol").show();
+                } else {
+                    $("#parpol").hide();
+                }
+            });
+        }).change();
         $(".button-konfirmasi").on("click", function(e) {
             e.preventDefault();
             const href = $(this).attr("href");
@@ -71,7 +80,7 @@
             e.preventDefault();
             $("#pemilihLabel").html('Tambah Data Pemilih')
             $("#idpemilih").val("");
-            $("#nik").val("").removeAttr('readonly','readonly');
+            $("#nik").val("").removeAttr('readonly', 'readonly');
             $("#nama").val("");
             $("#jekel").val("");
             $("#alamat").val("");
@@ -91,11 +100,11 @@
             var tgllahir = $(this).data("tgllahir");
             var alamat = $(this).data("alamat");
             var agama = $(this).data("agama");
-            console.log("nama : "+nama)
+            console.log("nama : " + nama)
 
             $("#pemilihLabel").html('Edit Data Pemilih')
             $("#idpemilih").val(idpemilih);
-            $("#nik").val(nik).attr('readonly','readonly');
+            $("#nik").val(nik).attr('readonly', 'readonly');
             $("#nama").val(nama);
             $("#jekel").val(jekel);
             $("#alamat").val(alamat);
@@ -103,7 +112,7 @@
             $("#tgllahir").val(tgllahir);
             $("#agama").val(agama);
             $("#submit").val("Edit");
-           
+
         })
         $(".detailOrder").on("click", function(e) {
             e.preventDefault();
