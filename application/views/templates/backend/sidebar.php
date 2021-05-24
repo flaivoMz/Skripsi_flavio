@@ -73,7 +73,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= base_url() . 'admin/partai' ?>" class="nav-link <?= $url == "partai" ? "active" : "" ?>">
+                        <a href="<?= base_url() . 'admin/parpol' ?>" class="nav-link <?= $url == "parpol" ? "active" : "" ?>">
                             <i class="fas fa-user-shield"></i>
                             <span>
                                 Partai Politik
