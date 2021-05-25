@@ -16,13 +16,22 @@
         <!-- /sidebar mobile toggler -->
         <!-- Sidebar content -->
         <div class="sidebar-content">
+            <div class="sidebar-user">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3">
+                            <a href="#"><img src="<?= base_url('assets/global_assets/images/placeholders/placeholder.jpg') ?>" width="38" height="38" class="rounded-circle" alt=""></a>
+                        </div>
 
-            <!-- User menu -->
-            <!-- <div class="sidebar-user">
-        <div class="card-body">
-        </div>
-      </div> -->
-            <!-- /user menu -->
+                        <div class="media-body">
+                            <div class="media-title font-weight-semibold">KPU</div>
+                            <div class="font-size-xs opacity-50">
+                            <i class="icon-user font-size-sm"></i> &nbsp; <?= ucwords($this->session->userdata('admin-username')) ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <?php
             $url = $this->uri->segment(2);
             ?>

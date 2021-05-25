@@ -50,7 +50,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 // ROUTES FRONTEND
-$route['default_controller'] = 'wisatawan/home';
+$route['default_controller'] = 'general/home';
 $route['wisata']="wisatawan/wisata/index";
 $route['auth']="wisatawan/auth/index";
 $route['auth/daftar']="wisatawan/auth/daftar";

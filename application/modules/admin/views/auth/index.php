@@ -31,7 +31,7 @@
 
 </head>
 
-<body class="bg-slate-800">
+<body class="bg-brown-800">
 
   <!-- Page content -->
   <div class="page-content">

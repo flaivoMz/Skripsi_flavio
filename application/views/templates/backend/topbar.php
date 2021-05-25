@@ -1,10 +1,8 @@
 <!-- Main navbar -->
-<div class="navbar navbar-expand-md navbar-dark align-items-center">
-    <div class="pr-4">
-        <a href="<?= base_url() . 'admin/dashboard' ?>" class="d-inline-block pr-5">
-            <img src="<?= base_url('assets/frontend/') ?>img/logo.png" alt="">
-        </a>
-    </div>
+<div class="navbar navbar-expand-md navbar-dark bg-teal-800 align-items-center">
+    <a href="<?= base_url() . 'admin/dashboard' ?>" class="d-inline-block pr-5">
+        <img src="<?= base_url('assets/global_assets/images/logo_light.png') ?>" alt="">
+    </a>
 
     <div class="d-md-none">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">

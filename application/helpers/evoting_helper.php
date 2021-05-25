@@ -22,12 +22,13 @@ if (!function_exists('tanggal_indo')) {
     }
 }
 
-function custView($page = null, $data = null)
+function generalView($page = null, $data = null)
 {
     $ci = get_instance();
 
     $ci->load->view('templates/frontend/header', $data);
     $ci->load->view('templates/frontend/topbar', $data);
+    // $ci->load->view('templates/frontend/navbar', $data);
     $ci->load->view($page, $data);
     $ci->load->view('templates/frontend/footer', $data);
 }
