@@ -48,7 +48,7 @@
                         <tr>
                             <td><?= $i ?></td>
                             <td><?= $s['nik'] ?></td>
-                            <td><?= ucwords($s['nama']) ?></td>
+                            <td><?= strtoupper($s['nama']) ?></td>
                             <td><?= $s['alamat'] ?></td>
                             <td><?= $s['jekel'] == "L" ? "Laki-laki" : "Perempuan"  ?></td>
                             <td><?= ucwords($s['tempat_lahir']) . ', ' . tanggal_indo($s['tgl_lahir']) ?></td>
@@ -104,6 +104,7 @@
                     <div class="form-group">
                         <label>Jenis Kelamin</label>
                         <select name="jekel" id="jekel" class="form-control">
+                            <option value="">- Pilih Jenis Kelamin -</option>
                             <option value="L">Laki - laki</option>
                             <option value="P">Perempuan</option>
                         </select>

@@ -9,7 +9,7 @@
 
   <div class="navbar-collapse collapse" id="navbar-footer">
     <span class="navbar-text">
-    &copy; 2021. <a href="#">E-VOTING</a> oleh <a href="#">165410182 | FLAVIO MONIZ DOUTEL FATIMA</a>
+      &copy; 2021. <a href="#">E-VOTING</a> oleh <a href="#">165410182 | FLAVIO MONIZ DOUTEL FATIMA</a>
     </span>
   </div>
 </div>
@@ -52,6 +52,58 @@
       document.getElementById("detik").innerHTML = '00';
     }
   }, 1000);
+  const flashData = $(".flash-data").data("flashdata");
+  const flashDanger = $(".flash-danger").data("flashdata");
+  // $(document).ready(function() {
+  if (flashData) {
+    Swal.fire({
+      title: "Success",
+      text: flashData,
+      type: "success",
+      confirmButtonClass: 'btn btn-primary',
+    });
+  }
+  if (flashDanger) {
+    Swal.fire({
+      title: "Warning",
+      text: flashDanger,
+      type: "warning",
+      confirmButtonClass: 'btn btn-primary',
+    });
+  }
+  $(".button-konfirmasi").on("click", function(e) {
+    e.preventDefault();
+    const href = $(this).attr("href");
+    const pesan_konfirm = $(this).data("konfirmasi");
+
+    Swal.fire({
+      title: "Konfirmasi",
+      text: pesan_konfirm,
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonClass: "btn btn-danger",
+      cancelButtonClass: "btn btn-secondary",
+      cancelButtonText: "Batal",
+      confirmButtonText: "Ya, Konfirmasi!",
+    }).then((result) => {
+      if (result.value) {
+        document.location.href = href;
+      }
+    });
+  });
+  // })
+
+  $(".detail-visi-misi").on("click", function(e) {
+    e.preventDefault();
+
+    var ketua = $(this).data("ketua");
+    var wakil = $(this).data("wakil");
+    var visi_misi = $(this).data("visimisi");
+
+    $("#ketua").html(ketua);
+    $("#wakil").html(wakil);
+    $("#visi_misi").html(visi_misi);
+  })
 </script>
 </body>
 

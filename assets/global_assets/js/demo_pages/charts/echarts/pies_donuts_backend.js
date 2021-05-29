@@ -41,132 +41,136 @@ var EchartsPiesDonuts = function () {
         //
 
         // Basic pie chart
-        if (pie_basic_element) {
-            var dataSuara = [];
-            var dataX = "";
-            $.ajax({
-                type: "GET",
-                url: "http://localhost/skripsi_flavio/suara/jumlah_suara",
-                // url: "http://192.168.100.91/skripsi_flavio/suara/jumlah_suara",
-                dataType: "JSON",
-                async: dataX,
-                success: function (data) {
-                    console.log(data.length);
-                    if (data.length > 0) {
-                        for (var i = 0; i < data.length; i++) {
-                            if (data[i]['nama_ketua']) {
-                                dataX = [{
-                                    'paslon': data[i]['nama_ketua'] + ' & ' + data[i]['nama_wakil'],
-                                    'jml_suara': data[i]['jml_suara'],
-                                }];
+        var id_periode = "";
+        $("select").change(function () {
+            $(this).find("option:selected").each(function () {
+                var optionValue = $(this).attr("value");
+                id_periode = optionValue;
+                console.log("id periode = " + id_periode);
+
+                if (pie_basic_element) {
+                    var dataSuara = [];
+                    var dataX = "";
+
+                    $.ajax({
+                        type: "GET",
+                        url: "http://localhost/skripsi_flavio/admin/suara/jumlah_suara/" + id_periode,
+                        dataType: "JSON",
+                        async: dataX,
+                        success: function (data) {
+                            // console.log(data.length);
+                            if (data.length > 0) {
+                                for (var i = 0; i < data.length; i++) {
+                                    if (data[i]['nama_ketua']) {
+                                        dataX = [{
+                                            'paslon': data[i]['nama_ketua'] + ' & ' + data[i]['nama_wakil'],
+                                            'jml_suara': data[i]['jml_suara'],
+                                        }];
+                                    } else {
+                                        dataX = [{
+                                            'paslon': 'TIDAK/BELUM MEMILIH',
+                                            'jml_suara': data[i]['jml_suara'],
+                                        }];
+                                    }
+
+                                    // console.log(dataSuara[0]);
+                                    dataSuara[i] = dataX[0];
+                                }
                             } else {
-                                dataX = [{
-                                    'paslon': 'TIDAK/BELUM MEMILIH',
-                                    'jml_suara': data[i]['jml_suara'],
-                                }];
+
                             }
-
-                            // console.log(dataSuara[0]);
-                            dataSuara[i] = dataX[0];
-                        }
-                    } else {
-
-                    }
-                },
-            });
-            var arrSuara = [];
-            for (var i = 0; i < dataSuara.length; i++) {
-                arrSuara[i] = { value: dataSuara[i].jml_suara, name: dataSuara[i].paslon.toUpperCase() }
-            }
-            console.log('Data 3', dataSuara);
-            // Initialize chart
-            var pie_basic = echarts.init(pie_basic_element);
-            //
-            // Chart config
-            //
-
-            // Options
-            pie_basic.setOption({
-
-                // Colors
-                color: [
-                    // '#2ec7c9','#b6a2de','#5ab1ef','#ffb980','#d87a80',
-                    // '#8d98b3','#e5cf0d','#97b552','#95706d','#dc69aa',
-                    // '#07a2a4','#9a7fd1','#588dd5','#f5994e','#c05050',
-                    // '#59678c','#c9ab00','#7eb00a','#6f5553','#c14089'
-                    '#07a2a4', '#f5994e', '#c05050',
-                ],
-
-                // Global text styles
-                textStyle: {
-                    fontFamily: 'Roboto, Arial, Verdana, sans-serif',
-                    fontSize: 13
-                },
-
-                // Add title
-                title: {
-                    // text: 'Browser popularity',
-                    // subtext: 'Open source information',
-                    left: 'center',
-                    textStyle: {
-                        fontSize: 17,
-                        fontWeight: 500
-                    },
-                    subtextStyle: {
-                        fontSize: 12
-                    }
-                },
-
-                // Add tooltip
-                tooltip: {
-                    trigger: 'item',
-                    backgroundColor: 'rgba(0,0,0,0.75)',
-                    padding: [10, 15],
-                    textStyle: {
-                        fontSize: 13,
-                        fontFamily: 'Roboto, sans-serif'
-                    },
-                    formatter: "{a} <br/>{b}: {c} ({d}%)"
-                },
-
-                // Add legend
-                legend: {
-                    // orient: 'vertical',
-                    // top: 'center',
-                    bottom:0,
-                    // left: 0,
-                    // data: ['IE', 'Opera', 'Safari', 'Firefox', 'Chrome'],
-                    // itemHeight: 8,
-                    // itemWidth: 8
-                },
-
-                // Add series
-                series: [{
-                    name: '#JUMLAH SUARA#',
-                    type: 'pie',
-                    radius: '85%',
-                    center: ['50%', '50%'],
-                    emphasis: {
-                        itemStyle: {
-                            shadowBlur: 10,
-                            shadowOffsetX: 0,
-                            shadowColor: 'rgba(0, 0, 0, 0.5)',
-                            normal: {
-                                borderWidth: 1,
-                                borderColor: '#fff'
-                            },
                         },
-                        label: {
-                            show: true,
-                            position: 'center',
-                            formatter: '{b}: {c} Suara'
-                        }
-                    },
-                    data: arrSuara
-                }]
-            });
-        }
+                    });
+                    var arrSuara = [];
+                    for (var i = 0; i < dataSuara.length; i++) {
+                        arrSuara[i] = { value: dataSuara[i].jml_suara, name: dataSuara[i].paslon.toUpperCase() }
+                    }
+                    // console.log('Data 3', dataSuara);
+                    // Initialize chart
+                    var pie_basic = echarts.init(pie_basic_element);
+                    //
+                    // Chart config
+                    //
 
+                    // Options
+                    pie_basic.setOption({
+
+                        // Colors
+                        color: [
+                            '#07a2a4', '#f5994e', '#c05050','#6f5553',,'#7eb00a','#c9ab00','#d87a80','#9a7fd1',
+                        ],
+
+                        // Global text styles
+                        textStyle: {
+                            fontFamily: 'Roboto, Arial, Verdana, sans-serif',
+                            fontSize: 13
+                        },
+
+                        // Add title
+                        title: {
+                            // text: 'Browser popularity',
+                            // subtext: 'Open source information',
+                            left: 'center',
+                            textStyle: {
+                                fontSize: 17,
+                                fontWeight: 500
+                            },
+                            subtextStyle: {
+                                fontSize: 12
+                            }
+                        },
+
+                        // Add tooltip
+                        tooltip: {
+                            trigger: 'item',
+                            backgroundColor: 'rgba(0,0,0,0.75)',
+                            padding: [10, 15],
+                            textStyle: {
+                                fontSize: 13,
+                                fontFamily: 'Roboto, sans-serif'
+                            },
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+
+                        // Add legend
+                        legend: {
+                            // orient: 'vertical',
+                            // top: 'center',
+                            bottom:0,
+                            // left: 0,
+                            // data: ['IE', 'Opera', 'Safari', 'Firefox', 'Chrome'],
+                            // itemHeight: 8,
+                            // itemWidth: 8
+                        },
+
+                        // Add series
+                        series: [{
+                            name: '#JUMLAH SUARA#',
+                            type: 'pie',
+                            radius: '85%',
+                            center: ['50%', '50%'],
+                            emphasis: {
+                                itemStyle: {
+                                    shadowBlur: 10,
+                                    shadowOffsetX: 0,
+                                    shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                    normal: {
+                                        borderWidth: 1,
+                                        borderColor: '#fff'
+                                    },
+                                },
+                                label: {
+                                    show: true,
+                                    position: 'center',
+                                    formatter: '{b}: {c} Suara'
+                                }
+                            },
+                            data: arrSuara
+                        }]
+                    });
+                }
+            });
+        }).change();
         // Basic donut chart
         if (pie_donut_element) {
 

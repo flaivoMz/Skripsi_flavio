@@ -25,66 +25,33 @@
 
     <!-- Main charts -->
     <div class="row">
-        <div class="col-sm-6 col-xl-3">
-            <div class="card card-body bg-blue-400 has-bg-image">
-                <div class="media">
-                    <div class="media-body">
-                        <h3 class="mb-0"><?//= count($pesanan) ?></h3>
-                        <span class="text-uppercase font-size-xs">total pesanan</span>
-                    </div>
-
-                    <div class="ml-3 align-self-center">
-                        <i class="icon-cart2 icon-3x opacity-75"></i>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-2 font-weight-semibold">Pilih Periode Pilkada</label>
+                            <div class="col-lg-10">
+                                <select name="periode" class="form-control">
+                                    <?php
+                                    $ci = $ci->get_instance;
+                                    $periodes = $this->PeriodeModel->semuaPeriode();
+                                    foreach ($periodes as $p) { ?>
+                                        <option value="<?= $p['id_periode'] ?>" <?= $p['id_periode'] == $periode['id_periode'] ? "selected" : "" ?>><?= $p['periode_jabatan'] . ' ( ' . strtoupper($p['status']) . ' )' ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-body table-responsive">
+                    <h5 class="text-center font-weight-bold mt-2">HASIL PENGHITUNGAN SUARA</h5>
+                    <div class="chart-container">
+                        <div class="chart has-fixed-height" id="pie_basic"></div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-6 col-xl-3">
-            <div class="card card-body bg-danger-400 has-bg-image">
-                <div class="media">
-                    <div class="media-body">
-                        <h3 class="mb-0"><?//= $wisatawan ?></h3>
-                        <span class="text-uppercase font-size-xs">total wisatawan</span>
-                    </div>
-
-                    <div class="ml-3 align-self-center">
-                        <i class="icon-users4 icon-3x opacity-75"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6 col-xl-3">
-            <div class="card card-body bg-indigo-400 has-bg-image">
-                <div class="media">
-                    <div class="media-body">
-                        <h3 class="mb-0"><?//= $wisata ?></h3>
-                        <span class="text-uppercase font-size-xs">total paket wisata</span>
-
-                    </div>
-
-                    <div class="ml-3 align-self-center">
-                        <i class="icon-stack-text icon-3x opacity-75"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-xl-3">
-            <div class="card card-body bg-success-400 has-bg-image">
-                <div class="media">
-                    <div class="media-body">
-                        <h3 class="mb-0"><?//= $pemandu ?></h3>
-                        <span class="text-uppercase font-size-xs">total pemandu</span>
-
-                    </div>
-                    <div class="ml-3 align-self-center">
-                        <i class="icon-user-lock icon-3x opacity-75"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 <!-- /main charts -->

@@ -5,7 +5,7 @@ class Users extends MX_Controller
 {
     public function __construct()
     {
-        is_logged_in_wisatawan();
+        // is_logged_in_wisatawan();
         $this->load->model('UsersModel');
         $this->load->model('PesananModel');
         $this->load->model('PemanduModel');
@@ -61,23 +61,4 @@ class Users extends MX_Controller
         }
     }
 
-    public function batal_pesanan($kode_booking)
-    {
-        if($this->PesananModel->pesananByKodeBooking($kode_booking)){
-            if($this->PesananModel->batalPesanan($kode_booking)){
-                $this->session->set_flashdata('success', 'Pesanan berhasil dibatalkan');
-            }else{
-                $this->session->set_flashdata('danger', 'Gagal membatalkan. Coba sesaat lagi');
-            }
-        }else{
-            $this->session->set_flashdata('danger', 'Gagal membatalkan. Pesanan tidak ditemukan');
-        }
-        redirect('account/dashboard');
-    }
-    public function list_pemandu($idpesanan)
-    {
-        $data = $this->PemanduModel->pemanduByIdPesanan($idpesanan);
-        echo json_encode($data);
-       
-    }
 }

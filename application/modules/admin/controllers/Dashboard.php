@@ -6,19 +6,13 @@ class Dashboard extends MX_Controller
     public function __construct()
     {
         parent::__construct();
-        // is_logged_in_admin();
-        // $this->load->model('PesananModel');
-        // $this->load->model('WisatawanModel');
-        // $this->load->model('WisataModel');
-        // $this->load->model('PemanduModel');
+        is_logged_in_admin();
+        $this->load->model('PeriodeModel');
     }
     public function index()
     {
         $data['title'] = 'Dashboard';
-        // $data['pesanan'] = $this->PesananModel->semuaPesanan();
-        // $data['wisatawan'] = count($this->WisatawanModel->semuaWisatawan());
-        // $data['wisata'] = count($this->WisataModel->semuaWisata());
-        // $data['pemandu'] = count($this->PemanduModel->semuaPemandu());
+        $data['periode'] = $this->PeriodeModel->periodeAktif();
         adminView('dashboard/index', $data);
     }
 

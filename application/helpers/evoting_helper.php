@@ -59,20 +59,6 @@ function is_logged_in_admin()
     }
 }
 
-function is_logged_in_wisatawan()
-{
-    $ci = get_instance();
-
-    if (!$ci->session->userdata('cust-iduser')) {
-        $ci->session->set_flashdata('danger', 'Silahkan login terlebih dahulu');
-        redirect('auth');
-    }
-    if ($ci->session->userdata('cust-role') != "wisatawan") {
-        $ci->session->set_flashdata('danger', 'Anda tidak ada akses pada halaman tersebut');
-        redirect('auth');
-    }
-}
-
 function flash()
 {
     $ci = get_instance();

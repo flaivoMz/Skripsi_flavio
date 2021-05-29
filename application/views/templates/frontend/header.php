@@ -31,11 +31,13 @@
     <script src="<?= base_url('assets/') ?>global_assets/js/plugins/pickers/daterangepicker.js"></script>
     <script src="<?= base_url('assets/') ?>global_assets/js/plugins/tables/datatables/datatables.min.js"></script>
     <script src="<?= base_url('assets/') ?>global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+    <script src="<?= base_url('assets/') ?>global_assets/js/plugins/visualization/echarts/echarts.min.js"></script>
 
     <script src="<?= base_url('assets/') ?>assets/js/app.js"></script>
     <script src="<?= base_url('assets/') ?>global_assets/js/plugins/editors/ckeditor/ckeditor.js"></script>
     <script src="<?= base_url('assets/') ?>global_assets/js/plugins/forms/selects/select2.min.js"></script>
     <script src="<?= base_url('assets/') ?>global_assets/js/demo_pages/form_checkboxes_radios.js"></script>
+    <script src="<?= base_url('assets/') ?>global_assets/js/demo_pages/charts/echarts/pies_donuts.js"></script>
 
     <!-- <script src="<?//= base_url('assets/') ?>global_assets/js/demo_pages/dashboard.js"></script> -->
     <script src="<?= base_url('assets/') ?>global_assets/js/demo_pages/datatables_basic.js"></script>

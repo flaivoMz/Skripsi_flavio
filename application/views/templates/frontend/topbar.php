@@ -15,34 +15,42 @@
 		<div class="collapse navbar-collapse" id="navbar-mobile">
 			<ul class="navbar-nav">
       <li class="nav-item">
-					<a href="<?= base_url() ?>" class="navbar-nav-link active">
+					<a href="<?= base_url() ?>" class="navbar-nav-link <?= count($this->uri->segment_array()) == 0 ? 'active' : '' ?>">
 						<i class="icon-home4 mr-2"></i>
-						Home
+						HOME 
 					</a>
 				</li>
 
 				<li class="nav-item">
-					<a href="<?= base_url() ?>" class="navbar-nav-link">
+					<a href="<?= base_url('suara') ?>" class="navbar-nav-link <?= $this->uri->segment(1) == "suara" ? 'active' : '' ?>">
 						<i class="icon-envelope mr-2"></i>
-						Penghitungan Suara
+						PENGHITUNGAN SUARA
 					</a>
 				</li>
 			</ul>
 
 
 			<ul class="navbar-nav ml-auto">
-
+				<?php if($this->session->userdata('pemilih-nik')){ ?>
 				<li class="nav-item dropdown dropdown-user">
 					<a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
-						<img src="../../../../global_assets/images/placeholders/placeholder.jpg" class="rounded-circle mr-2" height="34" alt="">
-						<span>Victoria</span>
+						<img src="<?= base_url('assets/global_assets/images/placeholders/placeholder.jpg') ?>" class="rounded-circle mr-2" height="34" alt="">
+						<span><?= strtoupper($this->session->userdata('pemilih-nama')) ?></span>
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right">
-						<a href="#" class="dropdown-item"><i class="icon-user"></i> Profil</a>
-						<a href="#" class="dropdown-item"><i class="icon-switch2"></i> Keluar</a>
+						<!-- <a href="#" class="dropdown-item"><i class="icon-user"></i> Profil</a> -->
+						<a href="<?= base_url('logout') ?>" class="dropdown-item"><i class="icon-switch2"></i> Keluar</a>
 					</div>
 				</li>
+				<?php }else{ ?>
+					<li class="nav-item">
+					<a href="<?= base_url('masuk') ?>" class="navbar-nav-link <?= $this->uri->segment(1) == "masuk" ? 'active' : '' ?>">
+						<i class="icon-lock mr-2"></i>
+						MASUK
+					</a>
+				</li>
+				<?php } ?>
 			</ul>
 		</div>
 	</div>

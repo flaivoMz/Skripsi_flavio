@@ -1,30 +1,49 @@
-<main>
-    <section id="hero" class="login">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8">
-                    <div id="login">
-                        <div class="text-center"><span class="h5">Silahkan Login</span></div>
-                        <hr />
-                        <form action="<?= base_url('auth') ?>" method="post">
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" name="username" class=" form-control " placeholder="Username" required value="<?= set_value('username'); ?>">
-                                <?= form_error('username', '<small class="text-danger">', '</small>'); ?>
+<!-- Page content -->
+<div class="page-content">
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+        <!-- Content area -->
+        <div class="content d-flex justify-content-center align-items-center">
+            <!-- Login form -->
+            <form class="login-form" action="<?= base_url() . 'masuk' ?>" method="post">
+                <div class="card mb-0 shadow bg-white rounded">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="icon-user-lock icon-2x text-teal-800 border-teal-800 border-3 rounded-round p-3 mb-3 mt-1"></i>
+                            <h5 class="mb-0">Silahkan Masuk</h5>
+                            <span class="d-block text-muted">Masukkan Sesuai Data di E-KTP</span>
+                        </div>
+                        <?= flash() ?>
+                        <label class="text-secondary">NIK</label>
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input type="text" name="nik" class="form-control" placeholder="Masukkan NIK" required>
+                            <div class="form-control-feedback">
+                                <i class="icon-user text-muted"></i>
                             </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" name="password" class=" form-control" placeholder="Password" required>
+                        </div>
+
+                        <label class="text-secondary">Tanggal Lahir</label>
+                        <div class="form-group form-group-feedback form-group-feedback-left">
+                            <input type="date" name="tgl_lahir" class="form-control" placeholder="Tanggal Lahir" required>
+                            <div class="form-control-feedback">
+                                <i class="icon-calendar text-muted"></i>
                             </div>
-                            <!-- <p class="small">
-                                <a href="#">Forgot Password?</a>
-                            </p> -->
-                            <button type="submit" name="submit" class="btn_full">Masuk</button>
-                            <a href="<?= base_url('auth/daftar') ?>" class="btn_full_outline"> Belum punya akun? Daftar</a>
-                        </form>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Masuk <i class="icon-circle-right2 ml-2"></i></button>
+                        </div>
+
+                        <span class="form-text text-center text-muted">Jika lupa password, silahkan hubungi petugas KPU yang bertugas pada masing-masing daerah</span>
                     </div>
                 </div>
-            </div>
+            </form>
+            <!-- /login form -->
         </div>
-    </section>
-</main><!-- End main -->
+        <!-- /content area -->
+    </div>
+    <!-- /main content -->
+</div>
+<!-- /page content -->

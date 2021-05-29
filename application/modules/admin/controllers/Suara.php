@@ -16,5 +16,10 @@ class Suara extends MX_Controller
         $data['suara'] = $this->SuaraModel->semuaSuara();
         adminView('suara/index', $data);
     }
+    public function jumlah_suara($id_periode)
+    {
+        $data = $this->SuaraModel->jumlahSuara($id_periode);
+        echo json_encode($data);
+    }
     
 }

@@ -87,6 +87,6 @@ class Calon extends MX_Controller
                 $this->session->set_flashdata('success', 'Data Calon Pilkada Gagal Dihapus');
             }
         }
-        redirect('admin/calon');;
+        redirect('admin/calon');
     }
 }
