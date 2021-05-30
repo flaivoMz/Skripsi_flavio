@@ -55,6 +55,7 @@ var EchartsPiesDonuts = function () {
                     $.ajax({
                         type: "GET",
                         url: "http://localhost/skripsi_flavio/admin/suara/jumlah_suara/" + id_periode,
+                        // url: "http://skripsi-flavio.atwebpages.com/admin/suara/jumlah_suara/" + id_periode,
                         dataType: "JSON",
                         async: dataX,
                         success: function (data) {

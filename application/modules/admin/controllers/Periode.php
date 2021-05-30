@@ -30,7 +30,7 @@ class Periode extends MX_Controller
             redirect('admin/periode');
         } else {
             $cekPeriode = $this->PeriodeModel->periodeAktif();
-            if($this->input->post('status') == 'aktif' && $cekPeriode){
+            if($this->input->post('status') == 'aktif' && $cekPeriode['id_periode'] != $this->input->post('id_periode')){
                 $this->session->set_flashdata('danger', 'Gagal Disimpan. Periode aktif pilkada maksimal 1 periode');
                 redirect('admin/periode');
             }

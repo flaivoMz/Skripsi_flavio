@@ -24,7 +24,7 @@ date_default_timezone_set("Asia/Jakarta");
 |
 */
 $config['base_url'] = 'http://localhost/skripsi_flavio/';
-// $config['base_url'] = 'http://192.168.100.91/skripsi_flavio/';
+// $config['base_url'] = 'http://skripsi-flavio.atwebpages.com/';
 
 /*
 |--------------------------------------------------------------------------
