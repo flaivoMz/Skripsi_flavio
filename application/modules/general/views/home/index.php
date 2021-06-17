@@ -24,7 +24,7 @@ if ((strtotime(Date('Y-m-d')) >= strtotime($periode['mulai_pilih'])) && (strtoti
                         <?php if ($statusVote) { ?>
                             <div class="col-md-4">
                                 <div class="alert alert-success alert-styled-left pb-4">
-                                    <span class="font-weight-semibold">Anda sudah memilih no urut ( <?= $vote['no_urut'] ?> ). </span> Terima kasih sudah menggunakan hak pilih
+                                    <span class="font-weight-semibold">Anda sudah memilih. </span> Terima kasih sudah menggunakan hak pilih
                                 </div>
                             </div>
                         <?php } ?>

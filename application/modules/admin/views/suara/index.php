@@ -31,7 +31,7 @@
                         <th width="3%">NO</th>
                         <th>NIK</th>
                         <th>NAMA</th>
-                        <th>PILIHAN</th>
+                        <!-- <th>PILIHAN</th> -->
                         <th>PERIODE</th>
                         <th>TGL. PILIH</th>
                     </tr>
@@ -44,7 +44,7 @@
                             <td><?= $i ?></td>
                             <td><?= $s['nik'] ?></td>
                             <td><?= strtoupper($s['nama_pemilih']) ?></td>
-                            <td><?= $s['no_urut'] ?></td>
+                            <!-- <td><?//= $s['no_urut'] ?></td> -->
                             <td><?= $s['periode_jabatan'] ?></td>
                             <td><?= tanggal_indo($s['tgl_pilih']) ?></td>
                         </tr>

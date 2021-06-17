@@ -146,7 +146,7 @@ CREATE TABLE `periode` (
 /*Data for the table `periode` */
 
 insert  into `periode`(`id_periode`,`periode_jabatan`,`mulai_pilih`,`batas_pilih`,`status`) values 
-(1,'2021 - 2024','2021-05-26','2021-05-29','aktif'),
+(1,'2021 - 2024','2021-05-26','2021-05-31','aktif'),
 (3,'2018 - 2021','2018-04-09','2018-04-10','tidak');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
