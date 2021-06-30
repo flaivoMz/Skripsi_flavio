@@ -58,7 +58,7 @@ class Parpol extends MX_Controller
         }
         $this->session->set_flashdata('success', 'Data Partai Berhasil Dihapus');
       } else {
-        $this->session->set_flashdata('success', 'Data Partai Gagal Dihapus');
+        $this->session->set_flashdata('danger', 'Data Partai Gagal Dihapus');
       }
     }
     redirect('admin/parpol');;
